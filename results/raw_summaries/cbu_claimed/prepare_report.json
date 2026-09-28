@@ -1,0 +1,36 @@
+{
+  "surfaces": {
+    "ours_cc12m": 4494,
+    "ref_cc12m_qwen3vl8b": 4494,
+    "ref_cc12m_llavanext": 4494,
+    "ref_pixelprose_cc12m": 4494
+  },
+  "pilot_match": {
+    "ours_cc12m:b16": true,
+    "ref_cc12m_qwen3vl8b:b16": true,
+    "ref_cc12m_llavanext:b16": true,
+    "ref_pixelprose_cc12m:b16": true,
+    "ours_cc12m:b32": true,
+    "ref_cc12m_qwen3vl8b:b32": true,
+    "ref_cc12m_llavanext:b32": true,
+    "ref_pixelprose_cc12m:b32": true,
+    "ours_cc12m:b48": true,
+    "ref_cc12m_qwen3vl8b:b48": true,
+    "ref_cc12m_llavanext:b48": true,
+    "ref_pixelprose_cc12m:b48": true
+  },
+  "run_files": {
+    "b16": {
+      "path": "/tmp/bgrid/work/claimed_cbu_v2_cc12m_four_caption_b16_rows1000-4493.requests.jsonl",
+      "requests": 13976
+    },
+    "b32": {
+      "path": "/tmp/bgrid/work/claimed_cbu_v2_cc12m_four_caption_b32_rows1000-4493.requests.jsonl",
+      "requests": 13976
+    },
+    "b48": {
+      "path": "/tmp/bgrid/work/claimed_cbu_v2_cc12m_four_caption_b48_rows1000-4493.requests.jsonl",
+      "requests": 13976
+    }
+  }
+}

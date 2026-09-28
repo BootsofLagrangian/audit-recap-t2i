@@ -1,0 +1,641 @@
+{
+  "fair_root": "<LOCAL_CACHE>/caption-fair-slices",
+  "max_pairs": 1000000,
+  "seed": 0,
+  "token_budget": 64,
+  "prefix_tokens": 5,
+  "top_k": 100,
+  "workers": 7,
+  "comparisons": [
+    {
+      "comparison": "cc12m_llavanext_paired",
+      "records": 960394,
+      "local_surface": "ours_cc12m",
+      "reference_surface": "ref_cc12m_llavanext",
+      "local_top_prefix_examples": [
+        [
+          "close up view captures a",
+          3963
+        ],
+        [
+          "close up view captures the",
+          3308
+        ],
+        [
+          "close up view of a",
+          2327
+        ],
+        [
+          "person stands centered in a",
+          1608
+        ],
+        [
+          "middle aged man with short",
+          1522
+        ],
+        [
+          "close up portrait captures a",
+          1454
+        ],
+        [
+          "woman with long dark hair",
+          1183
+        ],
+        [
+          "close up view focuses on",
+          1153
+        ],
+        [
+          "woman stands centered in a",
+          1137
+        ],
+        [
+          "close up shot captures a",
+          1030
+        ]
+      ],
+      "reference_top_prefix_examples": [
+        [
+          "close up view of a",
+          5782
+        ],
+        [
+          "close up of a person's",
+          5249
+        ],
+        [
+          "slide from a presentation with",
+          5199
+        ],
+        [
+          "black and white photograph of",
+          4365
+        ],
+        [
+          "modern living room with a",
+          4290
+        ],
+        [
+          "center of the image a",
+          4191
+        ],
+        [
+          "black t shirt with a",
+          3603
+        ],
+        [
+          "black and white line drawing",
+          3049
+        ],
+        [
+          "black and white photograph a",
+          2701
+        ],
+        [
+          "person wearing a black t",
+          2658
+        ]
+      ]
+    },
+    {
+      "comparison": "cc12m_pixelprose_paired",
+      "records": 729237,
+      "local_surface": "ours_cc12m",
+      "reference_surface": "ref_pixelprose_cc12m",
+      "local_top_prefix_examples": [
+        [
+          "close up view captures a",
+          3024
+        ],
+        [
+          "close up view captures the",
+          2544
+        ],
+        [
+          "close up view of a",
+          1761
+        ],
+        [
+          "person stands centered in a",
+          1181
+        ],
+        [
+          "middle aged man with short",
+          1132
+        ],
+        [
+          "close up portrait captures a",
+          1109
+        ],
+        [
+          "woman with long dark hair",
+          916
+        ],
+        [
+          "close up view focuses on",
+          902
+        ],
+        [
+          "woman stands centered in a",
+          846
+        ],
+        [
+          "man with short dark hair",
+          767
+        ]
+      ],
+      "reference_top_prefix_examples": [
+        [
+          "black and white photograph of",
+          10934
+        ],
+        [
+          "close up photograph of a",
+          2065
+        ],
+        [
+          "man and a woman are",
+          1679
+        ],
+        [
+          "hotel room with a bed",
+          1666
+        ],
+        [
+          "black and white illustration of",
+          1581
+        ],
+        [
+          "is a photograph of a",
+          1286
+        ],
+        [
+          "black t shirt with a",
+          1116
+        ],
+        [
+          "black and white drawing of",
+          1059
+        ],
+        [
+          "bedroom with a bed a",
+          1034
+        ],
+        [
+          "is an image of a",
+          1006
+        ]
+      ]
+    },
+    {
+      "comparison": "cc12m_qwen3vl8b_paired",
+      "records": 114621,
+      "local_surface": "ours_cc12m",
+      "reference_surface": "ref_cc12m_qwen3vl8b",
+      "local_top_prefix_examples": [
+        [
+          "close up portrait captures a",
+          377
+        ],
+        [
+          "close up view captures a",
+          244
+        ],
+        [
+          "close up portrait of a",
+          243
+        ],
+        [
+          "woman stands poised on a",
+          222
+        ],
+        [
+          "woman with fair skin and",
+          173
+        ],
+        [
+          "middle aged man with short",
+          170
+        ],
+        [
+          "man and a woman stand",
+          162
+        ],
+        [
+          "woman with long dark hair",
+          155
+        ],
+        [
+          "bride and groom stand close",
+          154
+        ],
+        [
+          "top down view captures a",
+          151
+        ]
+      ],
+      "reference_top_prefix_examples": [
+        [
+          "woman in a white dress",
+          393
+        ],
+        [
+          "cozy bedroom with a bed",
+          335
+        ],
+        [
+          "woman in a black dress",
+          267
+        ],
+        [
+          "woman in a red dress",
+          224
+        ],
+        [
+          "model walks down a runway",
+          168
+        ],
+        [
+          "modern living room with sofa",
+          161
+        ],
+        [
+          "man and woman pose together",
+          160
+        ],
+        [
+          "bride in a white dress",
+          155
+        ],
+        [
+          "woman in a blue dress",
+          137
+        ],
+        [
+          "woman in a white wedding",
+          122
+        ]
+      ]
+    },
+    {
+      "comparison": "danbooru2023_florence2_paired",
+      "records": 999993,
+      "local_surface": "ours_danbooru2023",
+      "reference_surface": "ref_danbooru_florence2",
+      "local_top_prefix_examples": [
+        [
+          "hatsune miku stands in a",
+          921
+        ],
+        [
+          "black and white manga panel",
+          636
+        ],
+        [
+          "young woman with long brown",
+          623
+        ],
+        [
+          "young woman with long flowing",
+          620
+        ],
+        [
+          "young woman with brown hair",
+          540
+        ],
+        [
+          "young woman with long black",
+          536
+        ],
+        [
+          "konpaku youmu stands in a",
+          494
+        ],
+        [
+          "young woman with short brown",
+          486
+        ],
+        [
+          "young woman with long dark",
+          404
+        ],
+        [
+          "hakurei reimu stands in a",
+          399
+        ]
+      ],
+      "reference_top_prefix_examples": [
+        [
+          "is an animated image in",
+          199039
+        ],
+        [
+          "page from a manga with",
+          27838
+        ],
+        [
+          "girl in a school uniform",
+          23985
+        ],
+        [
+          "is an animated picture in",
+          21776
+        ],
+        [
+          "black and white drawing of",
+          9708
+        ],
+        [
+          "girl with long blonde hair",
+          8644
+        ],
+        [
+          "anime girl with long black",
+          7834
+        ],
+        [
+          "anime girl with long white",
+          7777
+        ],
+        [
+          "couple of anime characters standing",
+          7598
+        ],
+        [
+          "page from a comic book",
+          7138
+        ]
+      ]
+    },
+    {
+      "comparison": "datacomp_recap_llava15_paired_url",
+      "records": 1000000,
+      "local_surface": "ours_datacomp_forward",
+      "reference_surface": "ref_datacomp_recap_llava15_llama3_8b",
+      "local_top_prefix_examples": [
+        [
+          "close up view captures a",
+          5252
+        ],
+        [
+          "close up view captures the",
+          4844
+        ],
+        [
+          "close up view of a",
+          3631
+        ],
+        [
+          "middle aged man with short",
+          1960
+        ],
+        [
+          "close up view focuses on",
+          1742
+        ],
+        [
+          "close up shot captures a",
+          1409
+        ],
+        [
+          "close up portrait captures a",
+          1287
+        ],
+        [
+          "man with short dark hair",
+          967
+        ],
+        [
+          "close up portrait of a",
+          941
+        ],
+        [
+          "close up eye level shot",
+          800
+        ]
+      ],
+      "reference_top_prefix_examples": [
+        [
+          "close up image of a",
+          31624
+        ],
+        [
+          "close up view of a",
+          17534
+        ],
+        [
+          "second image is a close",
+          11914
+        ],
+        [
+          "black and white photograph of",
+          7838
+        ],
+        [
+          "second image shows the same",
+          6400
+        ],
+        [
+          "second image is a stylized",
+          5006
+        ],
+        [
+          "second image is a promotional",
+          3691
+        ],
+        [
+          "first image shows a close",
+          3663
+        ],
+        [
+          "black and white image of",
+          3531
+        ],
+        [
+          "person's hand is holding a",
+          3072
+        ]
+      ]
+    },
+    {
+      "comparison": "laion_pop_llama32_paired",
+      "records": 351384,
+      "local_surface": "ours_laion_pop",
+      "reference_surface": "ref_laion_pop_llama32_11b",
+      "local_top_prefix_examples": [
+        [
+          "close up portrait captures a",
+          2120
+        ],
+        [
+          "close up view captures the",
+          1549
+        ],
+        [
+          "close up portrait of a",
+          1287
+        ],
+        [
+          "woman with fair skin and",
+          1154
+        ],
+        [
+          "young woman with fair skin",
+          1046
+        ],
+        [
+          "close up view captures a",
+          971
+        ],
+        [
+          "young woman with long wavy",
+          889
+        ],
+        [
+          "woman with long dark hair",
+          870
+        ],
+        [
+          "young woman with long dark",
+          859
+        ],
+        [
+          "young woman with long straight",
+          847
+        ]
+      ],
+      "reference_top_prefix_examples": [
+        [
+          "close up view of a",
+          8156
+        ],
+        [
+          "close up photograph of a",
+          3092
+        ],
+        [
+          "black and white photograph of",
+          2206
+        ],
+        [
+          "close up portrait of a",
+          1968
+        ],
+        [
+          "woman standing in front of",
+          1588
+        ],
+        [
+          "close up view of the",
+          1320
+        ],
+        [
+          "here is a detailed description",
+          1040
+        ],
+        [
+          "man standing in front of",
+          1038
+        ],
+        [
+          "serene scene of a woman",
+          998
+        ],
+        [
+          "captivating close up of a",
+          915
+        ]
+      ]
+    },
+    {
+      "comparison": "pd12m_full_paired",
+      "records": 1000000,
+      "local_surface": "ours_pd12m_img2dataset",
+      "reference_surface": "ref_pd12m_full",
+      "local_top_prefix_examples": [
+        [
+          "close up view captures a",
+          9468
+        ],
+        [
+          "close up view captures the",
+          4208
+        ],
+        [
+          "middle aged man with a",
+          2541
+        ],
+        [
+          "black and white photograph captures",
+          2500
+        ],
+        [
+          "close up view of a",
+          1915
+        ],
+        [
+          "low angle view captures the",
+          1470
+        ],
+        [
+          "open antique book lies flat",
+          1463
+        ],
+        [
+          "close up view of an",
+          1425
+        ],
+        [
+          "middle aged man with short",
+          1372
+        ],
+        [
+          "close up view focuses on",
+          1285
+        ]
+      ],
+      "reference_top_prefix_examples": [
+        [
+          "black and white photo of",
+          116383
+        ],
+        [
+          "black and white drawing of",
+          47455
+        ],
+        [
+          "old black and white photo",
+          38131
+        ],
+        [
+          "close up of a plant",
+          29449
+        ],
+        [
+          "open book with a drawing",
+          12964
+        ],
+        [
+          "black and white engraving of",
+          8588
+        ],
+        [
+          "painting of a group of",
+          7338
+        ],
+        [
+          "old book with a drawing",
+          5767
+        ],
+        [
+          "old map of the city",
+          5570
+        ],
+        [
+          "painting of a man in",
+          4947
+        ]
+      ]
+    }
+  ]
+}

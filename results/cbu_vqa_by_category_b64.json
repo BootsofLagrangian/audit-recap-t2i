@@ -1,0 +1,1689 @@
+{
+  "cells": [
+    {
+      "slice": "DataComp",
+      "judge": "Qwen3.5-397B-A17B-FP8",
+      "surface": "Ours",
+      "all_types": {
+        "responses": 4648,
+        "questions": 67724,
+        "yes": 64325,
+        "no": 2368,
+        "uncertain": 1031,
+        "supported_cap": 13.839285714285714,
+        "risk": 0.03496544799480243,
+        "uncertain_rate": 0.015223554426791094
+      },
+      "excluding_count_relation": {
+        "responses": 4648,
+        "questions": 54430,
+        "yes": 51716,
+        "no": 1746,
+        "uncertain": 968,
+        "supported_cap": 11.126506024096386,
+        "risk": 0.03207789821789454,
+        "uncertain_rate": 0.017784310123093883
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 28435,
+          "no": 1068,
+          "uncertain": 698
+        },
+        "camera": {
+          "yes": 1177,
+          "no": 49,
+          "uncertain": 3
+        },
+        "count": {
+          "yes": 2155,
+          "no": 233,
+          "uncertain": 13
+        },
+        "lighting": {
+          "yes": 1497,
+          "no": 62,
+          "uncertain": 33
+        },
+        "object": {
+          "yes": 17511,
+          "no": 449,
+          "uncertain": 215
+        },
+        "relation": {
+          "yes": 10454,
+          "no": 389,
+          "uncertain": 50
+        },
+        "style": {
+          "yes": 1092,
+          "no": 39,
+          "uncertain": 8
+        },
+        "text_rendering": {
+          "yes": 2004,
+          "no": 79,
+          "uncertain": 11
+        }
+      }
+    },
+    {
+      "slice": "DataComp",
+      "judge": "Qwen3.5-397B-A17B-FP8",
+      "surface": "Ref",
+      "all_types": {
+        "responses": 4995,
+        "questions": 52194,
+        "yes": 42437,
+        "no": 9227,
+        "uncertain": 530,
+        "supported_cap": 8.495895895895895,
+        "risk": 0.17678277196612638,
+        "uncertain_rate": 0.01015442388013948
+      },
+      "excluding_count_relation": {
+        "responses": 4995,
+        "questions": 41418,
+        "yes": 34129,
+        "no": 6832,
+        "uncertain": 457,
+        "supported_cap": 6.832632632632633,
+        "risk": 0.1649524361388768,
+        "uncertain_rate": 0.011033850016900864
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 14182,
+          "no": 3025,
+          "uncertain": 301
+        },
+        "camera": {
+          "yes": 605,
+          "no": 96,
+          "uncertain": 1
+        },
+        "count": {
+          "yes": 1183,
+          "no": 574,
+          "uncertain": 9
+        },
+        "lighting": {
+          "yes": 412,
+          "no": 58,
+          "uncertain": 9
+        },
+        "object": {
+          "yes": 15413,
+          "no": 2462,
+          "uncertain": 124
+        },
+        "relation": {
+          "yes": 7125,
+          "no": 1821,
+          "uncertain": 64
+        },
+        "style": {
+          "yes": 1390,
+          "no": 173,
+          "uncertain": 11
+        },
+        "text_rendering": {
+          "yes": 2127,
+          "no": 1018,
+          "uncertain": 11
+        }
+      }
+    },
+    {
+      "slice": "LAION-pop",
+      "judge": "Qwen3.5-397B-A17B-FP8",
+      "surface": "Ours",
+      "all_types": {
+        "responses": 4964,
+        "questions": 73489,
+        "yes": 70572,
+        "no": 2256,
+        "uncertain": 661,
+        "supported_cap": 14.21676067687349,
+        "risk": 0.030698471880145326,
+        "uncertain_rate": 0.008994543401053219
+      },
+      "excluding_count_relation": {
+        "responses": 4964,
+        "questions": 59669,
+        "yes": 57426,
+        "no": 1617,
+        "uncertain": 626,
+        "supported_cap": 11.568493150684931,
+        "risk": 0.027099498902277565,
+        "uncertain_rate": 0.01049120984095594
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 32947,
+          "no": 1007,
+          "uncertain": 472
+        },
+        "camera": {
+          "yes": 1267,
+          "no": 43,
+          "uncertain": 0
+        },
+        "count": {
+          "yes": 1614,
+          "no": 196,
+          "uncertain": 4
+        },
+        "lighting": {
+          "yes": 1917,
+          "no": 75,
+          "uncertain": 12
+        },
+        "object": {
+          "yes": 19388,
+          "no": 382,
+          "uncertain": 137
+        },
+        "relation": {
+          "yes": 11532,
+          "no": 443,
+          "uncertain": 31
+        },
+        "style": {
+          "yes": 1448,
+          "no": 66,
+          "uncertain": 4
+        },
+        "text_rendering": {
+          "yes": 459,
+          "no": 44,
+          "uncertain": 1
+        }
+      }
+    },
+    {
+      "slice": "LAION-pop",
+      "judge": "Qwen3.5-397B-A17B-FP8",
+      "surface": "Ref",
+      "all_types": {
+        "responses": 4947,
+        "questions": 58903,
+        "yes": 53414,
+        "no": 4546,
+        "uncertain": 943,
+        "supported_cap": 10.79725085910653,
+        "risk": 0.07717773288287523,
+        "uncertain_rate": 0.016009371339320577
+      },
+      "excluding_count_relation": {
+        "responses": 4947,
+        "questions": 47764,
+        "yes": 43878,
+        "no": 3036,
+        "uncertain": 850,
+        "supported_cap": 8.869617950272893,
+        "risk": 0.06356251570220249,
+        "uncertain_rate": 0.01779582949501717
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 22165,
+          "no": 1830,
+          "uncertain": 457
+        },
+        "camera": {
+          "yes": 1527,
+          "no": 164,
+          "uncertain": 3
+        },
+        "count": {
+          "yes": 1237,
+          "no": 417,
+          "uncertain": 27
+        },
+        "lighting": {
+          "yes": 521,
+          "no": 50,
+          "uncertain": 6
+        },
+        "object": {
+          "yes": 16516,
+          "no": 760,
+          "uncertain": 334
+        },
+        "relation": {
+          "yes": 8299,
+          "no": 1093,
+          "uncertain": 66
+        },
+        "style": {
+          "yes": 2690,
+          "no": 94,
+          "uncertain": 43
+        },
+        "text_rendering": {
+          "yes": 459,
+          "no": 138,
+          "uncertain": 7
+        }
+      }
+    },
+    {
+      "slice": "PD12M",
+      "judge": "Qwen3.5-397B-A17B-FP8",
+      "surface": "Ours",
+      "all_types": {
+        "responses": 4957,
+        "questions": 74392,
+        "yes": 70831,
+        "no": 2501,
+        "uncertain": 1060,
+        "supported_cap": 14.289086140810975,
+        "risk": 0.033619206366275946,
+        "uncertain_rate": 0.014248843961716313
+      },
+      "excluding_count_relation": {
+        "responses": 4957,
+        "questions": 58972,
+        "yes": 56265,
+        "no": 1727,
+        "uncertain": 980,
+        "supported_cap": 11.35061529150696,
+        "risk": 0.029285084446856135,
+        "uncertain_rate": 0.01661805602658889
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 31553,
+          "no": 1059,
+          "uncertain": 677
+        },
+        "camera": {
+          "yes": 1041,
+          "no": 55,
+          "uncertain": 2
+        },
+        "count": {
+          "yes": 2324,
+          "no": 311,
+          "uncertain": 15
+        },
+        "lighting": {
+          "yes": 1396,
+          "no": 65,
+          "uncertain": 21
+        },
+        "object": {
+          "yes": 19971,
+          "no": 423,
+          "uncertain": 248
+        },
+        "relation": {
+          "yes": 12242,
+          "no": 463,
+          "uncertain": 65
+        },
+        "style": {
+          "yes": 1470,
+          "no": 44,
+          "uncertain": 23
+        },
+        "text_rendering": {
+          "yes": 834,
+          "no": 81,
+          "uncertain": 9
+        }
+      }
+    },
+    {
+      "slice": "PD12M",
+      "judge": "Qwen3.5-397B-A17B-FP8",
+      "surface": "Ref",
+      "all_types": {
+        "responses": 4989,
+        "questions": 48825,
+        "yes": 42933,
+        "no": 5033,
+        "uncertain": 859,
+        "supported_cap": 8.605532170775707,
+        "risk": 0.10308243727598566,
+        "uncertain_rate": 0.017593445980542754
+      },
+      "excluding_count_relation": {
+        "responses": 4989,
+        "questions": 35750,
+        "yes": 31793,
+        "no": 3183,
+        "uncertain": 774,
+        "supported_cap": 6.372619763479655,
+        "risk": 0.08903496503496504,
+        "uncertain_rate": 0.021650349650349652
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 8045,
+          "no": 1652,
+          "uncertain": 391
+        },
+        "camera": {
+          "yes": 514,
+          "no": 15,
+          "uncertain": 1
+        },
+        "count": {
+          "yes": 996,
+          "no": 216,
+          "uncertain": 23
+        },
+        "lighting": {
+          "yes": 114,
+          "no": 36,
+          "uncertain": 2
+        },
+        "object": {
+          "yes": 20364,
+          "no": 1181,
+          "uncertain": 322
+        },
+        "relation": {
+          "yes": 10144,
+          "no": 1634,
+          "uncertain": 62
+        },
+        "style": {
+          "yes": 1991,
+          "no": 68,
+          "uncertain": 57
+        },
+        "text_rendering": {
+          "yes": 765,
+          "no": 231,
+          "uncertain": 1
+        }
+      }
+    },
+    {
+      "slice": "Danbooru",
+      "judge": "Qwen3.5-397B-A17B-FP8",
+      "surface": "Ours",
+      "all_types": {
+        "responses": 4993,
+        "questions": 71491,
+        "yes": 63570,
+        "no": 4166,
+        "uncertain": 3755,
+        "supported_cap": 12.731824554376127,
+        "risk": 0.05827306933739911,
+        "uncertain_rate": 0.052524093941894785
+      },
+      "excluding_count_relation": {
+        "responses": 4993,
+        "questions": 57821,
+        "yes": 50933,
+        "no": 3312,
+        "uncertain": 3576,
+        "supported_cap": 10.200881233727218,
+        "risk": 0.05728022690717905,
+        "uncertain_rate": 0.06184604209543246
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 32443,
+          "no": 1900,
+          "uncertain": 424
+        },
+        "camera": {
+          "yes": 1063,
+          "no": 68,
+          "uncertain": 3
+        },
+        "count": {
+          "yes": 920,
+          "no": 90,
+          "uncertain": 5
+        },
+        "lighting": {
+          "yes": 551,
+          "no": 24,
+          "uncertain": 3
+        },
+        "object": {
+          "yes": 14977,
+          "no": 1228,
+          "uncertain": 3117
+        },
+        "relation": {
+          "yes": 11717,
+          "no": 764,
+          "uncertain": 174
+        },
+        "style": {
+          "yes": 1776,
+          "no": 70,
+          "uncertain": 26
+        },
+        "text_rendering": {
+          "yes": 123,
+          "no": 22,
+          "uncertain": 3
+        }
+      }
+    },
+    {
+      "slice": "Danbooru",
+      "judge": "Qwen3.5-397B-A17B-FP8",
+      "surface": "Ref",
+      "all_types": {
+        "responses": 4969,
+        "questions": 40755,
+        "yes": 31702,
+        "no": 8861,
+        "uncertain": 192,
+        "supported_cap": 6.379955725498088,
+        "risk": 0.21742117531591215,
+        "uncertain_rate": 0.004711078395288922
+      },
+      "excluding_count_relation": {
+        "responses": 4969,
+        "questions": 32026,
+        "yes": 24777,
+        "no": 7085,
+        "uncertain": 164,
+        "supported_cap": 4.986315153954518,
+        "risk": 0.22122650346593392,
+        "uncertain_rate": 0.005120839318054081
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 8419,
+          "no": 3773,
+          "uncertain": 87
+        },
+        "camera": {
+          "yes": 27,
+          "no": 3,
+          "uncertain": 0
+        },
+        "count": {
+          "yes": 853,
+          "no": 91,
+          "uncertain": 2
+        },
+        "lighting": {
+          "yes": 132,
+          "no": 30,
+          "uncertain": 2
+        },
+        "object": {
+          "yes": 13187,
+          "no": 1854,
+          "uncertain": 61
+        },
+        "relation": {
+          "yes": 6072,
+          "no": 1685,
+          "uncertain": 26
+        },
+        "style": {
+          "yes": 2127,
+          "no": 841,
+          "uncertain": 13
+        },
+        "text_rendering": {
+          "yes": 885,
+          "no": 584,
+          "uncertain": 1
+        }
+      }
+    },
+    {
+      "slice": "DataComp",
+      "judge": "Gemma-4-31B-IT",
+      "surface": "Ours",
+      "all_types": {
+        "responses": 4775,
+        "questions": 68500,
+        "yes": 60868,
+        "no": 5753,
+        "uncertain": 1879,
+        "supported_cap": 12.747225130890053,
+        "risk": 0.08398540145985402,
+        "uncertain_rate": 0.02743065693430657
+      },
+      "excluding_count_relation": {
+        "responses": 4775,
+        "questions": 57872,
+        "yes": 51800,
+        "no": 4365,
+        "uncertain": 1707,
+        "supported_cap": 10.848167539267015,
+        "risk": 0.075425076029859,
+        "uncertain_rate": 0.029496129388996407
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 31204,
+          "no": 2826,
+          "uncertain": 1412
+        },
+        "camera": {
+          "yes": 597,
+          "no": 49,
+          "uncertain": 2
+        },
+        "count": {
+          "yes": 1935,
+          "no": 461,
+          "uncertain": 39
+        },
+        "lighting": {
+          "yes": 1439,
+          "no": 78,
+          "uncertain": 34
+        },
+        "object": {
+          "yes": 15987,
+          "no": 1118,
+          "uncertain": 223
+        },
+        "relation": {
+          "yes": 7133,
+          "no": 927,
+          "uncertain": 133
+        },
+        "style": {
+          "yes": 990,
+          "no": 52,
+          "uncertain": 19
+        },
+        "text_rendering": {
+          "yes": 1583,
+          "no": 242,
+          "uncertain": 17
+        }
+      }
+    },
+    {
+      "slice": "DataComp",
+      "judge": "Gemma-4-31B-IT",
+      "surface": "Ref",
+      "all_types": {
+        "responses": 4779,
+        "questions": 47878,
+        "yes": 36683,
+        "no": 10391,
+        "uncertain": 804,
+        "supported_cap": 7.675873613726721,
+        "risk": 0.21703078658256403,
+        "uncertain_rate": 0.01679268139855466
+      },
+      "excluding_count_relation": {
+        "responses": 4779,
+        "questions": 40136,
+        "yes": 31173,
+        "no": 8277,
+        "uncertain": 686,
+        "supported_cap": 6.522912743251727,
+        "risk": 0.20622383894757823,
+        "uncertain_rate": 0.01709188758222045
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 13547,
+          "no": 4189,
+          "uncertain": 432
+        },
+        "camera": {
+          "yes": 513,
+          "no": 51,
+          "uncertain": 2
+        },
+        "count": {
+          "yes": 1088,
+          "no": 451,
+          "uncertain": 19
+        },
+        "lighting": {
+          "yes": 483,
+          "no": 49,
+          "uncertain": 7
+        },
+        "object": {
+          "yes": 13833,
+          "no": 2792,
+          "uncertain": 210
+        },
+        "relation": {
+          "yes": 4422,
+          "no": 1663,
+          "uncertain": 99
+        },
+        "style": {
+          "yes": 1122,
+          "no": 181,
+          "uncertain": 23
+        },
+        "text_rendering": {
+          "yes": 1675,
+          "no": 1015,
+          "uncertain": 12
+        }
+      }
+    },
+    {
+      "slice": "LAION-pop",
+      "judge": "Gemma-4-31B-IT",
+      "surface": "Ours",
+      "all_types": {
+        "responses": 4964,
+        "questions": 73564,
+        "yes": 67621,
+        "no": 4419,
+        "uncertain": 1524,
+        "supported_cap": 13.622280419016922,
+        "risk": 0.060070143004730576,
+        "uncertain_rate": 0.020716654885541842
+      },
+      "excluding_count_relation": {
+        "responses": 4964,
+        "questions": 59729,
+        "yes": 55122,
+        "no": 3167,
+        "uncertain": 1440,
+        "supported_cap": 11.104351329572925,
+        "risk": 0.05302281973580673,
+        "uncertain_rate": 0.024108891828090208
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 31329,
+          "no": 2001,
+          "uncertain": 1131
+        },
+        "camera": {
+          "yes": 1223,
+          "no": 85,
+          "uncertain": 2
+        },
+        "count": {
+          "yes": 1499,
+          "no": 300,
+          "uncertain": 17
+        },
+        "lighting": {
+          "yes": 1894,
+          "no": 89,
+          "uncertain": 21
+        },
+        "object": {
+          "yes": 18820,
+          "no": 841,
+          "uncertain": 271
+        },
+        "relation": {
+          "yes": 11000,
+          "no": 952,
+          "uncertain": 67
+        },
+        "style": {
+          "yes": 1434,
+          "no": 75,
+          "uncertain": 9
+        },
+        "text_rendering": {
+          "yes": 422,
+          "no": 76,
+          "uncertain": 6
+        }
+      }
+    },
+    {
+      "slice": "LAION-pop",
+      "judge": "Gemma-4-31B-IT",
+      "surface": "Ref",
+      "all_types": {
+        "responses": 4947,
+        "questions": 58935,
+        "yes": 50582,
+        "no": 6665,
+        "uncertain": 1688,
+        "supported_cap": 10.224782696583787,
+        "risk": 0.11309069313650633,
+        "uncertain_rate": 0.028641723933146686
+      },
+      "excluding_count_relation": {
+        "responses": 4947,
+        "questions": 47783,
+        "yes": 41729,
+        "no": 4548,
+        "uncertain": 1506,
+        "supported_cap": 8.435213260561957,
+        "risk": 0.0951802942469079,
+        "uncertain_rate": 0.031517485298118576
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 20721,
+          "no": 2811,
+          "uncertain": 925
+        },
+        "camera": {
+          "yes": 1486,
+          "no": 206,
+          "uncertain": 2
+        },
+        "count": {
+          "yes": 1111,
+          "no": 513,
+          "uncertain": 58
+        },
+        "lighting": {
+          "yes": 510,
+          "no": 56,
+          "uncertain": 11
+        },
+        "object": {
+          "yes": 15927,
+          "no": 1211,
+          "uncertain": 486
+        },
+        "relation": {
+          "yes": 7742,
+          "no": 1604,
+          "uncertain": 124
+        },
+        "style": {
+          "yes": 2671,
+          "no": 89,
+          "uncertain": 67
+        },
+        "text_rendering": {
+          "yes": 414,
+          "no": 175,
+          "uncertain": 15
+        }
+      }
+    },
+    {
+      "slice": "PD12M",
+      "judge": "Gemma-4-31B-IT",
+      "surface": "Ours",
+      "all_types": {
+        "responses": 4957,
+        "questions": 74463,
+        "yes": 67113,
+        "no": 4908,
+        "uncertain": 2442,
+        "supported_cap": 13.539035707080895,
+        "risk": 0.06591192941460859,
+        "uncertain_rate": 0.03279481084565489
+      },
+      "excluding_count_relation": {
+        "responses": 4957,
+        "questions": 59016,
+        "yes": 53365,
+        "no": 3403,
+        "uncertain": 2248,
+        "supported_cap": 10.765584022594311,
+        "risk": 0.05766232885997018,
+        "uncertain_rate": 0.0380913650535448
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 29521,
+          "no": 2100,
+          "uncertain": 1690
+        },
+        "camera": {
+          "yes": 1029,
+          "no": 68,
+          "uncertain": 2
+        },
+        "count": {
+          "yes": 2140,
+          "no": 458,
+          "uncertain": 57
+        },
+        "lighting": {
+          "yes": 1381,
+          "no": 68,
+          "uncertain": 33
+        },
+        "object": {
+          "yes": 19277,
+          "no": 911,
+          "uncertain": 475
+        },
+        "relation": {
+          "yes": 11608,
+          "no": 1047,
+          "uncertain": 137
+        },
+        "style": {
+          "yes": 1463,
+          "no": 46,
+          "uncertain": 28
+        },
+        "text_rendering": {
+          "yes": 694,
+          "no": 210,
+          "uncertain": 20
+        }
+      }
+    },
+    {
+      "slice": "PD12M",
+      "judge": "Gemma-4-31B-IT",
+      "surface": "Ref",
+      "all_types": {
+        "responses": 4989,
+        "questions": 48825,
+        "yes": 41035,
+        "no": 6387,
+        "uncertain": 1403,
+        "supported_cap": 8.225095209460815,
+        "risk": 0.1308141321044547,
+        "uncertain_rate": 0.028735279057859702
+      },
+      "excluding_count_relation": {
+        "responses": 4989,
+        "questions": 35750,
+        "yes": 30492,
+        "no": 4008,
+        "uncertain": 1250,
+        "supported_cap": 6.111846061334937,
+        "risk": 0.11211188811188812,
+        "uncertain_rate": 0.03496503496503497
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 7530,
+          "no": 1885,
+          "uncertain": 673
+        },
+        "camera": {
+          "yes": 509,
+          "no": 15,
+          "uncertain": 6
+        },
+        "count": {
+          "yes": 991,
+          "no": 219,
+          "uncertain": 25
+        },
+        "lighting": {
+          "yes": 112,
+          "no": 37,
+          "uncertain": 3
+        },
+        "object": {
+          "yes": 19638,
+          "no": 1744,
+          "uncertain": 485
+        },
+        "relation": {
+          "yes": 9552,
+          "no": 2160,
+          "uncertain": 128
+        },
+        "style": {
+          "yes": 1976,
+          "no": 60,
+          "uncertain": 80
+        },
+        "text_rendering": {
+          "yes": 727,
+          "no": 267,
+          "uncertain": 3
+        }
+      }
+    },
+    {
+      "slice": "Danbooru",
+      "judge": "Gemma-4-31B-IT",
+      "surface": "Ours",
+      "all_types": {
+        "responses": 4993,
+        "questions": 71555,
+        "yes": 59220,
+        "no": 6712,
+        "uncertain": 5623,
+        "supported_cap": 11.860604846785499,
+        "risk": 0.09380197051219341,
+        "uncertain_rate": 0.07858290825239327
+      },
+      "excluding_count_relation": {
+        "responses": 4993,
+        "questions": 57872,
+        "yes": 47345,
+        "no": 5256,
+        "uncertain": 5271,
+        "supported_cap": 9.482275185259363,
+        "risk": 0.09082112247719104,
+        "uncertain_rate": 0.09108031517832457
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 30301,
+          "no": 3587,
+          "uncertain": 909
+        },
+        "camera": {
+          "yes": 1033,
+          "no": 98,
+          "uncertain": 3
+        },
+        "count": {
+          "yes": 881,
+          "no": 129,
+          "uncertain": 5
+        },
+        "lighting": {
+          "yes": 527,
+          "no": 42,
+          "uncertain": 9
+        },
+        "object": {
+          "yes": 13645,
+          "no": 1391,
+          "uncertain": 4307
+        },
+        "relation": {
+          "yes": 10994,
+          "no": 1327,
+          "uncertain": 347
+        },
+        "style": {
+          "yes": 1734,
+          "no": 97,
+          "uncertain": 41
+        },
+        "text_rendering": {
+          "yes": 105,
+          "no": 41,
+          "uncertain": 2
+        }
+      }
+    },
+    {
+      "slice": "Danbooru",
+      "judge": "Gemma-4-31B-IT",
+      "surface": "Ref",
+      "all_types": {
+        "responses": 4969,
+        "questions": 40755,
+        "yes": 30542,
+        "no": 9558,
+        "uncertain": 655,
+        "supported_cap": 6.146508351781042,
+        "risk": 0.23452337136547663,
+        "uncertain_rate": 0.01607164765059502
+      },
+      "excluding_count_relation": {
+        "responses": 4969,
+        "questions": 32026,
+        "yes": 24231,
+        "no": 7189,
+        "uncertain": 606,
+        "supported_cap": 4.8764338901187365,
+        "risk": 0.22447386498469993,
+        "uncertain_rate": 0.018922125772809592
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 7919,
+          "no": 3937,
+          "uncertain": 423
+        },
+        "camera": {
+          "yes": 28,
+          "no": 2,
+          "uncertain": 0
+        },
+        "count": {
+          "yes": 839,
+          "no": 104,
+          "uncertain": 3
+        },
+        "lighting": {
+          "yes": 123,
+          "no": 37,
+          "uncertain": 4
+        },
+        "object": {
+          "yes": 12510,
+          "no": 2469,
+          "uncertain": 123
+        },
+        "relation": {
+          "yes": 5472,
+          "no": 2265,
+          "uncertain": 46
+        },
+        "style": {
+          "yes": 2812,
+          "no": 114,
+          "uncertain": 55
+        },
+        "text_rendering": {
+          "yes": 839,
+          "no": 630,
+          "uncertain": 1
+        }
+      }
+    },
+    {
+      "slice": "CC12M",
+      "judge": "Qwen3.5-397B-A17B-FP8",
+      "surface": "Ours",
+      "all_types": {
+        "responses": 4467,
+        "questions": 68019,
+        "yes": 65200,
+        "no": 2072,
+        "uncertain": 747,
+        "supported_cap": 14.59592567718827,
+        "risk": 0.03046207677266646,
+        "uncertain_rate": 0.010982225554624444
+      },
+      "excluding_count_relation": {
+        "responses": 4467,
+        "questions": 54326,
+        "yes": 52216,
+        "no": 1408,
+        "uncertain": 702,
+        "supported_cap": 11.689276919632864,
+        "risk": 0.02591760851157825,
+        "uncertain_rate": 0.012921989470971541
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 28862,
+          "no": 886,
+          "uncertain": 475
+        },
+        "camera": {
+          "yes": 942,
+          "no": 27,
+          "uncertain": 0
+        },
+        "count": {
+          "yes": 1791,
+          "no": 218,
+          "uncertain": 11
+        },
+        "lighting": {
+          "yes": 1672,
+          "no": 46,
+          "uncertain": 17
+        },
+        "object": {
+          "yes": 19291,
+          "no": 370,
+          "uncertain": 203
+        },
+        "relation": {
+          "yes": 11193,
+          "no": 446,
+          "uncertain": 34
+        },
+        "style": {
+          "yes": 1098,
+          "no": 52,
+          "uncertain": 6
+        },
+        "text_rendering": {
+          "yes": 351,
+          "no": 27,
+          "uncertain": 1
+        }
+      }
+    },
+    {
+      "slice": "CC12M",
+      "judge": "Qwen3.5-397B-A17B-FP8",
+      "surface": "LLaVA-NeXT",
+      "all_types": {
+        "responses": 4453,
+        "questions": 48092,
+        "yes": 43827,
+        "no": 3314,
+        "uncertain": 951,
+        "supported_cap": 9.842128901863912,
+        "risk": 0.06890958995259086,
+        "uncertain_rate": 0.019774598685852116
+      },
+      "excluding_count_relation": {
+        "responses": 4453,
+        "questions": 38627,
+        "yes": 35459,
+        "no": 2312,
+        "uncertain": 856,
+        "supported_cap": 7.9629463283179875,
+        "risk": 0.0598545059155513,
+        "uncertain_rate": 0.0221606648199446
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 14348,
+          "no": 1067,
+          "uncertain": 341
+        },
+        "camera": {
+          "yes": 579,
+          "no": 54,
+          "uncertain": 7
+        },
+        "count": {
+          "yes": 1180,
+          "no": 278,
+          "uncertain": 8
+        },
+        "lighting": {
+          "yes": 928,
+          "no": 51,
+          "uncertain": 10
+        },
+        "object": {
+          "yes": 16631,
+          "no": 924,
+          "uncertain": 470
+        },
+        "relation": {
+          "yes": 7188,
+          "no": 724,
+          "uncertain": 87
+        },
+        "style": {
+          "yes": 2601,
+          "no": 72,
+          "uncertain": 25
+        },
+        "text_rendering": {
+          "yes": 372,
+          "no": 144,
+          "uncertain": 3
+        }
+      }
+    },
+    {
+      "slice": "CC12M",
+      "judge": "Qwen3.5-397B-A17B-FP8",
+      "surface": "PixelProse",
+      "all_types": {
+        "responses": 4449,
+        "questions": 56043,
+        "yes": 47738,
+        "no": 7222,
+        "uncertain": 1083,
+        "supported_cap": 10.730051697010564,
+        "risk": 0.12886533554592008,
+        "uncertain_rate": 0.019324447299395107
+      },
+      "excluding_count_relation": {
+        "responses": 4449,
+        "questions": 40376,
+        "yes": 35314,
+        "no": 4199,
+        "uncertain": 863,
+        "supported_cap": 7.937514048100697,
+        "risk": 0.1039974242124034,
+        "uncertain_rate": 0.021374083614028136
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 14684,
+          "no": 2278,
+          "uncertain": 440
+        },
+        "camera": {
+          "yes": 502,
+          "no": 92,
+          "uncertain": 4
+        },
+        "count": {
+          "yes": 2232,
+          "no": 1195,
+          "uncertain": 107
+        },
+        "lighting": {
+          "yes": 434,
+          "no": 47,
+          "uncertain": 3
+        },
+        "object": {
+          "yes": 17455,
+          "no": 1571,
+          "uncertain": 373
+        },
+        "relation": {
+          "yes": 10192,
+          "no": 1828,
+          "uncertain": 113
+        },
+        "style": {
+          "yes": 1876,
+          "no": 112,
+          "uncertain": 32
+        },
+        "text_rendering": {
+          "yes": 363,
+          "no": 99,
+          "uncertain": 11
+        }
+      }
+    },
+    {
+      "slice": "CC12M",
+      "judge": "Qwen3.5-397B-A17B-FP8",
+      "surface": "Qwen3-VL-8B",
+      "all_types": {
+        "responses": 4490,
+        "questions": 28911,
+        "yes": 28342,
+        "no": 394,
+        "uncertain": 175,
+        "supported_cap": 6.3122494432071266,
+        "risk": 0.01362803085330843,
+        "uncertain_rate": 0.006053059389159835
+      },
+      "excluding_count_relation": {
+        "responses": 4490,
+        "questions": 21370,
+        "yes": 21070,
+        "no": 175,
+        "uncertain": 125,
+        "supported_cap": 4.692650334075724,
+        "risk": 0.008189050070191857,
+        "uncertain_rate": 0.00584932147870847
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 6842,
+          "no": 77,
+          "uncertain": 67
+        },
+        "camera": {
+          "yes": 80,
+          "no": 1,
+          "uncertain": 0
+        },
+        "count": {
+          "yes": 537,
+          "no": 35,
+          "uncertain": 0
+        },
+        "lighting": {
+          "yes": 380,
+          "no": 2,
+          "uncertain": 1
+        },
+        "object": {
+          "yes": 13200,
+          "no": 89,
+          "uncertain": 56
+        },
+        "relation": {
+          "yes": 6735,
+          "no": 184,
+          "uncertain": 50
+        },
+        "style": {
+          "yes": 517,
+          "no": 2,
+          "uncertain": 1
+        },
+        "text_rendering": {
+          "yes": 51,
+          "no": 4,
+          "uncertain": 0
+        }
+      }
+    },
+    {
+      "slice": "CC12M",
+      "judge": "Gemma-4-31B-IT",
+      "surface": "Ours",
+      "all_types": {
+        "responses": 4467,
+        "questions": 68019,
+        "yes": 61749,
+        "no": 4517,
+        "uncertain": 1753,
+        "supported_cap": 13.823371390194762,
+        "risk": 0.06640791543539305,
+        "uncertain_rate": 0.025772210705832195
+      },
+      "excluding_count_relation": {
+        "responses": 4467,
+        "questions": 54326,
+        "yes": 49593,
+        "no": 3083,
+        "uncertain": 1650,
+        "supported_cap": 11.102081934184016,
+        "risk": 0.056749990796303794,
+        "uncertain_rate": 0.03037219747450576
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 27083,
+          "no": 1888,
+          "uncertain": 1252
+        },
+        "camera": {
+          "yes": 915,
+          "no": 54,
+          "uncertain": 0
+        },
+        "count": {
+          "yes": 1601,
+          "no": 396,
+          "uncertain": 23
+        },
+        "lighting": {
+          "yes": 1631,
+          "no": 81,
+          "uncertain": 23
+        },
+        "object": {
+          "yes": 18560,
+          "no": 952,
+          "uncertain": 352
+        },
+        "relation": {
+          "yes": 10555,
+          "no": 1038,
+          "uncertain": 80
+        },
+        "style": {
+          "yes": 1092,
+          "no": 50,
+          "uncertain": 14
+        },
+        "text_rendering": {
+          "yes": 312,
+          "no": 58,
+          "uncertain": 9
+        }
+      }
+    },
+    {
+      "slice": "CC12M",
+      "judge": "Gemma-4-31B-IT",
+      "surface": "LLaVA-NeXT",
+      "all_types": {
+        "responses": 4453,
+        "questions": 48092,
+        "yes": 42032,
+        "no": 4650,
+        "uncertain": 1410,
+        "supported_cap": 9.439029867505052,
+        "risk": 0.09668967811694253,
+        "uncertain_rate": 0.029318805622556766
+      },
+      "excluding_count_relation": {
+        "responses": 4453,
+        "questions": 38627,
+        "yes": 34065,
+        "no": 3284,
+        "uncertain": 1278,
+        "supported_cap": 7.649898944531777,
+        "risk": 0.0850182514821239,
+        "uncertain_rate": 0.033085665467160276
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 13699,
+          "no": 1489,
+          "uncertain": 568
+        },
+        "camera": {
+          "yes": 557,
+          "no": 75,
+          "uncertain": 8
+        },
+        "count": {
+          "yes": 1115,
+          "no": 330,
+          "uncertain": 21
+        },
+        "lighting": {
+          "yes": 927,
+          "no": 52,
+          "uncertain": 10
+        },
+        "object": {
+          "yes": 15971,
+          "no": 1421,
+          "uncertain": 633
+        },
+        "relation": {
+          "yes": 6852,
+          "no": 1036,
+          "uncertain": 111
+        },
+        "style": {
+          "yes": 2566,
+          "no": 81,
+          "uncertain": 51
+        },
+        "text_rendering": {
+          "yes": 345,
+          "no": 166,
+          "uncertain": 8
+        }
+      }
+    },
+    {
+      "slice": "CC12M",
+      "judge": "Gemma-4-31B-IT",
+      "surface": "PixelProse",
+      "all_types": {
+        "responses": 4449,
+        "questions": 56043,
+        "yes": 45362,
+        "no": 8996,
+        "uncertain": 1685,
+        "supported_cap": 10.195999100921556,
+        "risk": 0.16051960102064486,
+        "uncertain_rate": 0.03006619916849562
+      },
+      "excluding_count_relation": {
+        "responses": 4449,
+        "questions": 40376,
+        "yes": 33846,
+        "no": 5147,
+        "uncertain": 1383,
+        "supported_cap": 7.607552258934592,
+        "risk": 0.12747671884287695,
+        "uncertain_rate": 0.03425302159698831
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 13892,
+          "no": 2712,
+          "uncertain": 798
+        },
+        "camera": {
+          "yes": 494,
+          "no": 94,
+          "uncertain": 10
+        },
+        "count": {
+          "yes": 1915,
+          "no": 1493,
+          "uncertain": 126
+        },
+        "lighting": {
+          "yes": 425,
+          "no": 54,
+          "uncertain": 5
+        },
+        "object": {
+          "yes": 16840,
+          "no": 2045,
+          "uncertain": 514
+        },
+        "relation": {
+          "yes": 9601,
+          "no": 2356,
+          "uncertain": 176
+        },
+        "style": {
+          "yes": 1853,
+          "no": 123,
+          "uncertain": 44
+        },
+        "text_rendering": {
+          "yes": 342,
+          "no": 119,
+          "uncertain": 12
+        }
+      }
+    },
+    {
+      "slice": "CC12M",
+      "judge": "Gemma-4-31B-IT",
+      "surface": "Qwen3-VL-8B",
+      "all_types": {
+        "responses": 4490,
+        "questions": 28911,
+        "yes": 27813,
+        "no": 818,
+        "uncertain": 280,
+        "supported_cap": 6.194432071269488,
+        "risk": 0.02829372903047283,
+        "uncertain_rate": 0.009684895022655737
+      },
+      "excluding_count_relation": {
+        "responses": 4490,
+        "questions": 21370,
+        "yes": 20736,
+        "no": 410,
+        "uncertain": 224,
+        "supported_cap": 4.61826280623608,
+        "risk": 0.01918577445016378,
+        "uncertain_rate": 0.010481984089845579
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 6641,
+          "no": 205,
+          "uncertain": 140
+        },
+        "camera": {
+          "yes": 80,
+          "no": 1,
+          "uncertain": 0
+        },
+        "count": {
+          "yes": 515,
+          "no": 57,
+          "uncertain": 0
+        },
+        "lighting": {
+          "yes": 374,
+          "no": 5,
+          "uncertain": 4
+        },
+        "object": {
+          "yes": 13078,
+          "no": 190,
+          "uncertain": 77
+        },
+        "relation": {
+          "yes": 6562,
+          "no": 351,
+          "uncertain": 56
+        },
+        "style": {
+          "yes": 515,
+          "no": 3,
+          "uncertain": 2
+        },
+        "text_rendering": {
+          "yes": 48,
+          "no": 6,
+          "uncertain": 1
+        }
+      }
+    }
+  ],
+  "cc12m_judge_agreement": {
+    "__all__": {
+      "joined": 201065,
+      "exact": 185718,
+      "exact_rate": 0.9236714495312461
+    },
+    "attribute": {
+      "joined": 70367,
+      "exact": 64271,
+      "exact_rate": 0.913368482385209
+    },
+    "camera": {
+      "joined": 2288,
+      "exact": 2147,
+      "exact_rate": 0.9383741258741258
+    },
+    "count": {
+      "joined": 7592,
+      "exact": 6459,
+      "exact_rate": 0.8507639620653319
+    },
+    "lighting": {
+      "joined": 3591,
+      "exact": 3404,
+      "exact_rate": 0.9479253689780005
+    },
+    "object": {
+      "joined": 70633,
+      "exact": 66661,
+      "exact_rate": 0.943765661942718
+    },
+    "relation": {
+      "joined": 38774,
+      "exact": 35355,
+      "exact_rate": 0.9118223551864651
+    },
+    "style": {
+      "joined": 6394,
+      "exact": 6172,
+      "exact_rate": 0.965279949953081
+    },
+    "text_rendering": {
+      "joined": 1426,
+      "exact": 1249,
+      "exact_rate": 0.8758765778401122
+    }
+  },
+  "cc12m_extraction": {
+    "ours_cc12m": {
+      "requests": 4494,
+      "valid": 4470,
+      "valid_zero_claims": 3,
+      "invalid": 24,
+      "invalid_at_token_cap": 24
+    },
+    "ref_cc12m_llavanext": {
+      "requests": 4494,
+      "valid": 4459,
+      "valid_zero_claims": 6,
+      "invalid": 35,
+      "invalid_at_token_cap": 35
+    },
+    "ref_cc12m_qwen3vl8b": {
+      "requests": 4494,
+      "valid": 4491,
+      "valid_zero_claims": 1,
+      "invalid": 3,
+      "invalid_at_token_cap": 3
+    },
+    "ref_pixelprose_cc12m": {
+      "requests": 4494,
+      "valid": 4457,
+      "valid_zero_claims": 8,
+      "invalid": 37,
+      "invalid_at_token_cap": 37
+    }
+  }
+}

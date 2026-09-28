@@ -1,0 +1,530 @@
+{
+  "input": "artifacts/vqa-cbu/cc12m-four-caption-llava-url-bridge-5k-local/cbu_vqa_cc12m_four_caption_llava_url_bridge_b64_4494.responses.qwen397_image_local_c512_mt2048_compact.jsonl",
+  "include": [],
+  "latest_by_request": true,
+  "responses": 17859,
+  "ok": 17859,
+  "bad": 0,
+  "surfaces": {
+    "ours_cc12m": {
+      "responses": 4467,
+      "ok": 4467,
+      "questions": 68019,
+      "yes": 65200,
+      "no": 2072,
+      "uncertain": 747,
+      "yes_rate": 0.9585556976727091,
+      "no_rate": 0.03046207677266646,
+      "uncertain_rate": 0.010982225554624444,
+      "support_rate": 0.9585556976727091,
+      "risk_rate": 0.03046207677266646,
+      "uncertainty_rate": 0.010982225554624444
+    },
+    "ref_cc12m_qwen3vl8b": {
+      "responses": 4490,
+      "ok": 4490,
+      "questions": 28911,
+      "yes": 28342,
+      "no": 394,
+      "uncertain": 175,
+      "yes_rate": 0.9803189097575318,
+      "no_rate": 0.01362803085330843,
+      "uncertain_rate": 0.006053059389159835,
+      "support_rate": 0.9803189097575318,
+      "risk_rate": 0.01362803085330843,
+      "uncertainty_rate": 0.006053059389159835
+    },
+    "ref_cc12m_llavanext": {
+      "responses": 4453,
+      "ok": 4453,
+      "questions": 48092,
+      "yes": 43827,
+      "no": 3314,
+      "uncertain": 951,
+      "yes_rate": 0.911315811361557,
+      "no_rate": 0.06890958995259086,
+      "uncertain_rate": 0.019774598685852116,
+      "support_rate": 0.911315811361557,
+      "risk_rate": 0.06890958995259086,
+      "uncertainty_rate": 0.019774598685852116
+    },
+    "ref_pixelprose_cc12m": {
+      "responses": 4449,
+      "ok": 4449,
+      "questions": 56043,
+      "yes": 47738,
+      "no": 7222,
+      "uncertain": 1083,
+      "yes_rate": 0.8518102171546847,
+      "no_rate": 0.12886533554592008,
+      "uncertain_rate": 0.019324447299395107,
+      "support_rate": 0.8518102171546847,
+      "risk_rate": 0.12886533554592008,
+      "uncertainty_rate": 0.019324447299395107
+    }
+  },
+  "categories": {
+    "style": {
+      "questions": 6394,
+      "yes": 6092,
+      "no": 238,
+      "uncertain": 64,
+      "yes_rate": 0.9527682202064436,
+      "no_rate": 0.03722239599624648,
+      "uncertain_rate": 0.010009383797309979,
+      "support_rate": 0.9527682202064436,
+      "risk_rate": 0.03722239599624648,
+      "uncertainty_rate": 0.010009383797309979
+    },
+    "object": {
+      "questions": 70633,
+      "yes": 66577,
+      "no": 2954,
+      "uncertain": 1102,
+      "yes_rate": 0.9425764161227754,
+      "no_rate": 0.04182181133464528,
+      "uncertain_rate": 0.015601772542579247,
+      "support_rate": 0.9425764161227754,
+      "risk_rate": 0.04182181133464528,
+      "uncertainty_rate": 0.015601772542579247
+    },
+    "relation": {
+      "questions": 38774,
+      "yes": 35308,
+      "no": 3182,
+      "uncertain": 284,
+      "yes_rate": 0.9106102027131583,
+      "no_rate": 0.08206530149068963,
+      "uncertain_rate": 0.00732449579615206,
+      "support_rate": 0.9106102027131583,
+      "risk_rate": 0.08206530149068963,
+      "uncertainty_rate": 0.00732449579615206
+    },
+    "attribute": {
+      "questions": 70367,
+      "yes": 64736,
+      "no": 4308,
+      "uncertain": 1323,
+      "yes_rate": 0.9199766936205892,
+      "no_rate": 0.06122187957423224,
+      "uncertain_rate": 0.018801426805178562,
+      "support_rate": 0.9199766936205892,
+      "risk_rate": 0.06122187957423224,
+      "uncertainty_rate": 0.018801426805178562
+    },
+    "text_rendering": {
+      "questions": 1426,
+      "yes": 1137,
+      "no": 274,
+      "uncertain": 15,
+      "yes_rate": 0.7973352033660589,
+      "no_rate": 0.19214586255259467,
+      "uncertain_rate": 0.010518934081346423,
+      "support_rate": 0.7973352033660589,
+      "risk_rate": 0.19214586255259467,
+      "uncertainty_rate": 0.010518934081346423
+    },
+    "lighting": {
+      "questions": 3591,
+      "yes": 3414,
+      "no": 146,
+      "uncertain": 31,
+      "yes_rate": 0.9507101086048454,
+      "no_rate": 0.04065719855193539,
+      "uncertain_rate": 0.008632692843219159,
+      "support_rate": 0.9507101086048454,
+      "risk_rate": 0.04065719855193539,
+      "uncertainty_rate": 0.008632692843219159
+    },
+    "camera": {
+      "questions": 2288,
+      "yes": 2103,
+      "no": 174,
+      "uncertain": 11,
+      "yes_rate": 0.9191433566433567,
+      "no_rate": 0.07604895104895106,
+      "uncertain_rate": 0.004807692307692308,
+      "support_rate": 0.9191433566433567,
+      "risk_rate": 0.07604895104895106,
+      "uncertainty_rate": 0.004807692307692308
+    },
+    "count": {
+      "questions": 7592,
+      "yes": 5740,
+      "no": 1726,
+      "uncertain": 126,
+      "yes_rate": 0.756059009483667,
+      "no_rate": 0.2273445732349842,
+      "uncertain_rate": 0.016596417281348787,
+      "support_rate": 0.756059009483667,
+      "risk_rate": 0.2273445732349842,
+      "uncertainty_rate": 0.016596417281348787
+    }
+  },
+  "examples": {
+    "no": [
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:548",
+        "category": "object",
+        "question": "Is the visual claim 'cake: two-tiered cake' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:548",
+        "category": "attribute",
+        "question": "Is the visual claim 'stand: gold drips' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:937",
+        "category": "relation",
+        "question": "Is the visual claim 'woman: woman stands in profile facing left' supported by the image?",
+        "answer": "no",
+        "confidence": 0.9,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:590",
+        "category": "object",
+        "question": "Is the visual claim 'ground: long pale driftwood' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:82",
+        "category": "count",
+        "question": "Is the visual claim 'people: three' supported by the image?",
+        "answer": "no",
+        "confidence": 0.9,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:82",
+        "category": "attribute",
+        "question": "Is the visual claim 'boy: carefully arranges ingredients' supported by the image?",
+        "answer": "no",
+        "confidence": 0.9,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:304",
+        "category": "attribute",
+        "question": "Is the visual claim 'cloud: dense' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:304",
+        "category": "attribute",
+        "question": "Is the visual claim 'cloud: undulating' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:487",
+        "category": "object",
+        "question": "Is the visual claim 'scene: weathered wooden floor' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:487",
+        "category": "relation",
+        "question": "Is the visual claim 'women: women angled toward each other' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:157",
+        "category": "object",
+        "question": "Is the visual claim 'sink: deep farmhouse sink' supported by the image?",
+        "answer": "no",
+        "confidence": 0.9,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:78",
+        "category": "count",
+        "question": "Is the visual claim 'jar: two' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:616",
+        "category": "relation",
+        "question": "Is the visual claim 'wave: sits centered beneath' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:428",
+        "category": "text_rendering",
+        "question": "Is the rendered text claim 'PMD' visibly supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:600",
+        "category": "object",
+        "question": "Is the visual claim 'iris: pupil' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:476",
+        "category": "attribute",
+        "question": "Is the visual claim 'panels: flat squares pattern' supported by the image?",
+        "answer": "no",
+        "confidence": 0.95,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:57",
+        "category": "object",
+        "question": "Is the visual claim 'cranes: red and white cranes' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:14",
+        "category": "relation",
+        "question": "Is the visual claim 'sconce: sconce to the left of the door' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:747",
+        "category": "relation",
+        "question": "Is the visual claim 'cabinetry unit: cabinetry unit extends from floor to ceiling' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:571",
+        "category": "attribute",
+        "question": "Is the visual claim 'trawler: named the Irish Tyrann' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      }
+    ],
+    "uncertain": [
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:304",
+        "category": "attribute",
+        "question": "Is the visual claim 'reeds: frost-covered' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:78",
+        "category": "attribute",
+        "question": "Is the visual claim 'dough: visible specks of spices' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:773",
+        "category": "attribute",
+        "question": "Is the visual claim 'hair: middle part' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.6,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:773",
+        "category": "attribute",
+        "question": "Is the visual claim 'shirt: soft cotton or wool blend fabric' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:622",
+        "category": "object",
+        "question": "Is the visual claim 'debris: scattered debris' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.8,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:167",
+        "category": "object",
+        "question": "Is the visual claim 'scene: young person' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:106",
+        "category": "relation",
+        "question": "Is the visual claim 'pylons: pylons of Pont Alexandre III bridge' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:274",
+        "category": "attribute",
+        "question": "Is the visual claim 'wood: aged wood grain' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:917",
+        "category": "object",
+        "question": "Is the visual claim 'walls: crenellated walls' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:743",
+        "category": "attribute",
+        "question": "Is the visual claim 'female model: quiet intensity' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:272",
+        "category": "attribute",
+        "question": "Is the visual claim 'buildings: rectangular brick and concrete structures' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:272",
+        "category": "object",
+        "question": "Is the visual claim 'streets: narrow tree-lined streets' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:774",
+        "category": "attribute",
+        "question": "Is the visual claim 'bodice: fitted bodice with delicate boning' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:986",
+        "category": "relation",
+        "question": "Is the visual claim 'door knockers: door knockers centered at eye level' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.8,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:191",
+        "category": "attribute",
+        "question": "Is the visual claim 'man: late twenties' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:759",
+        "category": "relation",
+        "question": "Is the visual claim 'structure: overlooks coastal town' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:833",
+        "category": "attribute",
+        "question": "Is the visual claim 'lime wedges: textured rinds' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.8,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:670",
+        "category": "attribute",
+        "question": "Is the visual claim 'tomb: Nabataean architecture' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:174",
+        "category": "attribute",
+        "question": "Is the visual claim 'jacket: subtle herringbone pattern' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "ours_cc12m",
+        "caption_id": "ours_cc12m:316",
+        "category": "object",
+        "question": "Is the visual claim 'print: vintage HDU metal print' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      }
+    ]
+  }
+}

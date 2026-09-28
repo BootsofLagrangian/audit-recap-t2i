@@ -1,0 +1,2983 @@
+{
+  "inputs": [
+    "<LOCAL_CACHE>/caption-mirrors/laion/ref_relaion_19m_structured.jsonl"
+  ],
+  "hf_dataset": null,
+  "hf_config": null,
+  "hf_split": "train",
+  "records_seen": 1000000,
+  "captions_loaded": 1000000,
+  "caption_field": "caption",
+  "caption_field_requested": "auto",
+  "caption_fields_observed": {
+    "caption": 1000000
+  },
+  "budget_tokenizer": {
+    "backend": "lexical",
+    "name": null
+  },
+  "prefix_tokens": 5,
+  "top_k": 100,
+  "top_ks": [
+    10,
+    50,
+    100,
+    500,
+    1000,
+    5000
+  ],
+  "ngram_orders": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "repeat_ngram_orders": [
+    3,
+    4,
+    5,
+    6,
+    8
+  ],
+  "token_budgets": [
+    16,
+    32,
+    64,
+    128,
+    256
+  ],
+  "metric_provenance": {
+    "main_or_appendix_metrics": {
+      "budget_eligibility": {
+        "fields": [
+          "coverage_rate",
+          "eligibility_rate",
+          "captions_meeting_budget"
+        ],
+        "claim_scope": "comparability_gate",
+        "citation_role": "length-controlled comparison protocol; exact estimator defined in this work"
+      },
+      "distinct_n": {
+        "fields": [
+          "distinct_n.1",
+          "distinct_n.2",
+          "distinct_n.3",
+          "distinct_n.4"
+        ],
+        "claim_scope": "lexical_diversity_proxy",
+        "citation_keys": [
+          "li2016diversity"
+        ]
+      },
+      "ngram_entropy_and_top_mass": {
+        "fields": [
+          "ngram_distribution",
+          "ngram_top_k_mass",
+          "ngram_top_k_mass_by_k"
+        ],
+        "claim_scope": "surface_concentration_proxy",
+        "citation_keys": [
+          "shannon1948communication",
+          "miller1955note"
+        ]
+      },
+      "prefix_entropy_and_top_mass": {
+        "fields": [
+          "prefix_raw",
+          "prefix_content",
+          "top_openings"
+        ],
+        "claim_scope": "opening_template_concentration_proxy",
+        "citation_role": "entropy/top-mass concentration estimator; caption-register application defined in this work",
+        "citation_keys": [
+          "shannon1948communication",
+          "miller1955note"
+        ]
+      },
+      "within_caption_repetition": {
+        "fields": [
+          "repeated_ngram_rate_by_n",
+          "within_caption_distinct_n_mean",
+          "within_caption_max_ngram_repeat_mean",
+          "full_caption_normalized"
+        ],
+        "orders": [
+          3,
+          4,
+          5,
+          6,
+          8
+        ],
+        "claim_scope": "within_caption_redundancy_proxy",
+        "citation_role": "n-gram repetition diagnostic; related to distinct-n diversity practice",
+        "citation_keys": [
+          "li2016diversity"
+        ]
+      },
+      "caption_balanced_top_mass": {
+        "fields": [
+          "full_caption_normalized.caption_balanced_ngram_top_k_mass"
+        ],
+        "claim_scope": "length_normalized_surface_concentration_proxy",
+        "citation_role": "top-k mass concentration estimator applied with caption-balanced averaging",
+        "citation_keys": [
+          "shannon1948communication",
+          "miller1955note"
+        ]
+      },
+      "dedup": {
+        "fields": [
+          "dedup"
+        ],
+        "claim_scope": "exact_normalized_duplicate_collapse",
+        "citation_role": "dataset deduplication/collapse audit; exact hash estimator defined in this work"
+      },
+      "violation_code_rate": {
+        "fields": [
+          "violation_rate",
+          "violation_code_rate",
+          "violation_severity_rate"
+        ],
+        "claim_scope": "operational_caption_register_and_instruction_artifact_audit",
+        "citation_role": "regex taxonomy is project-defined and must be reported as an operational audit, not a standard metric"
+      }
+    },
+    "debug_or_stratification_only": {
+      "operational_formatting_rate": {
+        "claim_scope": "debug_artifact_counter",
+        "citation_role": "not a headline metric"
+      },
+      "debug_control_lexicon": {
+        "claim_scope": "weak_control_vocabulary_diagnostic",
+        "citation_role": "appendix/debug only unless replaced by validated CBU/SCU extractor"
+      },
+      "stratification_script_rate": {
+        "claim_scope": "language_script_stratification",
+        "citation_role": "stratification only; not a quality score"
+      }
+    },
+    "model_based_metrics_not_computed_here": {
+      "vendi": {
+        "claim_scope": "embedding_semantic_diversity",
+        "citation_keys": [
+          "friedman2023vendi"
+        ]
+      },
+      "mauve_or_distribution_frontier": {
+        "claim_scope": "prompt_caption_distribution_gap",
+        "citation_keys": [
+          "pillutla2021mauve"
+        ]
+      },
+      "clipscore_or_long_context_retrieval_margin": {
+        "claim_scope": "image_conditioned_compatibility_proxy",
+        "citation_keys": [
+          "hessel2021clipscore"
+        ]
+      }
+    }
+  },
+  "full_length_reference": {
+    "captions_analyzed": 1000000,
+    "avg_lexical_tokens": 77.69,
+    "avg_chars": 426.11,
+    "violation_rate": 1.0,
+    "repeated_4gram_rate": 0.2244,
+    "repeated_ngram_rate_by_n": {
+      "3": 0.5081,
+      "4": 0.2244,
+      "5": 0.1013,
+      "6": 0.0369,
+      "8": 0.0067
+    },
+    "within_caption_distinct_n_mean": {
+      "3": 0.984011,
+      "4": 0.994326,
+      "5": 0.997757,
+      "6": 0.999153,
+      "8": 0.999811
+    },
+    "within_caption_max_ngram_repeat_mean": {
+      "3": 1.5921,
+      "4": 1.2444,
+      "5": 1.1071,
+      "6": 1.0382,
+      "8": 1.0068
+    },
+    "distinct_n": {
+      "1": 0.000587,
+      "2": 0.009689,
+      "3": 0.035032,
+      "4": 0.081893
+    },
+    "ngram_top_k_mass": {
+      "1": 0.742,
+      "2": 0.4537,
+      "3": 0.3027,
+      "4": 0.2383
+    },
+    "ngram_distribution": {
+      "1": {
+        "entropy": 5.2082,
+        "entropy_miller_madow": 5.2085,
+        "effective_vocab": 182.77,
+        "effective_vocab_miller_madow": 182.82,
+        "hhi": 0.03178076,
+        "effective_simpson": 31.47,
+        "top_k_mass_by_k": {
+          "10": 0.4117,
+          "50": 0.6592,
+          "100": 0.742,
+          "500": 0.8925,
+          "1000": 0.941,
+          "5000": 0.9932
+        }
+      },
+      "2": {
+        "entropy": 7.8745,
+        "entropy_miller_madow": 7.8793,
+        "effective_vocab": 2629.24,
+        "effective_vocab_miller_madow": 2642.01,
+        "hhi": 0.00415456,
+        "effective_simpson": 240.7,
+        "top_k_mass_by_k": {
+          "10": 0.1463,
+          "50": 0.376,
+          "100": 0.4537,
+          "500": 0.6053,
+          "1000": 0.6762,
+          "5000": 0.8264
+        }
+      },
+      "3": {
+        "entropy": 9.655,
+        "entropy_miller_madow": 9.6725,
+        "effective_vocab": 15599.8,
+        "effective_vocab_miller_madow": 15875.45,
+        "hhi": 0.00206284,
+        "effective_simpson": 484.77,
+        "top_k_mass_by_k": {
+          "10": 0.1184,
+          "50": 0.2536,
+          "100": 0.3027,
+          "500": 0.4166,
+          "1000": 0.4754,
+          "5000": 0.6287
+        }
+      },
+      "4": {
+        "entropy": 10.9601,
+        "entropy_miller_madow": 11.0011,
+        "effective_vocab": 57533.77,
+        "effective_vocab_miller_madow": 59938.46,
+        "hhi": 0.00145596,
+        "effective_simpson": 686.83,
+        "top_k_mass_by_k": {
+          "10": 0.0994,
+          "50": 0.2011,
+          "100": 0.2383,
+          "500": 0.326,
+          "1000": 0.3711,
+          "5000": 0.4955
+        }
+      }
+    },
+    "ngram_top_k_mass_by_k": {
+      "1": {
+        "10": 0.4117,
+        "50": 0.6592,
+        "100": 0.742,
+        "500": 0.8925,
+        "1000": 0.941,
+        "5000": 0.9932
+      },
+      "2": {
+        "10": 0.1463,
+        "50": 0.376,
+        "100": 0.4537,
+        "500": 0.6053,
+        "1000": 0.6762,
+        "5000": 0.8264
+      },
+      "3": {
+        "10": 0.1184,
+        "50": 0.2536,
+        "100": 0.3027,
+        "500": 0.4166,
+        "1000": 0.4754,
+        "5000": 0.6287
+      },
+      "4": {
+        "10": 0.0994,
+        "50": 0.2011,
+        "100": 0.2383,
+        "500": 0.326,
+        "1000": 0.3711,
+        "5000": 0.4955
+      }
+    },
+    "violations": {
+      "M_numbered_list_leak": 1000000,
+      "I_overlay_meta_leak": 794,
+      "E_thinking_leak": 10,
+      "N_stage_header_leak": 4,
+      "D_markdown_leak": 1
+    },
+    "violation_code_rate": {
+      "M_numbered_list_leak": 1.0,
+      "I_overlay_meta_leak": 0.0008,
+      "E_thinking_leak": 0.0,
+      "N_stage_header_leak": 0.0,
+      "D_markdown_leak": 0.0
+    },
+    "violation_severity_rate": {
+      "low": 1.0,
+      "moderate": 0.0008,
+      "critical": 0.0
+    },
+    "dedup": {
+      "normalized_unique_rate": 0.96248,
+      "normalized_duplicate_rate": 0.03752,
+      "duplicate_mass_rate": 0.06171,
+      "top_duplicate_mass": 0.0031,
+      "max_duplicate_count": 337,
+      "top_hashes": [
+        {
+          "hash": "b92afdd073a18388",
+          "count": 337
+        },
+        {
+          "hash": "32b418382d2b7f3e",
+          "count": 253
+        },
+        {
+          "hash": "34b0ebf7eaa11b4f",
+          "count": 89
+        },
+        {
+          "hash": "bdd528b0a7ee2ee3",
+          "count": 82
+        },
+        {
+          "hash": "a0b88df009c6621f",
+          "count": 72
+        },
+        {
+          "hash": "dff0bb1de08273bc",
+          "count": 61
+        },
+        {
+          "hash": "befa5442f1d143bd",
+          "count": 59
+        },
+        {
+          "hash": "5905c2d8d60578da",
+          "count": 52
+        },
+        {
+          "hash": "bf80be1a424ef7e4",
+          "count": 49
+        },
+        {
+          "hash": "f4885fde2c337a4f",
+          "count": 41
+        }
+      ]
+    },
+    "operational_formatting_rate": {
+      "numbered_list": 1.0,
+      "newline": 1.0,
+      "url": 0.0
+    },
+    "stratification_script_rate": {
+      "non_ascii": 0.0011
+    },
+    "debug_control_lexicon": {
+      "caption_rate": {
+        "count": 1.0,
+        "camera": 0.9993,
+        "spatial_relation": 0.7769,
+        "color": 0.7091,
+        "style": 0.2424,
+        "lighting": 0.2389,
+        "material": 0.2171,
+        "text_rendering": 0.0642
+      },
+      "token_hits": {
+        "count": 4215957,
+        "camera": 2804117,
+        "color": 1667687,
+        "spatial_relation": 1287257,
+        "material": 381057,
+        "lighting": 316632,
+        "style": 295905,
+        "text_rendering": 111487
+      },
+      "hits_per_caption": 11.0801,
+      "hits_per_64_lexical_tokens": 9.1278
+    },
+    "full_caption_normalized": {
+      "normalization_scope": "caption-balanced and/or per-token full-caption metrics; not a faithfulness score",
+      "caption_balanced_ngram_top_k_mass": {
+        "1": {
+          "10": 0.413293,
+          "50": 0.664771,
+          "100": 0.747353,
+          "500": 0.89528,
+          "1000": 0.942543,
+          "5000": 0.993404
+        },
+        "2": {
+          "10": 0.15011,
+          "50": 0.383319,
+          "100": 0.462133,
+          "500": 0.614142,
+          "1000": 0.683887,
+          "5000": 0.83133
+        },
+        "3": {
+          "10": 0.123078,
+          "50": 0.261219,
+          "100": 0.311923,
+          "500": 0.427952,
+          "1000": 0.486027,
+          "5000": 0.638249
+        },
+        "4": {
+          "10": 0.104018,
+          "50": 0.207975,
+          "100": 0.247408,
+          "500": 0.337382,
+          "1000": 0.382672,
+          "5000": 0.507477
+        }
+      },
+      "within_caption_distinct_n_mean": {
+        "3": 0.984011,
+        "4": 0.994326,
+        "5": 0.997757,
+        "6": 0.999153,
+        "8": 0.999811
+      },
+      "repeated_ngram_rate_by_n": {
+        "3": 0.5081,
+        "4": 0.2244,
+        "5": 0.1013,
+        "6": 0.0369,
+        "8": 0.0067
+      },
+      "violation_indicator_per_64_lexical_tokens_mean": 0.854574,
+      "violation_codes_per_64_lexical_tokens_mean": 0.855244,
+      "control_hits_per_64_lexical_tokens": 9.1278
+    },
+    "prefix_raw": {
+      "entropy": 0.9002,
+      "entropy_miller_madow": 0.9009,
+      "effective_vocab": 2.46,
+      "effective_vocab_miller_madow": 2.46,
+      "hhi": 0.72391986,
+      "effective_simpson": 1.38,
+      "top_k_mass_by_k": {
+        "10": 0.9595,
+        "50": 0.9902,
+        "100": 0.9944,
+        "500": 0.9987,
+        "1000": 0.9995,
+        "5000": 1.0
+      },
+      "top_k_mass": 0.9944,
+      "top_10": [
+        {
+          "prefix": "1 the image features a",
+          "count": 849341
+        },
+        {
+          "prefix": "1 the image features two",
+          "count": 42780
+        },
+        {
+          "prefix": "1 the image features three",
+          "count": 13251
+        },
+        {
+          "prefix": "1 the image is a",
+          "count": 11846
+        },
+        {
+          "prefix": "1 the image shows a",
+          "count": 11043
+        },
+        {
+          "prefix": "1 a woman is standing",
+          "count": 8813
+        },
+        {
+          "prefix": "1 the image features an",
+          "count": 8789
+        },
+        {
+          "prefix": "1 the image features four",
+          "count": 4654
+        },
+        {
+          "prefix": "1 the image features the",
+          "count": 4617
+        },
+        {
+          "prefix": "1 the image displays a",
+          "count": 4319
+        }
+      ]
+    },
+    "prefix_content": {
+      "entropy": 0.9002,
+      "entropy_miller_madow": 0.9009,
+      "effective_vocab": 2.46,
+      "effective_vocab_miller_madow": 2.46,
+      "hhi": 0.72391986,
+      "effective_simpson": 1.38,
+      "top_k_mass_by_k": {
+        "10": 0.9595,
+        "50": 0.9902,
+        "100": 0.9944,
+        "500": 0.9987,
+        "1000": 0.9995,
+        "5000": 1.0
+      },
+      "top_k_mass": 0.9944,
+      "top_10": [
+        {
+          "prefix": "1 the image features a",
+          "count": 849341
+        },
+        {
+          "prefix": "1 the image features two",
+          "count": 42780
+        },
+        {
+          "prefix": "1 the image features three",
+          "count": 13251
+        },
+        {
+          "prefix": "1 the image is a",
+          "count": 11846
+        },
+        {
+          "prefix": "1 the image shows a",
+          "count": 11043
+        },
+        {
+          "prefix": "1 a woman is standing",
+          "count": 8813
+        },
+        {
+          "prefix": "1 the image features an",
+          "count": 8789
+        },
+        {
+          "prefix": "1 the image features four",
+          "count": 4654
+        },
+        {
+          "prefix": "1 the image features the",
+          "count": 4617
+        },
+        {
+          "prefix": "1 the image displays a",
+          "count": 4319
+        }
+      ]
+    },
+    "top_openings": [
+      {
+        "opening": "1 the image",
+        "count": 958387
+      },
+      {
+        "opening": "1 a woman",
+        "count": 14820
+      },
+      {
+        "opening": "1 a man",
+        "count": 9891
+      },
+      {
+        "opening": "1 a group",
+        "count": 4937
+      },
+      {
+        "opening": "1 a person",
+        "count": 4090
+      },
+      {
+        "opening": "1 a young",
+        "count": 2617
+      },
+      {
+        "opening": "1 two men",
+        "count": 682
+      },
+      {
+        "opening": "1 a bride",
+        "count": 591
+      },
+      {
+        "opening": "1 a couple",
+        "count": 502
+      },
+      {
+        "opening": "1 two people",
+        "count": 486
+      }
+    ]
+  },
+  "length_controlled": {
+    "16": {
+      "captions_analyzed": 1000000,
+      "avg_lexical_tokens": 16.0,
+      "avg_chars": 83.95,
+      "violation_rate": 1.0,
+      "repeated_4gram_rate": 0.0004,
+      "repeated_ngram_rate_by_n": {
+        "3": 0.0031,
+        "4": 0.0004,
+        "5": 0.0001,
+        "6": 0.0,
+        "8": 0.0
+      },
+      "within_caption_distinct_n_mean": {
+        "3": 0.999731,
+        "4": 0.999958,
+        "5": 0.999992,
+        "6": 1.0,
+        "8": 1.0
+      },
+      "within_caption_max_ngram_repeat_mean": {
+        "3": 1.0032,
+        "4": 1.0004,
+        "5": 1.0001,
+        "6": 1.0,
+        "8": 1.0
+      },
+      "distinct_n": {
+        "1": 0.001987,
+        "2": 0.024096,
+        "3": 0.072465,
+        "4": 0.145396
+      },
+      "ngram_top_k_mass": {
+        "1": 0.7486,
+        "2": 0.4834,
+        "3": 0.321,
+        "4": 0.2466
+      },
+      "ngram_distribution": {
+        "1": {
+          "entropy": 4.9497,
+          "entropy_miller_madow": 4.9507,
+          "effective_vocab": 141.14,
+          "effective_vocab_miller_madow": 141.28,
+          "hhi": 0.04232231,
+          "effective_simpson": 23.63,
+          "top_k_mass_by_k": {
+            "10": 0.5285,
+            "50": 0.6859,
+            "100": 0.7486,
+            "500": 0.8897,
+            "1000": 0.9372,
+            "5000": 0.992
+          }
+        },
+        "2": {
+          "entropy": 7.3933,
+          "entropy_miller_madow": 7.4054,
+          "effective_vocab": 1625.1,
+          "effective_vocab_miller_madow": 1644.8,
+          "hhi": 0.01702702,
+          "effective_simpson": 58.73,
+          "top_k_mass_by_k": {
+            "10": 0.323,
+            "50": 0.4322,
+            "100": 0.4834,
+            "500": 0.6152,
+            "1000": 0.6792,
+            "5000": 0.8203
+          }
+        },
+        "3": {
+          "entropy": 9.165,
+          "entropy_miller_madow": 9.2013,
+          "effective_vocab": 9557.06,
+          "effective_vocab_miller_madow": 9909.68,
+          "hhi": 0.01299798,
+          "effective_simpson": 76.94,
+          "top_k_mass_by_k": {
+            "10": 0.2198,
+            "50": 0.2821,
+            "100": 0.321,
+            "500": 0.4285,
+            "1000": 0.4854,
+            "5000": 0.6324
+          }
+        },
+        "4": {
+          "entropy": 10.5201,
+          "entropy_miller_madow": 10.5928,
+          "effective_vocab": 37051.29,
+          "effective_vocab_miller_madow": 39845.16,
+          "hhi": 0.00955443,
+          "effective_simpson": 104.66,
+          "top_k_mass_by_k": {
+            "10": 0.1649,
+            "50": 0.2189,
+            "100": 0.2466,
+            "500": 0.3222,
+            "1000": 0.3647,
+            "5000": 0.4872
+          }
+        }
+      },
+      "ngram_top_k_mass_by_k": {
+        "1": {
+          "10": 0.5285,
+          "50": 0.6859,
+          "100": 0.7486,
+          "500": 0.8897,
+          "1000": 0.9372,
+          "5000": 0.992
+        },
+        "2": {
+          "10": 0.323,
+          "50": 0.4322,
+          "100": 0.4834,
+          "500": 0.6152,
+          "1000": 0.6792,
+          "5000": 0.8203
+        },
+        "3": {
+          "10": 0.2198,
+          "50": 0.2821,
+          "100": 0.321,
+          "500": 0.4285,
+          "1000": 0.4854,
+          "5000": 0.6324
+        },
+        "4": {
+          "10": 0.1649,
+          "50": 0.2189,
+          "100": 0.2466,
+          "500": 0.3222,
+          "1000": 0.3647,
+          "5000": 0.4872
+        }
+      },
+      "violations": {
+        "M_numbered_list_leak": 1000000,
+        "I_overlay_meta_leak": 221,
+        "N_stage_header_leak": 3,
+        "E_thinking_leak": 1
+      },
+      "violation_code_rate": {
+        "M_numbered_list_leak": 1.0,
+        "I_overlay_meta_leak": 0.0002,
+        "N_stage_header_leak": 0.0,
+        "E_thinking_leak": 0.0
+      },
+      "violation_severity_rate": {
+        "low": 1.0,
+        "moderate": 0.0002,
+        "critical": 0.0
+      },
+      "dedup": {
+        "normalized_unique_rate": 0.772662,
+        "normalized_duplicate_rate": 0.227338,
+        "duplicate_mass_rate": 0.303212,
+        "top_duplicate_mass": 0.0227,
+        "max_duplicate_count": 2769,
+        "top_hashes": [
+          {
+            "hash": "0dfedd6e8cc3f975",
+            "count": 2769
+          },
+          {
+            "hash": "81666ca47d51250d",
+            "count": 1493
+          },
+          {
+            "hash": "8a95145ccca132f2",
+            "count": 519
+          },
+          {
+            "hash": "fa4b5433526230ea",
+            "count": 510
+          },
+          {
+            "hash": "905d8e1f80c0d3a2",
+            "count": 361
+          },
+          {
+            "hash": "432569f853d58b21",
+            "count": 356
+          },
+          {
+            "hash": "34d5e7ee78b0a07c",
+            "count": 350
+          },
+          {
+            "hash": "1b200f1e798d974f",
+            "count": 349
+          },
+          {
+            "hash": "e518d1014398226a",
+            "count": 342
+          },
+          {
+            "hash": "20a6e7aaf9c286ea",
+            "count": 337
+          }
+        ]
+      },
+      "operational_formatting_rate": {
+        "numbered_list": 1.0,
+        "newline": 0.3162,
+        "url": 0.0
+      },
+      "stratification_script_rate": {
+        "non_ascii": 0.0005
+      },
+      "debug_control_lexicon": {
+        "caption_rate": {
+          "count": 1.0,
+          "color": 0.4725,
+          "material": 0.1307,
+          "spatial_relation": 0.102,
+          "camera": 0.0538,
+          "text_rendering": 0.0305,
+          "style": 0.0287,
+          "lighting": 0.0117
+        },
+        "token_hits": {
+          "count": 1479101,
+          "color": 683787,
+          "material": 144648,
+          "spatial_relation": 104395,
+          "camera": 67070,
+          "style": 33171,
+          "text_rendering": 32249,
+          "lighting": 12616
+        },
+        "hits_per_caption": 2.557,
+        "hits_per_64_lexical_tokens": 10.2281
+      },
+      "full_caption_normalized": {
+        "normalization_scope": "caption-balanced and/or per-token full-caption metrics; not a faithfulness score",
+        "caption_balanced_ngram_top_k_mass": {},
+        "within_caption_distinct_n_mean": {
+          "3": 0.999731,
+          "4": 0.999958,
+          "5": 0.999992,
+          "6": 1.0,
+          "8": 1.0
+        },
+        "repeated_ngram_rate_by_n": {
+          "3": 0.0031,
+          "4": 0.0004,
+          "5": 0.0001,
+          "6": 0.0,
+          "8": 0.0
+        },
+        "violation_indicator_per_64_lexical_tokens_mean": 4.0,
+        "violation_codes_per_64_lexical_tokens_mean": 4.0009,
+        "control_hits_per_64_lexical_tokens": 10.2281
+      },
+      "prefix_raw": {
+        "entropy": 0.9002,
+        "entropy_miller_madow": 0.9009,
+        "effective_vocab": 2.46,
+        "effective_vocab_miller_madow": 2.46,
+        "hhi": 0.72391986,
+        "effective_simpson": 1.38,
+        "top_k_mass_by_k": {
+          "10": 0.9595,
+          "50": 0.9902,
+          "100": 0.9944,
+          "500": 0.9987,
+          "1000": 0.9995,
+          "5000": 1.0
+        },
+        "top_k_mass": 0.9944,
+        "top_10": [
+          {
+            "prefix": "1 the image features a",
+            "count": 849341
+          },
+          {
+            "prefix": "1 the image features two",
+            "count": 42780
+          },
+          {
+            "prefix": "1 the image features three",
+            "count": 13251
+          },
+          {
+            "prefix": "1 the image is a",
+            "count": 11846
+          },
+          {
+            "prefix": "1 the image shows a",
+            "count": 11043
+          },
+          {
+            "prefix": "1 a woman is standing",
+            "count": 8813
+          },
+          {
+            "prefix": "1 the image features an",
+            "count": 8789
+          },
+          {
+            "prefix": "1 the image features four",
+            "count": 4654
+          },
+          {
+            "prefix": "1 the image features the",
+            "count": 4617
+          },
+          {
+            "prefix": "1 the image displays a",
+            "count": 4319
+          }
+        ]
+      },
+      "prefix_content": {
+        "entropy": 0.9002,
+        "entropy_miller_madow": 0.9009,
+        "effective_vocab": 2.46,
+        "effective_vocab_miller_madow": 2.46,
+        "hhi": 0.72391986,
+        "effective_simpson": 1.38,
+        "top_k_mass_by_k": {
+          "10": 0.9595,
+          "50": 0.9902,
+          "100": 0.9944,
+          "500": 0.9987,
+          "1000": 0.9995,
+          "5000": 1.0
+        },
+        "top_k_mass": 0.9944,
+        "top_10": [
+          {
+            "prefix": "1 the image features a",
+            "count": 849341
+          },
+          {
+            "prefix": "1 the image features two",
+            "count": 42780
+          },
+          {
+            "prefix": "1 the image features three",
+            "count": 13251
+          },
+          {
+            "prefix": "1 the image is a",
+            "count": 11846
+          },
+          {
+            "prefix": "1 the image shows a",
+            "count": 11043
+          },
+          {
+            "prefix": "1 a woman is standing",
+            "count": 8813
+          },
+          {
+            "prefix": "1 the image features an",
+            "count": 8789
+          },
+          {
+            "prefix": "1 the image features four",
+            "count": 4654
+          },
+          {
+            "prefix": "1 the image features the",
+            "count": 4617
+          },
+          {
+            "prefix": "1 the image displays a",
+            "count": 4319
+          }
+        ]
+      },
+      "top_openings": [
+        {
+          "opening": "1 the image",
+          "count": 958387
+        },
+        {
+          "opening": "1 a woman",
+          "count": 14820
+        },
+        {
+          "opening": "1 a man",
+          "count": 9891
+        },
+        {
+          "opening": "1 a group",
+          "count": 4937
+        },
+        {
+          "opening": "1 a person",
+          "count": 4090
+        },
+        {
+          "opening": "1 a young",
+          "count": 2617
+        },
+        {
+          "opening": "1 two men",
+          "count": 682
+        },
+        {
+          "opening": "1 a bride",
+          "count": 591
+        },
+        {
+          "opening": "1 a couple",
+          "count": 502
+        },
+        {
+          "opening": "1 two people",
+          "count": 486
+        }
+      ],
+      "token_budget": 16,
+      "avg_budget_tokens": 16.0,
+      "captions_meeting_budget": 1000000,
+      "coverage_rate": 1.0,
+      "eligibility_rate": 1.0,
+      "ineligible_count": 0,
+      "truncation_rate": 1.0,
+      "mean_retained_token_fraction": 0.2136
+    },
+    "32": {
+      "captions_analyzed": 1000000,
+      "avg_lexical_tokens": 32.0,
+      "avg_chars": 169.12,
+      "violation_rate": 1.0,
+      "repeated_4gram_rate": 0.0144,
+      "repeated_ngram_rate_by_n": {
+        "3": 0.0579,
+        "4": 0.0144,
+        "5": 0.0047,
+        "6": 0.0017,
+        "8": 0.0004
+      },
+      "within_caption_distinct_n_mean": {
+        "3": 0.997154,
+        "4": 0.9992,
+        "5": 0.999708,
+        "6": 0.999875,
+        "8": 0.999969
+      },
+      "within_caption_max_ngram_repeat_mean": {
+        "3": 1.0595,
+        "4": 1.0148,
+        "5": 1.0048,
+        "6": 1.0018,
+        "8": 1.0004
+      },
+      "distinct_n": {
+        "1": 0.00128,
+        "2": 0.017176,
+        "3": 0.055598,
+        "4": 0.119548
+      },
+      "ngram_top_k_mass": {
+        "1": 0.7433,
+        "2": 0.453,
+        "3": 0.2817,
+        "4": 0.2117
+      },
+      "ngram_distribution": {
+        "1": {
+          "entropy": 5.14,
+          "entropy_miller_madow": 5.1406,
+          "effective_vocab": 170.71,
+          "effective_vocab_miller_madow": 170.82,
+          "hhi": 0.03368034,
+          "effective_simpson": 29.69,
+          "top_k_mass_by_k": {
+            "10": 0.4538,
+            "50": 0.6778,
+            "100": 0.7433,
+            "500": 0.891,
+            "1000": 0.9388,
+            "5000": 0.9921
+          }
+        },
+        "2": {
+          "entropy": 7.7765,
+          "entropy_miller_madow": 7.7851,
+          "effective_vocab": 2383.84,
+          "effective_vocab_miller_madow": 2404.4,
+          "hhi": 0.00711926,
+          "effective_simpson": 140.46,
+          "top_k_mass_by_k": {
+            "10": 0.2243,
+            "50": 0.3914,
+            "100": 0.453,
+            "500": 0.6017,
+            "1000": 0.6713,
+            "5000": 0.8195
+          }
+        },
+        "3": {
+          "entropy": 9.6484,
+          "entropy_miller_madow": 9.6762,
+          "effective_vocab": 15497.68,
+          "effective_vocab_miller_madow": 15934.54,
+          "hhi": 0.00357234,
+          "effective_simpson": 279.93,
+          "top_k_mass_by_k": {
+            "10": 0.1439,
+            "50": 0.2379,
+            "100": 0.2817,
+            "500": 0.404,
+            "1000": 0.4648,
+            "5000": 0.6227
+          }
+        },
+        "4": {
+          "entropy": 11.0488,
+          "entropy_miller_madow": 11.1086,
+          "effective_vocab": 62870.48,
+          "effective_vocab_miller_madow": 66743.1,
+          "hhi": 0.002367,
+          "effective_simpson": 422.48,
+          "top_k_mass_by_k": {
+            "10": 0.1083,
+            "50": 0.1765,
+            "100": 0.2117,
+            "500": 0.2985,
+            "1000": 0.3435,
+            "5000": 0.4714
+          }
+        }
+      },
+      "ngram_top_k_mass_by_k": {
+        "1": {
+          "10": 0.4538,
+          "50": 0.6778,
+          "100": 0.7433,
+          "500": 0.891,
+          "1000": 0.9388,
+          "5000": 0.9921
+        },
+        "2": {
+          "10": 0.2243,
+          "50": 0.3914,
+          "100": 0.453,
+          "500": 0.6017,
+          "1000": 0.6713,
+          "5000": 0.8195
+        },
+        "3": {
+          "10": 0.1439,
+          "50": 0.2379,
+          "100": 0.2817,
+          "500": 0.404,
+          "1000": 0.4648,
+          "5000": 0.6227
+        },
+        "4": {
+          "10": 0.1083,
+          "50": 0.1765,
+          "100": 0.2117,
+          "500": 0.2985,
+          "1000": 0.3435,
+          "5000": 0.4714
+        }
+      },
+      "violations": {
+        "M_numbered_list_leak": 1000000,
+        "I_overlay_meta_leak": 446,
+        "E_thinking_leak": 6,
+        "N_stage_header_leak": 4,
+        "D_markdown_leak": 1
+      },
+      "violation_code_rate": {
+        "M_numbered_list_leak": 1.0,
+        "I_overlay_meta_leak": 0.0004,
+        "E_thinking_leak": 0.0,
+        "N_stage_header_leak": 0.0,
+        "D_markdown_leak": 0.0
+      },
+      "violation_severity_rate": {
+        "low": 1.0,
+        "moderate": 0.0004,
+        "critical": 0.0
+      },
+      "dedup": {
+        "normalized_unique_rate": 0.928535,
+        "normalized_duplicate_rate": 0.071465,
+        "duplicate_mass_rate": 0.107926,
+        "top_duplicate_mass": 0.0073,
+        "max_duplicate_count": 337,
+        "top_hashes": [
+          {
+            "hash": "e1029fb7c26c19f0",
+            "count": 337
+          },
+          {
+            "hash": "66f30c56f4b72da9",
+            "count": 256
+          },
+          {
+            "hash": "f43d2329724dfce7",
+            "count": 253
+          },
+          {
+            "hash": "e16d923599169109",
+            "count": 214
+          },
+          {
+            "hash": "d7ae9a3c9f3ef7e2",
+            "count": 192
+          },
+          {
+            "hash": "e2abaea4049fa949",
+            "count": 178
+          },
+          {
+            "hash": "01fa1a18687b7b8a",
+            "count": 177
+          },
+          {
+            "hash": "bdb81297e14764b6",
+            "count": 155
+          },
+          {
+            "hash": "0e4505e63f9d83b9",
+            "count": 153
+          },
+          {
+            "hash": "cf4a7a559767bb76",
+            "count": 151
+          }
+        ]
+      },
+      "operational_formatting_rate": {
+        "numbered_list": 1.0,
+        "newline": 0.9591,
+        "url": 0.0
+      },
+      "stratification_script_rate": {
+        "non_ascii": 0.0008
+      },
+      "debug_control_lexicon": {
+        "caption_rate": {
+          "count": 1.0,
+          "color": 0.6311,
+          "spatial_relation": 0.4625,
+          "material": 0.189,
+          "camera": 0.0968,
+          "style": 0.0872,
+          "text_rendering": 0.0465,
+          "lighting": 0.0433
+        },
+        "token_hits": {
+          "count": 2570350,
+          "color": 1216957,
+          "spatial_relation": 521595,
+          "material": 233196,
+          "camera": 117347,
+          "style": 100277,
+          "text_rendering": 54288,
+          "lighting": 47290
+        },
+        "hits_per_caption": 4.8613,
+        "hits_per_64_lexical_tokens": 9.7226
+      },
+      "full_caption_normalized": {
+        "normalization_scope": "caption-balanced and/or per-token full-caption metrics; not a faithfulness score",
+        "caption_balanced_ngram_top_k_mass": {},
+        "within_caption_distinct_n_mean": {
+          "3": 0.997154,
+          "4": 0.9992,
+          "5": 0.999708,
+          "6": 0.999875,
+          "8": 0.999969
+        },
+        "repeated_ngram_rate_by_n": {
+          "3": 0.0579,
+          "4": 0.0144,
+          "5": 0.0047,
+          "6": 0.0017,
+          "8": 0.0004
+        },
+        "violation_indicator_per_64_lexical_tokens_mean": 2.0,
+        "violation_codes_per_64_lexical_tokens_mean": 2.000914,
+        "control_hits_per_64_lexical_tokens": 9.7226
+      },
+      "prefix_raw": {
+        "entropy": 0.9002,
+        "entropy_miller_madow": 0.9009,
+        "effective_vocab": 2.46,
+        "effective_vocab_miller_madow": 2.46,
+        "hhi": 0.72391986,
+        "effective_simpson": 1.38,
+        "top_k_mass_by_k": {
+          "10": 0.9595,
+          "50": 0.9902,
+          "100": 0.9944,
+          "500": 0.9987,
+          "1000": 0.9995,
+          "5000": 1.0
+        },
+        "top_k_mass": 0.9944,
+        "top_10": [
+          {
+            "prefix": "1 the image features a",
+            "count": 849341
+          },
+          {
+            "prefix": "1 the image features two",
+            "count": 42780
+          },
+          {
+            "prefix": "1 the image features three",
+            "count": 13251
+          },
+          {
+            "prefix": "1 the image is a",
+            "count": 11846
+          },
+          {
+            "prefix": "1 the image shows a",
+            "count": 11043
+          },
+          {
+            "prefix": "1 a woman is standing",
+            "count": 8813
+          },
+          {
+            "prefix": "1 the image features an",
+            "count": 8789
+          },
+          {
+            "prefix": "1 the image features four",
+            "count": 4654
+          },
+          {
+            "prefix": "1 the image features the",
+            "count": 4617
+          },
+          {
+            "prefix": "1 the image displays a",
+            "count": 4319
+          }
+        ]
+      },
+      "prefix_content": {
+        "entropy": 0.9002,
+        "entropy_miller_madow": 0.9009,
+        "effective_vocab": 2.46,
+        "effective_vocab_miller_madow": 2.46,
+        "hhi": 0.72391986,
+        "effective_simpson": 1.38,
+        "top_k_mass_by_k": {
+          "10": 0.9595,
+          "50": 0.9902,
+          "100": 0.9944,
+          "500": 0.9987,
+          "1000": 0.9995,
+          "5000": 1.0
+        },
+        "top_k_mass": 0.9944,
+        "top_10": [
+          {
+            "prefix": "1 the image features a",
+            "count": 849341
+          },
+          {
+            "prefix": "1 the image features two",
+            "count": 42780
+          },
+          {
+            "prefix": "1 the image features three",
+            "count": 13251
+          },
+          {
+            "prefix": "1 the image is a",
+            "count": 11846
+          },
+          {
+            "prefix": "1 the image shows a",
+            "count": 11043
+          },
+          {
+            "prefix": "1 a woman is standing",
+            "count": 8813
+          },
+          {
+            "prefix": "1 the image features an",
+            "count": 8789
+          },
+          {
+            "prefix": "1 the image features four",
+            "count": 4654
+          },
+          {
+            "prefix": "1 the image features the",
+            "count": 4617
+          },
+          {
+            "prefix": "1 the image displays a",
+            "count": 4319
+          }
+        ]
+      },
+      "top_openings": [
+        {
+          "opening": "1 the image",
+          "count": 958387
+        },
+        {
+          "opening": "1 a woman",
+          "count": 14820
+        },
+        {
+          "opening": "1 a man",
+          "count": 9891
+        },
+        {
+          "opening": "1 a group",
+          "count": 4937
+        },
+        {
+          "opening": "1 a person",
+          "count": 4090
+        },
+        {
+          "opening": "1 a young",
+          "count": 2617
+        },
+        {
+          "opening": "1 two men",
+          "count": 682
+        },
+        {
+          "opening": "1 a bride",
+          "count": 591
+        },
+        {
+          "opening": "1 a couple",
+          "count": 502
+        },
+        {
+          "opening": "1 two people",
+          "count": 486
+        }
+      ],
+      "token_budget": 32,
+      "avg_budget_tokens": 32.0,
+      "captions_meeting_budget": 1000000,
+      "coverage_rate": 1.0,
+      "eligibility_rate": 1.0,
+      "ineligible_count": 0,
+      "truncation_rate": 1.0,
+      "mean_retained_token_fraction": 0.4273,
+      "marginal_avg_token_gain": 1.0
+    },
+    "64": {
+      "captions_analyzed": 1000000,
+      "avg_lexical_tokens": 62.78,
+      "avg_chars": 341.31,
+      "violation_rate": 1.0,
+      "repeated_4gram_rate": 0.0837,
+      "repeated_ngram_rate_by_n": {
+        "3": 0.278,
+        "4": 0.0837,
+        "5": 0.0295,
+        "6": 0.0096,
+        "8": 0.002
+      },
+      "within_caption_distinct_n_mean": {
+        "3": 0.992004,
+        "4": 0.997658,
+        "5": 0.999157,
+        "6": 0.999668,
+        "8": 0.999899
+      },
+      "within_caption_max_ngram_repeat_mean": {
+        "3": 1.3003,
+        "4": 1.0873,
+        "5": 1.0303,
+        "6": 1.0097,
+        "8": 1.0021
+      },
+      "distinct_n": {
+        "1": 0.000712,
+        "2": 0.011034,
+        "3": 0.03846,
+        "4": 0.086063
+      },
+      "ngram_top_k_mass": {
+        "1": 0.7499,
+        "2": 0.4665,
+        "3": 0.3153,
+        "4": 0.2466
+      },
+      "ngram_distribution": {
+        "1": {
+          "entropy": 5.1655,
+          "entropy_miller_madow": 5.1658,
+          "effective_vocab": 175.12,
+          "effective_vocab_miller_madow": 175.19,
+          "hhi": 0.03180274,
+          "effective_simpson": 31.44,
+          "top_k_mass_by_k": {
+            "10": 0.4179,
+            "50": 0.6693,
+            "100": 0.7499,
+            "500": 0.8953,
+            "1000": 0.9421,
+            "5000": 0.9932
+          }
+        },
+        "2": {
+          "entropy": 7.7822,
+          "entropy_miller_madow": 7.7877,
+          "effective_vocab": 2397.58,
+          "effective_vocab_miller_madow": 2410.85,
+          "hhi": 0.00487865,
+          "effective_simpson": 204.97,
+          "top_k_mass_by_k": {
+            "10": 0.1684,
+            "50": 0.3897,
+            "100": 0.4665,
+            "500": 0.6158,
+            "1000": 0.6838,
+            "5000": 0.8296
+          }
+        },
+        "3": {
+          "entropy": 9.5283,
+          "entropy_miller_madow": 9.5475,
+          "effective_vocab": 13742.54,
+          "effective_vocab_miller_madow": 14009.37,
+          "hhi": 0.00247164,
+          "effective_simpson": 404.59,
+          "top_k_mass_by_k": {
+            "10": 0.1352,
+            "50": 0.2635,
+            "100": 0.3153,
+            "500": 0.4318,
+            "1000": 0.4892,
+            "5000": 0.64
+          }
+        },
+        "4": {
+          "entropy": 10.8118,
+          "entropy_miller_madow": 10.8548,
+          "effective_vocab": 49600.72,
+          "effective_vocab_miller_madow": 51781.7,
+          "hhi": 0.00169212,
+          "effective_simpson": 590.98,
+          "top_k_mass_by_k": {
+            "10": 0.1079,
+            "50": 0.2062,
+            "100": 0.2466,
+            "500": 0.3388,
+            "1000": 0.3837,
+            "5000": 0.509
+          }
+        }
+      },
+      "ngram_top_k_mass_by_k": {
+        "1": {
+          "10": 0.4179,
+          "50": 0.6693,
+          "100": 0.7499,
+          "500": 0.8953,
+          "1000": 0.9421,
+          "5000": 0.9932
+        },
+        "2": {
+          "10": 0.1684,
+          "50": 0.3897,
+          "100": 0.4665,
+          "500": 0.6158,
+          "1000": 0.6838,
+          "5000": 0.8296
+        },
+        "3": {
+          "10": 0.1352,
+          "50": 0.2635,
+          "100": 0.3153,
+          "500": 0.4318,
+          "1000": 0.4892,
+          "5000": 0.64
+        },
+        "4": {
+          "10": 0.1079,
+          "50": 0.2062,
+          "100": 0.2466,
+          "500": 0.3388,
+          "1000": 0.3837,
+          "5000": 0.509
+        }
+      },
+      "violations": {
+        "M_numbered_list_leak": 1000000,
+        "I_overlay_meta_leak": 638,
+        "E_thinking_leak": 10,
+        "N_stage_header_leak": 4,
+        "D_markdown_leak": 1
+      },
+      "violation_code_rate": {
+        "M_numbered_list_leak": 1.0,
+        "I_overlay_meta_leak": 0.0006,
+        "E_thinking_leak": 0.0,
+        "N_stage_header_leak": 0.0,
+        "D_markdown_leak": 0.0
+      },
+      "violation_severity_rate": {
+        "low": 1.0,
+        "moderate": 0.0006,
+        "critical": 0.0
+      },
+      "dedup": {
+        "normalized_unique_rate": 0.960084,
+        "normalized_duplicate_rate": 0.039916,
+        "duplicate_mass_rate": 0.0652,
+        "top_duplicate_mass": 0.0032,
+        "max_duplicate_count": 337,
+        "top_hashes": [
+          {
+            "hash": "371a40dcafee149a",
+            "count": 337
+          },
+          {
+            "hash": "54ca92f4963f2a0b",
+            "count": 253
+          },
+          {
+            "hash": "6e3690733677d3b3",
+            "count": 91
+          },
+          {
+            "hash": "38a9cd044ee428e3",
+            "count": 86
+          },
+          {
+            "hash": "bdd528b0a7ee2ee3",
+            "count": 82
+          },
+          {
+            "hash": "dbf70db73c0500e0",
+            "count": 61
+          },
+          {
+            "hash": "befa5442f1d143bd",
+            "count": 59
+          },
+          {
+            "hash": "5905c2d8d60578da",
+            "count": 52
+          },
+          {
+            "hash": "bf80be1a424ef7e4",
+            "count": 49
+          },
+          {
+            "hash": "f4885fde2c337a4f",
+            "count": 41
+          }
+        ]
+      },
+      "operational_formatting_rate": {
+        "numbered_list": 1.0,
+        "newline": 0.9999,
+        "url": 0.0
+      },
+      "stratification_script_rate": {
+        "non_ascii": 0.001
+      },
+      "debug_control_lexicon": {
+        "caption_rate": {
+          "count": 1.0,
+          "camera": 0.8315,
+          "color": 0.7063,
+          "spatial_relation": 0.6602,
+          "style": 0.2393,
+          "lighting": 0.2256,
+          "material": 0.2161,
+          "text_rendering": 0.0587
+        },
+        "token_hits": {
+          "count": 4044120,
+          "camera": 1944268,
+          "color": 1610555,
+          "spatial_relation": 888759,
+          "material": 338149,
+          "lighting": 287653,
+          "style": 282990,
+          "text_rendering": 85075
+        },
+        "hits_per_caption": 9.4816,
+        "hits_per_64_lexical_tokens": 9.6654
+      },
+      "full_caption_normalized": {
+        "normalization_scope": "caption-balanced and/or per-token full-caption metrics; not a faithfulness score",
+        "caption_balanced_ngram_top_k_mass": {},
+        "within_caption_distinct_n_mean": {
+          "3": 0.992004,
+          "4": 0.997658,
+          "5": 0.999157,
+          "6": 0.999668,
+          "8": 0.999899
+        },
+        "repeated_ngram_rate_by_n": {
+          "3": 0.278,
+          "4": 0.0837,
+          "5": 0.0295,
+          "6": 0.0096,
+          "8": 0.002
+        },
+        "violation_indicator_per_64_lexical_tokens_mean": 1.023464,
+        "violation_codes_per_64_lexical_tokens_mean": 1.024124,
+        "control_hits_per_64_lexical_tokens": 9.6654
+      },
+      "prefix_raw": {
+        "entropy": 0.9002,
+        "entropy_miller_madow": 0.9009,
+        "effective_vocab": 2.46,
+        "effective_vocab_miller_madow": 2.46,
+        "hhi": 0.72391986,
+        "effective_simpson": 1.38,
+        "top_k_mass_by_k": {
+          "10": 0.9595,
+          "50": 0.9902,
+          "100": 0.9944,
+          "500": 0.9987,
+          "1000": 0.9995,
+          "5000": 1.0
+        },
+        "top_k_mass": 0.9944,
+        "top_10": [
+          {
+            "prefix": "1 the image features a",
+            "count": 849341
+          },
+          {
+            "prefix": "1 the image features two",
+            "count": 42780
+          },
+          {
+            "prefix": "1 the image features three",
+            "count": 13251
+          },
+          {
+            "prefix": "1 the image is a",
+            "count": 11846
+          },
+          {
+            "prefix": "1 the image shows a",
+            "count": 11043
+          },
+          {
+            "prefix": "1 a woman is standing",
+            "count": 8813
+          },
+          {
+            "prefix": "1 the image features an",
+            "count": 8789
+          },
+          {
+            "prefix": "1 the image features four",
+            "count": 4654
+          },
+          {
+            "prefix": "1 the image features the",
+            "count": 4617
+          },
+          {
+            "prefix": "1 the image displays a",
+            "count": 4319
+          }
+        ]
+      },
+      "prefix_content": {
+        "entropy": 0.9002,
+        "entropy_miller_madow": 0.9009,
+        "effective_vocab": 2.46,
+        "effective_vocab_miller_madow": 2.46,
+        "hhi": 0.72391986,
+        "effective_simpson": 1.38,
+        "top_k_mass_by_k": {
+          "10": 0.9595,
+          "50": 0.9902,
+          "100": 0.9944,
+          "500": 0.9987,
+          "1000": 0.9995,
+          "5000": 1.0
+        },
+        "top_k_mass": 0.9944,
+        "top_10": [
+          {
+            "prefix": "1 the image features a",
+            "count": 849341
+          },
+          {
+            "prefix": "1 the image features two",
+            "count": 42780
+          },
+          {
+            "prefix": "1 the image features three",
+            "count": 13251
+          },
+          {
+            "prefix": "1 the image is a",
+            "count": 11846
+          },
+          {
+            "prefix": "1 the image shows a",
+            "count": 11043
+          },
+          {
+            "prefix": "1 a woman is standing",
+            "count": 8813
+          },
+          {
+            "prefix": "1 the image features an",
+            "count": 8789
+          },
+          {
+            "prefix": "1 the image features four",
+            "count": 4654
+          },
+          {
+            "prefix": "1 the image features the",
+            "count": 4617
+          },
+          {
+            "prefix": "1 the image displays a",
+            "count": 4319
+          }
+        ]
+      },
+      "top_openings": [
+        {
+          "opening": "1 the image",
+          "count": 958387
+        },
+        {
+          "opening": "1 a woman",
+          "count": 14820
+        },
+        {
+          "opening": "1 a man",
+          "count": 9891
+        },
+        {
+          "opening": "1 a group",
+          "count": 4937
+        },
+        {
+          "opening": "1 a person",
+          "count": 4090
+        },
+        {
+          "opening": "1 a young",
+          "count": 2617
+        },
+        {
+          "opening": "1 two men",
+          "count": 682
+        },
+        {
+          "opening": "1 a bride",
+          "count": 591
+        },
+        {
+          "opening": "1 a couple",
+          "count": 502
+        },
+        {
+          "opening": "1 two people",
+          "count": 486
+        }
+      ],
+      "token_budget": 64,
+      "avg_budget_tokens": 62.78,
+      "captions_meeting_budget": 844660,
+      "coverage_rate": 0.8447,
+      "eligibility_rate": 0.8447,
+      "ineligible_count": 155340,
+      "truncation_rate": 0.8276,
+      "mean_retained_token_fraction": 0.8311,
+      "marginal_avg_token_gain": 0.9619
+    },
+    "128": {
+      "captions_analyzed": 1000000,
+      "avg_lexical_tokens": 77.61,
+      "avg_chars": 425.63,
+      "violation_rate": 1.0,
+      "repeated_4gram_rate": 0.2237,
+      "repeated_ngram_rate_by_n": {
+        "3": 0.5077,
+        "4": 0.2237,
+        "5": 0.1008,
+        "6": 0.0366,
+        "8": 0.0066
+      },
+      "within_caption_distinct_n_mean": {
+        "3": 0.984048,
+        "4": 0.994345,
+        "5": 0.997766,
+        "6": 0.999157,
+        "8": 0.999812
+      },
+      "within_caption_max_ngram_repeat_mean": {
+        "3": 1.5908,
+        "4": 1.2433,
+        "5": 1.1064,
+        "6": 1.0379,
+        "8": 1.0067
+      },
+      "distinct_n": {
+        "1": 0.000587,
+        "2": 0.009691,
+        "3": 0.03503,
+        "4": 0.081865
+      },
+      "ngram_top_k_mass": {
+        "1": 0.7421,
+        "2": 0.4539,
+        "3": 0.303,
+        "4": 0.2385
+      },
+      "ngram_distribution": {
+        "1": {
+          "entropy": 5.2078,
+          "entropy_miller_madow": 5.2081,
+          "effective_vocab": 182.68,
+          "effective_vocab_miller_madow": 182.74,
+          "hhi": 0.03177837,
+          "effective_simpson": 31.47,
+          "top_k_mass_by_k": {
+            "10": 0.4117,
+            "50": 0.6594,
+            "100": 0.7421,
+            "500": 0.8925,
+            "1000": 0.941,
+            "5000": 0.9932
+          }
+        },
+        "2": {
+          "entropy": 7.8732,
+          "entropy_miller_madow": 7.878,
+          "effective_vocab": 2625.83,
+          "effective_vocab_miller_madow": 2638.58,
+          "hhi": 0.00415907,
+          "effective_simpson": 240.44,
+          "top_k_mass_by_k": {
+            "10": 0.1464,
+            "50": 0.3762,
+            "100": 0.4539,
+            "500": 0.6055,
+            "1000": 0.6764,
+            "5000": 0.8265
+          }
+        },
+        "3": {
+          "entropy": 9.653,
+          "entropy_miller_madow": 9.6705,
+          "effective_vocab": 15568.57,
+          "effective_vocab_miller_madow": 15843.65,
+          "hhi": 0.00206671,
+          "effective_simpson": 483.86,
+          "top_k_mass_by_k": {
+            "10": 0.1185,
+            "50": 0.2538,
+            "100": 0.303,
+            "500": 0.4168,
+            "1000": 0.4756,
+            "5000": 0.6289
+          }
+        },
+        "4": {
+          "entropy": 10.9576,
+          "entropy_miller_madow": 10.9985,
+          "effective_vocab": 57386.36,
+          "effective_vocab_miller_madow": 59784.08,
+          "hhi": 0.00145886,
+          "effective_simpson": 685.47,
+          "top_k_mass_by_k": {
+            "10": 0.0995,
+            "50": 0.2013,
+            "100": 0.2385,
+            "500": 0.3263,
+            "1000": 0.3713,
+            "5000": 0.4958
+          }
+        }
+      },
+      "ngram_top_k_mass_by_k": {
+        "1": {
+          "10": 0.4117,
+          "50": 0.6594,
+          "100": 0.7421,
+          "500": 0.8925,
+          "1000": 0.941,
+          "5000": 0.9932
+        },
+        "2": {
+          "10": 0.1464,
+          "50": 0.3762,
+          "100": 0.4539,
+          "500": 0.6055,
+          "1000": 0.6764,
+          "5000": 0.8265
+        },
+        "3": {
+          "10": 0.1185,
+          "50": 0.2538,
+          "100": 0.303,
+          "500": 0.4168,
+          "1000": 0.4756,
+          "5000": 0.6289
+        },
+        "4": {
+          "10": 0.0995,
+          "50": 0.2013,
+          "100": 0.2385,
+          "500": 0.3263,
+          "1000": 0.3713,
+          "5000": 0.4958
+        }
+      },
+      "violations": {
+        "M_numbered_list_leak": 1000000,
+        "I_overlay_meta_leak": 794,
+        "E_thinking_leak": 10,
+        "N_stage_header_leak": 4,
+        "D_markdown_leak": 1
+      },
+      "violation_code_rate": {
+        "M_numbered_list_leak": 1.0,
+        "I_overlay_meta_leak": 0.0008,
+        "E_thinking_leak": 0.0,
+        "N_stage_header_leak": 0.0,
+        "D_markdown_leak": 0.0
+      },
+      "violation_severity_rate": {
+        "low": 1.0,
+        "moderate": 0.0008,
+        "critical": 0.0
+      },
+      "dedup": {
+        "normalized_unique_rate": 0.962479,
+        "normalized_duplicate_rate": 0.037521,
+        "duplicate_mass_rate": 0.061712,
+        "top_duplicate_mass": 0.0031,
+        "max_duplicate_count": 337,
+        "top_hashes": [
+          {
+            "hash": "b92afdd073a18388",
+            "count": 337
+          },
+          {
+            "hash": "32b418382d2b7f3e",
+            "count": 253
+          },
+          {
+            "hash": "34b0ebf7eaa11b4f",
+            "count": 89
+          },
+          {
+            "hash": "bdd528b0a7ee2ee3",
+            "count": 82
+          },
+          {
+            "hash": "a0b88df009c6621f",
+            "count": 72
+          },
+          {
+            "hash": "dff0bb1de08273bc",
+            "count": 61
+          },
+          {
+            "hash": "befa5442f1d143bd",
+            "count": 59
+          },
+          {
+            "hash": "5905c2d8d60578da",
+            "count": 52
+          },
+          {
+            "hash": "bf80be1a424ef7e4",
+            "count": 49
+          },
+          {
+            "hash": "f4885fde2c337a4f",
+            "count": 41
+          }
+        ]
+      },
+      "operational_formatting_rate": {
+        "numbered_list": 1.0,
+        "newline": 1.0,
+        "url": 0.0
+      },
+      "stratification_script_rate": {
+        "non_ascii": 0.0011
+      },
+      "debug_control_lexicon": {
+        "caption_rate": {
+          "count": 1.0,
+          "camera": 0.9992,
+          "spatial_relation": 0.7766,
+          "color": 0.7091,
+          "style": 0.2424,
+          "lighting": 0.2389,
+          "material": 0.2171,
+          "text_rendering": 0.0642
+        },
+        "token_hits": {
+          "count": 4215768,
+          "camera": 2802546,
+          "color": 1667450,
+          "spatial_relation": 1284841,
+          "material": 380963,
+          "lighting": 316589,
+          "style": 295831,
+          "text_rendering": 111408
+        },
+        "hits_per_caption": 11.0754,
+        "hits_per_64_lexical_tokens": 9.1337
+      },
+      "full_caption_normalized": {
+        "normalization_scope": "caption-balanced and/or per-token full-caption metrics; not a faithfulness score",
+        "caption_balanced_ngram_top_k_mass": {},
+        "within_caption_distinct_n_mean": {
+          "3": 0.984048,
+          "4": 0.994345,
+          "5": 0.997766,
+          "6": 0.999157,
+          "8": 0.999812
+        },
+        "repeated_ngram_rate_by_n": {
+          "3": 0.5077,
+          "4": 0.2237,
+          "5": 0.1008,
+          "6": 0.0366,
+          "8": 0.0066
+        },
+        "violation_indicator_per_64_lexical_tokens_mean": 0.854843,
+        "violation_codes_per_64_lexical_tokens_mean": 0.855513,
+        "control_hits_per_64_lexical_tokens": 9.1337
+      },
+      "prefix_raw": {
+        "entropy": 0.9002,
+        "entropy_miller_madow": 0.9009,
+        "effective_vocab": 2.46,
+        "effective_vocab_miller_madow": 2.46,
+        "hhi": 0.72391986,
+        "effective_simpson": 1.38,
+        "top_k_mass_by_k": {
+          "10": 0.9595,
+          "50": 0.9902,
+          "100": 0.9944,
+          "500": 0.9987,
+          "1000": 0.9995,
+          "5000": 1.0
+        },
+        "top_k_mass": 0.9944,
+        "top_10": [
+          {
+            "prefix": "1 the image features a",
+            "count": 849341
+          },
+          {
+            "prefix": "1 the image features two",
+            "count": 42780
+          },
+          {
+            "prefix": "1 the image features three",
+            "count": 13251
+          },
+          {
+            "prefix": "1 the image is a",
+            "count": 11846
+          },
+          {
+            "prefix": "1 the image shows a",
+            "count": 11043
+          },
+          {
+            "prefix": "1 a woman is standing",
+            "count": 8813
+          },
+          {
+            "prefix": "1 the image features an",
+            "count": 8789
+          },
+          {
+            "prefix": "1 the image features four",
+            "count": 4654
+          },
+          {
+            "prefix": "1 the image features the",
+            "count": 4617
+          },
+          {
+            "prefix": "1 the image displays a",
+            "count": 4319
+          }
+        ]
+      },
+      "prefix_content": {
+        "entropy": 0.9002,
+        "entropy_miller_madow": 0.9009,
+        "effective_vocab": 2.46,
+        "effective_vocab_miller_madow": 2.46,
+        "hhi": 0.72391986,
+        "effective_simpson": 1.38,
+        "top_k_mass_by_k": {
+          "10": 0.9595,
+          "50": 0.9902,
+          "100": 0.9944,
+          "500": 0.9987,
+          "1000": 0.9995,
+          "5000": 1.0
+        },
+        "top_k_mass": 0.9944,
+        "top_10": [
+          {
+            "prefix": "1 the image features a",
+            "count": 849341
+          },
+          {
+            "prefix": "1 the image features two",
+            "count": 42780
+          },
+          {
+            "prefix": "1 the image features three",
+            "count": 13251
+          },
+          {
+            "prefix": "1 the image is a",
+            "count": 11846
+          },
+          {
+            "prefix": "1 the image shows a",
+            "count": 11043
+          },
+          {
+            "prefix": "1 a woman is standing",
+            "count": 8813
+          },
+          {
+            "prefix": "1 the image features an",
+            "count": 8789
+          },
+          {
+            "prefix": "1 the image features four",
+            "count": 4654
+          },
+          {
+            "prefix": "1 the image features the",
+            "count": 4617
+          },
+          {
+            "prefix": "1 the image displays a",
+            "count": 4319
+          }
+        ]
+      },
+      "top_openings": [
+        {
+          "opening": "1 the image",
+          "count": 958387
+        },
+        {
+          "opening": "1 a woman",
+          "count": 14820
+        },
+        {
+          "opening": "1 a man",
+          "count": 9891
+        },
+        {
+          "opening": "1 a group",
+          "count": 4937
+        },
+        {
+          "opening": "1 a person",
+          "count": 4090
+        },
+        {
+          "opening": "1 a young",
+          "count": 2617
+        },
+        {
+          "opening": "1 two men",
+          "count": 682
+        },
+        {
+          "opening": "1 a bride",
+          "count": 591
+        },
+        {
+          "opening": "1 a couple",
+          "count": 502
+        },
+        {
+          "opening": "1 two people",
+          "count": 486
+        }
+      ],
+      "token_budget": 128,
+      "avg_budget_tokens": 77.61,
+      "captions_meeting_budget": 5929,
+      "coverage_rate": 0.0059,
+      "eligibility_rate": 0.0059,
+      "ineligible_count": 994071,
+      "truncation_rate": 0.0055,
+      "mean_retained_token_fraction": 0.9995,
+      "marginal_avg_token_gain": 0.2317
+    },
+    "256": {
+      "captions_analyzed": 1000000,
+      "avg_lexical_tokens": 77.69,
+      "avg_chars": 426.11,
+      "violation_rate": 1.0,
+      "repeated_4gram_rate": 0.2244,
+      "repeated_ngram_rate_by_n": {
+        "3": 0.5081,
+        "4": 0.2244,
+        "5": 0.1013,
+        "6": 0.0369,
+        "8": 0.0067
+      },
+      "within_caption_distinct_n_mean": {
+        "3": 0.984011,
+        "4": 0.994326,
+        "5": 0.997757,
+        "6": 0.999153,
+        "8": 0.999811
+      },
+      "within_caption_max_ngram_repeat_mean": {
+        "3": 1.5921,
+        "4": 1.2444,
+        "5": 1.1071,
+        "6": 1.0382,
+        "8": 1.0068
+      },
+      "distinct_n": {
+        "1": 0.000587,
+        "2": 0.009689,
+        "3": 0.035032,
+        "4": 0.081893
+      },
+      "ngram_top_k_mass": {
+        "1": 0.742,
+        "2": 0.4537,
+        "3": 0.3027,
+        "4": 0.2383
+      },
+      "ngram_distribution": {
+        "1": {
+          "entropy": 5.2082,
+          "entropy_miller_madow": 5.2085,
+          "effective_vocab": 182.77,
+          "effective_vocab_miller_madow": 182.82,
+          "hhi": 0.03178076,
+          "effective_simpson": 31.47,
+          "top_k_mass_by_k": {
+            "10": 0.4117,
+            "50": 0.6592,
+            "100": 0.742,
+            "500": 0.8925,
+            "1000": 0.941,
+            "5000": 0.9932
+          }
+        },
+        "2": {
+          "entropy": 7.8745,
+          "entropy_miller_madow": 7.8793,
+          "effective_vocab": 2629.24,
+          "effective_vocab_miller_madow": 2642.01,
+          "hhi": 0.00415456,
+          "effective_simpson": 240.7,
+          "top_k_mass_by_k": {
+            "10": 0.1463,
+            "50": 0.376,
+            "100": 0.4537,
+            "500": 0.6053,
+            "1000": 0.6762,
+            "5000": 0.8264
+          }
+        },
+        "3": {
+          "entropy": 9.655,
+          "entropy_miller_madow": 9.6725,
+          "effective_vocab": 15599.8,
+          "effective_vocab_miller_madow": 15875.45,
+          "hhi": 0.00206284,
+          "effective_simpson": 484.77,
+          "top_k_mass_by_k": {
+            "10": 0.1184,
+            "50": 0.2536,
+            "100": 0.3027,
+            "500": 0.4166,
+            "1000": 0.4754,
+            "5000": 0.6287
+          }
+        },
+        "4": {
+          "entropy": 10.9601,
+          "entropy_miller_madow": 11.0011,
+          "effective_vocab": 57533.77,
+          "effective_vocab_miller_madow": 59938.46,
+          "hhi": 0.00145596,
+          "effective_simpson": 686.83,
+          "top_k_mass_by_k": {
+            "10": 0.0994,
+            "50": 0.2011,
+            "100": 0.2383,
+            "500": 0.326,
+            "1000": 0.3711,
+            "5000": 0.4955
+          }
+        }
+      },
+      "ngram_top_k_mass_by_k": {
+        "1": {
+          "10": 0.4117,
+          "50": 0.6592,
+          "100": 0.742,
+          "500": 0.8925,
+          "1000": 0.941,
+          "5000": 0.9932
+        },
+        "2": {
+          "10": 0.1463,
+          "50": 0.376,
+          "100": 0.4537,
+          "500": 0.6053,
+          "1000": 0.6762,
+          "5000": 0.8264
+        },
+        "3": {
+          "10": 0.1184,
+          "50": 0.2536,
+          "100": 0.3027,
+          "500": 0.4166,
+          "1000": 0.4754,
+          "5000": 0.6287
+        },
+        "4": {
+          "10": 0.0994,
+          "50": 0.2011,
+          "100": 0.2383,
+          "500": 0.326,
+          "1000": 0.3711,
+          "5000": 0.4955
+        }
+      },
+      "violations": {
+        "M_numbered_list_leak": 1000000,
+        "I_overlay_meta_leak": 794,
+        "E_thinking_leak": 10,
+        "N_stage_header_leak": 4,
+        "D_markdown_leak": 1
+      },
+      "violation_code_rate": {
+        "M_numbered_list_leak": 1.0,
+        "I_overlay_meta_leak": 0.0008,
+        "E_thinking_leak": 0.0,
+        "N_stage_header_leak": 0.0,
+        "D_markdown_leak": 0.0
+      },
+      "violation_severity_rate": {
+        "low": 1.0,
+        "moderate": 0.0008,
+        "critical": 0.0
+      },
+      "dedup": {
+        "normalized_unique_rate": 0.96248,
+        "normalized_duplicate_rate": 0.03752,
+        "duplicate_mass_rate": 0.06171,
+        "top_duplicate_mass": 0.0031,
+        "max_duplicate_count": 337,
+        "top_hashes": [
+          {
+            "hash": "b92afdd073a18388",
+            "count": 337
+          },
+          {
+            "hash": "32b418382d2b7f3e",
+            "count": 253
+          },
+          {
+            "hash": "34b0ebf7eaa11b4f",
+            "count": 89
+          },
+          {
+            "hash": "bdd528b0a7ee2ee3",
+            "count": 82
+          },
+          {
+            "hash": "a0b88df009c6621f",
+            "count": 72
+          },
+          {
+            "hash": "dff0bb1de08273bc",
+            "count": 61
+          },
+          {
+            "hash": "befa5442f1d143bd",
+            "count": 59
+          },
+          {
+            "hash": "5905c2d8d60578da",
+            "count": 52
+          },
+          {
+            "hash": "bf80be1a424ef7e4",
+            "count": 49
+          },
+          {
+            "hash": "f4885fde2c337a4f",
+            "count": 41
+          }
+        ]
+      },
+      "operational_formatting_rate": {
+        "numbered_list": 1.0,
+        "newline": 1.0,
+        "url": 0.0
+      },
+      "stratification_script_rate": {
+        "non_ascii": 0.0011
+      },
+      "debug_control_lexicon": {
+        "caption_rate": {
+          "count": 1.0,
+          "camera": 0.9993,
+          "spatial_relation": 0.7769,
+          "color": 0.7091,
+          "style": 0.2424,
+          "lighting": 0.2389,
+          "material": 0.2171,
+          "text_rendering": 0.0642
+        },
+        "token_hits": {
+          "count": 4215957,
+          "camera": 2804117,
+          "color": 1667687,
+          "spatial_relation": 1287257,
+          "material": 381057,
+          "lighting": 316632,
+          "style": 295905,
+          "text_rendering": 111487
+        },
+        "hits_per_caption": 11.0801,
+        "hits_per_64_lexical_tokens": 9.1278
+      },
+      "full_caption_normalized": {
+        "normalization_scope": "caption-balanced and/or per-token full-caption metrics; not a faithfulness score",
+        "caption_balanced_ngram_top_k_mass": {},
+        "within_caption_distinct_n_mean": {
+          "3": 0.984011,
+          "4": 0.994326,
+          "5": 0.997757,
+          "6": 0.999153,
+          "8": 0.999811
+        },
+        "repeated_ngram_rate_by_n": {
+          "3": 0.5081,
+          "4": 0.2244,
+          "5": 0.1013,
+          "6": 0.0369,
+          "8": 0.0067
+        },
+        "violation_indicator_per_64_lexical_tokens_mean": 0.854574,
+        "violation_codes_per_64_lexical_tokens_mean": 0.855244,
+        "control_hits_per_64_lexical_tokens": 9.1278
+      },
+      "prefix_raw": {
+        "entropy": 0.9002,
+        "entropy_miller_madow": 0.9009,
+        "effective_vocab": 2.46,
+        "effective_vocab_miller_madow": 2.46,
+        "hhi": 0.72391986,
+        "effective_simpson": 1.38,
+        "top_k_mass_by_k": {
+          "10": 0.9595,
+          "50": 0.9902,
+          "100": 0.9944,
+          "500": 0.9987,
+          "1000": 0.9995,
+          "5000": 1.0
+        },
+        "top_k_mass": 0.9944,
+        "top_10": [
+          {
+            "prefix": "1 the image features a",
+            "count": 849341
+          },
+          {
+            "prefix": "1 the image features two",
+            "count": 42780
+          },
+          {
+            "prefix": "1 the image features three",
+            "count": 13251
+          },
+          {
+            "prefix": "1 the image is a",
+            "count": 11846
+          },
+          {
+            "prefix": "1 the image shows a",
+            "count": 11043
+          },
+          {
+            "prefix": "1 a woman is standing",
+            "count": 8813
+          },
+          {
+            "prefix": "1 the image features an",
+            "count": 8789
+          },
+          {
+            "prefix": "1 the image features four",
+            "count": 4654
+          },
+          {
+            "prefix": "1 the image features the",
+            "count": 4617
+          },
+          {
+            "prefix": "1 the image displays a",
+            "count": 4319
+          }
+        ]
+      },
+      "prefix_content": {
+        "entropy": 0.9002,
+        "entropy_miller_madow": 0.9009,
+        "effective_vocab": 2.46,
+        "effective_vocab_miller_madow": 2.46,
+        "hhi": 0.72391986,
+        "effective_simpson": 1.38,
+        "top_k_mass_by_k": {
+          "10": 0.9595,
+          "50": 0.9902,
+          "100": 0.9944,
+          "500": 0.9987,
+          "1000": 0.9995,
+          "5000": 1.0
+        },
+        "top_k_mass": 0.9944,
+        "top_10": [
+          {
+            "prefix": "1 the image features a",
+            "count": 849341
+          },
+          {
+            "prefix": "1 the image features two",
+            "count": 42780
+          },
+          {
+            "prefix": "1 the image features three",
+            "count": 13251
+          },
+          {
+            "prefix": "1 the image is a",
+            "count": 11846
+          },
+          {
+            "prefix": "1 the image shows a",
+            "count": 11043
+          },
+          {
+            "prefix": "1 a woman is standing",
+            "count": 8813
+          },
+          {
+            "prefix": "1 the image features an",
+            "count": 8789
+          },
+          {
+            "prefix": "1 the image features four",
+            "count": 4654
+          },
+          {
+            "prefix": "1 the image features the",
+            "count": 4617
+          },
+          {
+            "prefix": "1 the image displays a",
+            "count": 4319
+          }
+        ]
+      },
+      "top_openings": [
+        {
+          "opening": "1 the image",
+          "count": 958387
+        },
+        {
+          "opening": "1 a woman",
+          "count": 14820
+        },
+        {
+          "opening": "1 a man",
+          "count": 9891
+        },
+        {
+          "opening": "1 a group",
+          "count": 4937
+        },
+        {
+          "opening": "1 a person",
+          "count": 4090
+        },
+        {
+          "opening": "1 a young",
+          "count": 2617
+        },
+        {
+          "opening": "1 two men",
+          "count": 682
+        },
+        {
+          "opening": "1 a bride",
+          "count": 591
+        },
+        {
+          "opening": "1 a couple",
+          "count": 502
+        },
+        {
+          "opening": "1 two people",
+          "count": 486
+        }
+      ],
+      "token_budget": 256,
+      "avg_budget_tokens": 77.69,
+      "captions_meeting_budget": 0,
+      "coverage_rate": 0.0,
+      "eligibility_rate": 0.0,
+      "ineligible_count": 1000000,
+      "truncation_rate": 0.0,
+      "mean_retained_token_fraction": 1.0,
+      "marginal_avg_token_gain": 0.0006
+    }
+  },
+  "budget_curve_features": {
+    "distinct_n.2": {
+      "metric": "distinct_n.2",
+      "direction": "up",
+      "normalization_basis": "within_surface_budget_range",
+      "series": {
+        "16": 0.024096,
+        "32": 0.017176,
+        "64": 0.011034,
+        "128": 0.009691,
+        "256": 0.009689
+      },
+      "relative_progress_curve": {
+        "16": 1.0,
+        "32": 0.5197,
+        "64": 0.0934,
+        "128": 0.0001,
+        "256": 0.0
+      },
+      "relative_gap_curve": {
+        "16": 0.0,
+        "32": 0.4803,
+        "64": 0.9066,
+        "128": 0.9999,
+        "256": 1.0
+      },
+      "relative_progress_auc": 0.104,
+      "relative_gap_auc": 0.896,
+      "budget_at_50pct_relative_progress": 16.0,
+      "budget_at_75pct_relative_progress": 16.0,
+      "budget_at_90pct_relative_progress": 16.0,
+      "observed_best": 0.024096,
+      "observed_worst": 0.009689
+    },
+    "distinct_n.3": {
+      "metric": "distinct_n.3",
+      "direction": "up",
+      "normalization_basis": "within_surface_budget_range",
+      "series": {
+        "16": 0.072465,
+        "32": 0.055598,
+        "64": 0.03846,
+        "128": 0.03503,
+        "256": 0.035032
+      },
+      "relative_progress_curve": {
+        "16": 1.0,
+        "32": 0.5494,
+        "64": 0.0916,
+        "128": 0.0,
+        "256": 0.0001
+      },
+      "relative_gap_curve": {
+        "16": 0.0,
+        "32": 0.4506,
+        "64": 0.9084,
+        "128": 1.0,
+        "256": 0.9999
+      },
+      "relative_progress_auc": 0.1066,
+      "relative_gap_auc": 0.8934,
+      "budget_at_50pct_relative_progress": 16.0,
+      "budget_at_75pct_relative_progress": 16.0,
+      "budget_at_90pct_relative_progress": 16.0,
+      "observed_best": 0.072465,
+      "observed_worst": 0.03503
+    },
+    "ngram_top_k_mass.2": {
+      "metric": "ngram_top_k_mass.2",
+      "direction": "down",
+      "normalization_basis": "within_surface_budget_range",
+      "series": {
+        "16": 0.4834,
+        "32": 0.453,
+        "64": 0.4665,
+        "128": 0.4539,
+        "256": 0.4537
+      },
+      "relative_progress_curve": {
+        "16": 0.0,
+        "32": 1.0,
+        "64": 0.5559,
+        "128": 0.9704,
+        "256": 0.977
+      },
+      "relative_gap_curve": {
+        "16": 1.0,
+        "32": 0.0,
+        "64": 0.4441,
+        "128": 0.0296,
+        "256": 0.023
+      },
+      "relative_progress_auc": 0.8599,
+      "relative_gap_auc": 0.1401,
+      "budget_at_50pct_relative_progress": 24.0,
+      "budget_at_75pct_relative_progress": 28.0,
+      "budget_at_90pct_relative_progress": 30.4,
+      "observed_best": 0.453,
+      "observed_worst": 0.4834
+    },
+    "ngram_top_k_mass.3": {
+      "metric": "ngram_top_k_mass.3",
+      "direction": "down",
+      "normalization_basis": "within_surface_budget_range",
+      "series": {
+        "16": 0.321,
+        "32": 0.2817,
+        "64": 0.3153,
+        "128": 0.303,
+        "256": 0.3027
+      },
+      "relative_progress_curve": {
+        "16": 0.0,
+        "32": 1.0,
+        "64": 0.145,
+        "128": 0.458,
+        "256": 0.4656
+      },
+      "relative_gap_curve": {
+        "16": 1.0,
+        "32": 0.0,
+        "64": 0.855,
+        "128": 0.542,
+        "256": 0.5344
+      },
+      "relative_progress_auc": 0.4364,
+      "relative_gap_auc": 0.5636,
+      "budget_at_50pct_relative_progress": 24.0,
+      "budget_at_75pct_relative_progress": 28.0,
+      "budget_at_90pct_relative_progress": 30.4,
+      "observed_best": 0.2817,
+      "observed_worst": 0.321
+    },
+    "repeated_4gram_rate": {
+      "metric": "repeated_4gram_rate",
+      "direction": "down",
+      "normalization_basis": "within_surface_budget_range",
+      "series": {
+        "16": 0.0004,
+        "32": 0.0144,
+        "64": 0.0837,
+        "128": 0.2237,
+        "256": 0.2244
+      },
+      "relative_progress_curve": {
+        "16": 1.0,
+        "32": 0.9375,
+        "64": 0.6281,
+        "128": 0.0031,
+        "256": 0.0
+      },
+      "relative_gap_curve": {
+        "16": 0.0,
+        "32": 0.0625,
+        "64": 0.3719,
+        "128": 0.9969,
+        "256": 1.0
+      },
+      "relative_progress_auc": 0.254,
+      "relative_gap_auc": 0.746,
+      "budget_at_50pct_relative_progress": 16.0,
+      "budget_at_75pct_relative_progress": 16.0,
+      "budget_at_90pct_relative_progress": 16.0,
+      "observed_best": 0.0004,
+      "observed_worst": 0.2244
+    },
+    "violation_rate": {
+      "metric": "violation_rate",
+      "direction": "down",
+      "normalization_basis": "within_surface_budget_range",
+      "series": {
+        "16": 1.0,
+        "32": 1.0,
+        "64": 1.0,
+        "128": 1.0,
+        "256": 1.0
+      },
+      "relative_progress_curve": {
+        "16": 0.0,
+        "32": 0.0,
+        "64": 0.0,
+        "128": 0.0,
+        "256": 0.0
+      },
+      "relative_gap_curve": {
+        "16": 1.0,
+        "32": 1.0,
+        "64": 1.0,
+        "128": 1.0,
+        "256": 1.0
+      },
+      "relative_progress_auc": 0.0,
+      "relative_gap_auc": 1.0,
+      "budget_at_50pct_relative_progress": null,
+      "budget_at_75pct_relative_progress": null,
+      "budget_at_90pct_relative_progress": null,
+      "observed_best": 1.0,
+      "observed_worst": 1.0
+    }
+  }
+}

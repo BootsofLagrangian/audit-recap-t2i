@@ -1,0 +1,5394 @@
+{
+  "fair_root": "<LOCAL_CACHE>/caption-fair-slices",
+  "max_pairs": 1000000,
+  "seed": 0,
+  "max_records": 1000000,
+  "budget_tokenizer_backend": "lexical",
+  "budget_tokenizer_name": null,
+  "job_count": 2,
+  "results": [
+    {
+      "job": {
+        "comparison": "laion_pop_llama32_paired",
+        "family": "laion_pop",
+        "tier": "paired_same_image_same_gate",
+        "role": "local",
+        "surface": "ours_laion_pop",
+        "input": "<LOCAL_CACHE>/caption-fair-slices/laion_pop_llama32_paired/n1000000_seed0/ours_laion_pop.jsonl",
+        "paired_count": 351384,
+        "summary_path": "<LOCAL_CACHE>/caption-fair-slices/laion_pop_llama32_paired/n1000000_seed0/summary.json"
+      },
+      "summary": {
+        "inputs": [
+          "<LOCAL_CACHE>/caption-fair-slices/laion_pop_llama32_paired/n1000000_seed0/ours_laion_pop.jsonl"
+        ],
+        "hf_dataset": null,
+        "hf_config": null,
+        "hf_split": "train",
+        "records_seen": 351384,
+        "captions_loaded": 351384,
+        "caption_field": "caption",
+        "caption_field_requested": "auto",
+        "caption_fields_observed": {
+          "caption": 351384
+        },
+        "budget_tokenizer": {
+          "backend": "lexical",
+          "name": null
+        },
+        "prefix_tokens": 5,
+        "top_k": 100,
+        "top_ks": [
+          10,
+          100,
+          1000
+        ],
+        "ngram_orders": [
+          1,
+          2,
+          3
+        ],
+        "repeat_ngram_orders": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "token_budgets": [
+          16,
+          32,
+          64,
+          128,
+          256
+        ],
+        "metric_provenance": {
+          "main_or_appendix_metrics": {
+            "budget_eligibility": {
+              "fields": [
+                "coverage_rate",
+                "eligibility_rate",
+                "captions_meeting_budget"
+              ],
+              "claim_scope": "comparability_gate",
+              "citation_role": "length-controlled comparison protocol; exact estimator defined in this work"
+            },
+            "distinct_n": {
+              "fields": [
+                "distinct_n.1",
+                "distinct_n.2",
+                "distinct_n.3"
+              ],
+              "claim_scope": "lexical_diversity_proxy",
+              "citation_keys": [
+                "li2016diversity"
+              ]
+            },
+            "ngram_entropy_and_top_mass": {
+              "fields": [
+                "ngram_distribution",
+                "ngram_top_k_mass",
+                "ngram_top_k_mass_by_k"
+              ],
+              "claim_scope": "surface_concentration_proxy",
+              "citation_keys": [
+                "shannon1948communication",
+                "miller1955note"
+              ]
+            },
+            "prefix_entropy_and_top_mass": {
+              "fields": [
+                "prefix_raw",
+                "prefix_content",
+                "top_openings"
+              ],
+              "claim_scope": "opening_template_concentration_proxy",
+              "citation_role": "entropy/top-mass concentration estimator; caption-register application defined in this work",
+              "citation_keys": [
+                "shannon1948communication",
+                "miller1955note"
+              ]
+            },
+            "within_caption_repetition": {
+              "fields": [
+                "repeated_ngram_rate_by_n",
+                "within_caption_distinct_n_mean",
+                "within_caption_max_ngram_repeat_mean",
+                "full_caption_normalized"
+              ],
+              "orders": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "claim_scope": "within_caption_redundancy_proxy",
+              "citation_role": "n-gram repetition diagnostic; related to distinct-n diversity practice",
+              "citation_keys": [
+                "li2016diversity"
+              ]
+            },
+            "caption_balanced_top_mass": {
+              "fields": [
+                "full_caption_normalized.caption_balanced_ngram_top_k_mass"
+              ],
+              "claim_scope": "length_normalized_surface_concentration_proxy",
+              "citation_role": "top-k mass concentration estimator applied with caption-balanced averaging",
+              "citation_keys": [
+                "shannon1948communication",
+                "miller1955note"
+              ]
+            },
+            "dedup": {
+              "fields": [
+                "dedup"
+              ],
+              "claim_scope": "exact_normalized_duplicate_collapse",
+              "citation_role": "dataset deduplication/collapse audit; exact hash estimator defined in this work"
+            },
+            "violation_code_rate": {
+              "fields": [
+                "violation_rate",
+                "violation_code_rate",
+                "violation_severity_rate"
+              ],
+              "claim_scope": "operational_caption_register_and_instruction_artifact_audit",
+              "citation_role": "regex taxonomy is project-defined and must be reported as an operational audit, not a standard metric"
+            }
+          },
+          "debug_or_stratification_only": {
+            "operational_formatting_rate": {
+              "claim_scope": "debug_artifact_counter",
+              "citation_role": "not a headline metric"
+            },
+            "debug_control_lexicon": {
+              "claim_scope": "weak_control_vocabulary_diagnostic",
+              "citation_role": "appendix/debug only unless replaced by validated CBU/SCU extractor"
+            },
+            "stratification_script_rate": {
+              "claim_scope": "language_script_stratification",
+              "citation_role": "stratification only; not a quality score"
+            }
+          },
+          "model_based_metrics_not_computed_here": {
+            "vendi": {
+              "claim_scope": "embedding_semantic_diversity",
+              "citation_keys": [
+                "friedman2023vendi"
+              ]
+            },
+            "mauve_or_distribution_frontier": {
+              "claim_scope": "prompt_caption_distribution_gap",
+              "citation_keys": [
+                "pillutla2021mauve"
+              ]
+            },
+            "clipscore_or_long_context_retrieval_margin": {
+              "claim_scope": "image_conditioned_compatibility_proxy",
+              "citation_keys": [
+                "hessel2021clipscore"
+              ]
+            }
+          }
+        },
+        "full_length_reference": {
+          "captions_analyzed": 351384,
+          "avg_lexical_tokens": 182.81,
+          "avg_chars": 1118.46,
+          "violation_rate": 0.0278,
+          "repeated_4gram_rate": 0.0699,
+          "repeated_ngram_rate_by_n": {
+            "3": 0.2828,
+            "4": 0.0699,
+            "5": 0.0259,
+            "6": 0.0143
+          },
+          "within_caption_distinct_n_mean": {
+            "3": 0.99689,
+            "4": 0.999073,
+            "5": 0.999515,
+            "6": 0.999666
+          },
+          "within_caption_max_ngram_repeat_mean": {
+            "3": 1.3231,
+            "4": 1.0827,
+            "5": 1.0354,
+            "6": 1.0228
+          },
+          "distinct_n": {
+            "1": 0.002072,
+            "2": 0.047229,
+            "3": 0.20892
+          },
+          "ngram_top_k_mass": {
+            "1": 0.4906,
+            "2": 0.128,
+            "3": 0.0369
+          },
+          "ngram_distribution": {
+            "1": {
+              "entropy": 6.6456,
+              "entropy_miller_madow": 6.6467,
+              "effective_vocab": 769.41,
+              "effective_vocab_miller_madow": 770.21,
+              "hhi": 0.01249663,
+              "effective_simpson": 80.02,
+              "top_k_mass_by_k": {
+                "10": 0.2638,
+                "100": 0.4906,
+                "1000": 0.8216
+              }
+            },
+            "2": {
+              "entropy": 10.9618,
+              "entropy_miller_madow": 10.9854,
+              "effective_vocab": 57630.25,
+              "effective_vocab_miller_madow": 59007.36,
+              "hhi": 0.00034361,
+              "effective_simpson": 2910.25,
+              "top_k_mass_by_k": {
+                "10": 0.0392,
+                "100": 0.128,
+                "1000": 0.3101
+              }
+            },
+            "3": {
+              "entropy": 13.8684,
+              "entropy_miller_madow": 13.9728,
+              "effective_vocab": 1054296.96,
+              "effective_vocab_miller_madow": 1170386.81,
+              "hhi": 2.978e-05,
+              "effective_simpson": 33584.52,
+              "top_k_mass_by_k": {
+                "10": 0.0092,
+                "100": 0.0369,
+                "1000": 0.1132
+              }
+            }
+          },
+          "ngram_top_k_mass_by_k": {
+            "1": {
+              "10": 0.2638,
+              "100": 0.4906,
+              "1000": 0.8216
+            },
+            "2": {
+              "10": 0.0392,
+              "100": 0.128,
+              "1000": 0.3101
+            },
+            "3": {
+              "10": 0.0092,
+              "100": 0.0369,
+              "1000": 0.1132
+            }
+          },
+          "violations": {
+            "I_overlay_meta_leak": 5200,
+            "J_meta_statement": 4363,
+            "D_markdown_leak": 68,
+            "E_thinking_leak": 61,
+            "G_meta_instruction": 58,
+            "F_repetition": 47,
+            "M_numbered_list_leak": 45,
+            "L_tag_verbatim": 44,
+            "N_stage_header_leak": 8,
+            "H_detection_meta_leak": 3
+          },
+          "violation_code_rate": {
+            "I_overlay_meta_leak": 0.0148,
+            "J_meta_statement": 0.0124,
+            "D_markdown_leak": 0.0002,
+            "E_thinking_leak": 0.0002,
+            "G_meta_instruction": 0.0002,
+            "F_repetition": 0.0001,
+            "M_numbered_list_leak": 0.0001,
+            "L_tag_verbatim": 0.0001,
+            "N_stage_header_leak": 0.0,
+            "H_detection_meta_leak": 0.0
+          },
+          "violation_severity_rate": {
+            "moderate": 0.0274,
+            "low": 0.0004,
+            "critical": 0.0002,
+            "severe": 0.0001
+          },
+          "dedup": {
+            "normalized_unique_rate": 0.999997,
+            "normalized_duplicate_rate": 3e-06,
+            "duplicate_mass_rate": 6e-06,
+            "top_duplicate_mass": 0.0003,
+            "max_duplicate_count": 2,
+            "top_hashes": [
+              {
+                "hash": "605b2fd8660b6f65",
+                "count": 2
+              },
+              {
+                "hash": "25ac4e6c9d615222",
+                "count": 1
+              },
+              {
+                "hash": "4409888e24f866cb",
+                "count": 1
+              },
+              {
+                "hash": "fccff8e75c653815",
+                "count": 1
+              },
+              {
+                "hash": "17d56bc37f107547",
+                "count": 1
+              },
+              {
+                "hash": "7622953c88638b15",
+                "count": 1
+              },
+              {
+                "hash": "1a82a194f825850b",
+                "count": 1
+              },
+              {
+                "hash": "644406b909aaacef",
+                "count": 1
+              },
+              {
+                "hash": "d719bc96b928a4c4",
+                "count": 1
+              },
+              {
+                "hash": "8b0b84c368fcbf09",
+                "count": 1
+              }
+            ]
+          },
+          "operational_formatting_rate": {
+            "newline": 0.2415,
+            "url": 0.011,
+            "bullet": 0.0002,
+            "numbered_list": 0.0001,
+            "html_entity": 0.0
+          },
+          "stratification_script_rate": {
+            "non_ascii": 0.5579,
+            "cjk": 0.0141,
+            "emoji": 0.0
+          },
+          "debug_control_lexicon": {
+            "caption_rate": {
+              "spatial_relation": 0.9976,
+              "lighting": 0.9884,
+              "color": 0.9841,
+              "camera": 0.8625,
+              "material": 0.6993,
+              "count": 0.4995,
+              "text_rendering": 0.4022,
+              "style": 0.3791
+            },
+            "token_hits": {
+              "spatial_relation": 2171776,
+              "color": 2046580,
+              "lighting": 1259004,
+              "camera": 700883,
+              "material": 636033,
+              "count": 336221,
+              "text_rendering": 209161,
+              "style": 194715
+            },
+            "hits_per_caption": 21.4989,
+            "hits_per_64_lexical_tokens": 7.5267
+          },
+          "full_caption_normalized": {
+            "normalization_scope": "caption-balanced and/or per-token full-caption metrics; not a faithfulness score",
+            "caption_balanced_ngram_top_k_mass": {
+              "1": {
+                "10": 0.2648,
+                "100": 0.493175,
+                "1000": 0.82486
+              },
+              "2": {
+                "10": 0.039524,
+                "100": 0.129469,
+                "1000": 0.313531
+              },
+              "3": {
+                "10": 0.009405,
+                "100": 0.037694,
+                "1000": 0.114948
+              }
+            },
+            "within_caption_distinct_n_mean": {
+              "3": 0.99689,
+              "4": 0.999073,
+              "5": 0.999515,
+              "6": 0.999666
+            },
+            "repeated_ngram_rate_by_n": {
+              "3": 0.2828,
+              "4": 0.0699,
+              "5": 0.0259,
+              "6": 0.0143
+            },
+            "violation_indicator_per_64_lexical_tokens_mean": 0.009544,
+            "violation_codes_per_64_lexical_tokens_mean": 0.009669,
+            "control_hits_per_64_lexical_tokens": 7.5267
+          },
+          "prefix_raw": {
+            "entropy": 10.7156,
+            "entropy_miller_madow": 10.9645,
+            "effective_vocab": 45053.38,
+            "effective_vocab_miller_madow": 57785.18,
+            "hhi": 0.00056323,
+            "effective_simpson": 1775.47,
+            "top_k_mass_by_k": {
+              "10": 0.0574,
+              "100": 0.156,
+              "1000": 0.2877
+            },
+            "top_k_mass": 0.156,
+            "top_10": [
+              {
+                "prefix": "a young woman with long",
+                "count": 3828
+              },
+              {
+                "prefix": "a close up portrait captures",
+                "count": 2745
+              },
+              {
+                "prefix": "a close up view captures",
+                "count": 2678
+              },
+              {
+                "prefix": "a woman with long dark",
+                "count": 1743
+              },
+              {
+                "prefix": "a woman stands in a",
+                "count": 1732
+              },
+              {
+                "prefix": "a woman with shoulder length",
+                "count": 1583
+              },
+              {
+                "prefix": "a middle aged man with",
+                "count": 1568
+              },
+              {
+                "prefix": "a woman stands in profile",
+                "count": 1555
+              },
+              {
+                "prefix": "a close up portrait of",
+                "count": 1374
+              },
+              {
+                "prefix": "a woman with long wavy",
+                "count": 1365
+              }
+            ]
+          },
+          "prefix_content": {
+            "entropy": 11.4134,
+            "entropy_miller_madow": 11.7265,
+            "effective_vocab": 90529.33,
+            "effective_vocab_miller_madow": 123810.08,
+            "hhi": 0.00020562,
+            "effective_simpson": 4863.42,
+            "top_k_mass_by_k": {
+              "10": 0.033,
+              "100": 0.1,
+              "1000": 0.1999
+            },
+            "top_k_mass": 0.1,
+            "top_10": [
+              {
+                "prefix": "close up portrait captures a",
+                "count": 2120
+              },
+              {
+                "prefix": "close up view captures the",
+                "count": 1549
+              },
+              {
+                "prefix": "close up portrait of a",
+                "count": 1287
+              },
+              {
+                "prefix": "woman with fair skin and",
+                "count": 1154
+              },
+              {
+                "prefix": "young woman with fair skin",
+                "count": 1046
+              },
+              {
+                "prefix": "close up view captures a",
+                "count": 971
+              },
+              {
+                "prefix": "young woman with long wavy",
+                "count": 889
+              },
+              {
+                "prefix": "woman with long dark hair",
+                "count": 870
+              },
+              {
+                "prefix": "young woman with long dark",
+                "count": 859
+              },
+              {
+                "prefix": "young woman with long straight",
+                "count": 847
+              }
+            ]
+          },
+          "top_openings": [
+            {
+              "opening": "young woman with",
+              "count": 9561
+            },
+            {
+              "opening": "woman with long",
+              "count": 5662
+            },
+            {
+              "opening": "close up portrait",
+              "count": 4826
+            },
+            {
+              "opening": "close up view",
+              "count": 4478
+            },
+            {
+              "opening": "woman stands in",
+              "count": 3865
+            },
+            {
+              "opening": "young girl with",
+              "count": 3385
+            },
+            {
+              "opening": "young man with",
+              "count": 2745
+            },
+            {
+              "opening": "woman with dark",
+              "count": 2516
+            },
+            {
+              "opening": "man with short",
+              "count": 1795
+            },
+            {
+              "opening": "middle aged man",
+              "count": 1740
+            }
+          ]
+        },
+        "length_controlled": {
+          "16": {
+            "captions_analyzed": 351384,
+            "avg_lexical_tokens": 16.0,
+            "avg_chars": 92.96,
+            "violation_rate": 0.0126,
+            "repeated_4gram_rate": 0.0,
+            "repeated_ngram_rate_by_n": {
+              "3": 0.0001,
+              "4": 0.0,
+              "5": 0.0,
+              "6": 0.0
+            },
+            "within_caption_distinct_n_mean": {
+              "3": 0.999992,
+              "4": 1.0,
+              "5": 1.0,
+              "6": 1.0
+            },
+            "within_caption_max_ngram_repeat_mean": {
+              "3": 1.0001,
+              "4": 1.0,
+              "5": 1.0,
+              "6": 1.0
+            },
+            "distinct_n": {
+              "1": 0.004048,
+              "2": 0.087748,
+              "3": 0.268272
+            },
+            "ngram_top_k_mass": {
+              "1": 0.5522,
+              "2": 0.2114,
+              "3": 0.0918
+            },
+            "ngram_distribution": {
+              "1": {
+                "entropy": 6.2594,
+                "entropy_miller_madow": 6.2614,
+                "effective_vocab": 522.9,
+                "effective_vocab_miller_madow": 523.96,
+                "hhi": 0.01937836,
+                "effective_simpson": 51.6,
+                "top_k_mass_by_k": {
+                  "10": 0.2856,
+                  "100": 0.5522,
+                  "1000": 0.8651
+                }
+              },
+              "2": {
+                "entropy": 9.7869,
+                "entropy_miller_madow": 9.8308,
+                "effective_vocab": 17798.82,
+                "effective_vocab_miller_madow": 18597.11,
+                "hhi": 0.00098277,
+                "effective_simpson": 1017.53,
+                "top_k_mass_by_k": {
+                  "10": 0.0742,
+                  "100": 0.2114,
+                  "1000": 0.4455
+                }
+              },
+              "3": {
+                "entropy": 11.9556,
+                "entropy_miller_madow": 12.0898,
+                "effective_vocab": 155690.71,
+                "effective_vocab_miller_madow": 178039.79,
+                "hhi": 0.00015354,
+                "effective_simpson": 6512.88,
+                "top_k_mass_by_k": {
+                  "10": 0.0239,
+                  "100": 0.0918,
+                  "1000": 0.2295
+                }
+              }
+            },
+            "ngram_top_k_mass_by_k": {
+              "1": {
+                "10": 0.2856,
+                "100": 0.5522,
+                "1000": 0.8651
+              },
+              "2": {
+                "10": 0.0742,
+                "100": 0.2114,
+                "1000": 0.4455
+              },
+              "3": {
+                "10": 0.0239,
+                "100": 0.0918,
+                "1000": 0.2295
+              }
+            },
+            "violations": {
+              "J_meta_statement": 4354,
+              "I_overlay_meta_leak": 58,
+              "N_stage_header_leak": 1
+            },
+            "violation_code_rate": {
+              "J_meta_statement": 0.0124,
+              "I_overlay_meta_leak": 0.0002,
+              "N_stage_header_leak": 0.0
+            },
+            "violation_severity_rate": {
+              "moderate": 0.0126,
+              "critical": 0.0
+            },
+            "dedup": {
+              "normalized_unique_rate": 0.998788,
+              "normalized_duplicate_rate": 0.001212,
+              "duplicate_mass_rate": 0.00216,
+              "top_duplicate_mass": 0.0008,
+              "max_duplicate_count": 12,
+              "top_hashes": [
+                {
+                  "hash": "9d3fb8b4625e4065",
+                  "count": 12
+                },
+                {
+                  "hash": "cc912d1727d25318",
+                  "count": 8
+                },
+                {
+                  "hash": "b45a998200a4199c",
+                  "count": 7
+                },
+                {
+                  "hash": "fee694a7fb53f12a",
+                  "count": 7
+                },
+                {
+                  "hash": "c01f384996bdfece",
+                  "count": 5
+                },
+                {
+                  "hash": "d06f1150062ef34a",
+                  "count": 5
+                },
+                {
+                  "hash": "d9e8f63f95680537",
+                  "count": 5
+                },
+                {
+                  "hash": "4ec5217d3f79a343",
+                  "count": 4
+                },
+                {
+                  "hash": "530d08ec40c7d646",
+                  "count": 4
+                },
+                {
+                  "hash": "b1b2f32974806e5c",
+                  "count": 4
+                }
+              ]
+            },
+            "operational_formatting_rate": {
+              "newline": 0.0
+            },
+            "stratification_script_rate": {
+              "non_ascii": 0.0155,
+              "cjk": 0.0
+            },
+            "debug_control_lexicon": {
+              "caption_rate": {
+                "color": 0.4913,
+                "spatial_relation": 0.2672,
+                "material": 0.196,
+                "lighting": 0.1449,
+                "camera": 0.1443,
+                "count": 0.1374,
+                "style": 0.0977,
+                "text_rendering": 0.0066
+              },
+              "token_hits": {
+                "color": 218246,
+                "spatial_relation": 102715,
+                "material": 74209,
+                "camera": 70639,
+                "lighting": 55596,
+                "count": 51789,
+                "style": 40779,
+                "text_rendering": 2477
+              },
+              "hits_per_caption": 1.7543,
+              "hits_per_64_lexical_tokens": 7.0175
+            },
+            "full_caption_normalized": {
+              "normalization_scope": "caption-balanced and/or per-token full-caption metrics; not a faithfulness score",
+              "caption_balanced_ngram_top_k_mass": {},
+              "within_caption_distinct_n_mean": {
+                "3": 0.999992,
+                "4": 1.0,
+                "5": 1.0,
+                "6": 1.0
+              },
+              "repeated_ngram_rate_by_n": {
+                "3": 0.0001,
+                "4": 0.0,
+                "5": 0.0,
+                "6": 0.0
+              },
+              "violation_indicator_per_64_lexical_tokens_mean": 0.050224,
+              "violation_codes_per_64_lexical_tokens_mean": 0.050236,
+              "control_hits_per_64_lexical_tokens": 7.0175
+            },
+            "prefix_raw": {
+              "entropy": 10.7156,
+              "entropy_miller_madow": 10.9645,
+              "effective_vocab": 45053.38,
+              "effective_vocab_miller_madow": 57785.18,
+              "hhi": 0.00056323,
+              "effective_simpson": 1775.47,
+              "top_k_mass_by_k": {
+                "10": 0.0574,
+                "100": 0.156,
+                "1000": 0.2877
+              },
+              "top_k_mass": 0.156,
+              "top_10": [
+                {
+                  "prefix": "a young woman with long",
+                  "count": 3828
+                },
+                {
+                  "prefix": "a close up portrait captures",
+                  "count": 2745
+                },
+                {
+                  "prefix": "a close up view captures",
+                  "count": 2678
+                },
+                {
+                  "prefix": "a woman with long dark",
+                  "count": 1743
+                },
+                {
+                  "prefix": "a woman stands in a",
+                  "count": 1732
+                },
+                {
+                  "prefix": "a woman with shoulder length",
+                  "count": 1583
+                },
+                {
+                  "prefix": "a middle aged man with",
+                  "count": 1568
+                },
+                {
+                  "prefix": "a woman stands in profile",
+                  "count": 1555
+                },
+                {
+                  "prefix": "a close up portrait of",
+                  "count": 1374
+                },
+                {
+                  "prefix": "a woman with long wavy",
+                  "count": 1365
+                }
+              ]
+            },
+            "prefix_content": {
+              "entropy": 11.4134,
+              "entropy_miller_madow": 11.7265,
+              "effective_vocab": 90529.33,
+              "effective_vocab_miller_madow": 123810.08,
+              "hhi": 0.00020562,
+              "effective_simpson": 4863.42,
+              "top_k_mass_by_k": {
+                "10": 0.033,
+                "100": 0.1,
+                "1000": 0.1999
+              },
+              "top_k_mass": 0.1,
+              "top_10": [
+                {
+                  "prefix": "close up portrait captures a",
+                  "count": 2120
+                },
+                {
+                  "prefix": "close up view captures the",
+                  "count": 1549
+                },
+                {
+                  "prefix": "close up portrait of a",
+                  "count": 1287
+                },
+                {
+                  "prefix": "woman with fair skin and",
+                  "count": 1154
+                },
+                {
+                  "prefix": "young woman with fair skin",
+                  "count": 1046
+                },
+                {
+                  "prefix": "close up view captures a",
+                  "count": 971
+                },
+                {
+                  "prefix": "young woman with long wavy",
+                  "count": 889
+                },
+                {
+                  "prefix": "woman with long dark hair",
+                  "count": 870
+                },
+                {
+                  "prefix": "young woman with long dark",
+                  "count": 859
+                },
+                {
+                  "prefix": "young woman with long straight",
+                  "count": 847
+                }
+              ]
+            },
+            "top_openings": [
+              {
+                "opening": "young woman with",
+                "count": 9561
+              },
+              {
+                "opening": "woman with long",
+                "count": 5662
+              },
+              {
+                "opening": "close up portrait",
+                "count": 4826
+              },
+              {
+                "opening": "close up view",
+                "count": 4478
+              },
+              {
+                "opening": "woman stands in",
+                "count": 3865
+              },
+              {
+                "opening": "young girl with",
+                "count": 3385
+              },
+              {
+                "opening": "young man with",
+                "count": 2745
+              },
+              {
+                "opening": "woman with dark",
+                "count": 2516
+              },
+              {
+                "opening": "man with short",
+                "count": 1795
+              },
+              {
+                "opening": "middle aged man",
+                "count": 1740
+              }
+            ],
+            "token_budget": 16,
+            "avg_budget_tokens": 16.0,
+            "captions_meeting_budget": 351375,
+            "coverage_rate": 1.0,
+            "eligibility_rate": 1.0,
+            "ineligible_count": 9,
+            "truncation_rate": 1.0,
+            "mean_retained_token_fraction": 0.0915
+          },
+          "32": {
+            "captions_analyzed": 351384,
+            "avg_lexical_tokens": 32.0,
+            "avg_chars": 188.88,
+            "violation_rate": 0.0132,
+            "repeated_4gram_rate": 0.0002,
+            "repeated_ngram_rate_by_n": {
+              "3": 0.0011,
+              "4": 0.0002,
+              "5": 0.0,
+              "6": 0.0
+            },
+            "within_caption_distinct_n_mean": {
+              "3": 0.999957,
+              "4": 0.999994,
+              "5": 0.999999,
+              "6": 1.0
+            },
+            "within_caption_max_ngram_repeat_mean": {
+              "3": 1.0011,
+              "4": 1.0002,
+              "5": 1.0,
+              "6": 1.0
+            },
+            "distinct_n": {
+              "1": 0.002656,
+              "2": 0.077857,
+              "3": 0.2758
+            },
+            "ngram_top_k_mass": {
+              "1": 0.5211,
+              "2": 0.1631,
+              "3": 0.0574
+            },
+            "ngram_distribution": {
+              "1": {
+                "entropy": 6.4912,
+                "entropy_miller_madow": 6.4925,
+                "effective_vocab": 659.31,
+                "effective_vocab_miller_madow": 660.19,
+                "hhi": 0.01352973,
+                "effective_simpson": 73.91,
+                "top_k_mass_by_k": {
+                  "10": 0.261,
+                  "100": 0.5211,
+                  "1000": 0.8422
+                }
+              },
+              "2": {
+                "entropy": 10.4008,
+                "entropy_miller_madow": 10.4397,
+                "effective_vocab": 32886.31,
+                "effective_vocab_miller_madow": 34191.77,
+                "hhi": 0.00052919,
+                "effective_simpson": 1889.68,
+                "top_k_mass_by_k": {
+                  "10": 0.0505,
+                  "100": 0.1631,
+                  "1000": 0.3667
+                }
+              },
+              "3": {
+                "entropy": 12.8565,
+                "entropy_miller_madow": 12.9944,
+                "effective_vocab": 383287.7,
+                "effective_vocab_miller_madow": 439960.88,
+                "hhi": 6.408e-05,
+                "effective_simpson": 15606.33,
+                "top_k_mass_by_k": {
+                  "10": 0.014,
+                  "100": 0.0574,
+                  "1000": 0.1596
+                }
+              }
+            },
+            "ngram_top_k_mass_by_k": {
+              "1": {
+                "10": 0.261,
+                "100": 0.5211,
+                "1000": 0.8422
+              },
+              "2": {
+                "10": 0.0505,
+                "100": 0.1631,
+                "1000": 0.3667
+              },
+              "3": {
+                "10": 0.014,
+                "100": 0.0574,
+                "1000": 0.1596
+              }
+            },
+            "violations": {
+              "J_meta_statement": 4354,
+              "I_overlay_meta_leak": 301,
+              "G_meta_instruction": 3,
+              "N_stage_header_leak": 2,
+              "H_detection_meta_leak": 1
+            },
+            "violation_code_rate": {
+              "J_meta_statement": 0.0124,
+              "I_overlay_meta_leak": 0.0009,
+              "G_meta_instruction": 0.0,
+              "N_stage_header_leak": 0.0,
+              "H_detection_meta_leak": 0.0
+            },
+            "violation_severity_rate": {
+              "moderate": 0.0133,
+              "low": 0.0,
+              "critical": 0.0
+            },
+            "dedup": {
+              "normalized_unique_rate": 0.999997,
+              "normalized_duplicate_rate": 3e-06,
+              "duplicate_mass_rate": 6e-06,
+              "top_duplicate_mass": 0.0003,
+              "max_duplicate_count": 2,
+              "top_hashes": [
+                {
+                  "hash": "605b2fd8660b6f65",
+                  "count": 2
+                },
+                {
+                  "hash": "b1e42baa95ebd0ac",
+                  "count": 1
+                },
+                {
+                  "hash": "35d95747c5a8aaeb",
+                  "count": 1
+                },
+                {
+                  "hash": "2e9cca2d43e88db8",
+                  "count": 1
+                },
+                {
+                  "hash": "a43d13967f7200fa",
+                  "count": 1
+                },
+                {
+                  "hash": "fa3590480ab721fa",
+                  "count": 1
+                },
+                {
+                  "hash": "8803afa213b88572",
+                  "count": 1
+                },
+                {
+                  "hash": "7193a3a57cab1e6a",
+                  "count": 1
+                },
+                {
+                  "hash": "4b1ec341625fc7b1",
+                  "count": 1
+                },
+                {
+                  "hash": "f9f464462758d140",
+                  "count": 1
+                }
+              ]
+            },
+            "operational_formatting_rate": {
+              "newline": 0.0002
+            },
+            "stratification_script_rate": {
+              "non_ascii": 0.0841,
+              "cjk": 0.0001
+            },
+            "debug_control_lexicon": {
+              "caption_rate": {
+                "color": 0.7465,
+                "spatial_relation": 0.59,
+                "material": 0.3229,
+                "lighting": 0.3153,
+                "camera": 0.2278,
+                "count": 0.1996,
+                "style": 0.1301,
+                "text_rendering": 0.0121
+              },
+              "token_hits": {
+                "color": 452708,
+                "spatial_relation": 286675,
+                "lighting": 140928,
+                "material": 138491,
+                "camera": 107998,
+                "count": 80129,
+                "style": 55913,
+                "text_rendering": 5196
+              },
+              "hits_per_caption": 3.6087,
+              "hits_per_64_lexical_tokens": 7.2176
+            },
+            "full_caption_normalized": {
+              "normalization_scope": "caption-balanced and/or per-token full-caption metrics; not a faithfulness score",
+              "caption_balanced_ngram_top_k_mass": {},
+              "within_caption_distinct_n_mean": {
+                "3": 0.999957,
+                "4": 0.999994,
+                "5": 0.999999,
+                "6": 1.0
+              },
+              "repeated_ngram_rate_by_n": {
+                "3": 0.0011,
+                "4": 0.0002,
+                "5": 0.0,
+                "6": 0.0
+              },
+              "violation_indicator_per_64_lexical_tokens_mean": 0.026493,
+              "violation_codes_per_64_lexical_tokens_mean": 0.026532,
+              "control_hits_per_64_lexical_tokens": 7.2176
+            },
+            "prefix_raw": {
+              "entropy": 10.7156,
+              "entropy_miller_madow": 10.9645,
+              "effective_vocab": 45053.38,
+              "effective_vocab_miller_madow": 57785.18,
+              "hhi": 0.00056323,
+              "effective_simpson": 1775.47,
+              "top_k_mass_by_k": {
+                "10": 0.0574,
+                "100": 0.156,
+                "1000": 0.2877
+              },
+              "top_k_mass": 0.156,
+              "top_10": [
+                {
+                  "prefix": "a young woman with long",
+                  "count": 3828
+                },
+                {
+                  "prefix": "a close up portrait captures",
+                  "count": 2745
+                },
+                {
+                  "prefix": "a close up view captures",
+                  "count": 2678
+                },
+                {
+                  "prefix": "a woman with long dark",
+                  "count": 1743
+                },
+                {
+                  "prefix": "a woman stands in a",
+                  "count": 1732
+                },
+                {
+                  "prefix": "a woman with shoulder length",
+                  "count": 1583
+                },
+                {
+                  "prefix": "a middle aged man with",
+                  "count": 1568
+                },
+                {
+                  "prefix": "a woman stands in profile",
+                  "count": 1555
+                },
+                {
+                  "prefix": "a close up portrait of",
+                  "count": 1374
+                },
+                {
+                  "prefix": "a woman with long wavy",
+                  "count": 1365
+                }
+              ]
+            },
+            "prefix_content": {
+              "entropy": 11.4134,
+              "entropy_miller_madow": 11.7265,
+              "effective_vocab": 90529.33,
+              "effective_vocab_miller_madow": 123810.08,
+              "hhi": 0.00020562,
+              "effective_simpson": 4863.42,
+              "top_k_mass_by_k": {
+                "10": 0.033,
+                "100": 0.1,
+                "1000": 0.1999
+              },
+              "top_k_mass": 0.1,
+              "top_10": [
+                {
+                  "prefix": "close up portrait captures a",
+                  "count": 2120
+                },
+                {
+                  "prefix": "close up view captures the",
+                  "count": 1549
+                },
+                {
+                  "prefix": "close up portrait of a",
+                  "count": 1287
+                },
+                {
+                  "prefix": "woman with fair skin and",
+                  "count": 1154
+                },
+                {
+                  "prefix": "young woman with fair skin",
+                  "count": 1046
+                },
+                {
+                  "prefix": "close up view captures a",
+                  "count": 971
+                },
+                {
+                  "prefix": "young woman with long wavy",
+                  "count": 889
+                },
+                {
+                  "prefix": "woman with long dark hair",
+                  "count": 870
+                },
+                {
+                  "prefix": "young woman with long dark",
+                  "count": 859
+                },
+                {
+                  "prefix": "young woman with long straight",
+                  "count": 847
+                }
+              ]
+            },
+            "top_openings": [
+              {
+                "opening": "young woman with",
+                "count": 9561
+              },
+              {
+                "opening": "woman with long",
+                "count": 5662
+              },
+              {
+                "opening": "close up portrait",
+                "count": 4826
+              },
+              {
+                "opening": "close up view",
+                "count": 4478
+              },
+              {
+                "opening": "woman stands in",
+                "count": 3865
+              },
+              {
+                "opening": "young girl with",
+                "count": 3385
+              },
+              {
+                "opening": "young man with",
+                "count": 2745
+              },
+              {
+                "opening": "woman with dark",
+                "count": 2516
+              },
+              {
+                "opening": "man with short",
+                "count": 1795
+              },
+              {
+                "opening": "middle aged man",
+                "count": 1740
+              }
+            ],
+            "token_budget": 32,
+            "avg_budget_tokens": 32.0,
+            "captions_meeting_budget": 351374,
+            "coverage_rate": 1.0,
+            "eligibility_rate": 1.0,
+            "ineligible_count": 10,
+            "truncation_rate": 1.0,
+            "mean_retained_token_fraction": 0.183,
+            "marginal_avg_token_gain": 1.0
+          },
+          "64": {
+            "captions_analyzed": 351384,
+            "avg_lexical_tokens": 64.0,
+            "avg_chars": 381.49,
+            "violation_rate": 0.0165,
+            "repeated_4gram_rate": 0.0064,
+            "repeated_ngram_rate_by_n": {
+              "3": 0.0219,
+              "4": 0.0064,
+              "5": 0.0004,
+              "6": 0.0001
+            },
+            "within_caption_distinct_n_mean": {
+              "3": 0.999514,
+              "4": 0.999884,
+              "5": 0.999992,
+              "6": 0.999998
+            },
+            "within_caption_max_ngram_repeat_mean": {
+              "3": 1.0222,
+              "4": 1.0064,
+              "5": 1.0004,
+              "6": 1.0001
+            },
+            "distinct_n": {
+              "1": 0.001945,
+              "2": 0.067145,
+              "3": 0.271675
+            },
+            "ngram_top_k_mass": {
+              "1": 0.4975,
+              "2": 0.1294,
+              "3": 0.036
+            },
+            "ngram_distribution": {
+              "1": {
+                "entropy": 6.6295,
+                "entropy_miller_madow": 6.6305,
+                "effective_vocab": 757.11,
+                "effective_vocab_miller_madow": 757.84,
+                "hhi": 0.01129913,
+                "effective_simpson": 88.5,
+                "top_k_mass_by_k": {
+                  "10": 0.2527,
+                  "100": 0.4975,
+                  "1000": 0.8242
+                }
+              },
+              "2": {
+                "entropy": 10.8528,
+                "entropy_miller_madow": 10.8864,
+                "effective_vocab": 51680.19,
+                "effective_vocab_miller_madow": 53444.67,
+                "hhi": 0.00034729,
+                "effective_simpson": 2879.44,
+                "top_k_mass_by_k": {
+                  "10": 0.0401,
+                  "100": 0.1294,
+                  "1000": 0.3133
+                }
+              },
+              "3": {
+                "entropy": 13.6102,
+                "entropy_miller_madow": 13.746,
+                "effective_vocab": 814365.19,
+                "effective_vocab_miller_madow": 932851.8,
+                "hhi": 3.081e-05,
+                "effective_simpson": 32456.98,
+                "top_k_mass_by_k": {
+                  "10": 0.0095,
+                  "100": 0.036,
+                  "1000": 0.1106
+                }
+              }
+            },
+            "ngram_top_k_mass_by_k": {
+              "1": {
+                "10": 0.2527,
+                "100": 0.4975,
+                "1000": 0.8242
+              },
+              "2": {
+                "10": 0.0401,
+                "100": 0.1294,
+                "1000": 0.3133
+              },
+              "3": {
+                "10": 0.0095,
+                "100": 0.036,
+                "1000": 0.1106
+              }
+            },
+            "violations": {
+              "J_meta_statement": 4355,
+              "I_overlay_meta_leak": 1436,
+              "E_thinking_leak": 6,
+              "G_meta_instruction": 3,
+              "N_stage_header_leak": 3,
+              "H_detection_meta_leak": 2
+            },
+            "violation_code_rate": {
+              "J_meta_statement": 0.0124,
+              "I_overlay_meta_leak": 0.0041,
+              "E_thinking_leak": 0.0,
+              "G_meta_instruction": 0.0,
+              "N_stage_header_leak": 0.0,
+              "H_detection_meta_leak": 0.0
+            },
+            "violation_severity_rate": {
+              "moderate": 0.0165,
+              "critical": 0.0,
+              "low": 0.0
+            },
+            "dedup": {
+              "normalized_unique_rate": 0.999997,
+              "normalized_duplicate_rate": 3e-06,
+              "duplicate_mass_rate": 6e-06,
+              "top_duplicate_mass": 0.0003,
+              "max_duplicate_count": 2,
+              "top_hashes": [
+                {
+                  "hash": "605b2fd8660b6f65",
+                  "count": 2
+                },
+                {
+                  "hash": "996079f0d11832a4",
+                  "count": 1
+                },
+                {
+                  "hash": "87f2a490a1934b1b",
+                  "count": 1
+                },
+                {
+                  "hash": "bdbc3e57ae8d7475",
+                  "count": 1
+                },
+                {
+                  "hash": "bc038994a3647c1e",
+                  "count": 1
+                },
+                {
+                  "hash": "29abde3082d04763",
+                  "count": 1
+                },
+                {
+                  "hash": "1b6cb9102d9faf12",
+                  "count": 1
+                },
+                {
+                  "hash": "eec2c1f77855125f",
+                  "count": 1
+                },
+                {
+                  "hash": "4fbee15785da3a8e",
+                  "count": 1
+                },
+                {
+                  "hash": "62fc05bd7d3a30a2",
+                  "count": 1
+                }
+              ]
+            },
+            "operational_formatting_rate": {
+              "newline": 0.0021,
+              "url": 0.0001
+            },
+            "stratification_script_rate": {
+              "non_ascii": 0.219,
+              "cjk": 0.0005
+            },
+            "debug_control_lexicon": {
+              "caption_rate": {
+                "color": 0.921,
+                "spatial_relation": 0.8739,
+                "lighting": 0.5507,
+                "material": 0.4743,
+                "count": 0.3101,
+                "camera": 0.3033,
+                "style": 0.1731,
+                "text_rendering": 0.0375
+              },
+              "token_hits": {
+                "color": 1000332,
+                "spatial_relation": 672843,
+                "lighting": 303566,
+                "material": 256985,
+                "camera": 144869,
+                "count": 143634,
+                "style": 76280,
+                "text_rendering": 16775
+              },
+              "hits_per_caption": 7.4428,
+              "hits_per_64_lexical_tokens": 7.4431
+            },
+            "full_caption_normalized": {
+              "normalization_scope": "caption-balanced and/or per-token full-caption metrics; not a faithfulness score",
+              "caption_balanced_ngram_top_k_mass": {},
+              "within_caption_distinct_n_mean": {
+                "3": 0.999514,
+                "4": 0.999884,
+                "5": 0.999992,
+                "6": 0.999998
+              },
+              "repeated_ngram_rate_by_n": {
+                "3": 0.0219,
+                "4": 0.0064,
+                "5": 0.0004,
+                "6": 0.0001
+              },
+              "violation_indicator_per_64_lexical_tokens_mean": 0.016469,
+              "violation_codes_per_64_lexical_tokens_mean": 0.016526,
+              "control_hits_per_64_lexical_tokens": 7.4431
+            },
+            "prefix_raw": {
+              "entropy": 10.7156,
+              "entropy_miller_madow": 10.9645,
+              "effective_vocab": 45053.38,
+              "effective_vocab_miller_madow": 57785.18,
+              "hhi": 0.00056323,
+              "effective_simpson": 1775.47,
+              "top_k_mass_by_k": {
+                "10": 0.0574,
+                "100": 0.156,
+                "1000": 0.2877
+              },
+              "top_k_mass": 0.156,
+              "top_10": [
+                {
+                  "prefix": "a young woman with long",
+                  "count": 3828
+                },
+                {
+                  "prefix": "a close up portrait captures",
+                  "count": 2745
+                },
+                {
+                  "prefix": "a close up view captures",
+                  "count": 2678
+                },
+                {
+                  "prefix": "a woman with long dark",
+                  "count": 1743
+                },
+                {
+                  "prefix": "a woman stands in a",
+                  "count": 1732
+                },
+                {
+                  "prefix": "a woman with shoulder length",
+                  "count": 1583
+                },
+                {
+                  "prefix": "a middle aged man with",
+                  "count": 1568
+                },
+                {
+                  "prefix": "a woman stands in profile",
+                  "count": 1555
+                },
+                {
+                  "prefix": "a close up portrait of",
+                  "count": 1374
+                },
+                {
+                  "prefix": "a woman with long wavy",
+                  "count": 1365
+                }
+              ]
+            },
+            "prefix_content": {
+              "entropy": 11.4134,
+              "entropy_miller_madow": 11.7265,
+              "effective_vocab": 90529.33,
+              "effective_vocab_miller_madow": 123810.08,
+              "hhi": 0.00020562,
+              "effective_simpson": 4863.42,
+              "top_k_mass_by_k": {
+                "10": 0.033,
+                "100": 0.1,
+                "1000": 0.1999
+              },
+              "top_k_mass": 0.1,
+              "top_10": [
+                {
+                  "prefix": "close up portrait captures a",
+                  "count": 2120
+                },
+                {
+                  "prefix": "close up view captures the",
+                  "count": 1549
+                },
+                {
+                  "prefix": "close up portrait of a",
+                  "count": 1287
+                },
+                {
+                  "prefix": "woman with fair skin and",
+                  "count": 1154
+                },
+                {
+                  "prefix": "young woman with fair skin",
+                  "count": 1046
+                },
+                {
+                  "prefix": "close up view captures a",
+                  "count": 971
+                },
+                {
+                  "prefix": "young woman with long wavy",
+                  "count": 889
+                },
+                {
+                  "prefix": "woman with long dark hair",
+                  "count": 870
+                },
+                {
+                  "prefix": "young woman with long dark",
+                  "count": 859
+                },
+                {
+                  "prefix": "young woman with long straight",
+                  "count": 847
+                }
+              ]
+            },
+            "top_openings": [
+              {
+                "opening": "young woman with",
+                "count": 9561
+              },
+              {
+                "opening": "woman with long",
+                "count": 5662
+              },
+              {
+                "opening": "close up portrait",
+                "count": 4826
+              },
+              {
+                "opening": "close up view",
+                "count": 4478
+              },
+              {
+                "opening": "woman stands in",
+                "count": 3865
+              },
+              {
+                "opening": "young girl with",
+                "count": 3385
+              },
+              {
+                "opening": "young man with",
+                "count": 2745
+              },
+              {
+                "opening": "woman with dark",
+                "count": 2516
+              },
+              {
+                "opening": "man with short",
+                "count": 1795
+              },
+              {
+                "opening": "middle aged man",
+                "count": 1740
+              }
+            ],
+            "token_budget": 64,
+            "avg_budget_tokens": 64.0,
+            "captions_meeting_budget": 351344,
+            "coverage_rate": 0.9999,
+            "eligibility_rate": 0.9999,
+            "ineligible_count": 40,
+            "truncation_rate": 0.9999,
+            "mean_retained_token_fraction": 0.366,
+            "marginal_avg_token_gain": 1.0
+          },
+          "128": {
+            "captions_analyzed": 351384,
+            "avg_lexical_tokens": 127.41,
+            "avg_chars": 769.17,
+            "violation_rate": 0.022,
+            "repeated_4gram_rate": 0.0262,
+            "repeated_ngram_rate_by_n": {
+              "3": 0.1315,
+              "4": 0.0262,
+              "5": 0.0038,
+              "6": 0.001
+            },
+            "within_caption_distinct_n_mean": {
+              "3": 0.998427,
+              "4": 0.999716,
+              "5": 0.999953,
+              "6": 0.999986
+            },
+            "within_caption_max_ngram_repeat_mean": {
+              "3": 1.1384,
+              "4": 1.0272,
+              "5": 1.0039,
+              "6": 1.0011
+            },
+            "distinct_n": {
+              "1": 0.001486,
+              "2": 0.051988,
+              "3": 0.235026
+            },
+            "ngram_top_k_mass": {
+              "1": 0.4913,
+              "2": 0.1219,
+              "3": 0.0313
+            },
+            "ngram_distribution": {
+              "1": {
+                "entropy": 6.6436,
+                "entropy_miller_madow": 6.6443,
+                "effective_vocab": 767.83,
+                "effective_vocab_miller_madow": 768.4,
+                "hhi": 0.0114424,
+                "effective_simpson": 87.39,
+                "top_k_mass_by_k": {
+                  "10": 0.2579,
+                  "100": 0.4913,
+                  "1000": 0.8214
+                }
+              },
+              "2": {
+                "entropy": 10.9939,
+                "entropy_miller_madow": 11.0199,
+                "effective_vocab": 59508.13,
+                "effective_vocab_miller_madow": 61075.26,
+                "hhi": 0.00030373,
+                "effective_simpson": 3292.37,
+                "top_k_mass_by_k": {
+                  "10": 0.0374,
+                  "100": 0.1219,
+                  "1000": 0.2999
+                }
+              },
+              "3": {
+                "entropy": 13.9266,
+                "entropy_miller_madow": 14.0441,
+                "effective_vocab": 1117448.86,
+                "effective_vocab_miller_madow": 1256790.39,
+                "hhi": 2.358e-05,
+                "effective_simpson": 42407.06,
+                "top_k_mass_by_k": {
+                  "10": 0.0084,
+                  "100": 0.0313,
+                  "1000": 0.0992
+                }
+              }
+            },
+            "ngram_top_k_mass_by_k": {
+              "1": {
+                "10": 0.2579,
+                "100": 0.4913,
+                "1000": 0.8214
+              },
+              "2": {
+                "10": 0.0374,
+                "100": 0.1219,
+                "1000": 0.2999
+              },
+              "3": {
+                "10": 0.0084,
+                "100": 0.0313,
+                "1000": 0.0992
+              }
+            },
+            "violations": {
+              "J_meta_statement": 4357,
+              "I_overlay_meta_leak": 3419,
+              "E_thinking_leak": 10,
+              "L_tag_verbatim": 8,
+              "N_stage_header_leak": 7,
+              "G_meta_instruction": 5,
+              "D_markdown_leak": 4,
+              "H_detection_meta_leak": 2,
+              "M_numbered_list_leak": 2
+            },
+            "violation_code_rate": {
+              "J_meta_statement": 0.0124,
+              "I_overlay_meta_leak": 0.0097,
+              "E_thinking_leak": 0.0,
+              "L_tag_verbatim": 0.0,
+              "N_stage_header_leak": 0.0,
+              "G_meta_instruction": 0.0,
+              "D_markdown_leak": 0.0,
+              "H_detection_meta_leak": 0.0,
+              "M_numbered_list_leak": 0.0
+            },
+            "violation_severity_rate": {
+              "moderate": 0.0221,
+              "critical": 0.0,
+              "low": 0.0
+            },
+            "dedup": {
+              "normalized_unique_rate": 0.999997,
+              "normalized_duplicate_rate": 3e-06,
+              "duplicate_mass_rate": 6e-06,
+              "top_duplicate_mass": 0.0003,
+              "max_duplicate_count": 2,
+              "top_hashes": [
+                {
+                  "hash": "605b2fd8660b6f65",
+                  "count": 2
+                },
+                {
+                  "hash": "25ac4e6c9d615222",
+                  "count": 1
+                },
+                {
+                  "hash": "4409888e24f866cb",
+                  "count": 1
+                },
+                {
+                  "hash": "fccff8e75c653815",
+                  "count": 1
+                },
+                {
+                  "hash": "5c94a827a6f2fd7a",
+                  "count": 1
+                },
+                {
+                  "hash": "8d184442ce109976",
+                  "count": 1
+                },
+                {
+                  "hash": "fdfba46907898b61",
+                  "count": 1
+                },
+                {
+                  "hash": "f3732525efd6d369",
+                  "count": 1
+                },
+                {
+                  "hash": "d55e015e1c29fa41",
+                  "count": 1
+                },
+                {
+                  "hash": "378f9f2864d4c46b",
+                  "count": 1
+                }
+              ]
+            },
+            "operational_formatting_rate": {
+              "newline": 0.058,
+              "url": 0.0008,
+              "bullet": 0.0,
+              "numbered_list": 0.0
+            },
+            "stratification_script_rate": {
+              "non_ascii": 0.4371,
+              "cjk": 0.0023,
+              "emoji": 0.0
+            },
+            "debug_control_lexicon": {
+              "caption_rate": {
+                "spatial_relation": 0.9931,
+                "color": 0.9751,
+                "lighting": 0.8745,
+                "material": 0.6469,
+                "camera": 0.5282,
+                "count": 0.4371,
+                "style": 0.2695,
+                "text_rendering": 0.0959
+              },
+              "token_hits": {
+                "color": 1780518,
+                "spatial_relation": 1585518,
+                "lighting": 841901,
+                "material": 493371,
+                "camera": 297801,
+                "count": 241441,
+                "style": 127946,
+                "text_rendering": 47492
+              },
+              "hits_per_caption": 15.4133,
+              "hits_per_64_lexical_tokens": 7.7424
+            },
+            "full_caption_normalized": {
+              "normalization_scope": "caption-balanced and/or per-token full-caption metrics; not a faithfulness score",
+              "caption_balanced_ngram_top_k_mass": {},
+              "within_caption_distinct_n_mean": {
+                "3": 0.998427,
+                "4": 0.999716,
+                "5": 0.999953,
+                "6": 0.999986
+              },
+              "repeated_ngram_rate_by_n": {
+                "3": 0.1315,
+                "4": 0.0262,
+                "5": 0.0038,
+                "6": 0.001
+              },
+              "violation_indicator_per_64_lexical_tokens_mean": 0.0111,
+              "violation_codes_per_64_lexical_tokens_mean": 0.011201,
+              "control_hits_per_64_lexical_tokens": 7.7424
+            },
+            "prefix_raw": {
+              "entropy": 10.7156,
+              "entropy_miller_madow": 10.9645,
+              "effective_vocab": 45053.38,
+              "effective_vocab_miller_madow": 57785.18,
+              "hhi": 0.00056323,
+              "effective_simpson": 1775.47,
+              "top_k_mass_by_k": {
+                "10": 0.0574,
+                "100": 0.156,
+                "1000": 0.2877
+              },
+              "top_k_mass": 0.156,
+              "top_10": [
+                {
+                  "prefix": "a young woman with long",
+                  "count": 3828
+                },
+                {
+                  "prefix": "a close up portrait captures",
+                  "count": 2745
+                },
+                {
+                  "prefix": "a close up view captures",
+                  "count": 2678
+                },
+                {
+                  "prefix": "a woman with long dark",
+                  "count": 1743
+                },
+                {
+                  "prefix": "a woman stands in a",
+                  "count": 1732
+                },
+                {
+                  "prefix": "a woman with shoulder length",
+                  "count": 1583
+                },
+                {
+                  "prefix": "a middle aged man with",
+                  "count": 1568
+                },
+                {
+                  "prefix": "a woman stands in profile",
+                  "count": 1555
+                },
+                {
+                  "prefix": "a close up portrait of",
+                  "count": 1374
+                },
+                {
+                  "prefix": "a woman with long wavy",
+                  "count": 1365
+                }
+              ]
+            },
+            "prefix_content": {
+              "entropy": 11.4134,
+              "entropy_miller_madow": 11.7265,
+              "effective_vocab": 90529.33,
+              "effective_vocab_miller_madow": 123810.08,
+              "hhi": 0.00020562,
+              "effective_simpson": 4863.42,
+              "top_k_mass_by_k": {
+                "10": 0.033,
+                "100": 0.1,
+                "1000": 0.1999
+              },
+              "top_k_mass": 0.1,
+              "top_10": [
+                {
+                  "prefix": "close up portrait captures a",
+                  "count": 2120
+                },
+                {
+                  "prefix": "close up view captures the",
+                  "count": 1549
+                },
+                {
+                  "prefix": "close up portrait of a",
+                  "count": 1287
+                },
+                {
+                  "prefix": "woman with fair skin and",
+                  "count": 1154
+                },
+                {
+                  "prefix": "young woman with fair skin",
+                  "count": 1046
+                },
+                {
+                  "prefix": "close up view captures a",
+                  "count": 971
+                },
+                {
+                  "prefix": "young woman with long wavy",
+                  "count": 889
+                },
+                {
+                  "prefix": "woman with long dark hair",
+                  "count": 870
+                },
+                {
+                  "prefix": "young woman with long dark",
+                  "count": 859
+                },
+                {
+                  "prefix": "young woman with long straight",
+                  "count": 847
+                }
+              ]
+            },
+            "top_openings": [
+              {
+                "opening": "young woman with",
+                "count": 9561
+              },
+              {
+                "opening": "woman with long",
+                "count": 5662
+              },
+              {
+                "opening": "close up portrait",
+                "count": 4826
+              },
+              {
+                "opening": "close up view",
+                "count": 4478
+              },
+              {
+                "opening": "woman stands in",
+                "count": 3865
+              },
+              {
+                "opening": "young girl with",
+                "count": 3385
+              },
+              {
+                "opening": "young man with",
+                "count": 2745
+              },
+              {
+                "opening": "woman with dark",
+                "count": 2516
+              },
+              {
+                "opening": "man with short",
+                "count": 1795
+              },
+              {
+                "opening": "middle aged man",
+                "count": 1740
+              }
+            ],
+            "token_budget": 128,
+            "avg_budget_tokens": 127.41,
+            "captions_meeting_budget": 333822,
+            "coverage_rate": 0.95,
+            "eligibility_rate": 0.95,
+            "ineligible_count": 17562,
+            "truncation_rate": 0.9462,
+            "mean_retained_token_fraction": 0.7264,
+            "marginal_avg_token_gain": 0.9908
+          },
+          "256": {
+            "captions_analyzed": 351384,
+            "avg_lexical_tokens": 181.38,
+            "avg_chars": 1109.33,
+            "violation_rate": 0.0274,
+            "repeated_4gram_rate": 0.0654,
+            "repeated_ngram_rate_by_n": {
+              "3": 0.2782,
+              "4": 0.0654,
+              "5": 0.0221,
+              "6": 0.0113
+            },
+            "within_caption_distinct_n_mean": {
+              "3": 0.997108,
+              "4": 0.999236,
+              "5": 0.999648,
+              "6": 0.999777
+            },
+            "within_caption_max_ngram_repeat_mean": {
+              "3": 1.3118,
+              "4": 1.0735,
+              "5": 1.0273,
+              "6": 1.0157
+            },
+            "distinct_n": {
+              "1": 0.001966,
+              "2": 0.046595,
+              "3": 0.208139
+            },
+            "ngram_top_k_mass": {
+              "1": 0.4915,
+              "2": 0.1283,
+              "3": 0.037
+            },
+            "ngram_distribution": {
+              "1": {
+                "entropy": 6.635,
+                "entropy_miller_madow": 6.636,
+                "effective_vocab": 761.27,
+                "effective_vocab_miller_madow": 762.02,
+                "hhi": 0.01252747,
+                "effective_simpson": 79.82,
+                "top_k_mass_by_k": {
+                  "10": 0.2641,
+                  "100": 0.4915,
+                  "1000": 0.8229
+                }
+              },
+              "2": {
+                "entropy": 10.9482,
+                "entropy_miller_madow": 10.9715,
+                "effective_vocab": 56851.68,
+                "effective_vocab_miller_madow": 58191.74,
+                "hhi": 0.00034469,
+                "effective_simpson": 2901.12,
+                "top_k_mass_by_k": {
+                  "10": 0.0392,
+                  "100": 0.1283,
+                  "1000": 0.3109
+                }
+              },
+              "3": {
+                "entropy": 13.8573,
+                "entropy_miller_madow": 13.9614,
+                "effective_vocab": 1042699.27,
+                "effective_vocab_miller_madow": 1157060.17,
+                "hhi": 2.99e-05,
+                "effective_simpson": 33441.9,
+                "top_k_mass_by_k": {
+                  "10": 0.0092,
+                  "100": 0.037,
+                  "1000": 0.1134
+                }
+              }
+            },
+            "ngram_top_k_mass_by_k": {
+              "1": {
+                "10": 0.2641,
+                "100": 0.4915,
+                "1000": 0.8229
+              },
+              "2": {
+                "10": 0.0392,
+                "100": 0.1283,
+                "1000": 0.3109
+              },
+              "3": {
+                "10": 0.0092,
+                "100": 0.037,
+                "1000": 0.1134
+              }
+            },
+            "violations": {
+              "I_overlay_meta_leak": 5147,
+              "J_meta_statement": 4363,
+              "D_markdown_leak": 54,
+              "G_meta_instruction": 49,
+              "E_thinking_leak": 43,
+              "L_tag_verbatim": 42,
+              "F_repetition": 32,
+              "M_numbered_list_leak": 31,
+              "N_stage_header_leak": 8,
+              "H_detection_meta_leak": 3
+            },
+            "violation_code_rate": {
+              "I_overlay_meta_leak": 0.0146,
+              "J_meta_statement": 0.0124,
+              "D_markdown_leak": 0.0002,
+              "G_meta_instruction": 0.0001,
+              "E_thinking_leak": 0.0001,
+              "L_tag_verbatim": 0.0001,
+              "F_repetition": 0.0001,
+              "M_numbered_list_leak": 0.0001,
+              "N_stage_header_leak": 0.0,
+              "H_detection_meta_leak": 0.0
+            },
+            "violation_severity_rate": {
+              "moderate": 0.0272,
+              "low": 0.0003,
+              "critical": 0.0001,
+              "severe": 0.0001
+            },
+            "dedup": {
+              "normalized_unique_rate": 0.999997,
+              "normalized_duplicate_rate": 3e-06,
+              "duplicate_mass_rate": 6e-06,
+              "top_duplicate_mass": 0.0003,
+              "max_duplicate_count": 2,
+              "top_hashes": [
+                {
+                  "hash": "605b2fd8660b6f65",
+                  "count": 2
+                },
+                {
+                  "hash": "25ac4e6c9d615222",
+                  "count": 1
+                },
+                {
+                  "hash": "4409888e24f866cb",
+                  "count": 1
+                },
+                {
+                  "hash": "fccff8e75c653815",
+                  "count": 1
+                },
+                {
+                  "hash": "17d56bc37f107547",
+                  "count": 1
+                },
+                {
+                  "hash": "7622953c88638b15",
+                  "count": 1
+                },
+                {
+                  "hash": "1a82a194f825850b",
+                  "count": 1
+                },
+                {
+                  "hash": "644406b909aaacef",
+                  "count": 1
+                },
+                {
+                  "hash": "d719bc96b928a4c4",
+                  "count": 1
+                },
+                {
+                  "hash": "8b0b84c368fcbf09",
+                  "count": 1
+                }
+              ]
+            },
+            "operational_formatting_rate": {
+              "newline": 0.235,
+              "url": 0.0104,
+              "bullet": 0.0001,
+              "numbered_list": 0.0001,
+              "html_entity": 0.0
+            },
+            "stratification_script_rate": {
+              "non_ascii": 0.5569,
+              "cjk": 0.0135,
+              "emoji": 0.0
+            },
+            "debug_control_lexicon": {
+              "caption_rate": {
+                "spatial_relation": 0.9976,
+                "lighting": 0.9879,
+                "color": 0.9841,
+                "camera": 0.8592,
+                "material": 0.6989,
+                "count": 0.4983,
+                "text_rendering": 0.3876,
+                "style": 0.3768
+              },
+              "token_hits": {
+                "spatial_relation": 2162373,
+                "color": 2043309,
+                "lighting": 1254727,
+                "camera": 693116,
+                "material": 633788,
+                "count": 327285,
+                "text_rendering": 198654,
+                "style": 192703
+              },
+              "hits_per_caption": 21.3611,
+              "hits_per_64_lexical_tokens": 7.5373
+            },
+            "full_caption_normalized": {
+              "normalization_scope": "caption-balanced and/or per-token full-caption metrics; not a faithfulness score",
+              "caption_balanced_ngram_top_k_mass": {},
+              "within_caption_distinct_n_mean": {
+                "3": 0.997108,
+                "4": 0.999236,
+                "5": 0.999648,
+                "6": 0.999777
+              },
+              "repeated_ngram_rate_by_n": {
+                "3": 0.2782,
+                "4": 0.0654,
+                "5": 0.0221,
+                "6": 0.0113
+              },
+              "violation_indicator_per_64_lexical_tokens_mean": 0.009577,
+              "violation_codes_per_64_lexical_tokens_mean": 0.009701,
+              "control_hits_per_64_lexical_tokens": 7.5373
+            },
+            "prefix_raw": {
+              "entropy": 10.7156,
+              "entropy_miller_madow": 10.9645,
+              "effective_vocab": 45053.38,
+              "effective_vocab_miller_madow": 57785.18,
+              "hhi": 0.00056323,
+              "effective_simpson": 1775.47,
+              "top_k_mass_by_k": {
+                "10": 0.0574,
+                "100": 0.156,
+                "1000": 0.2877
+              },
+              "top_k_mass": 0.156,
+              "top_10": [
+                {
+                  "prefix": "a young woman with long",
+                  "count": 3828
+                },
+                {
+                  "prefix": "a close up portrait captures",
+                  "count": 2745
+                },
+                {
+                  "prefix": "a close up view captures",
+                  "count": 2678
+                },
+                {
+                  "prefix": "a woman with long dark",
+                  "count": 1743
+                },
+                {
+                  "prefix": "a woman stands in a",
+                  "count": 1732
+                },
+                {
+                  "prefix": "a woman with shoulder length",
+                  "count": 1583
+                },
+                {
+                  "prefix": "a middle aged man with",
+                  "count": 1568
+                },
+                {
+                  "prefix": "a woman stands in profile",
+                  "count": 1555
+                },
+                {
+                  "prefix": "a close up portrait of",
+                  "count": 1374
+                },
+                {
+                  "prefix": "a woman with long wavy",
+                  "count": 1365
+                }
+              ]
+            },
+            "prefix_content": {
+              "entropy": 11.4134,
+              "entropy_miller_madow": 11.7265,
+              "effective_vocab": 90529.33,
+              "effective_vocab_miller_madow": 123810.08,
+              "hhi": 0.00020562,
+              "effective_simpson": 4863.42,
+              "top_k_mass_by_k": {
+                "10": 0.033,
+                "100": 0.1,
+                "1000": 0.1999
+              },
+              "top_k_mass": 0.1,
+              "top_10": [
+                {
+                  "prefix": "close up portrait captures a",
+                  "count": 2120
+                },
+                {
+                  "prefix": "close up view captures the",
+                  "count": 1549
+                },
+                {
+                  "prefix": "close up portrait of a",
+                  "count": 1287
+                },
+                {
+                  "prefix": "woman with fair skin and",
+                  "count": 1154
+                },
+                {
+                  "prefix": "young woman with fair skin",
+                  "count": 1046
+                },
+                {
+                  "prefix": "close up view captures a",
+                  "count": 971
+                },
+                {
+                  "prefix": "young woman with long wavy",
+                  "count": 889
+                },
+                {
+                  "prefix": "woman with long dark hair",
+                  "count": 870
+                },
+                {
+                  "prefix": "young woman with long dark",
+                  "count": 859
+                },
+                {
+                  "prefix": "young woman with long straight",
+                  "count": 847
+                }
+              ]
+            },
+            "top_openings": [
+              {
+                "opening": "young woman with",
+                "count": 9561
+              },
+              {
+                "opening": "woman with long",
+                "count": 5662
+              },
+              {
+                "opening": "close up portrait",
+                "count": 4826
+              },
+              {
+                "opening": "close up view",
+                "count": 4478
+              },
+              {
+                "opening": "woman stands in",
+                "count": 3865
+              },
+              {
+                "opening": "young girl with",
+                "count": 3385
+              },
+              {
+                "opening": "young man with",
+                "count": 2745
+              },
+              {
+                "opening": "woman with dark",
+                "count": 2516
+              },
+              {
+                "opening": "man with short",
+                "count": 1795
+              },
+              {
+                "opening": "middle aged man",
+                "count": 1740
+              }
+            ],
+            "token_budget": 256,
+            "avg_budget_tokens": 181.38,
+            "captions_meeting_budget": 16541,
+            "coverage_rate": 0.0471,
+            "eligibility_rate": 0.0471,
+            "ineligible_count": 334843,
+            "truncation_rate": 0.0455,
+            "mean_retained_token_fraction": 0.9954,
+            "marginal_avg_token_gain": 0.4216
+          }
+        },
+        "budget_curve_features": {
+          "distinct_n.2": {
+            "metric": "distinct_n.2",
+            "direction": "up",
+            "normalization_basis": "within_surface_budget_range",
+            "series": {
+              "16": 0.087748,
+              "32": 0.077857,
+              "64": 0.067145,
+              "128": 0.051988,
+              "256": 0.046595
+            },
+            "relative_progress_curve": {
+              "16": 1.0,
+              "32": 0.7597,
+              "64": 0.4994,
+              "128": 0.131,
+              "256": 0.0
+            },
+            "relative_gap_curve": {
+              "16": 0.0,
+              "32": 0.2403,
+              "64": 0.5006,
+              "128": 0.869,
+              "256": 1.0
+            },
+            "relative_progress_auc": 0.2616,
+            "relative_gap_auc": 0.7384,
+            "budget_at_50pct_relative_progress": 16.0,
+            "budget_at_75pct_relative_progress": 16.0,
+            "budget_at_90pct_relative_progress": 16.0,
+            "observed_best": 0.087748,
+            "observed_worst": 0.046595
+          },
+          "distinct_n.3": {
+            "metric": "distinct_n.3",
+            "direction": "up",
+            "normalization_basis": "within_surface_budget_range",
+            "series": {
+              "16": 0.268272,
+              "32": 0.2758,
+              "64": 0.271675,
+              "128": 0.235026,
+              "256": 0.208139
+            },
+            "relative_progress_curve": {
+              "16": 0.8887,
+              "32": 1.0,
+              "64": 0.939,
+              "128": 0.3974,
+              "256": 0.0
+            },
+            "relative_gap_curve": {
+              "16": 0.1113,
+              "32": 0.0,
+              "64": 0.061,
+              "128": 0.6026,
+              "256": 1.0
+            },
+            "relative_progress_auc": 0.4764,
+            "relative_gap_auc": 0.5236,
+            "budget_at_50pct_relative_progress": 16.0,
+            "budget_at_75pct_relative_progress": 16.0,
+            "budget_at_90pct_relative_progress": 17.62,
+            "observed_best": 0.2758,
+            "observed_worst": 0.208139
+          },
+          "ngram_top_k_mass.2": {
+            "metric": "ngram_top_k_mass.2",
+            "direction": "down",
+            "normalization_basis": "within_surface_budget_range",
+            "series": {
+              "16": 0.2114,
+              "32": 0.1631,
+              "64": 0.1294,
+              "128": 0.1219,
+              "256": 0.1283
+            },
+            "relative_progress_curve": {
+              "16": 0.0,
+              "32": 0.5397,
+              "64": 0.9162,
+              "128": 1.0,
+              "256": 0.9285
+            },
+            "relative_gap_curve": {
+              "16": 1.0,
+              "32": 0.4603,
+              "64": 0.0838,
+              "128": 0.0,
+              "256": 0.0715
+            },
+            "relative_progress_auc": 0.8848,
+            "relative_gap_auc": 0.1152,
+            "budget_at_50pct_relative_progress": 30.82,
+            "budget_at_75pct_relative_progress": 49.88,
+            "budget_at_90pct_relative_progress": 62.62,
+            "observed_best": 0.1219,
+            "observed_worst": 0.2114
+          },
+          "ngram_top_k_mass.3": {
+            "metric": "ngram_top_k_mass.3",
+            "direction": "down",
+            "normalization_basis": "within_surface_budget_range",
+            "series": {
+              "16": 0.0918,
+              "32": 0.0574,
+              "64": 0.036,
+              "128": 0.0313,
+              "256": 0.037
+            },
+            "relative_progress_curve": {
+              "16": 0.0,
+              "32": 0.5686,
+              "64": 0.9223,
+              "128": 1.0,
+              "256": 0.9058
+            },
+            "relative_gap_curve": {
+              "16": 1.0,
+              "32": 0.4314,
+              "64": 0.0777,
+              "128": 0.0,
+              "256": 0.0942
+            },
+            "relative_progress_auc": 0.8829,
+            "relative_gap_auc": 0.1171,
+            "budget_at_50pct_relative_progress": 30.07,
+            "budget_at_75pct_relative_progress": 48.41,
+            "budget_at_90pct_relative_progress": 61.98,
+            "observed_best": 0.0313,
+            "observed_worst": 0.0918
+          },
+          "repeated_4gram_rate": {
+            "metric": "repeated_4gram_rate",
+            "direction": "down",
+            "normalization_basis": "within_surface_budget_range",
+            "series": {
+              "16": 0.0,
+              "32": 0.0002,
+              "64": 0.0064,
+              "128": 0.0262,
+              "256": 0.0654
+            },
+            "relative_progress_curve": {
+              "16": 1.0,
+              "32": 0.9969,
+              "64": 0.9021,
+              "128": 0.5994,
+              "256": 0.0
+            },
+            "relative_gap_curve": {
+              "16": 0.0,
+              "32": 0.0031,
+              "64": 0.0979,
+              "128": 0.4006,
+              "256": 1.0
+            },
+            "relative_progress_auc": 0.5532,
+            "relative_gap_auc": 0.4468,
+            "budget_at_50pct_relative_progress": 16.0,
+            "budget_at_75pct_relative_progress": 16.0,
+            "budget_at_90pct_relative_progress": 16.0,
+            "observed_best": 0.0,
+            "observed_worst": 0.0654
+          },
+          "violation_rate": {
+            "metric": "violation_rate",
+            "direction": "down",
+            "normalization_basis": "within_surface_budget_range",
+            "series": {
+              "16": 0.0126,
+              "32": 0.0132,
+              "64": 0.0165,
+              "128": 0.022,
+              "256": 0.0274
+            },
+            "relative_progress_curve": {
+              "16": 1.0,
+              "32": 0.9595,
+              "64": 0.7365,
+              "128": 0.3649,
+              "256": 0.0
+            },
+            "relative_gap_curve": {
+              "16": 0.0,
+              "32": 0.0405,
+              "64": 0.2635,
+              "128": 0.6351,
+              "256": 1.0
+            },
+            "relative_progress_auc": 0.4225,
+            "relative_gap_auc": 0.5775,
+            "budget_at_50pct_relative_progress": 16.0,
+            "budget_at_75pct_relative_progress": 16.0,
+            "budget_at_90pct_relative_progress": 16.0,
+            "observed_best": 0.0126,
+            "observed_worst": 0.0274
+          }
+        }
+      }
+    },
+    {
+      "job": {
+        "comparison": "laion_pop_llama32_paired",
+        "family": "laion_pop",
+        "tier": "paired_same_image_same_gate",
+        "role": "reference",
+        "surface": "ref_laion_pop_llama32_11b",
+        "input": "<LOCAL_CACHE>/caption-fair-slices/laion_pop_llama32_paired/n1000000_seed0/ref_laion_pop_llama32_11b.jsonl",
+        "paired_count": 351384,
+        "summary_path": "<LOCAL_CACHE>/caption-fair-slices/laion_pop_llama32_paired/n1000000_seed0/summary.json"
+      },
+      "summary": {
+        "inputs": [
+          "<LOCAL_CACHE>/caption-fair-slices/laion_pop_llama32_paired/n1000000_seed0/ref_laion_pop_llama32_11b.jsonl"
+        ],
+        "hf_dataset": null,
+        "hf_config": null,
+        "hf_split": "train",
+        "records_seen": 351384,
+        "captions_loaded": 351384,
+        "caption_field": "caption",
+        "caption_field_requested": "auto",
+        "caption_fields_observed": {
+          "caption": 351384
+        },
+        "budget_tokenizer": {
+          "backend": "lexical",
+          "name": null
+        },
+        "prefix_tokens": 5,
+        "top_k": 100,
+        "top_ks": [
+          10,
+          100,
+          1000
+        ],
+        "ngram_orders": [
+          1,
+          2,
+          3
+        ],
+        "repeat_ngram_orders": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "token_budgets": [
+          16,
+          32,
+          64,
+          128,
+          256
+        ],
+        "metric_provenance": {
+          "main_or_appendix_metrics": {
+            "budget_eligibility": {
+              "fields": [
+                "coverage_rate",
+                "eligibility_rate",
+                "captions_meeting_budget"
+              ],
+              "claim_scope": "comparability_gate",
+              "citation_role": "length-controlled comparison protocol; exact estimator defined in this work"
+            },
+            "distinct_n": {
+              "fields": [
+                "distinct_n.1",
+                "distinct_n.2",
+                "distinct_n.3"
+              ],
+              "claim_scope": "lexical_diversity_proxy",
+              "citation_keys": [
+                "li2016diversity"
+              ]
+            },
+            "ngram_entropy_and_top_mass": {
+              "fields": [
+                "ngram_distribution",
+                "ngram_top_k_mass",
+                "ngram_top_k_mass_by_k"
+              ],
+              "claim_scope": "surface_concentration_proxy",
+              "citation_keys": [
+                "shannon1948communication",
+                "miller1955note"
+              ]
+            },
+            "prefix_entropy_and_top_mass": {
+              "fields": [
+                "prefix_raw",
+                "prefix_content",
+                "top_openings"
+              ],
+              "claim_scope": "opening_template_concentration_proxy",
+              "citation_role": "entropy/top-mass concentration estimator; caption-register application defined in this work",
+              "citation_keys": [
+                "shannon1948communication",
+                "miller1955note"
+              ]
+            },
+            "within_caption_repetition": {
+              "fields": [
+                "repeated_ngram_rate_by_n",
+                "within_caption_distinct_n_mean",
+                "within_caption_max_ngram_repeat_mean",
+                "full_caption_normalized"
+              ],
+              "orders": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "claim_scope": "within_caption_redundancy_proxy",
+              "citation_role": "n-gram repetition diagnostic; related to distinct-n diversity practice",
+              "citation_keys": [
+                "li2016diversity"
+              ]
+            },
+            "caption_balanced_top_mass": {
+              "fields": [
+                "full_caption_normalized.caption_balanced_ngram_top_k_mass"
+              ],
+              "claim_scope": "length_normalized_surface_concentration_proxy",
+              "citation_role": "top-k mass concentration estimator applied with caption-balanced averaging",
+              "citation_keys": [
+                "shannon1948communication",
+                "miller1955note"
+              ]
+            },
+            "dedup": {
+              "fields": [
+                "dedup"
+              ],
+              "claim_scope": "exact_normalized_duplicate_collapse",
+              "citation_role": "dataset deduplication/collapse audit; exact hash estimator defined in this work"
+            },
+            "violation_code_rate": {
+              "fields": [
+                "violation_rate",
+                "violation_code_rate",
+                "violation_severity_rate"
+              ],
+              "claim_scope": "operational_caption_register_and_instruction_artifact_audit",
+              "citation_role": "regex taxonomy is project-defined and must be reported as an operational audit, not a standard metric"
+            }
+          },
+          "debug_or_stratification_only": {
+            "operational_formatting_rate": {
+              "claim_scope": "debug_artifact_counter",
+              "citation_role": "not a headline metric"
+            },
+            "debug_control_lexicon": {
+              "claim_scope": "weak_control_vocabulary_diagnostic",
+              "citation_role": "appendix/debug only unless replaced by validated CBU/SCU extractor"
+            },
+            "stratification_script_rate": {
+              "claim_scope": "language_script_stratification",
+              "citation_role": "stratification only; not a quality score"
+            }
+          },
+          "model_based_metrics_not_computed_here": {
+            "vendi": {
+              "claim_scope": "embedding_semantic_diversity",
+              "citation_keys": [
+                "friedman2023vendi"
+              ]
+            },
+            "mauve_or_distribution_frontier": {
+              "claim_scope": "prompt_caption_distribution_gap",
+              "citation_keys": [
+                "pillutla2021mauve"
+              ]
+            },
+            "clipscore_or_long_context_retrieval_margin": {
+              "claim_scope": "image_conditioned_compatibility_proxy",
+              "citation_keys": [
+                "hessel2021clipscore"
+              ]
+            }
+          }
+        },
+        "full_length_reference": {
+          "captions_analyzed": 351384,
+          "avg_lexical_tokens": 180.41,
+          "avg_chars": 1052.47,
+          "violation_rate": 0.0378,
+          "repeated_4gram_rate": 0.487,
+          "repeated_ngram_rate_by_n": {
+            "3": 0.8619,
+            "4": 0.487,
+            "5": 0.2239,
+            "6": 0.1194
+          },
+          "within_caption_distinct_n_mean": {
+            "3": 0.974852,
+            "4": 0.991389,
+            "5": 0.996165,
+            "6": 0.997851
+          },
+          "within_caption_max_ngram_repeat_mean": {
+            "3": 2.2844,
+            "4": 1.556,
+            "5": 1.2486,
+            "6": 1.1329
+          },
+          "distinct_n": {
+            "1": 0.001775,
+            "2": 0.031786,
+            "3": 0.131376
+          },
+          "ngram_top_k_mass": {
+            "1": 0.5796,
+            "2": 0.2012,
+            "3": 0.0865
+          },
+          "ngram_distribution": {
+            "1": {
+              "entropy": 6.1305,
+              "entropy_miller_madow": 6.1314,
+              "effective_vocab": 459.68,
+              "effective_vocab_miller_madow": 460.09,
+              "hhi": 0.02020299,
+              "effective_simpson": 49.5,
+              "top_k_mass_by_k": {
+                "10": 0.3508,
+                "100": 0.5796,
+                "1000": 0.8608
+              }
+            },
+            "2": {
+              "entropy": 9.9464,
+              "entropy_miller_madow": 9.9622,
+              "effective_vocab": 20875.97,
+              "effective_vocab_miller_madow": 21210.4,
+              "hhi": 0.0009466,
+              "effective_simpson": 1056.41,
+              "top_k_mass_by_k": {
+                "10": 0.073,
+                "100": 0.2012,
+                "1000": 0.4259
+              }
+            },
+            "3": {
+              "entropy": 12.5614,
+              "entropy_miller_madow": 12.6271,
+              "effective_vocab": 285322.53,
+              "effective_vocab_miller_madow": 304694.08,
+              "hhi": 0.00017445,
+              "effective_simpson": 5732.34,
+              "top_k_mass_by_k": {
+                "10": 0.0281,
+                "100": 0.0865,
+                "1000": 0.2044
+              }
+            }
+          },
+          "ngram_top_k_mass_by_k": {
+            "1": {
+              "10": 0.3508,
+              "100": 0.5796,
+              "1000": 0.8608
+            },
+            "2": {
+              "10": 0.073,
+              "100": 0.2012,
+              "1000": 0.4259
+            },
+            "3": {
+              "10": 0.0281,
+              "100": 0.0865,
+              "1000": 0.2044
+            }
+          },
+          "violations": {
+            "D_markdown_leak": 8804,
+            "J_meta_statement": 2822,
+            "I_overlay_meta_leak": 1756,
+            "L_tag_verbatim": 48,
+            "F_repetition": 44,
+            "E_thinking_leak": 40,
+            "G_meta_instruction": 30,
+            "M_numbered_list_leak": 26,
+            "N_stage_header_leak": 6
+          },
+          "violation_code_rate": {
+            "D_markdown_leak": 0.0251,
+            "J_meta_statement": 0.008,
+            "I_overlay_meta_leak": 0.005,
+            "L_tag_verbatim": 0.0001,
+            "F_repetition": 0.0001,
+            "E_thinking_leak": 0.0001,
+            "G_meta_instruction": 0.0001,
+            "M_numbered_list_leak": 0.0001,
+            "N_stage_header_leak": 0.0
+          },
+          "violation_severity_rate": {
+            "moderate": 0.0381,
+            "low": 0.0003,
+            "critical": 0.0001,
+            "severe": 0.0001
+          },
+          "dedup": {
+            "normalized_unique_rate": 1.0,
+            "normalized_duplicate_rate": 0.0,
+            "duplicate_mass_rate": 0.0,
+            "top_duplicate_mass": 0.0003,
+            "max_duplicate_count": 1,
+            "top_hashes": [
+              {
+                "hash": "c2363bb491ba1820",
+                "count": 1
+              },
+              {
+                "hash": "52c84a1edd0164d7",
+                "count": 1
+              },
+              {
+                "hash": "4e05e895b8529f02",
+                "count": 1
+              },
+              {
+                "hash": "47fa8f0f7bf5fe40",
+                "count": 1
+              },
+              {
+                "hash": "530a770a5e04df82",
+                "count": 1
+              },
+              {
+                "hash": "9becf14fc5dfb575",
+                "count": 1
+              },
+              {
+                "hash": "396008676c665fde",
+                "count": 1
+              },
+              {
+                "hash": "2d2b7a2d50f94b5b",
+                "count": 1
+              },
+              {
+                "hash": "6998e6d675e957bf",
+                "count": 1
+              },
+              {
+                "hash": "cad40f8881cdbc3d",
+                "count": 1
+              }
+            ]
+          },
+          "operational_formatting_rate": {
+            "newline": 0.995,
+            "bullet": 0.0235,
+            "url": 0.0064,
+            "numbered_list": 0.0001,
+            "html_entity": 0.0
+          },
+          "stratification_script_rate": {
+            "non_ascii": 0.0295,
+            "cjk": 0.0011
+          },
+          "debug_control_lexicon": {
+            "caption_rate": {
+              "spatial_relation": 0.993,
+              "color": 0.9744,
+              "count": 0.6219,
+              "lighting": 0.5633,
+              "camera": 0.4773,
+              "material": 0.4516,
+              "style": 0.3476,
+              "text_rendering": 0.1933
+            },
+            "token_hits": {
+              "color": 2094951,
+              "spatial_relation": 1650965,
+              "count": 384149,
+              "lighting": 377019,
+              "material": 371650,
+              "camera": 272910,
+              "style": 270072,
+              "text_rendering": 144207
+            },
+            "hits_per_caption": 15.84,
+            "hits_per_64_lexical_tokens": 5.6191
+          },
+          "full_caption_normalized": {
+            "normalization_scope": "caption-balanced and/or per-token full-caption metrics; not a faithfulness score",
+            "caption_balanced_ngram_top_k_mass": {
+              "1": {
+                "10": 0.348991,
+                "100": 0.580297,
+                "1000": 0.861588
+              },
+              "2": {
+                "10": 0.07216,
+                "100": 0.201214,
+                "1000": 0.426329
+              },
+              "3": {
+                "10": 0.027957,
+                "100": 0.085794,
+                "1000": 0.203651
+              }
+            },
+            "within_caption_distinct_n_mean": {
+              "3": 0.974852,
+              "4": 0.991389,
+              "5": 0.996165,
+              "6": 0.997851
+            },
+            "repeated_ngram_rate_by_n": {
+              "3": 0.8619,
+              "4": 0.487,
+              "5": 0.2239,
+              "6": 0.1194
+            },
+            "violation_indicator_per_64_lexical_tokens_mean": 0.012027,
+            "violation_codes_per_64_lexical_tokens_mean": 0.01227,
+            "control_hits_per_64_lexical_tokens": 5.6191
+          },
+          "prefix_raw": {
+            "entropy": 9.7157,
+            "entropy_miller_madow": 9.8908,
+            "effective_vocab": 16575.74,
+            "effective_vocab_miller_madow": 19747.24,
+            "hhi": 0.00162796,
+            "effective_simpson": 614.27,
+            "top_k_mass_by_k": {
+              "10": 0.0863,
+              "100": 0.2298,
+              "1000": 0.4226
+            },
+            "top_k_mass": 0.2298,
+            "top_10": [
+              {
+                "prefix": "a close up view of",
+                "count": 10426
+              },
+              {
+                "prefix": "a close up photograph of",
+                "count": 3796
+              },
+              {
+                "prefix": "a digital illustration of a",
+                "count": 2715
+              },
+              {
+                "prefix": "a serene scene of a",
+                "count": 2396
+              },
+              {
+                "prefix": "a black and white photograph",
+                "count": 2267
+              },
+              {
+                "prefix": "a close up portrait of",
+                "count": 2154
+              },
+              {
+                "prefix": "a 3d rendering of a",
+                "count": 1839
+              },
+              {
+                "prefix": "a striking black and white",
+                "count": 1741
+              },
+              {
+                "prefix": "a woman standing in front",
+                "count": 1533
+              },
+              {
+                "prefix": "a woman standing in a",
+                "count": 1470
+              }
+            ]
+          },
+          "prefix_content": {
+            "entropy": 10.8487,
+            "entropy_miller_madow": 11.1095,
+            "effective_vocab": 51466.37,
+            "effective_vocab_miller_madow": 66799.9,
+            "hhi": 0.00086225,
+            "effective_simpson": 1159.76,
+            "top_k_mass_by_k": {
+              "10": 0.0635,
+              "100": 0.1393,
+              "1000": 0.2634
+            },
+            "top_k_mass": 0.1393,
+            "top_10": [
+              {
+                "prefix": "close up view of a",
+                "count": 8156
+              },
+              {
+                "prefix": "close up photograph of a",
+                "count": 3092
+              },
+              {
+                "prefix": "black and white photograph of",
+                "count": 2206
+              },
+              {
+                "prefix": "close up portrait of a",
+                "count": 1968
+              },
+              {
+                "prefix": "woman standing in front of",
+                "count": 1588
+              },
+              {
+                "prefix": "close up view of the",
+                "count": 1320
+              },
+              {
+                "prefix": "here is a detailed description",
+                "count": 1040
+              },
+              {
+                "prefix": "man standing in front of",
+                "count": 1038
+              },
+              {
+                "prefix": "serene scene of a woman",
+                "count": 998
+              },
+              {
+                "prefix": "captivating close up of a",
+                "count": 915
+              }
+            ]
+          },
+          "top_openings": [
+            {
+              "opening": "close up view",
+              "count": 10673
+            },
+            {
+              "opening": "black and white",
+              "count": 6442
+            },
+            {
+              "opening": "close up photograph",
+              "count": 3879
+            },
+            {
+              "opening": "digital illustration of",
+              "count": 3751
+            },
+            {
+              "opening": "woman standing in",
+              "count": 3530
+            },
+            {
+              "opening": "woman in a",
+              "count": 2960
+            },
+            {
+              "opening": "serene scene of",
+              "count": 2753
+            },
+            {
+              "opening": "close up portrait",
+              "count": 2284
+            },
+            {
+              "opening": "3d rendering of",
+              "count": 2268
+            },
+            {
+              "opening": "interior of a",
+              "count": 2205
+            }
+          ]
+        },
+        "length_controlled": {
+          "16": {
+            "captions_analyzed": 351384,
+            "avg_lexical_tokens": 16.0,
+            "avg_chars": 92.05,
+            "violation_rate": 0.004,
+            "repeated_4gram_rate": 0.0001,
+            "repeated_ngram_rate_by_n": {
+              "3": 0.0014,
+              "4": 0.0001,
+              "5": 0.0,
+              "6": 0.0
+            },
+            "within_caption_distinct_n_mean": {
+              "3": 0.999893,
+              "4": 0.999991,
+              "5": 1.0,
+              "6": 1.0
+            },
+            "within_caption_max_ngram_repeat_mean": {
+              "3": 1.0014,
+              "4": 1.0001,
+              "5": 1.0,
+              "6": 1.0
+            },
+            "distinct_n": {
+              "1": 0.007723,
+              "2": 0.084918,
+              "3": 0.238862
+            },
+            "ngram_top_k_mass": {
+              "1": 0.6148,
+              "2": 0.2613,
+              "3": 0.1101
+            },
+            "ngram_distribution": {
+              "1": {
+                "entropy": 5.9328,
+                "entropy_miller_madow": 5.9367,
+                "effective_vocab": 377.23,
+                "effective_vocab_miller_madow": 378.69,
+                "hhi": 0.02940754,
+                "effective_simpson": 34.0,
+                "top_k_mass_by_k": {
+                  "10": 0.3551,
+                  "100": 0.6148,
+                  "1000": 0.877
+                }
+              },
+              "2": {
+                "entropy": 9.3976,
+                "entropy_miller_madow": 9.44,
+                "effective_vocab": 12059.03,
+                "effective_vocab_miller_madow": 12582.07,
+                "hhi": 0.00166539,
+                "effective_simpson": 600.46,
+                "top_k_mass_by_k": {
+                  "10": 0.0921,
+                  "100": 0.2613,
+                  "1000": 0.4937
+                }
+              },
+              "3": {
+                "entropy": 11.5933,
+                "entropy_miller_madow": 11.7128,
+                "effective_vocab": 108372.21,
+                "effective_vocab_miller_madow": 122119.83,
+                "hhi": 0.00021836,
+                "effective_simpson": 4579.57,
+                "top_k_mass_by_k": {
+                  "10": 0.029,
+                  "100": 0.1101,
+                  "1000": 0.2614
+                }
+              }
+            },
+            "ngram_top_k_mass_by_k": {
+              "1": {
+                "10": 0.3551,
+                "100": 0.6148,
+                "1000": 0.877
+              },
+              "2": {
+                "10": 0.0921,
+                "100": 0.2613,
+                "1000": 0.4937
+              },
+              "3": {
+                "10": 0.029,
+                "100": 0.1101,
+                "1000": 0.2614
+              }
+            },
+            "violations": {
+              "J_meta_statement": 906,
+              "D_markdown_leak": 387,
+              "I_overlay_meta_leak": 88,
+              "G_meta_instruction": 30,
+              "L_tag_verbatim": 5,
+              "E_thinking_leak": 3,
+              "N_stage_header_leak": 1,
+              "M_numbered_list_leak": 1
+            },
+            "violation_code_rate": {
+              "J_meta_statement": 0.0026,
+              "D_markdown_leak": 0.0011,
+              "I_overlay_meta_leak": 0.0003,
+              "G_meta_instruction": 0.0001,
+              "L_tag_verbatim": 0.0,
+              "E_thinking_leak": 0.0,
+              "N_stage_header_leak": 0.0,
+              "M_numbered_list_leak": 0.0
+            },
+            "violation_severity_rate": {
+              "moderate": 0.0039,
+              "low": 0.0001,
+              "critical": 0.0
+            },
+            "dedup": {
+              "normalized_unique_rate": 0.998233,
+              "normalized_duplicate_rate": 0.001767,
+              "duplicate_mass_rate": 0.003244,
+              "top_duplicate_mass": 0.0009,
+              "max_duplicate_count": 10,
+              "top_hashes": [
+                {
+                  "hash": "cb5d6af3d307fa7f",
+                  "count": 10
+                },
+                {
+                  "hash": "a627f747adb075d7",
+                  "count": 9
+                },
+                {
+                  "hash": "22302e9352fb9506",
+                  "count": 8
+                },
+                {
+                  "hash": "c7ba4410ac8e1dc3",
+                  "count": 6
+                },
+                {
+                  "hash": "1c59ce18699a5298",
+                  "count": 6
+                },
+                {
+                  "hash": "98b34a5712ef18ee",
+                  "count": 6
+                },
+                {
+                  "hash": "e2cd434d38365ee1",
+                  "count": 5
+                },
+                {
+                  "hash": "a6c986ce1418148a",
+                  "count": 5
+                },
+                {
+                  "hash": "ae418f02135218e8",
+                  "count": 5
+                },
+                {
+                  "hash": "9e81da1648df6e84",
+                  "count": 5
+                }
+              ]
+            },
+            "operational_formatting_rate": {
+              "newline": 0.109,
+              "bullet": 0.0005,
+              "url": 0.0,
+              "numbered_list": 0.0
+            },
+            "stratification_script_rate": {
+              "non_ascii": 0.0062,
+              "cjk": 0.0001
+            },
+            "debug_control_lexicon": {
+              "caption_rate": {
+                "color": 0.3671,
+                "spatial_relation": 0.2072,
+                "style": 0.1905,
+                "camera": 0.1392,
+                "count": 0.125,
+                "material": 0.1179,
+                "lighting": 0.0509,
+                "text_rendering": 0.0194
+              },
+              "token_hits": {
+                "color": 181121,
+                "style": 87418,
+                "spatial_relation": 78421,
+                "camera": 67221,
+                "count": 49501,
+                "material": 46194,
+                "lighting": 18759,
+                "text_rendering": 8063
+              },
+              "hits_per_caption": 1.5274,
+              "hits_per_64_lexical_tokens": 6.1095
+            },
+            "full_caption_normalized": {
+              "normalization_scope": "caption-balanced and/or per-token full-caption metrics; not a faithfulness score",
+              "caption_balanced_ngram_top_k_mass": {},
+              "within_caption_distinct_n_mean": {
+                "3": 0.999893,
+                "4": 0.999991,
+                "5": 1.0,
+                "6": 1.0
+              },
+              "repeated_ngram_rate_by_n": {
+                "3": 0.0014,
+                "4": 0.0001,
+                "5": 0.0,
+                "6": 0.0
+              },
+              "violation_indicator_per_64_lexical_tokens_mean": 0.015903,
+              "violation_codes_per_64_lexical_tokens_mean": 0.016176,
+              "control_hits_per_64_lexical_tokens": 6.1095
+            },
+            "prefix_raw": {
+              "entropy": 9.7157,
+              "entropy_miller_madow": 9.8908,
+              "effective_vocab": 16575.74,
+              "effective_vocab_miller_madow": 19747.24,
+              "hhi": 0.00162796,
+              "effective_simpson": 614.27,
+              "top_k_mass_by_k": {
+                "10": 0.0863,
+                "100": 0.2298,
+                "1000": 0.4226
+              },
+              "top_k_mass": 0.2298,
+              "top_10": [
+                {
+                  "prefix": "a close up view of",
+                  "count": 10426
+                },
+                {
+                  "prefix": "a close up photograph of",
+                  "count": 3796
+                },
+                {
+                  "prefix": "a digital illustration of a",
+                  "count": 2715
+                },
+                {
+                  "prefix": "a serene scene of a",
+                  "count": 2396
+                },
+                {
+                  "prefix": "a black and white photograph",
+                  "count": 2267
+                },
+                {
+                  "prefix": "a close up portrait of",
+                  "count": 2154
+                },
+                {
+                  "prefix": "a 3d rendering of a",
+                  "count": 1839
+                },
+                {
+                  "prefix": "a striking black and white",
+                  "count": 1741
+                },
+                {
+                  "prefix": "a woman standing in front",
+                  "count": 1533
+                },
+                {
+                  "prefix": "a woman standing in a",
+                  "count": 1470
+                }
+              ]
+            },
+            "prefix_content": {
+              "entropy": 10.8487,
+              "entropy_miller_madow": 11.1095,
+              "effective_vocab": 51466.37,
+              "effective_vocab_miller_madow": 66799.9,
+              "hhi": 0.00086225,
+              "effective_simpson": 1159.76,
+              "top_k_mass_by_k": {
+                "10": 0.0635,
+                "100": 0.1393,
+                "1000": 0.2634
+              },
+              "top_k_mass": 0.1393,
+              "top_10": [
+                {
+                  "prefix": "close up view of a",
+                  "count": 8156
+                },
+                {
+                  "prefix": "close up photograph of a",
+                  "count": 3092
+                },
+                {
+                  "prefix": "black and white photograph of",
+                  "count": 2206
+                },
+                {
+                  "prefix": "close up portrait of a",
+                  "count": 1968
+                },
+                {
+                  "prefix": "woman standing in front of",
+                  "count": 1588
+                },
+                {
+                  "prefix": "close up view of the",
+                  "count": 1320
+                },
+                {
+                  "prefix": "here is a detailed description",
+                  "count": 1040
+                },
+                {
+                  "prefix": "man standing in front of",
+                  "count": 1038
+                },
+                {
+                  "prefix": "serene scene of a woman",
+                  "count": 998
+                },
+                {
+                  "prefix": "captivating close up of a",
+                  "count": 915
+                }
+              ]
+            },
+            "top_openings": [
+              {
+                "opening": "close up view",
+                "count": 10673
+              },
+              {
+                "opening": "black and white",
+                "count": 6442
+              },
+              {
+                "opening": "close up photograph",
+                "count": 3879
+              },
+              {
+                "opening": "digital illustration of",
+                "count": 3751
+              },
+              {
+                "opening": "woman standing in",
+                "count": 3530
+              },
+              {
+                "opening": "woman in a",
+                "count": 2960
+              },
+              {
+                "opening": "serene scene of",
+                "count": 2753
+              },
+              {
+                "opening": "close up portrait",
+                "count": 2284
+              },
+              {
+                "opening": "3d rendering of",
+                "count": 2268
+              },
+              {
+                "opening": "interior of a",
+                "count": 2205
+              }
+            ],
+            "token_budget": 16,
+            "avg_budget_tokens": 16.0,
+            "captions_meeting_budget": 351382,
+            "coverage_rate": 1.0,
+            "eligibility_rate": 1.0,
+            "ineligible_count": 2,
+            "truncation_rate": 1.0,
+            "mean_retained_token_fraction": 0.0951
+          },
+          "32": {
+            "captions_analyzed": 351384,
+            "avg_lexical_tokens": 32.0,
+            "avg_chars": 185.11,
+            "violation_rate": 0.0131,
+            "repeated_4gram_rate": 0.0076,
+            "repeated_ngram_rate_by_n": {
+              "3": 0.0341,
+              "4": 0.0076,
+              "5": 0.002,
+              "6": 0.0007
+            },
+            "within_caption_distinct_n_mean": {
+              "3": 0.998456,
+              "4": 0.999616,
+              "5": 0.999878,
+              "6": 0.999948
+            },
+            "within_caption_max_ngram_repeat_mean": {
+              "3": 1.0343,
+              "4": 1.0076,
+              "5": 1.002,
+              "6": 1.0007
+            },
+            "distinct_n": {
+              "1": 0.004807,
+              "2": 0.065021,
+              "3": 0.211074
+            },
+            "ngram_top_k_mass": {
+              "1": 0.6016,
+              "2": 0.2264,
+              "3": 0.0865
+            },
+            "ngram_distribution": {
+              "1": {
+                "entropy": 6.048,
+                "entropy_miller_madow": 6.0504,
+                "effective_vocab": 423.27,
+                "effective_vocab_miller_madow": 424.29,
+                "hhi": 0.02180656,
+                "effective_simpson": 45.86,
+                "top_k_mass_by_k": {
+                  "10": 0.349,
+                  "100": 0.6016,
+                  "1000": 0.8729
+                }
+              },
+              "2": {
+                "entropy": 9.6818,
+                "entropy_miller_madow": 9.7143,
+                "effective_vocab": 16023.07,
+                "effective_vocab_miller_madow": 16552.55,
+                "hhi": 0.00109152,
+                "effective_simpson": 916.15,
+                "top_k_mass_by_k": {
+                  "10": 0.0753,
+                  "100": 0.2264,
+                  "1000": 0.4594
+                }
+              },
+              "3": {
+                "entropy": 12.0721,
+                "entropy_miller_madow": 12.1776,
+                "effective_vocab": 174915.09,
+                "effective_vocab_miller_madow": 194384.42,
+                "hhi": 0.00014829,
+                "effective_simpson": 6743.76,
+                "top_k_mass_by_k": {
+                  "10": 0.0241,
+                  "100": 0.0865,
+                  "1000": 0.2241
+                }
+              }
+            },
+            "ngram_top_k_mass_by_k": {
+              "1": {
+                "10": 0.349,
+                "100": 0.6016,
+                "1000": 0.8729
+              },
+              "2": {
+                "10": 0.0753,
+                "100": 0.2264,
+                "1000": 0.4594
+              },
+              "3": {
+                "10": 0.0241,
+                "100": 0.0865,
+                "1000": 0.2241
+              }
+            },
+            "violations": {
+              "D_markdown_leak": 3104,
+              "J_meta_statement": 1195,
+              "I_overlay_meta_leak": 270,
+              "G_meta_instruction": 30,
+              "E_thinking_leak": 7,
+              "L_tag_verbatim": 7,
+              "M_numbered_list_leak": 4,
+              "N_stage_header_leak": 2
+            },
+            "violation_code_rate": {
+              "D_markdown_leak": 0.0088,
+              "J_meta_statement": 0.0034,
+              "I_overlay_meta_leak": 0.0008,
+              "G_meta_instruction": 0.0001,
+              "E_thinking_leak": 0.0,
+              "L_tag_verbatim": 0.0,
+              "M_numbered_list_leak": 0.0,
+              "N_stage_header_leak": 0.0
+            },
+            "violation_severity_rate": {
+              "moderate": 0.013,
+              "low": 0.0001,
+              "critical": 0.0
+            },
+            "dedup": {
+              "normalized_unique_rate": 0.999997,
+              "normalized_duplicate_rate": 3e-06,
+              "duplicate_mass_rate": 6e-06,
+              "top_duplicate_mass": 0.0003,
+              "max_duplicate_count": 2,
+              "top_hashes": [
+                {
+                  "hash": "76a7af0ead6a5f06",
+                  "count": 2
+                },
+                {
+                  "hash": "af287e0ec0adc8ee",
+                  "count": 1
+                },
+                {
+                  "hash": "08c523e99b427943",
+                  "count": 1
+                },
+                {
+                  "hash": "bee068900b9d5c48",
+                  "count": 1
+                },
+                {
+                  "hash": "0c6261713a6e4fd5",
+                  "count": 1
+                },
+                {
+                  "hash": "cc2c06d64e85828b",
+                  "count": 1
+                },
+                {
+                  "hash": "e837cd3d073fe6ea",
+                  "count": 1
+                },
+                {
+                  "hash": "8537b07915268159",
+                  "count": 1
+                },
+                {
+                  "hash": "46b0771ad3ab0339",
+                  "count": 1
+                },
+                {
+                  "hash": "b288b842d1efa501",
+                  "count": 1
+                }
+              ]
+            },
+            "operational_formatting_rate": {
+              "newline": 0.399,
+              "bullet": 0.0079,
+              "url": 0.0001,
+              "numbered_list": 0.0
+            },
+            "stratification_script_rate": {
+              "non_ascii": 0.011,
+              "cjk": 0.0001
+            },
+            "debug_control_lexicon": {
+              "caption_rate": {
+                "color": 0.6729,
+                "spatial_relation": 0.5371,
+                "style": 0.2134,
+                "material": 0.2028,
+                "count": 0.187,
+                "camera": 0.1853,
+                "lighting": 0.1293,
+                "text_rendering": 0.0356
+              },
+              "token_hits": {
+                "color": 456755,
+                "spatial_relation": 255854,
+                "style": 106374,
+                "material": 94877,
+                "camera": 89302,
+                "count": 83627,
+                "lighting": 50502,
+                "text_rendering": 17082
+              },
+              "hits_per_caption": 3.2852,
+              "hits_per_64_lexical_tokens": 6.5705
+            },
+            "full_caption_normalized": {
+              "normalization_scope": "caption-balanced and/or per-token full-caption metrics; not a faithfulness score",
+              "caption_balanced_ngram_top_k_mass": {},
+              "within_caption_distinct_n_mean": {
+                "3": 0.998456,
+                "4": 0.999616,
+                "5": 0.999878,
+                "6": 0.999948
+              },
+              "repeated_ngram_rate_by_n": {
+                "3": 0.0341,
+                "4": 0.0076,
+                "5": 0.002,
+                "6": 0.0007
+              },
+              "violation_indicator_per_64_lexical_tokens_mean": 0.026114,
+              "violation_codes_per_64_lexical_tokens_mean": 0.02629,
+              "control_hits_per_64_lexical_tokens": 6.5705
+            },
+            "prefix_raw": {
+              "entropy": 9.7157,
+              "entropy_miller_madow": 9.8908,
+              "effective_vocab": 16575.74,
+              "effective_vocab_miller_madow": 19747.24,
+              "hhi": 0.00162796,
+              "effective_simpson": 614.27,
+              "top_k_mass_by_k": {
+                "10": 0.0863,
+                "100": 0.2298,
+                "1000": 0.4226
+              },
+              "top_k_mass": 0.2298,
+              "top_10": [
+                {
+                  "prefix": "a close up view of",
+                  "count": 10426
+                },
+                {
+                  "prefix": "a close up photograph of",
+                  "count": 3796
+                },
+                {
+                  "prefix": "a digital illustration of a",
+                  "count": 2715
+                },
+                {
+                  "prefix": "a serene scene of a",
+                  "count": 2396
+                },
+                {
+                  "prefix": "a black and white photograph",
+                  "count": 2267
+                },
+                {
+                  "prefix": "a close up portrait of",
+                  "count": 2154
+                },
+                {
+                  "prefix": "a 3d rendering of a",
+                  "count": 1839
+                },
+                {
+                  "prefix": "a striking black and white",
+                  "count": 1741
+                },
+                {
+                  "prefix": "a woman standing in front",
+                  "count": 1533
+                },
+                {
+                  "prefix": "a woman standing in a",
+                  "count": 1470
+                }
+              ]
+            },
+            "prefix_content": {
+              "entropy": 10.8487,
+              "entropy_miller_madow": 11.1095,
+              "effective_vocab": 51466.37,
+              "effective_vocab_miller_madow": 66799.9,
+              "hhi": 0.00086225,
+              "effective_simpson": 1159.76,
+              "top_k_mass_by_k": {
+                "10": 0.0635,
+                "100": 0.1393,
+                "1000": 0.2634
+              },
+              "top_k_mass": 0.1393,
+              "top_10": [
+                {
+                  "prefix": "close up view of a",
+                  "count": 8156
+                },
+                {
+                  "prefix": "close up photograph of a",
+                  "count": 3092
+                },
+                {
+                  "prefix": "black and white photograph of",
+                  "count": 2206
+                },
+                {
+                  "prefix": "close up portrait of a",
+                  "count": 1968
+                },
+                {
+                  "prefix": "woman standing in front of",
+                  "count": 1588
+                },
+                {
+                  "prefix": "close up view of the",
+                  "count": 1320
+                },
+                {
+                  "prefix": "here is a detailed description",
+                  "count": 1040
+                },
+                {
+                  "prefix": "man standing in front of",
+                  "count": 1038
+                },
+                {
+                  "prefix": "serene scene of a woman",
+                  "count": 998
+                },
+                {
+                  "prefix": "captivating close up of a",
+                  "count": 915
+                }
+              ]
+            },
+            "top_openings": [
+              {
+                "opening": "close up view",
+                "count": 10673
+              },
+              {
+                "opening": "black and white",
+                "count": 6442
+              },
+              {
+                "opening": "close up photograph",
+                "count": 3879
+              },
+              {
+                "opening": "digital illustration of",
+                "count": 3751
+              },
+              {
+                "opening": "woman standing in",
+                "count": 3530
+              },
+              {
+                "opening": "woman in a",
+                "count": 2960
+              },
+              {
+                "opening": "serene scene of",
+                "count": 2753
+              },
+              {
+                "opening": "close up portrait",
+                "count": 2284
+              },
+              {
+                "opening": "3d rendering of",
+                "count": 2268
+              },
+              {
+                "opening": "interior of a",
+                "count": 2205
+              }
+            ],
+            "token_budget": 32,
+            "avg_budget_tokens": 32.0,
+            "captions_meeting_budget": 351381,
+            "coverage_rate": 1.0,
+            "eligibility_rate": 1.0,
+            "ineligible_count": 3,
+            "truncation_rate": 1.0,
+            "mean_retained_token_fraction": 0.1902,
+            "marginal_avg_token_gain": 1.0
+          },
+          "64": {
+            "captions_analyzed": 351384,
+            "avg_lexical_tokens": 64.0,
+            "avg_chars": 367.76,
+            "violation_rate": 0.0303,
+            "repeated_4gram_rate": 0.0684,
+            "repeated_ngram_rate_by_n": {
+              "3": 0.2282,
+              "4": 0.0684,
+              "5": 0.0236,
+              "6": 0.0104
+            },
+            "within_caption_distinct_n_mean": {
+              "3": 0.99349,
+              "4": 0.997967,
+              "5": 0.999194,
+              "6": 0.999599
+            },
+            "within_caption_max_ngram_repeat_mean": {
+              "3": 1.2361,
+              "4": 1.0701,
+              "5": 1.0238,
+              "6": 1.0105
+            },
+            "distinct_n": {
+              "1": 0.002964,
+              "2": 0.049631,
+              "3": 0.186443
+            },
+            "ngram_top_k_mass": {
+              "1": 0.5882,
+              "2": 0.1964,
+              "3": 0.0693
+            },
+            "ngram_distribution": {
+              "1": {
+                "entropy": 6.1292,
+                "entropy_miller_madow": 6.1307,
+                "effective_vocab": 459.08,
+                "effective_vocab_miller_madow": 459.76,
+                "hhi": 0.01869564,
+                "effective_simpson": 53.49,
+                "top_k_mass_by_k": {
+                  "10": 0.3368,
+                  "100": 0.5882,
+                  "1000": 0.8683
+                }
+              },
+              "2": {
+                "entropy": 9.9375,
+                "entropy_miller_madow": 9.9623,
+                "effective_vocab": 20691.18,
+                "effective_vocab_miller_madow": 21211.07,
+                "hhi": 0.00081339,
+                "effective_simpson": 1229.42,
+                "top_k_mass_by_k": {
+                  "10": 0.066,
+                  "100": 0.1964,
+                  "1000": 0.4246
+                }
+              },
+              "3": {
+                "entropy": 12.5366,
+                "entropy_miller_madow": 12.6299,
+                "effective_vocab": 278353.19,
+                "effective_vocab_miller_madow": 305549.72,
+                "hhi": 9.873e-05,
+                "effective_simpson": 10129.0,
+                "top_k_mass_by_k": {
+                  "10": 0.0187,
+                  "100": 0.0693,
+                  "1000": 0.1875
+                }
+              }
+            },
+            "ngram_top_k_mass_by_k": {
+              "1": {
+                "10": 0.3368,
+                "100": 0.5882,
+                "1000": 0.8683
+              },
+              "2": {
+                "10": 0.066,
+                "100": 0.1964,
+                "1000": 0.4246
+              },
+              "3": {
+                "10": 0.0187,
+                "100": 0.0693,
+                "1000": 0.1875
+              }
+            },
+            "violations": {
+              "D_markdown_leak": 8321,
+              "J_meta_statement": 1432,
+              "I_overlay_meta_leak": 881,
+              "G_meta_instruction": 30,
+              "M_numbered_list_leak": 17,
+              "E_thinking_leak": 12,
+              "L_tag_verbatim": 10,
+              "N_stage_header_leak": 2
+            },
+            "violation_code_rate": {
+              "D_markdown_leak": 0.0237,
+              "J_meta_statement": 0.0041,
+              "I_overlay_meta_leak": 0.0025,
+              "G_meta_instruction": 0.0001,
+              "M_numbered_list_leak": 0.0,
+              "E_thinking_leak": 0.0,
+              "L_tag_verbatim": 0.0,
+              "N_stage_header_leak": 0.0
+            },
+            "violation_severity_rate": {
+              "moderate": 0.0303,
+              "low": 0.0002,
+              "critical": 0.0
+            },
+            "dedup": {
+              "normalized_unique_rate": 1.0,
+              "normalized_duplicate_rate": 0.0,
+              "duplicate_mass_rate": 0.0,
+              "top_duplicate_mass": 0.0003,
+              "max_duplicate_count": 1,
+              "top_hashes": [
+                {
+                  "hash": "3d0e39f8e43268bc",
+                  "count": 1
+                },
+                {
+                  "hash": "9c3c2c2be079e3ee",
+                  "count": 1
+                },
+                {
+                  "hash": "395eada1b9762b67",
+                  "count": 1
+                },
+                {
+                  "hash": "1bfb0342063aa667",
+                  "count": 1
+                },
+                {
+                  "hash": "ad90419edd6552b3",
+                  "count": 1
+                },
+                {
+                  "hash": "2860760e1c5bb133",
+                  "count": 1
+                },
+                {
+                  "hash": "9e9782d8d1d3c790",
+                  "count": 1
+                },
+                {
+                  "hash": "f2263b577c04d358",
+                  "count": 1
+                },
+                {
+                  "hash": "ba1f05bf7965d5b8",
+                  "count": 1
+                },
+                {
+                  "hash": "29eef2b07f5f7881",
+                  "count": 1
+                }
+              ]
+            },
+            "operational_formatting_rate": {
+              "newline": 0.8281,
+              "bullet": 0.0221,
+              "url": 0.0002,
+              "numbered_list": 0.0001,
+              "html_entity": 0.0
+            },
+            "stratification_script_rate": {
+              "non_ascii": 0.0142,
+              "cjk": 0.0002
+            },
+            "debug_control_lexicon": {
+              "caption_rate": {
+                "color": 0.8872,
+                "spatial_relation": 0.8144,
+                "material": 0.3077,
+                "count": 0.2848,
+                "camera": 0.2578,
+                "lighting": 0.2499,
+                "style": 0.238,
+                "text_rendering": 0.0745
+              },
+              "token_hits": {
+                "color": 1028786,
+                "spatial_relation": 596588,
+                "material": 178084,
+                "count": 146040,
+                "style": 126872,
+                "camera": 126530,
+                "lighting": 109755,
+                "text_rendering": 41767
+              },
+              "hits_per_caption": 6.7004,
+              "hits_per_64_lexical_tokens": 6.7006
+            },
+            "full_caption_normalized": {
+              "normalization_scope": "caption-balanced and/or per-token full-caption metrics; not a faithfulness score",
+              "caption_balanced_ngram_top_k_mass": {},
+              "within_caption_distinct_n_mean": {
+                "3": 0.99349,
+                "4": 0.997967,
+                "5": 0.999194,
+                "6": 0.999599
+              },
+              "repeated_ngram_rate_by_n": {
+                "3": 0.2282,
+                "4": 0.0684,
+                "5": 0.0236,
+                "6": 0.0104
+              },
+              "violation_indicator_per_64_lexical_tokens_mean": 0.030281,
+              "violation_codes_per_64_lexical_tokens_mean": 0.030466,
+              "control_hits_per_64_lexical_tokens": 6.7006
+            },
+            "prefix_raw": {
+              "entropy": 9.7157,
+              "entropy_miller_madow": 9.8908,
+              "effective_vocab": 16575.74,
+              "effective_vocab_miller_madow": 19747.24,
+              "hhi": 0.00162796,
+              "effective_simpson": 614.27,
+              "top_k_mass_by_k": {
+                "10": 0.0863,
+                "100": 0.2298,
+                "1000": 0.4226
+              },
+              "top_k_mass": 0.2298,
+              "top_10": [
+                {
+                  "prefix": "a close up view of",
+                  "count": 10426
+                },
+                {
+                  "prefix": "a close up photograph of",
+                  "count": 3796
+                },
+                {
+                  "prefix": "a digital illustration of a",
+                  "count": 2715
+                },
+                {
+                  "prefix": "a serene scene of a",
+                  "count": 2396
+                },
+                {
+                  "prefix": "a black and white photograph",
+                  "count": 2267
+                },
+                {
+                  "prefix": "a close up portrait of",
+                  "count": 2154
+                },
+                {
+                  "prefix": "a 3d rendering of a",
+                  "count": 1839
+                },
+                {
+                  "prefix": "a striking black and white",
+                  "count": 1741
+                },
+                {
+                  "prefix": "a woman standing in front",
+                  "count": 1533
+                },
+                {
+                  "prefix": "a woman standing in a",
+                  "count": 1470
+                }
+              ]
+            },
+            "prefix_content": {
+              "entropy": 10.8487,
+              "entropy_miller_madow": 11.1095,
+              "effective_vocab": 51466.37,
+              "effective_vocab_miller_madow": 66799.9,
+              "hhi": 0.00086225,
+              "effective_simpson": 1159.76,
+              "top_k_mass_by_k": {
+                "10": 0.0635,
+                "100": 0.1393,
+                "1000": 0.2634
+              },
+              "top_k_mass": 0.1393,
+              "top_10": [
+                {
+                  "prefix": "close up view of a",
+                  "count": 8156
+                },
+                {
+                  "prefix": "close up photograph of a",
+                  "count": 3092
+                },
+                {
+                  "prefix": "black and white photograph of",
+                  "count": 2206
+                },
+                {
+                  "prefix": "close up portrait of a",
+                  "count": 1968
+                },
+                {
+                  "prefix": "woman standing in front of",
+                  "count": 1588
+                },
+                {
+                  "prefix": "close up view of the",
+                  "count": 1320
+                },
+                {
+                  "prefix": "here is a detailed description",
+                  "count": 1040
+                },
+                {
+                  "prefix": "man standing in front of",
+                  "count": 1038
+                },
+                {
+                  "prefix": "serene scene of a woman",
+                  "count": 998
+                },
+                {
+                  "prefix": "captivating close up of a",
+                  "count": 915
+                }
+              ]
+            },
+            "top_openings": [
+              {
+                "opening": "close up view",
+                "count": 10673
+              },
+              {
+                "opening": "black and white",
+                "count": 6442
+              },
+              {
+                "opening": "close up photograph",
+                "count": 3879
+              },
+              {
+                "opening": "digital illustration of",
+                "count": 3751
+              },
+              {
+                "opening": "woman standing in",
+                "count": 3530
+              },
+              {
+                "opening": "woman in a",
+                "count": 2960
+              },
+              {
+                "opening": "serene scene of",
+                "count": 2753
+              },
+              {
+                "opening": "close up portrait",
+                "count": 2284
+              },
+              {
+                "opening": "3d rendering of",
+                "count": 2268
+              },
+              {
+                "opening": "interior of a",
+                "count": 2205
+              }
+            ],
+            "token_budget": 64,
+            "avg_budget_tokens": 64.0,
+            "captions_meeting_budget": 351319,
+            "coverage_rate": 0.9998,
+            "eligibility_rate": 0.9998,
+            "ineligible_count": 65,
+            "truncation_rate": 0.9998,
+            "mean_retained_token_fraction": 0.3803,
+            "marginal_avg_token_gain": 1.0
+          },
+          "128": {
+            "captions_analyzed": 351384,
+            "avg_lexical_tokens": 126.35,
+            "avg_chars": 727.99,
+            "violation_rate": 0.0347,
+            "repeated_4gram_rate": 0.2859,
+            "repeated_ngram_rate_by_n": {
+              "3": 0.6988,
+              "4": 0.2859,
+              "5": 0.1134,
+              "6": 0.0539
+            },
+            "within_caption_distinct_n_mean": {
+              "3": 0.983112,
+              "4": 0.99448,
+              "5": 0.997659,
+              "6": 0.998785
+            },
+            "within_caption_max_ngram_repeat_mean": {
+              "3": 1.8186,
+              "4": 1.3057,
+              "5": 1.1191,
+              "6": 1.0564
+            },
+            "distinct_n": {
+              "1": 0.002052,
+              "2": 0.03697,
+              "3": 0.151237
+            },
+            "ngram_top_k_mass": {
+              "1": 0.5874,
+              "2": 0.1974,
+              "3": 0.0767
+            },
+            "ngram_distribution": {
+              "1": {
+                "entropy": 6.1189,
+                "entropy_miller_madow": 6.12,
+                "effective_vocab": 454.38,
+                "effective_vocab_miller_madow": 454.84,
+                "hhi": 0.01924882,
+                "effective_simpson": 51.95,
+                "top_k_mass_by_k": {
+                  "10": 0.3433,
+                  "100": 0.5874,
+                  "1000": 0.8665
+                }
+              },
+              "2": {
+                "entropy": 9.963,
+                "entropy_miller_madow": 9.9815,
+                "effective_vocab": 21226.84,
+                "effective_vocab_miller_madow": 21622.87,
+                "hhi": 0.00085331,
+                "effective_simpson": 1171.91,
+                "top_k_mass_by_k": {
+                  "10": 0.0706,
+                  "100": 0.1974,
+                  "1000": 0.4232
+                }
+              },
+              "3": {
+                "entropy": 12.6316,
+                "entropy_miller_madow": 12.7072,
+                "effective_vocab": 306085.61,
+                "effective_vocab_miller_madow": 330128.87,
+                "hhi": 0.00012999,
+                "effective_simpson": 7692.84,
+                "top_k_mass_by_k": {
+                  "10": 0.0236,
+                  "100": 0.0767,
+                  "1000": 0.192
+                }
+              }
+            },
+            "ngram_top_k_mass_by_k": {
+              "1": {
+                "10": 0.3433,
+                "100": 0.5874,
+                "1000": 0.8665
+              },
+              "2": {
+                "10": 0.0706,
+                "100": 0.1974,
+                "1000": 0.4232
+              },
+              "3": {
+                "10": 0.0236,
+                "100": 0.0767,
+                "1000": 0.192
+              }
+            },
+            "violations": {
+              "D_markdown_leak": 8717,
+              "J_meta_statement": 1921,
+              "I_overlay_meta_leak": 1551,
+              "G_meta_instruction": 30,
+              "E_thinking_leak": 28,
+              "L_tag_verbatim": 26,
+              "M_numbered_list_leak": 26,
+              "F_repetition": 6,
+              "N_stage_header_leak": 5
+            },
+            "violation_code_rate": {
+              "D_markdown_leak": 0.0248,
+              "J_meta_statement": 0.0055,
+              "I_overlay_meta_leak": 0.0044,
+              "G_meta_instruction": 0.0001,
+              "E_thinking_leak": 0.0001,
+              "L_tag_verbatim": 0.0001,
+              "M_numbered_list_leak": 0.0001,
+              "F_repetition": 0.0,
+              "N_stage_header_leak": 0.0
+            },
+            "violation_severity_rate": {
+              "moderate": 0.0347,
+              "low": 0.0002,
+              "critical": 0.0001,
+              "severe": 0.0
+            },
+            "dedup": {
+              "normalized_unique_rate": 1.0,
+              "normalized_duplicate_rate": 0.0,
+              "duplicate_mass_rate": 0.0,
+              "top_duplicate_mass": 0.0003,
+              "max_duplicate_count": 1,
+              "top_hashes": [
+                {
+                  "hash": "c2363bb491ba1820",
+                  "count": 1
+                },
+                {
+                  "hash": "4e73d02fd170e7e1",
+                  "count": 1
+                },
+                {
+                  "hash": "0bcb599262c2c25f",
+                  "count": 1
+                },
+                {
+                  "hash": "ee74d0bbc6f16360",
+                  "count": 1
+                },
+                {
+                  "hash": "6b6b66ff90470189",
+                  "count": 1
+                },
+                {
+                  "hash": "aa14e621ba91e059",
+                  "count": 1
+                },
+                {
+                  "hash": "66414b8d14d040a6",
+                  "count": 1
+                },
+                {
+                  "hash": "62b1f12a7355ab6c",
+                  "count": 1
+                },
+                {
+                  "hash": "71676259df8cdcf3",
+                  "count": 1
+                },
+                {
+                  "hash": "a39f3f51a16fdd39",
+                  "count": 1
+                }
+              ]
+            },
+            "operational_formatting_rate": {
+              "newline": 0.9944,
+              "bullet": 0.0232,
+              "url": 0.0023,
+              "numbered_list": 0.0001,
+              "html_entity": 0.0
+            },
+            "stratification_script_rate": {
+              "non_ascii": 0.0219,
+              "cjk": 0.0007
+            },
+            "debug_control_lexicon": {
+              "caption_rate": {
+                "spatial_relation": 0.978,
+                "color": 0.9601,
+                "count": 0.4583,
+                "lighting": 0.456,
+                "material": 0.4229,
+                "camera": 0.3849,
+                "style": 0.2931,
+                "text_rendering": 0.1481
+              },
+              "token_hits": {
+                "color": 1805009,
+                "spatial_relation": 1319291,
+                "material": 314230,
+                "count": 263524,
+                "lighting": 251046,
+                "camera": 199790,
+                "style": 185274,
+                "text_rendering": 100112
+              },
+              "hits_per_caption": 12.6308,
+              "hits_per_64_lexical_tokens": 6.3978
+            },
+            "full_caption_normalized": {
+              "normalization_scope": "caption-balanced and/or per-token full-caption metrics; not a faithfulness score",
+              "caption_balanced_ngram_top_k_mass": {},
+              "within_caption_distinct_n_mean": {
+                "3": 0.983112,
+                "4": 0.99448,
+                "5": 0.997659,
+                "6": 0.998785
+              },
+              "repeated_ngram_rate_by_n": {
+                "3": 0.6988,
+                "4": 0.2859,
+                "5": 0.1134,
+                "6": 0.0539
+              },
+              "violation_indicator_per_64_lexical_tokens_mean": 0.017466,
+              "violation_codes_per_64_lexical_tokens_mean": 0.01763,
+              "control_hits_per_64_lexical_tokens": 6.3978
+            },
+            "prefix_raw": {
+              "entropy": 9.7157,
+              "entropy_miller_madow": 9.8908,
+              "effective_vocab": 16575.74,
+              "effective_vocab_miller_madow": 19747.24,
+              "hhi": 0.00162796,
+              "effective_simpson": 614.27,
+              "top_k_mass_by_k": {
+                "10": 0.0863,
+                "100": 0.2298,
+                "1000": 0.4226
+              },
+              "top_k_mass": 0.2298,
+              "top_10": [
+                {
+                  "prefix": "a close up view of",
+                  "count": 10426
+                },
+                {
+                  "prefix": "a close up photograph of",
+                  "count": 3796
+                },
+                {
+                  "prefix": "a digital illustration of a",
+                  "count": 2715
+                },
+                {
+                  "prefix": "a serene scene of a",
+                  "count": 2396
+                },
+                {
+                  "prefix": "a black and white photograph",
+                  "count": 2267
+                },
+                {
+                  "prefix": "a close up portrait of",
+                  "count": 2154
+                },
+                {
+                  "prefix": "a 3d rendering of a",
+                  "count": 1839
+                },
+                {
+                  "prefix": "a striking black and white",
+                  "count": 1741
+                },
+                {
+                  "prefix": "a woman standing in front",
+                  "count": 1533
+                },
+                {
+                  "prefix": "a woman standing in a",
+                  "count": 1470
+                }
+              ]
+            },
+            "prefix_content": {
+              "entropy": 10.8487,
+              "entropy_miller_madow": 11.1095,
+              "effective_vocab": 51466.37,
+              "effective_vocab_miller_madow": 66799.9,
+              "hhi": 0.00086225,
+              "effective_simpson": 1159.76,
+              "top_k_mass_by_k": {
+                "10": 0.0635,
+                "100": 0.1393,
+                "1000": 0.2634
+              },
+              "top_k_mass": 0.1393,
+              "top_10": [
+                {
+                  "prefix": "close up view of a",
+                  "count": 8156
+                },
+                {
+                  "prefix": "close up photograph of a",
+                  "count": 3092
+                },
+                {
+                  "prefix": "black and white photograph of",
+                  "count": 2206
+                },
+                {
+                  "prefix": "close up portrait of a",
+                  "count": 1968
+                },
+                {
+                  "prefix": "woman standing in front of",
+                  "count": 1588
+                },
+                {
+                  "prefix": "close up view of the",
+                  "count": 1320
+                },
+                {
+                  "prefix": "here is a detailed description",
+                  "count": 1040
+                },
+                {
+                  "prefix": "man standing in front of",
+                  "count": 1038
+                },
+                {
+                  "prefix": "serene scene of a woman",
+                  "count": 998
+                },
+                {
+                  "prefix": "captivating close up of a",
+                  "count": 915
+                }
+              ]
+            },
+            "top_openings": [
+              {
+                "opening": "close up view",
+                "count": 10673
+              },
+              {
+                "opening": "black and white",
+                "count": 6442
+              },
+              {
+                "opening": "close up photograph",
+                "count": 3879
+              },
+              {
+                "opening": "digital illustration of",
+                "count": 3751
+              },
+              {
+                "opening": "woman standing in",
+                "count": 3530
+              },
+              {
+                "opening": "woman in a",
+                "count": 2960
+              },
+              {
+                "opening": "serene scene of",
+                "count": 2753
+              },
+              {
+                "opening": "close up portrait",
+                "count": 2284
+              },
+              {
+                "opening": "3d rendering of",
+                "count": 2268
+              },
+              {
+                "opening": "interior of a",
+                "count": 2205
+              }
+            ],
+            "token_budget": 128,
+            "avg_budget_tokens": 126.35,
+            "captions_meeting_budget": 311874,
+            "coverage_rate": 0.8876,
+            "eligibility_rate": 0.8876,
+            "ineligible_count": 39510,
+            "truncation_rate": 0.8815,
+            "mean_retained_token_fraction": 0.7445,
+            "marginal_avg_token_gain": 0.9742
+          },
+          "256": {
+            "captions_analyzed": 351384,
+            "avg_lexical_tokens": 177.53,
+            "avg_chars": 1035.02,
+            "violation_rate": 0.0377,
+            "repeated_4gram_rate": 0.4821,
+            "repeated_ngram_rate_by_n": {
+              "3": 0.8616,
+              "4": 0.4821,
+              "5": 0.216,
+              "6": 0.1117
+            },
+            "within_caption_distinct_n_mean": {
+              "3": 0.975492,
+              "4": 0.991786,
+              "5": 0.996437,
+              "6": 0.998056
+            },
+            "within_caption_max_ngram_repeat_mean": {
+              "3": 2.2565,
+              "4": 1.5413,
+              "5": 1.2353,
+              "6": 1.1214
+            },
+            "distinct_n": {
+              "1": 0.001793,
+              "2": 0.032005,
+              "3": 0.132191
+            },
+            "ngram_top_k_mass": {
+              "1": 0.5803,
+              "2": 0.2014,
+              "3": 0.0864
+            },
+            "ngram_distribution": {
+              "1": {
+                "entropy": 6.1285,
+                "entropy_miller_madow": 6.1294,
+                "effective_vocab": 458.74,
+                "effective_vocab_miller_madow": 459.15,
+                "hhi": 0.02017208,
+                "effective_simpson": 49.57,
+                "top_k_mass_by_k": {
+                  "10": 0.3504,
+                  "100": 0.5803,
+                  "1000": 0.8613
+                }
+              },
+              "2": {
+                "entropy": 9.9438,
+                "entropy_miller_madow": 9.9598,
+                "effective_vocab": 20822.88,
+                "effective_vocab_miller_madow": 21158.78,
+                "hhi": 0.00094622,
+                "effective_simpson": 1056.84,
+                "top_k_mass_by_k": {
+                  "10": 0.0729,
+                  "100": 0.2014,
+                  "1000": 0.4263
+                }
+              },
+              "3": {
+                "entropy": 12.5611,
+                "entropy_miller_madow": 12.6272,
+                "effective_vocab": 285248.42,
+                "effective_vocab_miller_madow": 304739.01,
+                "hhi": 0.00017409,
+                "effective_simpson": 5744.23,
+                "top_k_mass_by_k": {
+                  "10": 0.028,
+                  "100": 0.0864,
+                  "1000": 0.2043
+                }
+              }
+            },
+            "ngram_top_k_mass_by_k": {
+              "1": {
+                "10": 0.3504,
+                "100": 0.5803,
+                "1000": 0.8613
+              },
+              "2": {
+                "10": 0.0729,
+                "100": 0.2014,
+                "1000": 0.4263
+              },
+              "3": {
+                "10": 0.028,
+                "100": 0.0864,
+                "1000": 0.2043
+              }
+            },
+            "violations": {
+              "D_markdown_leak": 8799,
+              "J_meta_statement": 2790,
+              "I_overlay_meta_leak": 1751,
+              "L_tag_verbatim": 48,
+              "E_thinking_leak": 39,
+              "G_meta_instruction": 30,
+              "M_numbered_list_leak": 26,
+              "F_repetition": 26,
+              "N_stage_header_leak": 6
+            },
+            "violation_code_rate": {
+              "D_markdown_leak": 0.025,
+              "J_meta_statement": 0.0079,
+              "I_overlay_meta_leak": 0.005,
+              "L_tag_verbatim": 0.0001,
+              "E_thinking_leak": 0.0001,
+              "G_meta_instruction": 0.0001,
+              "M_numbered_list_leak": 0.0001,
+              "F_repetition": 0.0001,
+              "N_stage_header_leak": 0.0
+            },
+            "violation_severity_rate": {
+              "moderate": 0.038,
+              "low": 0.0003,
+              "critical": 0.0001,
+              "severe": 0.0001
+            },
+            "dedup": {
+              "normalized_unique_rate": 1.0,
+              "normalized_duplicate_rate": 0.0,
+              "duplicate_mass_rate": 0.0,
+              "top_duplicate_mass": 0.0003,
+              "max_duplicate_count": 1,
+              "top_hashes": [
+                {
+                  "hash": "c2363bb491ba1820",
+                  "count": 1
+                },
+                {
+                  "hash": "52c84a1edd0164d7",
+                  "count": 1
+                },
+                {
+                  "hash": "4e05e895b8529f02",
+                  "count": 1
+                },
+                {
+                  "hash": "47fa8f0f7bf5fe40",
+                  "count": 1
+                },
+                {
+                  "hash": "530a770a5e04df82",
+                  "count": 1
+                },
+                {
+                  "hash": "9becf14fc5dfb575",
+                  "count": 1
+                },
+                {
+                  "hash": "396008676c665fde",
+                  "count": 1
+                },
+                {
+                  "hash": "2d2b7a2d50f94b5b",
+                  "count": 1
+                },
+                {
+                  "hash": "6998e6d675e957bf",
+                  "count": 1
+                },
+                {
+                  "hash": "cad40f8881cdbc3d",
+                  "count": 1
+                }
+              ]
+            },
+            "operational_formatting_rate": {
+              "newline": 0.995,
+              "bullet": 0.0235,
+              "url": 0.0063,
+              "numbered_list": 0.0001,
+              "html_entity": 0.0
+            },
+            "stratification_script_rate": {
+              "non_ascii": 0.0293,
+              "cjk": 0.0011
+            },
+            "debug_control_lexicon": {
+              "caption_rate": {
+                "spatial_relation": 0.9929,
+                "color": 0.9743,
+                "count": 0.6198,
+                "lighting": 0.5612,
+                "camera": 0.4743,
+                "material": 0.4513,
+                "style": 0.3463,
+                "text_rendering": 0.1925
+              },
+              "token_hits": {
+                "color": 2087755,
+                "spatial_relation": 1641992,
+                "count": 380186,
+                "lighting": 370616,
+                "material": 370036,
+                "camera": 268504,
+                "style": 264691,
+                "text_rendering": 142794
+              },
+              "hits_per_caption": 15.728,
+              "hits_per_64_lexical_tokens": 5.6699
+            },
+            "full_caption_normalized": {
+              "normalization_scope": "caption-balanced and/or per-token full-caption metrics; not a faithfulness score",
+              "caption_balanced_ngram_top_k_mass": {},
+              "within_caption_distinct_n_mean": {
+                "3": 0.975492,
+                "4": 0.991786,
+                "5": 0.996437,
+                "6": 0.998056
+              },
+              "repeated_ngram_rate_by_n": {
+                "3": 0.8616,
+                "4": 0.4821,
+                "5": 0.216,
+                "6": 0.1117
+              },
+              "violation_indicator_per_64_lexical_tokens_mean": 0.012364,
+              "violation_codes_per_64_lexical_tokens_mean": 0.012603,
+              "control_hits_per_64_lexical_tokens": 5.6699
+            },
+            "prefix_raw": {
+              "entropy": 9.7157,
+              "entropy_miller_madow": 9.8908,
+              "effective_vocab": 16575.74,
+              "effective_vocab_miller_madow": 19747.24,
+              "hhi": 0.00162796,
+              "effective_simpson": 614.27,
+              "top_k_mass_by_k": {
+                "10": 0.0863,
+                "100": 0.2298,
+                "1000": 0.4226
+              },
+              "top_k_mass": 0.2298,
+              "top_10": [
+                {
+                  "prefix": "a close up view of",
+                  "count": 10426
+                },
+                {
+                  "prefix": "a close up photograph of",
+                  "count": 3796
+                },
+                {
+                  "prefix": "a digital illustration of a",
+                  "count": 2715
+                },
+                {
+                  "prefix": "a serene scene of a",
+                  "count": 2396
+                },
+                {
+                  "prefix": "a black and white photograph",
+                  "count": 2267
+                },
+                {
+                  "prefix": "a close up portrait of",
+                  "count": 2154
+                },
+                {
+                  "prefix": "a 3d rendering of a",
+                  "count": 1839
+                },
+                {
+                  "prefix": "a striking black and white",
+                  "count": 1741
+                },
+                {
+                  "prefix": "a woman standing in front",
+                  "count": 1533
+                },
+                {
+                  "prefix": "a woman standing in a",
+                  "count": 1470
+                }
+              ]
+            },
+            "prefix_content": {
+              "entropy": 10.8487,
+              "entropy_miller_madow": 11.1095,
+              "effective_vocab": 51466.37,
+              "effective_vocab_miller_madow": 66799.9,
+              "hhi": 0.00086225,
+              "effective_simpson": 1159.76,
+              "top_k_mass_by_k": {
+                "10": 0.0635,
+                "100": 0.1393,
+                "1000": 0.2634
+              },
+              "top_k_mass": 0.1393,
+              "top_10": [
+                {
+                  "prefix": "close up view of a",
+                  "count": 8156
+                },
+                {
+                  "prefix": "close up photograph of a",
+                  "count": 3092
+                },
+                {
+                  "prefix": "black and white photograph of",
+                  "count": 2206
+                },
+                {
+                  "prefix": "close up portrait of a",
+                  "count": 1968
+                },
+                {
+                  "prefix": "woman standing in front of",
+                  "count": 1588
+                },
+                {
+                  "prefix": "close up view of the",
+                  "count": 1320
+                },
+                {
+                  "prefix": "here is a detailed description",
+                  "count": 1040
+                },
+                {
+                  "prefix": "man standing in front of",
+                  "count": 1038
+                },
+                {
+                  "prefix": "serene scene of a woman",
+                  "count": 998
+                },
+                {
+                  "prefix": "captivating close up of a",
+                  "count": 915
+                }
+              ]
+            },
+            "top_openings": [
+              {
+                "opening": "close up view",
+                "count": 10673
+              },
+              {
+                "opening": "black and white",
+                "count": 6442
+              },
+              {
+                "opening": "close up photograph",
+                "count": 3879
+              },
+              {
+                "opening": "digital illustration of",
+                "count": 3751
+              },
+              {
+                "opening": "woman standing in",
+                "count": 3530
+              },
+              {
+                "opening": "woman in a",
+                "count": 2960
+              },
+              {
+                "opening": "serene scene of",
+                "count": 2753
+              },
+              {
+                "opening": "close up portrait",
+                "count": 2284
+              },
+              {
+                "opening": "3d rendering of",
+                "count": 2268
+              },
+              {
+                "opening": "interior of a",
+                "count": 2205
+              }
+            ],
+            "token_budget": 256,
+            "avg_budget_tokens": 177.53,
+            "captions_meeting_budget": 27026,
+            "coverage_rate": 0.0769,
+            "eligibility_rate": 0.0769,
+            "ineligible_count": 324358,
+            "truncation_rate": 0.075,
+            "mean_retained_token_fraction": 0.9911,
+            "marginal_avg_token_gain": 0.3998
+          }
+        },
+        "budget_curve_features": {
+          "distinct_n.2": {
+            "metric": "distinct_n.2",
+            "direction": "up",
+            "normalization_basis": "within_surface_budget_range",
+            "series": {
+              "16": 0.084918,
+              "32": 0.065021,
+              "64": 0.049631,
+              "128": 0.03697,
+              "256": 0.032005
+            },
+            "relative_progress_curve": {
+              "16": 1.0,
+              "32": 0.624,
+              "64": 0.3331,
+              "128": 0.0938,
+              "256": 0.0
+            },
+            "relative_gap_curve": {
+              "16": 0.0,
+              "32": 0.376,
+              "64": 0.6669,
+              "128": 0.9062,
+              "256": 1.0
+            },
+            "relative_progress_auc": 0.1999,
+            "relative_gap_auc": 0.8001,
+            "budget_at_50pct_relative_progress": 16.0,
+            "budget_at_75pct_relative_progress": 16.0,
+            "budget_at_90pct_relative_progress": 16.0,
+            "observed_best": 0.084918,
+            "observed_worst": 0.032005
+          },
+          "distinct_n.3": {
+            "metric": "distinct_n.3",
+            "direction": "up",
+            "normalization_basis": "within_surface_budget_range",
+            "series": {
+              "16": 0.238862,
+              "32": 0.211074,
+              "64": 0.186443,
+              "128": 0.151237,
+              "256": 0.132191
+            },
+            "relative_progress_curve": {
+              "16": 1.0,
+              "32": 0.7395,
+              "64": 0.5086,
+              "128": 0.1785,
+              "256": 0.0
+            },
+            "relative_gap_curve": {
+              "16": 0.0,
+              "32": 0.2605,
+              "64": 0.4914,
+              "128": 0.8215,
+              "256": 1.0
+            },
+            "relative_progress_auc": 0.2804,
+            "relative_gap_auc": 0.7196,
+            "budget_at_50pct_relative_progress": 16.0,
+            "budget_at_75pct_relative_progress": 16.0,
+            "budget_at_90pct_relative_progress": 16.0,
+            "observed_best": 0.238862,
+            "observed_worst": 0.132191
+          },
+          "ngram_top_k_mass.2": {
+            "metric": "ngram_top_k_mass.2",
+            "direction": "down",
+            "normalization_basis": "within_surface_budget_range",
+            "series": {
+              "16": 0.2613,
+              "32": 0.2264,
+              "64": 0.1964,
+              "128": 0.1974,
+              "256": 0.2014
+            },
+            "relative_progress_curve": {
+              "16": 0.0,
+              "32": 0.5378,
+              "64": 1.0,
+              "128": 0.9846,
+              "256": 0.923
+            },
+            "relative_gap_curve": {
+              "16": 1.0,
+              "32": 0.4622,
+              "64": 0.0,
+              "128": 0.0154,
+              "256": 0.077
+            },
+            "relative_progress_auc": 0.8937,
+            "relative_gap_auc": 0.1063,
+            "budget_at_50pct_relative_progress": 30.88,
+            "budget_at_75pct_relative_progress": 46.69,
+            "budget_at_90pct_relative_progress": 57.08,
+            "observed_best": 0.1964,
+            "observed_worst": 0.2613
+          },
+          "ngram_top_k_mass.3": {
+            "metric": "ngram_top_k_mass.3",
+            "direction": "down",
+            "normalization_basis": "within_surface_budget_range",
+            "series": {
+              "16": 0.1101,
+              "32": 0.0865,
+              "64": 0.0693,
+              "128": 0.0767,
+              "256": 0.0864
+            },
+            "relative_progress_curve": {
+              "16": 0.0,
+              "32": 0.5784,
+              "64": 1.0,
+              "128": 0.8186,
+              "256": 0.5809
+            },
+            "relative_gap_curve": {
+              "16": 1.0,
+              "32": 0.4216,
+              "64": 0.0,
+              "128": 0.1814,
+              "256": 0.4191
+            },
+            "relative_progress_auc": 0.7402,
+            "relative_gap_auc": 0.2598,
+            "budget_at_50pct_relative_progress": 29.83,
+            "budget_at_75pct_relative_progress": 45.02,
+            "budget_at_90pct_relative_progress": 56.41,
+            "observed_best": 0.0693,
+            "observed_worst": 0.1101
+          },
+          "repeated_4gram_rate": {
+            "metric": "repeated_4gram_rate",
+            "direction": "down",
+            "normalization_basis": "within_surface_budget_range",
+            "series": {
+              "16": 0.0001,
+              "32": 0.0076,
+              "64": 0.0684,
+              "128": 0.2859,
+              "256": 0.4821
+            },
+            "relative_progress_curve": {
+              "16": 1.0,
+              "32": 0.9844,
+              "64": 0.8583,
+              "128": 0.4071,
+              "256": 0.0
+            },
+            "relative_gap_curve": {
+              "16": 0.0,
+              "32": 0.0156,
+              "64": 0.1417,
+              "128": 0.5929,
+              "256": 1.0
+            },
+            "relative_progress_auc": 0.4663,
+            "relative_gap_auc": 0.5337,
+            "budget_at_50pct_relative_progress": 16.0,
+            "budget_at_75pct_relative_progress": 16.0,
+            "budget_at_90pct_relative_progress": 16.0,
+            "observed_best": 0.0001,
+            "observed_worst": 0.4821
+          },
+          "violation_rate": {
+            "metric": "violation_rate",
+            "direction": "down",
+            "normalization_basis": "within_surface_budget_range",
+            "series": {
+              "16": 0.004,
+              "32": 0.0131,
+              "64": 0.0303,
+              "128": 0.0347,
+              "256": 0.0377
+            },
+            "relative_progress_curve": {
+              "16": 1.0,
+              "32": 0.73,
+              "64": 0.2196,
+              "128": 0.089,
+              "256": 0.0
+            },
+            "relative_gap_curve": {
+              "16": 0.0,
+              "32": 0.27,
+              "64": 0.7804,
+              "128": 0.911,
+              "256": 1.0
+            },
+            "relative_progress_auc": 0.1859,
+            "relative_gap_auc": 0.8141,
+            "budget_at_50pct_relative_progress": 16.0,
+            "budget_at_75pct_relative_progress": 16.0,
+            "budget_at_90pct_relative_progress": 16.0,
+            "observed_best": 0.004,
+            "observed_worst": 0.0377
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "model": "google/embeddinggemma-300m",
+  "rows": 1024,
+  "dim": 768,
+  "fp16_storage_bytes_per_component": 2,
+  "fp32_storage_bytes_per_component": 4,
+  "self_cos_mean": 1.0,
+  "self_cos_min": 0.9999998807907104,
+  "self_cos_p01": 0.9999998807907104,
+  "max_abs_component_diff": 6.288290023803711e-05,
+  "mean_abs_component_diff": 5.026634426030796e-06,
+  "nn_top1_agreement_512q": 1.0,
+  "nn_top10_overlap_512q": 1.0,
+  "vendi_fp16stored_1024": 65.1459732055664,
+  "vendi_fp32stored_1024": 65.14575958251953,
+  "vendi_abs_delta": 0.000213623046875
+}

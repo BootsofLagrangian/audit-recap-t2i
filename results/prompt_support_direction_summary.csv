@@ -1,0 +1,15 @@
+comparison,metric,records,n,delta_mean_across_pools,local_higher,local_lower,reference_higher,reference_lower,mixed
+cc12m_llavanext_paired,jsd,250000,8,0.0013113774577601133,0,5,0,3,0
+cc12m_llavanext_paired,prompt_mass_on_caption_support,250000,8,0.05860164984906121,7,0,1,0,0
+cc12m_pixelprose_paired,jsd,250000,8,-0.016665688420190738,0,5,0,3,0
+cc12m_pixelprose_paired,prompt_mass_on_caption_support,250000,8,0.0989406960826035,7,0,1,0,0
+cc12m_qwen3vl8b_paired,jsd,114621,8,-0.10104943867319498,0,8,0,0,0
+cc12m_qwen3vl8b_paired,prompt_mass_on_caption_support,114621,8,0.3373853208815864,8,0,0,0,0
+danbooru2023_florence2_paired,jsd,250000,8,-0.057271997965401146,0,6,0,1,0
+danbooru2023_florence2_paired,prompt_mass_on_caption_support,250000,8,0.2168154677539403,8,0,0,0,0
+datacomp_recap_llava15_paired_url,jsd,250000,8,-0.01935815935822975,0,5,0,3,0
+datacomp_recap_llava15_paired_url,prompt_mass_on_caption_support,250000,8,0.12993808916576927,7,0,1,0,0
+laion_pop_llama32_paired,jsd,250000,8,0.006713408384199109,0,4,0,4,0
+laion_pop_llama32_paired,prompt_mass_on_caption_support,250000,8,0.016393923066308602,6,0,2,0,0
+pd12m_full_paired,jsd,250000,8,-0.05333218346692074,0,6,0,2,0
+pd12m_full_paired,prompt_mass_on_caption_support,250000,8,0.2436579193077578,8,0,0,0,0

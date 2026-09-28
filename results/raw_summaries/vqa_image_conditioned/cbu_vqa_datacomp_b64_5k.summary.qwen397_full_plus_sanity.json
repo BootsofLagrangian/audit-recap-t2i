@@ -1,0 +1,526 @@
+{
+  "input": "artifacts/vqa-cbu/pair5k-local/cbu_vqa_datacomp_b64_5k.responses.qwen397_full.jsonl",
+  "include": [],
+  "latest_by_request": true,
+  "responses": 9643,
+  "ok": 9639,
+  "bad": 4,
+  "surfaces": {
+    "datacomp_recap_llava15_paired_url__ours_datacomp_forward": {
+      "responses": 4648,
+      "ok": 4646,
+      "questions": 67724,
+      "yes": 64325,
+      "no": 2368,
+      "uncertain": 1031,
+      "bad": 2,
+      "yes_rate": 0.9498109975784065,
+      "no_rate": 0.03496544799480243,
+      "uncertain_rate": 0.015223554426791094,
+      "support_rate": 0.9498109975784065,
+      "risk_rate": 0.03496544799480243,
+      "uncertainty_rate": 0.015223554426791094
+    },
+    "datacomp_recap_llava15_paired_url__ref_datacomp_recap_llava15_llama3_8b": {
+      "responses": 4995,
+      "ok": 4993,
+      "questions": 52194,
+      "yes": 42437,
+      "no": 9227,
+      "uncertain": 530,
+      "bad": 2,
+      "yes_rate": 0.8130628041537341,
+      "no_rate": 0.17678277196612638,
+      "uncertain_rate": 0.01015442388013948,
+      "support_rate": 0.8130628041537341,
+      "risk_rate": 0.17678277196612638,
+      "uncertainty_rate": 0.01015442388013948
+    }
+  },
+  "categories": {
+    "object": {
+      "questions": 36174,
+      "yes": 32924,
+      "no": 2911,
+      "uncertain": 339,
+      "yes_rate": 0.9101564659700337,
+      "no_rate": 0.08047216232653287,
+      "uncertain_rate": 0.009371371703433405,
+      "support_rate": 0.9101564659700337,
+      "risk_rate": 0.08047216232653287,
+      "uncertainty_rate": 0.009371371703433405
+    },
+    "attribute": {
+      "questions": 47709,
+      "yes": 42617,
+      "uncertain": 999,
+      "no": 4093,
+      "yes_rate": 0.8932696136997212,
+      "no_rate": 0.08579094091261606,
+      "uncertain_rate": 0.020939445387662705,
+      "support_rate": 0.8932696136997212,
+      "risk_rate": 0.08579094091261606,
+      "uncertainty_rate": 0.020939445387662705
+    },
+    "relation": {
+      "questions": 19903,
+      "yes": 17579,
+      "uncertain": 114,
+      "no": 2210,
+      "yes_rate": 0.883233683364317,
+      "no_rate": 0.11103853690398433,
+      "uncertain_rate": 0.005727779731698739,
+      "support_rate": 0.883233683364317,
+      "risk_rate": 0.11103853690398433,
+      "uncertainty_rate": 0.005727779731698739
+    },
+    "count": {
+      "questions": 4167,
+      "yes": 3338,
+      "no": 807,
+      "uncertain": 22,
+      "yes_rate": 0.8010559155267578,
+      "no_rate": 0.19366450683945285,
+      "uncertain_rate": 0.005279577633789297,
+      "support_rate": 0.8010559155267578,
+      "risk_rate": 0.19366450683945285,
+      "uncertainty_rate": 0.005279577633789297
+    },
+    "text_rendering": {
+      "questions": 5250,
+      "yes": 4131,
+      "no": 1097,
+      "uncertain": 22,
+      "yes_rate": 0.7868571428571428,
+      "no_rate": 0.20895238095238095,
+      "uncertain_rate": 0.004190476190476191,
+      "support_rate": 0.7868571428571428,
+      "risk_rate": 0.20895238095238095,
+      "uncertainty_rate": 0.004190476190476191
+    },
+    "style": {
+      "questions": 2713,
+      "yes": 2482,
+      "uncertain": 19,
+      "no": 212,
+      "yes_rate": 0.9148544047180244,
+      "no_rate": 0.07814227792112054,
+      "uncertain_rate": 0.007003317360855142,
+      "support_rate": 0.9148544047180244,
+      "risk_rate": 0.07814227792112054,
+      "uncertainty_rate": 0.007003317360855142
+    },
+    "camera": {
+      "questions": 1931,
+      "yes": 1782,
+      "no": 145,
+      "uncertain": 4,
+      "yes_rate": 0.9228379078197825,
+      "no_rate": 0.07509062661833248,
+      "uncertain_rate": 0.0020714655618850335,
+      "support_rate": 0.9228379078197825,
+      "risk_rate": 0.07509062661833248,
+      "uncertainty_rate": 0.0020714655618850335
+    },
+    "lighting": {
+      "questions": 2071,
+      "yes": 1909,
+      "no": 120,
+      "uncertain": 42,
+      "yes_rate": 0.9217769193626267,
+      "no_rate": 0.05794302269435055,
+      "uncertain_rate": 0.020280057943022695,
+      "support_rate": 0.9217769193626267,
+      "risk_rate": 0.05794302269435055,
+      "uncertainty_rate": 0.020280057943022695
+    }
+  },
+  "examples": {
+    "no": [
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:1011",
+        "category": "object",
+        "question": "Is the visual claim 'lawn: grassy lawn' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:583",
+        "category": "attribute",
+        "question": "Is the visual claim 'steering wheel: mounted controls' supported by the image?",
+        "answer": "no",
+        "confidence": 0.95,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:332",
+        "category": "attribute",
+        "question": "Is the visual claim 'arcs: gradient from warm amber to deep gold' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:332",
+        "category": "attribute",
+        "question": "Is the visual claim 'arcs: metallic sheen' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:332",
+        "category": "attribute",
+        "question": "Is the visual claim 'text: elegant serif English lettering' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:750",
+        "category": "attribute",
+        "question": "Is the visual claim 'frame: high-gloss black lacquered wood frame' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:834",
+        "category": "count",
+        "question": "Is the visual claim 'people: six people' supported by the image?",
+        "answer": "no",
+        "confidence": 0.9,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:1026",
+        "category": "attribute",
+        "question": "Is the visual claim 'fish body: body angled sharply upward' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:688",
+        "category": "object",
+        "question": "Is the visual claim 'hat: red and black polka-dotted bucket hat' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:739",
+        "category": "relation",
+        "question": "Is the visual claim 'logo: logo centered above right driver' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:781",
+        "category": "attribute",
+        "question": "Is the visual claim 'user profile cards: vertical scroll layout' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:528",
+        "category": "attribute",
+        "question": "Is the visual claim 'earth: cracked earth' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:44",
+        "category": "object",
+        "question": "Is the visual claim 'bowl: small bowl of white rice' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:44",
+        "category": "object",
+        "question": "Is the visual claim 'stand: decorative stand with floral motifs' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:44",
+        "category": "relation",
+        "question": "Is the visual claim 'rice bowl: rice bowl resting on decorative stand' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:549",
+        "category": "object",
+        "question": "Is the visual claim 'porch: covered porch' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:392",
+        "category": "count",
+        "question": "Is the visual claim 'buttons: six small pearl-like buttons' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:461",
+        "category": "attribute",
+        "question": "Is the visual claim 'sleeves: sleeves rolled up to the forearms' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:480",
+        "category": "attribute",
+        "question": "Is the visual claim 'containers: cylindrical' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:480",
+        "category": "object",
+        "question": "Is the visual claim 'spatula: flat spatula with textured handle' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      }
+    ],
+    "uncertain": [
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:900",
+        "category": "attribute",
+        "question": "Is the visual claim 'stars: matte gold finish' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:763",
+        "category": "object",
+        "question": "Is the visual claim 'court: grass court' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:832",
+        "category": "object",
+        "question": "Is the visual claim 'coastline: rugged coastline of California' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:688",
+        "category": "relation",
+        "question": "Is the visual claim 'performer: performer stands center stage' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:398",
+        "category": "attribute",
+        "question": "Is the visual claim 'siding: subtle weathering along the eaves' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:854",
+        "category": "attribute",
+        "question": "Is the visual claim 'mountain bike: upright' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:200",
+        "category": "object",
+        "question": "Is the visual claim 'potatoes: diced red-skinned potatoes' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:892",
+        "category": "attribute",
+        "question": "Is the visual claim 'printed document: textured white paper' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:802",
+        "category": "attribute",
+        "question": "Is the visual claim 'pick: matte-finish plastic' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.8,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:477",
+        "category": "attribute",
+        "question": "Is the visual claim 'man: intense focus' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:152",
+        "category": "attribute",
+        "question": "Is the visual claim 'objects: ceramic' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:253",
+        "category": "object",
+        "question": "Is the visual claim 'Toyota Alphard minivan: Toyota Alphard minivan' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:646",
+        "category": "object",
+        "question": "Is the visual claim 'binocular: right eyepiece' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:646",
+        "category": "attribute",
+        "question": "Is the visual claim 'eyecup: flexible rubber' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:405",
+        "category": "attribute",
+        "question": "Is the visual claim 'bowl: hand-glazed' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.95,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:314",
+        "category": "attribute",
+        "question": "Is the visual claim 'sauce: thick' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:314",
+        "category": "attribute",
+        "question": "Is the visual claim 'sauce: flecks of chipotle peppers' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:314",
+        "category": "object",
+        "question": "Is the visual claim 'cap: screw-top cap' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:700",
+        "category": "object",
+        "question": "Is the visual claim 'dress: matching dress' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:815",
+        "category": "object",
+        "question": "Is the visual claim 'shirt: collared shirt' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      }
+    ],
+    "bad_response": [
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:338",
+        "error": "JSONDecodeError('Unterminated string starting at: line 180 column 22 (char 5417)')"
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ours_datacomp_forward",
+        "caption_id": "datacomp_recap_llava15_paired_url__ours_datacomp_forward:1576",
+        "error": "JSONDecodeError('Unterminated string starting at: line 175 column 22 (char 5302)')"
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ref_datacomp_recap_llava15_llama3_8b",
+        "caption_id": "datacomp_recap_llava15_paired_url__ref_datacomp_recap_llava15_llama3_8b:3079",
+        "error": "JSONDecodeError(\"Expecting ',' delimiter: line 147 column 22 (char 4952)\")"
+      },
+      {
+        "surface": "datacomp_recap_llava15_paired_url__ref_datacomp_recap_llava15_llama3_8b",
+        "caption_id": "datacomp_recap_llava15_paired_url__ref_datacomp_recap_llava15_llama3_8b:4372",
+        "error": "JSONDecodeError('Expecting value: line 147 column 20 (char 4953)')"
+      }
+    ]
+  }
+}
