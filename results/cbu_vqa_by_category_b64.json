@@ -5,64 +5,68 @@
       "judge": "Qwen3.5-397B-A17B-FP8",
       "surface": "Ours",
       "all_types": {
-        "responses": 4648,
-        "questions": 67724,
-        "yes": 64325,
-        "no": 2368,
-        "uncertain": 1031,
-        "supported_cap": 13.839285714285714,
-        "risk": 0.03496544799480243,
-        "uncertain_rate": 0.015223554426791094
+        "responses": 4771,
+        "questions": 68933,
+        "yes": 65489,
+        "no": 2407,
+        "uncertain": 1037,
+        "supported_cap": 13.7264724376441,
+        "risk": 0.034917963819941104,
+        "uncertain_rate": 0.01504359305412502,
+        "supported_cap_std": 0.05397516806482467,
+        "risk_std": 0.0010154614936373537
       },
       "excluding_count_relation": {
-        "responses": 4648,
-        "questions": 54430,
-        "yes": 51716,
-        "no": 1746,
-        "uncertain": 968,
-        "supported_cap": 11.126506024096386,
-        "risk": 0.03207789821789454,
-        "uncertain_rate": 0.017784310123093883
+        "responses": 4771,
+        "questions": 55450,
+        "yes": 52705,
+        "no": 1773,
+        "uncertain": 972,
+        "supported_cap": 11.04695032487948,
+        "risk": 0.03197475202885482,
+        "uncertain_rate": 0.017529305680793507,
+        "supported_cap_std": 0.045732042933449915,
+        "risk_std": 0.001021113999614611
       },
       "by_type": {
         "attribute": {
-          "yes": 28435,
-          "no": 1068,
+          "yes": 28957,
+          "no": 1078,
           "uncertain": 698
         },
         "camera": {
-          "yes": 1177,
-          "no": 49,
-          "uncertain": 3
+          "yes": 1202,
+          "no": 54,
+          "uncertain": 4
         },
         "count": {
-          "yes": 2155,
-          "no": 233,
+          "yes": 2190,
+          "no": 240,
           "uncertain": 13
         },
         "lighting": {
-          "yes": 1497,
-          "no": 62,
+          "yes": 1541,
+          "no": 66,
           "uncertain": 33
         },
         "object": {
-          "yes": 17511,
-          "no": 449,
-          "uncertain": 215
+          "yes": 17842,
+          "no": 453,
+          "uncertain": 218
         },
         "relation": {
-          "yes": 10454,
-          "no": 389,
-          "uncertain": 50
+          "yes": 10594,
+          "no": 394,
+          "uncertain": 52
         },
         "style": {
-          "yes": 1092,
-          "no": 39,
+          "yes": 1132,
+          "no": 41,
           "uncertain": 8
         },
         "text_rendering": {
-          "yes": 2004,
-          "no": 79,
+          "yes": 2031,
+          "no": 81,
           "uncertain": 11
         }
       }
@@ -72,64 +76,68 @@
       "judge": "Qwen3.5-397B-A17B-FP8",
       "surface": "Ref",
       "all_types": {
-        "responses": 4995,
-        "questions": 52194,
-        "yes": 42437,
-        "no": 9227,
-        "uncertain": 530,
-        "supported_cap": 8.495895895895895,
-        "risk": 0.17678277196612638,
-        "uncertain_rate": 0.01015442388013948
+        "responses": 4914,
+        "questions": 51356,
+        "yes": 41737,
+        "no": 9096,
+        "uncertain": 523,
+        "supported_cap": 8.493487993487994,
+        "risk": 0.1771165978658774,
+        "uncertain_rate": 0.010183814938858166,
+        "supported_cap_std": 0.04754899797912155,
+        "risk_std": 0.0025837447894649004
       },
       "excluding_count_relation": {
-        "responses": 4995,
-        "questions": 41418,
-        "yes": 34129,
-        "no": 6832,
-        "uncertain": 457,
-        "supported_cap": 6.832632632632633,
-        "risk": 0.1649524361388768,
-        "uncertain_rate": 0.011033850016900864
+        "responses": 4914,
+        "questions": 40748,
+        "yes": 33561,
+        "no": 6735,
+        "uncertain": 452,
+        "supported_cap": 6.829670329670329,
+        "risk": 0.16528418572690684,
+        "uncertain_rate": 0.011092568960439777,
+        "supported_cap_std": 0.03728968127810327,
+        "risk_std": 0.0026280422551272853
       },
       "by_type": {
         "attribute": {
-          "yes": 14182,
-          "no": 3025,
-          "uncertain": 301
+          "yes": 13951,
+          "no": 2997,
+          "uncertain": 296
         },
         "camera": {
-          "yes": 605,
-          "no": 96,
+          "yes": 591,
+          "no": 93,
           "uncertain": 1
         },
         "count": {
-          "yes": 1183,
-          "no": 574,
-          "uncertain": 9
+          "yes": 1160,
+          "no": 570,
+          "uncertain": 8
         },
         "lighting": {
-          "yes": 412,
+          "yes": 406,
           "no": 58,
           "uncertain": 9
         },
         "object": {
-          "yes": 15413,
-          "no": 2462,
+          "yes": 15159,
+          "no": 2420,
           "uncertain": 124
         },
         "relation": {
-          "yes": 7125,
-          "no": 1821,
-          "uncertain": 64
+          "yes": 7016,
+          "no": 1791,
+          "uncertain": 63
         },
         "style": {
-          "yes": 1390,
-          "no": 173,
+          "yes": 1366,
+          "no": 167,
           "uncertain": 11
         },
         "text_rendering": {
-          "yes": 2127,
-          "no": 1018,
+          "yes": 2088,
+          "no": 1000,
           "uncertain": 11
         }
       }
@@ -139,24 +147,28 @@
       "judge": "Qwen3.5-397B-A17B-FP8",
       "surface": "Ours",
       "all_types": {
-        "responses": 4964,
+        "responses": 4962,
         "questions": 73489,
         "yes": 70572,
         "no": 2256,
         "uncertain": 661,
-        "supported_cap": 14.21676067687349,
+        "supported_cap": 14.222490931076178,
         "risk": 0.030698471880145326,
-        "uncertain_rate": 0.008994543401053219
+        "uncertain_rate": 0.008994543401053219,
+        "supported_cap_std": 0.05072521565729821,
+        "risk_std": 0.0008091634599884891
       },
       "excluding_count_relation": {
-        "responses": 4964,
+        "responses": 4962,
         "questions": 59669,
         "yes": 57426,
         "no": 1617,
         "uncertain": 626,
-        "supported_cap": 11.568493150684931,
+        "supported_cap": 11.573155985489722,
         "risk": 0.027099498902277565,
-        "uncertain_rate": 0.01049120984095594
+        "uncertain_rate": 0.01049120984095594,
+        "supported_cap_std": 0.043738381829425924,
+        "risk_std": 0.0008406952655639504
       },
       "by_type": {
         "attribute": {
@@ -206,24 +218,28 @@
       "judge": "Qwen3.5-397B-A17B-FP8",
       "surface": "Ref",
       "all_types": {
-        "responses": 4947,
+        "responses": 4946,
         "questions": 58903,
         "yes": 53414,
         "no": 4546,
         "uncertain": 943,
-        "supported_cap": 10.79725085910653,
+        "supported_cap": 10.79943388596846,
         "risk": 0.07717773288287523,
-        "uncertain_rate": 0.016009371339320577
+        "uncertain_rate": 0.016009371339320577,
+        "supported_cap_std": 0.043857979671372165,
+        "risk_std": 0.0014796283757889757
       },
       "excluding_count_relation": {
-        "responses": 4947,
+        "responses": 4946,
         "questions": 47764,
         "yes": 43878,
         "no": 3036,
         "uncertain": 850,
-        "supported_cap": 8.869617950272893,
+        "supported_cap": 8.871411241407198,
         "risk": 0.06356251570220249,
-        "uncertain_rate": 0.01779582949501717
+        "uncertain_rate": 0.01779582949501717,
+        "supported_cap_std": 0.03831221412260682,
+        "risk_std": 0.0013739192402308113
       },
       "by_type": {
         "attribute": {
@@ -273,24 +289,28 @@
       "judge": "Qwen3.5-397B-A17B-FP8",
       "surface": "Ours",
       "all_types": {
-        "responses": 4957,
+        "responses": 4955,
         "questions": 74392,
         "yes": 70831,
         "no": 2501,
         "uncertain": 1060,
-        "supported_cap": 14.289086140810975,
+        "supported_cap": 14.294853683148334,
         "risk": 0.033619206366275946,
-        "uncertain_rate": 0.014248843961716313
+        "uncertain_rate": 0.014248843961716313,
+        "supported_cap_std": 0.05325241331809513,
+        "risk_std": 0.0008273480255440856
       },
       "excluding_count_relation": {
-        "responses": 4957,
+        "responses": 4955,
         "questions": 58972,
         "yes": 56265,
         "no": 1727,
         "uncertain": 980,
-        "supported_cap": 11.35061529150696,
+        "supported_cap": 11.355196770938447,
         "risk": 0.029285084446856135,
-        "uncertain_rate": 0.01661805602658889
+        "uncertain_rate": 0.01661805602658889,
+        "supported_cap_std": 0.045184053665487826,
+        "risk_std": 0.0008311234287812799
       },
       "by_type": {
         "attribute": {
@@ -347,7 +367,9 @@
         "uncertain": 859,
         "supported_cap": 8.605532170775707,
         "risk": 0.10308243727598566,
-        "uncertain_rate": 0.017593445980542754
+        "uncertain_rate": 0.017593445980542754,
+        "supported_cap_std": 0.04606247772839113,
+        "risk_std": 0.0019424101329093973
       },
       "excluding_count_relation": {
         "responses": 4989,
@@ -357,7 +379,9 @@
         "uncertain": 774,
         "supported_cap": 6.372619763479655,
         "risk": 0.08903496503496504,
-        "uncertain_rate": 0.021650349650349652
+        "uncertain_rate": 0.021650349650349652,
+        "supported_cap_std": 0.03211538092654844,
+        "risk_std": 0.0019316594582874575
       },
       "by_type": {
         "attribute": {
@@ -407,24 +431,28 @@
       "judge": "Qwen3.5-397B-A17B-FP8",
       "surface": "Ours",
       "all_types": {
-        "responses": 4993,
+        "responses": 4991,
         "questions": 71491,
         "yes": 63570,
         "no": 4166,
         "uncertain": 3755,
-        "supported_cap": 12.731824554376127,
+        "supported_cap": 12.736926467641755,
         "risk": 0.05827306933739911,
-        "uncertain_rate": 0.052524093941894785
+        "uncertain_rate": 0.052524093941894785,
+        "supported_cap_std": 0.04641530576761053,
+        "risk_std": 0.0014118242512130164
       },
       "excluding_count_relation": {
-        "responses": 4993,
+        "responses": 4991,
         "questions": 57821,
         "yes": 50933,
         "no": 3312,
         "uncertain": 3576,
-        "supported_cap": 10.200881233727218,
+        "supported_cap": 10.20496894409938,
         "risk": 0.05728022690717905,
-        "uncertain_rate": 0.06184604209543246
+        "uncertain_rate": 0.06184604209543246,
+        "supported_cap_std": 0.040189313800112376,
+        "risk_std": 0.0014273524042077346
       },
       "by_type": {
         "attribute": {
@@ -481,7 +509,9 @@
         "uncertain": 192,
         "supported_cap": 6.379955725498088,
         "risk": 0.21742117531591215,
-        "uncertain_rate": 0.004711078395288922
+        "uncertain_rate": 0.004711078395288922,
+        "supported_cap_std": 0.042836657031118996,
+        "risk_std": 0.0030508735387981627
       },
       "excluding_count_relation": {
         "responses": 4969,
@@ -491,7 +521,9 @@
         "uncertain": 164,
         "supported_cap": 4.986315153954518,
         "risk": 0.22122650346593392,
-        "uncertain_rate": 0.005120839318054081
+        "uncertain_rate": 0.005120839318054081,
+        "supported_cap_std": 0.032393712245262614,
+        "risk_std": 0.0031023204732214447
       },
       "by_type": {
         "attribute": {
@@ -541,65 +573,69 @@
       "judge": "Gemma-4-31B-IT",
       "surface": "Ours",
       "all_types": {
-        "responses": 4775,
-        "questions": 68500,
-        "yes": 60868,
-        "no": 5753,
-        "uncertain": 1879,
-        "supported_cap": 12.747225130890053,
-        "risk": 0.08398540145985402,
-        "uncertain_rate": 0.02743065693430657
+        "responses": 4771,
+        "questions": 68933,
+        "yes": 61721,
+        "no": 5591,
+        "uncertain": 1621,
+        "supported_cap": 12.936700901278558,
+        "risk": 0.08110774230049468,
+        "uncertain_rate": 0.02351558759955319,
+        "supported_cap_std": 0.05337303232473429,
+        "risk_std": 0.0014404821192446915
       },
       "excluding_count_relation": {
-        "responses": 4775,
-        "questions": 57872,
-        "yes": 51800,
-        "no": 4365,
-        "uncertain": 1707,
-        "supported_cap": 10.848167539267015,
-        "risk": 0.075425076029859,
-        "uncertain_rate": 0.029496129388996407
+        "responses": 4771,
+        "questions": 55450,
+        "yes": 49911,
+        "no": 4023,
+        "uncertain": 1516,
+        "supported_cap": 10.46132886187382,
+        "risk": 0.07255184851217313,
+        "uncertain_rate": 0.02733994589720469,
+        "supported_cap_std": 0.0446615242428078,
+        "risk_std": 0.001423613047441811
       },
       "by_type": {
         "attribute": {
-          "yes": 31204,
-          "no": 2826,
-          "uncertain": 1412
+          "yes": 27248,
+          "no": 2324,
+          "uncertain": 1161
         },
         "camera": {
-          "yes": 597,
-          "no": 49,
-          "uncertain": 2
+          "yes": 1167,
+          "no": 93,
+          "uncertain": 0
         },
         "count": {
-          "yes": 1935,
-          "no": 461,
-          "uncertain": 39
+          "yes": 1931,
+          "no": 484,
+          "uncertain": 28
         },
         "lighting": {
-          "yes": 1439,
-          "no": 78,
-          "uncertain": 34
+          "yes": 1547,
+          "no": 71,
+          "uncertain": 22
         },
         "object": {
-          "yes": 15987,
-          "no": 1118,
-          "uncertain": 223
+          "yes": 17049,
+          "no": 1162,
+          "uncertain": 302
         },
         "relation": {
-          "yes": 7133,
-          "no": 927,
-          "uncertain": 133
+          "yes": 9879,
+          "no": 1084,
+          "uncertain": 77
         },
         "style": {
-          "yes": 990,
-          "no": 52,
-          "uncertain": 19
+          "yes": 1114,
+          "no": 55,
+          "uncertain": 12
         },
         "text_rendering": {
-          "yes": 1583,
-          "no": 242,
-          "uncertain": 17
+          "yes": 1786,
+          "no": 318,
+          "uncertain": 19
         }
       }
     },
@@ -608,65 +644,69 @@
       "judge": "Gemma-4-31B-IT",
       "surface": "Ref",
       "all_types": {
-        "responses": 4779,
-        "questions": 47878,
-        "yes": 36683,
-        "no": 10391,
-        "uncertain": 804,
-        "supported_cap": 7.675873613726721,
-        "risk": 0.21703078658256403,
-        "uncertain_rate": 0.01679268139855466
+        "responses": 4914,
+        "questions": 51356,
+        "yes": 39327,
+        "no": 11244,
+        "uncertain": 785,
+        "supported_cap": 8.003052503052503,
+        "risk": 0.21894228522470596,
+        "uncertain_rate": 0.015285458369031855,
+        "supported_cap_std": 0.047747665252542766,
+        "risk_std": 0.0028112641864112965
       },
       "excluding_count_relation": {
-        "responses": 4779,
-        "questions": 40136,
-        "yes": 31173,
-        "no": 8277,
-        "uncertain": 686,
-        "supported_cap": 6.522912743251727,
-        "risk": 0.20622383894757823,
-        "uncertain_rate": 0.01709188758222045
+        "responses": 4914,
+        "questions": 40748,
+        "yes": 31805,
+        "no": 8271,
+        "uncertain": 672,
+        "supported_cap": 6.472323972323973,
+        "risk": 0.20297928732698536,
+        "uncertain_rate": 0.01649160695003436,
+        "supported_cap_std": 0.037461015080997945,
+        "risk_std": 0.002884652633418756
       },
       "by_type": {
         "attribute": {
-          "yes": 13547,
-          "no": 4189,
-          "uncertain": 432
+          "yes": 13081,
+          "no": 3759,
+          "uncertain": 404
         },
         "camera": {
-          "yes": 513,
-          "no": 51,
-          "uncertain": 2
+          "yes": 565,
+          "no": 116,
+          "uncertain": 4
         },
         "count": {
-          "yes": 1088,
-          "no": 451,
-          "uncertain": 19
+          "yes": 1101,
+          "no": 625,
+          "uncertain": 12
         },
         "lighting": {
-          "yes": 483,
-          "no": 49,
-          "uncertain": 7
+          "yes": 416,
+          "no": 46,
+          "uncertain": 11
         },
         "object": {
-          "yes": 13833,
-          "no": 2792,
-          "uncertain": 210
+          "yes": 14517,
+          "no": 2979,
+          "uncertain": 207
         },
         "relation": {
-          "yes": 4422,
-          "no": 1663,
-          "uncertain": 99
+          "yes": 6421,
+          "no": 2348,
+          "uncertain": 101
         },
         "style": {
-          "yes": 1122,
-          "no": 181,
-          "uncertain": 23
+          "yes": 1326,
+          "no": 192,
+          "uncertain": 26
         },
         "text_rendering": {
-          "yes": 1675,
-          "no": 1015,
-          "uncertain": 12
+          "yes": 1900,
+          "no": 1179,
+          "uncertain": 20
         }
       }
     },
@@ -675,30 +715,34 @@
       "judge": "Gemma-4-31B-IT",
       "surface": "Ours",
       "all_types": {
-        "responses": 4964,
-        "questions": 73564,
-        "yes": 67621,
+        "responses": 4962,
+        "questions": 73489,
+        "yes": 67548,
         "no": 4419,
-        "uncertain": 1524,
-        "supported_cap": 13.622280419016922,
-        "risk": 0.060070143004730576,
-        "uncertain_rate": 0.020716654885541842
+        "uncertain": 1522,
+        "supported_cap": 13.613059250302298,
+        "risk": 0.060131448243954874,
+        "uncertain_rate": 0.020710582536161874,
+        "supported_cap_std": 0.05066297976397195,
+        "risk_std": 0.001173604756708241
       },
       "excluding_count_relation": {
-        "responses": 4964,
-        "questions": 59729,
-        "yes": 55122,
+        "responses": 4962,
+        "questions": 59669,
+        "yes": 55064,
         "no": 3167,
-        "uncertain": 1440,
-        "supported_cap": 11.104351329572925,
-        "risk": 0.05302281973580673,
-        "uncertain_rate": 0.024108891828090208
+        "uncertain": 1438,
+        "supported_cap": 11.097138250705362,
+        "risk": 0.05307613668739211,
+        "uncertain_rate": 0.024099616216125625,
+        "supported_cap_std": 0.043403469611499074,
+        "risk_std": 0.0011592167643807675
       },
       "by_type": {
         "attribute": {
-          "yes": 31329,
+          "yes": 31296,
           "no": 2001,
-          "uncertain": 1131
+          "uncertain": 1129
         },
         "camera": {
           "yes": 1223,
@@ -706,7 +750,7 @@
           "uncertain": 2
         },
         "count": {
-          "yes": 1499,
+          "yes": 1497,
           "no": 300,
           "uncertain": 17
         },
@@ -716,12 +760,12 @@
           "uncertain": 21
         },
         "object": {
-          "yes": 18820,
+          "yes": 18795,
           "no": 841,
           "uncertain": 271
         },
         "relation": {
-          "yes": 11000,
+          "yes": 10987,
           "no": 952,
           "uncertain": 67
         },
@@ -742,28 +786,32 @@
       "judge": "Gemma-4-31B-IT",
       "surface": "Ref",
       "all_types": {
-        "responses": 4947,
-        "questions": 58935,
-        "yes": 50582,
-        "no": 6665,
+        "responses": 4946,
+        "questions": 58903,
+        "yes": 50551,
+        "no": 6664,
         "uncertain": 1688,
-        "supported_cap": 10.224782696583787,
-        "risk": 0.11309069313650633,
-        "uncertain_rate": 0.028641723933146686
+        "supported_cap": 10.220582288718155,
+        "risk": 0.11313515440639696,
+        "uncertain_rate": 0.02865728400930343,
+        "supported_cap_std": 0.04311763686372741,
+        "risk_std": 0.0017993113353050548
       },
       "excluding_count_relation": {
-        "responses": 4947,
-        "questions": 47783,
-        "yes": 41729,
+        "responses": 4946,
+        "questions": 47764,
+        "yes": 41710,
         "no": 4548,
         "uncertain": 1506,
-        "supported_cap": 8.435213260561957,
-        "risk": 0.0951802942469079,
-        "uncertain_rate": 0.031517485298118576
+        "supported_cap": 8.43307723412859,
+        "risk": 0.09521815593333892,
+        "uncertain_rate": 0.03153002261117159,
+        "supported_cap_std": 0.03737242539651084,
+        "risk_std": 0.001751079412192611
       },
       "by_type": {
         "attribute": {
-          "yes": 20721,
+          "yes": 20716,
           "no": 2811,
           "uncertain": 925
         },
@@ -774,7 +822,7 @@
         },
         "count": {
           "yes": 1111,
-          "no": 513,
+          "no": 512,
           "uncertain": 58
         },
         "lighting": {
@@ -783,12 +831,12 @@
           "uncertain": 11
         },
         "object": {
-          "yes": 15927,
+          "yes": 15913,
           "no": 1211,
           "uncertain": 486
         },
         "relation": {
-          "yes": 7742,
+          "yes": 7730,
           "no": 1604,
           "uncertain": 124
         },
@@ -809,39 +857,43 @@
       "judge": "Gemma-4-31B-IT",
       "surface": "Ours",
       "all_types": {
-        "responses": 4957,
-        "questions": 74463,
-        "yes": 67113,
-        "no": 4908,
+        "responses": 4955,
+        "questions": 74392,
+        "yes": 67043,
+        "no": 4907,
         "uncertain": 2442,
-        "supported_cap": 13.539035707080895,
-        "risk": 0.06591192941460859,
-        "uncertain_rate": 0.03279481084565489
+        "supported_cap": 13.53037336024218,
+        "risk": 0.06596139369824712,
+        "uncertain_rate": 0.03282611033444456,
+        "supported_cap_std": 0.05353040744738866,
+        "risk_std": 0.0012227137158953671
       },
       "excluding_count_relation": {
-        "responses": 4957,
-        "questions": 59016,
-        "yes": 53365,
+        "responses": 4955,
+        "questions": 58972,
+        "yes": 53321,
         "no": 3403,
         "uncertain": 2248,
-        "supported_cap": 10.765584022594311,
-        "risk": 0.05766232885997018,
-        "uncertain_rate": 0.0380913650535448
+        "supported_cap": 10.761049445005046,
+        "risk": 0.057705351692328564,
+        "uncertain_rate": 0.03811978566099166,
+        "supported_cap_std": 0.04556396381608915,
+        "risk_std": 0.001168013804258157
       },
       "by_type": {
         "attribute": {
-          "yes": 29521,
+          "yes": 29499,
           "no": 2100,
           "uncertain": 1690
         },
         "camera": {
-          "yes": 1029,
+          "yes": 1028,
           "no": 68,
           "uncertain": 2
         },
         "count": {
-          "yes": 2140,
-          "no": 458,
+          "yes": 2136,
+          "no": 457,
           "uncertain": 57
         },
         "lighting": {
@@ -850,12 +902,12 @@
           "uncertain": 33
         },
         "object": {
-          "yes": 19277,
+          "yes": 19256,
           "no": 911,
           "uncertain": 475
         },
         "relation": {
-          "yes": 11608,
+          "yes": 11586,
           "no": 1047,
           "uncertain": 137
         },
@@ -883,7 +935,9 @@
         "uncertain": 1403,
         "supported_cap": 8.225095209460815,
         "risk": 0.1308141321044547,
-        "uncertain_rate": 0.028735279057859702
+        "uncertain_rate": 0.028735279057859702,
+        "supported_cap_std": 0.04650529230970852,
+        "risk_std": 0.0022287068798619884
       },
       "excluding_count_relation": {
         "responses": 4989,
@@ -893,7 +947,9 @@
         "uncertain": 1250,
         "supported_cap": 6.111846061334937,
         "risk": 0.11211188811188812,
-        "uncertain_rate": 0.03496503496503497
+        "uncertain_rate": 0.03496503496503497,
+        "supported_cap_std": 0.03243317501660021,
+        "risk_std": 0.002198879561841535
       },
       "by_type": {
         "attribute": {
@@ -943,29 +999,33 @@
       "judge": "Gemma-4-31B-IT",
       "surface": "Ours",
       "all_types": {
-        "responses": 4993,
-        "questions": 71555,
-        "yes": 59220,
-        "no": 6712,
-        "uncertain": 5623,
-        "supported_cap": 11.860604846785499,
-        "risk": 0.09380197051219341,
-        "uncertain_rate": 0.07858290825239327
+        "responses": 4991,
+        "questions": 71491,
+        "yes": 59163,
+        "no": 6708,
+        "uncertain": 5620,
+        "supported_cap": 11.853937086756162,
+        "risk": 0.09382999258647942,
+        "uncertain_rate": 0.0786112937292806,
+        "supported_cap_std": 0.04407340538371825,
+        "risk_std": 0.0014686839862705224
       },
       "excluding_count_relation": {
-        "responses": 4993,
-        "questions": 57872,
-        "yes": 47345,
-        "no": 5256,
-        "uncertain": 5271,
-        "supported_cap": 9.482275185259363,
-        "risk": 0.09082112247719104,
-        "uncertain_rate": 0.09108031517832457
+        "responses": 4991,
+        "questions": 57821,
+        "yes": 47300,
+        "no": 5252,
+        "uncertain": 5269,
+        "supported_cap": 9.477058705670206,
+        "risk": 0.09083205063904118,
+        "uncertain_rate": 0.09112606146555749,
+        "supported_cap_std": 0.03813224395721413,
+        "risk_std": 0.0014860524269308458
       },
       "by_type": {
         "attribute": {
-          "yes": 30301,
-          "no": 3587,
+          "yes": 30274,
+          "no": 3584,
           "uncertain": 909
         },
         "camera": {
@@ -984,14 +1044,14 @@
           "uncertain": 9
         },
         "object": {
-          "yes": 13645,
-          "no": 1391,
-          "uncertain": 4307
+          "yes": 13627,
+          "no": 1390,
+          "uncertain": 4305
         },
         "relation": {
-          "yes": 10994,
+          "yes": 10982,
           "no": 1327,
-          "uncertain": 347
+          "uncertain": 346
         },
         "style": {
           "yes": 1734,
@@ -1017,7 +1077,9 @@
         "uncertain": 655,
         "supported_cap": 6.146508351781042,
         "risk": 0.23452337136547663,
-        "uncertain_rate": 0.01607164765059502
+        "uncertain_rate": 0.01607164765059502,
+        "supported_cap_std": 0.04041942808133874,
+        "risk_std": 0.003205318856355342
       },
       "excluding_count_relation": {
         "responses": 4969,
@@ -1027,7 +1089,9 @@
         "uncertain": 606,
         "supported_cap": 4.8764338901187365,
         "risk": 0.22447386498469993,
-        "uncertain_rate": 0.018922125772809592
+        "uncertain_rate": 0.018922125772809592,
+        "supported_cap_std": 0.029559660344769045,
+        "risk_std": 0.0032094978693411455
       },
       "by_type": {
         "attribute": {
@@ -1084,7 +1148,9 @@
         "uncertain": 747,
         "supported_cap": 14.59592567718827,
         "risk": 0.03046207677266646,
-        "uncertain_rate": 0.010982225554624444
+        "uncertain_rate": 0.010982225554624444,
+        "supported_cap_std": 0.05676608459892606,
+        "risk_std": 0.0008987919034353549
       },
       "excluding_count_relation": {
         "responses": 4467,
@@ -1094,7 +1160,9 @@
         "uncertain": 702,
         "supported_cap": 11.689276919632864,
         "risk": 0.02591760851157825,
-        "uncertain_rate": 0.012921989470971541
+        "uncertain_rate": 0.012921989470971541,
+        "supported_cap_std": 0.05018195158474673,
+        "risk_std": 0.0008441754376067681
       },
       "by_type": {
         "attribute": {
@@ -1151,7 +1219,9 @@
         "uncertain": 951,
         "supported_cap": 9.842128901863912,
         "risk": 0.06890958995259086,
-        "uncertain_rate": 0.019774598685852116
+        "uncertain_rate": 0.019774598685852116,
+        "supported_cap_std": 0.04800150812775797,
+        "risk_std": 0.00152786385604479
       },
       "excluding_count_relation": {
         "responses": 4453,
@@ -1161,7 +1231,9 @@
         "uncertain": 856,
         "supported_cap": 7.9629463283179875,
         "risk": 0.0598545059155513,
-        "uncertain_rate": 0.0221606648199446
+        "uncertain_rate": 0.0221606648199446,
+        "supported_cap_std": 0.04158301855080534,
+        "risk_std": 0.001483179429872497
       },
       "by_type": {
         "attribute": {
@@ -1218,7 +1290,9 @@
         "uncertain": 1083,
         "supported_cap": 10.730051697010564,
         "risk": 0.12886533554592008,
-        "uncertain_rate": 0.019324447299395107
+        "uncertain_rate": 0.019324447299395107,
+        "supported_cap_std": 0.04999250232363249,
+        "risk_std": 0.0020820027739653336
       },
       "excluding_count_relation": {
         "responses": 4449,
@@ -1228,7 +1302,9 @@
         "uncertain": 863,
         "supported_cap": 7.937514048100697,
         "risk": 0.1039974242124034,
-        "uncertain_rate": 0.021374083614028136
+        "uncertain_rate": 0.021374083614028136,
+        "supported_cap_std": 0.04045842824748651,
+        "risk_std": 0.001967214838100285
       },
       "by_type": {
         "attribute": {
@@ -1285,7 +1361,9 @@
         "uncertain": 175,
         "supported_cap": 6.3122494432071266,
         "risk": 0.01362803085330843,
-        "uncertain_rate": 0.006053059389159835
+        "uncertain_rate": 0.006053059389159835,
+        "supported_cap_std": 0.02617424760762572,
+        "risk_std": 0.0008461584655115111
       },
       "excluding_count_relation": {
         "responses": 4490,
@@ -1295,7 +1373,9 @@
         "uncertain": 125,
         "supported_cap": 4.692650334075724,
         "risk": 0.008189050070191857,
-        "uncertain_rate": 0.00584932147870847
+        "uncertain_rate": 0.00584932147870847,
+        "supported_cap_std": 0.02025043019076248,
+        "risk_std": 0.000727211031097125
       },
       "by_type": {
         "attribute": {
@@ -1352,7 +1432,9 @@
         "uncertain": 1753,
         "supported_cap": 13.823371390194762,
         "risk": 0.06640791543539305,
-        "uncertain_rate": 0.025772210705832195
+        "uncertain_rate": 0.025772210705832195,
+        "supported_cap_std": 0.05508277163104877,
+        "risk_std": 0.001255086582995562
       },
       "excluding_count_relation": {
         "responses": 4467,
@@ -1362,7 +1444,9 @@
         "uncertain": 1650,
         "supported_cap": 11.102081934184016,
         "risk": 0.056749990796303794,
-        "uncertain_rate": 0.03037219747450576
+        "uncertain_rate": 0.03037219747450576,
+        "supported_cap_std": 0.048651428660544206,
+        "risk_std": 0.001216121661942234
       },
       "by_type": {
         "attribute": {
@@ -1419,7 +1503,9 @@
         "uncertain": 1410,
         "supported_cap": 9.439029867505052,
         "risk": 0.09668967811694253,
-        "uncertain_rate": 0.029318805622556766
+        "uncertain_rate": 0.029318805622556766,
+        "supported_cap_std": 0.045467044460749936,
+        "risk_std": 0.0017494424310014966
       },
       "excluding_count_relation": {
         "responses": 4453,
@@ -1429,7 +1515,9 @@
         "uncertain": 1278,
         "supported_cap": 7.649898944531777,
         "risk": 0.0850182514821239,
-        "uncertain_rate": 0.033085665467160276
+        "uncertain_rate": 0.033085665467160276,
+        "supported_cap_std": 0.03954675278715952,
+        "risk_std": 0.0017143445910932991
       },
       "by_type": {
         "attribute": {
@@ -1486,7 +1574,9 @@
         "uncertain": 1685,
         "supported_cap": 10.195999100921556,
         "risk": 0.16051960102064486,
-        "uncertain_rate": 0.03006619916849562
+        "uncertain_rate": 0.03006619916849562,
+        "supported_cap_std": 0.04758224536355913,
+        "risk_std": 0.002139619026003689
       },
       "excluding_count_relation": {
         "responses": 4449,
@@ -1496,7 +1586,9 @@
         "uncertain": 1383,
         "supported_cap": 7.607552258934592,
         "risk": 0.12747671884287695,
-        "uncertain_rate": 0.03425302159698831
+        "uncertain_rate": 0.03425302159698831,
+        "supported_cap_std": 0.03886489263098809,
+        "risk_std": 0.002066444281185961
       },
       "by_type": {
         "attribute": {
@@ -1553,7 +1645,9 @@
         "uncertain": 280,
         "supported_cap": 6.194432071269488,
         "risk": 0.02829372903047283,
-        "uncertain_rate": 0.009684895022655737
+        "uncertain_rate": 0.009684895022655737,
+        "supported_cap_std": 0.025575582772562003,
+        "risk_std": 0.0012944782885140843
       },
       "excluding_count_relation": {
         "responses": 4490,
@@ -1563,7 +1657,9 @@
         "uncertain": 224,
         "supported_cap": 4.61826280623608,
         "risk": 0.01918577445016378,
-        "uncertain_rate": 0.010481984089845579
+        "uncertain_rate": 0.010481984089845579,
+        "supported_cap_std": 0.019605157993473742,
+        "risk_std": 0.0011071363646261323
       },
       "by_type": {
         "attribute": {
@@ -1605,6 +1701,716 @@
           "yes": 48,
           "no": 6,
           "uncertain": 1
+        }
+      }
+    },
+    {
+      "slice": "CC12M-control",
+      "judge": "Qwen3.5-397B-A17B-FP8",
+      "surface": "Naive",
+      "all_types": {
+        "responses": 4397,
+        "questions": 50450,
+        "yes": 48482,
+        "no": 1112,
+        "uncertain": 856,
+        "supported_cap": 11.026154196042757,
+        "risk": 0.022041625371655105,
+        "uncertain_rate": 0.01696729435084242,
+        "supported_cap_std": 0.04697545234863814,
+        "risk_std": 0.0007818425110218471
+      },
+      "excluding_count_relation": {
+        "responses": 4397,
+        "questions": 44354,
+        "yes": 42673,
+        "no": 885,
+        "uncertain": 796,
+        "supported_cap": 9.705026154196043,
+        "risk": 0.019953104567795463,
+        "uncertain_rate": 0.017946521170582135,
+        "supported_cap_std": 0.04381370635194743,
+        "risk_std": 0.0007694242980002299
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 19840,
+          "no": 389,
+          "uncertain": 292
+        },
+        "camera": {
+          "yes": 2493,
+          "no": 128,
+          "uncertain": 3
+        },
+        "count": {
+          "yes": 1192,
+          "no": 115,
+          "uncertain": 12
+        },
+        "lighting": {
+          "yes": 1891,
+          "no": 34,
+          "uncertain": 7
+        },
+        "object": {
+          "yes": 11721,
+          "no": 192,
+          "uncertain": 453
+        },
+        "relation": {
+          "yes": 4617,
+          "no": 112,
+          "uncertain": 48
+        },
+        "style": {
+          "yes": 6451,
+          "no": 100,
+          "uncertain": 38
+        },
+        "text_rendering": {
+          "yes": 277,
+          "no": 42,
+          "uncertain": 3
+        }
+      }
+    },
+    {
+      "slice": "CC12M-control",
+      "judge": "Qwen3.5-397B-A17B-FP8",
+      "surface": "Naive (greedy)",
+      "all_types": {
+        "responses": 4423,
+        "questions": 51365,
+        "yes": 49079,
+        "no": 1115,
+        "uncertain": 1171,
+        "supported_cap": 11.096314718516844,
+        "risk": 0.02170738829942568,
+        "uncertain_rate": 0.02279762484181836,
+        "supported_cap_std": 0.047602617065622375,
+        "risk_std": 0.0007119239831772252
+      },
+      "excluding_count_relation": {
+        "responses": 4423,
+        "questions": 44985,
+        "yes": 42990,
+        "no": 896,
+        "uncertain": 1099,
+        "supported_cap": 9.719647298213882,
+        "risk": 0.019917750361231522,
+        "uncertain_rate": 0.024430365677448038,
+        "supported_cap_std": 0.04395003572264525,
+        "risk_std": 0.0007245433421122559
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 19464,
+          "no": 418,
+          "uncertain": 439
+        },
+        "camera": {
+          "yes": 2411,
+          "no": 133,
+          "uncertain": 1
+        },
+        "count": {
+          "yes": 1219,
+          "no": 103,
+          "uncertain": 21
+        },
+        "lighting": {
+          "yes": 1914,
+          "no": 45,
+          "uncertain": 11
+        },
+        "object": {
+          "yes": 11819,
+          "no": 165,
+          "uncertain": 570
+        },
+        "relation": {
+          "yes": 4870,
+          "no": 116,
+          "uncertain": 51
+        },
+        "style": {
+          "yes": 7020,
+          "no": 95,
+          "uncertain": 71
+        },
+        "text_rendering": {
+          "yes": 362,
+          "no": 40,
+          "uncertain": 7
+        }
+      }
+    },
+    {
+      "slice": "CC12M-control",
+      "judge": "Gemma-4-31B-IT",
+      "surface": "Naive",
+      "all_types": {
+        "responses": 4397,
+        "questions": 50450,
+        "yes": 46642,
+        "no": 2295,
+        "uncertain": 1513,
+        "supported_cap": 10.607687059358653,
+        "risk": 0.045490584737363726,
+        "uncertain_rate": 0.029990089197224973,
+        "supported_cap_std": 0.045695654518379605,
+        "risk_std": 0.001115238087529775
+      },
+      "excluding_count_relation": {
+        "responses": 4397,
+        "questions": 44354,
+        "yes": 41071,
+        "no": 1840,
+        "uncertain": 1443,
+        "supported_cap": 9.340686831930862,
+        "risk": 0.04148442079632051,
+        "uncertain_rate": 0.03253370609189701,
+        "supported_cap_std": 0.04285543350443931,
+        "risk_std": 0.0011201665016447508
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 18868,
+          "no": 918,
+          "uncertain": 735
+        },
+        "camera": {
+          "yes": 2409,
+          "no": 213,
+          "uncertain": 2
+        },
+        "count": {
+          "yes": 1093,
+          "no": 212,
+          "uncertain": 14
+        },
+        "lighting": {
+          "yes": 1882,
+          "no": 42,
+          "uncertain": 8
+        },
+        "object": {
+          "yes": 11370,
+          "no": 402,
+          "uncertain": 594
+        },
+        "relation": {
+          "yes": 4478,
+          "no": 243,
+          "uncertain": 56
+        },
+        "style": {
+          "yes": 6286,
+          "no": 203,
+          "uncertain": 100
+        },
+        "text_rendering": {
+          "yes": 256,
+          "no": 62,
+          "uncertain": 4
+        }
+      }
+    },
+    {
+      "slice": "CC12M-control",
+      "judge": "Gemma-4-31B-IT",
+      "surface": "Naive (greedy)",
+      "all_types": {
+        "responses": 4423,
+        "questions": 51365,
+        "yes": 47728,
+        "no": 2221,
+        "uncertain": 1416,
+        "supported_cap": 10.790865928103097,
+        "risk": 0.043239560011681104,
+        "uncertain_rate": 0.027567409714786332,
+        "supported_cap_std": 0.04512787468525287,
+        "risk_std": 0.001078976441553853
+      },
+      "excluding_count_relation": {
+        "responses": 4423,
+        "questions": 44985,
+        "yes": 41884,
+        "no": 1748,
+        "uncertain": 1353,
+        "supported_cap": 9.469590775491747,
+        "risk": 0.03885739691008114,
+        "uncertain_rate": 0.030076692230743583,
+        "supported_cap_std": 0.04241599609725965,
+        "risk_std": 0.0010486050495444599
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 18759,
+          "no": 905,
+          "uncertain": 657
+        },
+        "camera": {
+          "yes": 2331,
+          "no": 208,
+          "uncertain": 6
+        },
+        "count": {
+          "yes": 1128,
+          "no": 199,
+          "uncertain": 16
+        },
+        "lighting": {
+          "yes": 1909,
+          "no": 52,
+          "uncertain": 9
+        },
+        "object": {
+          "yes": 11635,
+          "no": 334,
+          "uncertain": 585
+        },
+        "relation": {
+          "yes": 4716,
+          "no": 274,
+          "uncertain": 47
+        },
+        "style": {
+          "yes": 6917,
+          "no": 186,
+          "uncertain": 83
+        },
+        "text_rendering": {
+          "yes": 333,
+          "no": 63,
+          "uncertain": 13
+        }
+      }
+    },
+    {
+      "slice": "DataComp-control",
+      "judge": "Qwen3.5-397B-A17B-FP8",
+      "surface": "Ours",
+      "all_types": {
+        "responses": 4688,
+        "questions": 68473,
+        "yes": 65163,
+        "no": 2499,
+        "uncertain": 811,
+        "supported_cap": 13.89995733788396,
+        "risk": 0.036496137163553516,
+        "uncertain_rate": 0.011844084529668628,
+        "supported_cap_std": 0.055691137862663,
+        "risk_std": 0.000968406930133199
+      },
+      "excluding_count_relation": {
+        "responses": 4688,
+        "questions": 55126,
+        "yes": 52589,
+        "no": 1784,
+        "uncertain": 753,
+        "supported_cap": 11.21779010238908,
+        "risk": 0.032362224721547005,
+        "uncertain_rate": 0.013659616152087944,
+        "supported_cap_std": 0.0475064262195385,
+        "risk_std": 0.000965729419404114
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 29291,
+          "no": 1081,
+          "uncertain": 567
+        },
+        "camera": {
+          "yes": 1201,
+          "no": 40,
+          "uncertain": 1
+        },
+        "count": {
+          "yes": 2169,
+          "no": 267,
+          "uncertain": 13
+        },
+        "lighting": {
+          "yes": 1600,
+          "no": 76,
+          "uncertain": 17
+        },
+        "object": {
+          "yes": 17547,
+          "no": 449,
+          "uncertain": 149
+        },
+        "relation": {
+          "yes": 10405,
+          "no": 448,
+          "uncertain": 45
+        },
+        "style": {
+          "yes": 1050,
+          "no": 28,
+          "uncertain": 11
+        },
+        "text_rendering": {
+          "yes": 1900,
+          "no": 110,
+          "uncertain": 8
+        }
+      }
+    },
+    {
+      "slice": "DataComp-control",
+      "judge": "Qwen3.5-397B-A17B-FP8",
+      "surface": "Naive",
+      "all_types": {
+        "responses": 4618,
+        "questions": 50853,
+        "yes": 48784,
+        "no": 1328,
+        "uncertain": 741,
+        "supported_cap": 10.56388046773495,
+        "risk": 0.02611448685426622,
+        "uncertain_rate": 0.014571411716122943,
+        "supported_cap_std": 0.04359063212142968,
+        "risk_std": 0.0008178817622447776
+      },
+      "excluding_count_relation": {
+        "responses": 4618,
+        "questions": 44726,
+        "yes": 42913,
+        "no": 1102,
+        "uncertain": 711,
+        "supported_cap": 9.29255088783023,
+        "risk": 0.02463891248937978,
+        "uncertain_rate": 0.01589679381120601,
+        "supported_cap_std": 0.040242598958010765,
+        "risk_std": 0.0008224501947530278
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 22153,
+          "no": 560,
+          "uncertain": 459
+        },
+        "camera": {
+          "yes": 2795,
+          "no": 146,
+          "uncertain": 7
+        },
+        "count": {
+          "yes": 1623,
+          "no": 125,
+          "uncertain": 14
+        },
+        "lighting": {
+          "yes": 1199,
+          "no": 19,
+          "uncertain": 3
+        },
+        "object": {
+          "yes": 10476,
+          "no": 206,
+          "uncertain": 218
+        },
+        "relation": {
+          "yes": 4248,
+          "no": 101,
+          "uncertain": 16
+        },
+        "style": {
+          "yes": 5028,
+          "no": 95,
+          "uncertain": 21
+        },
+        "text_rendering": {
+          "yes": 1262,
+          "no": 76,
+          "uncertain": 3
+        }
+      }
+    },
+    {
+      "slice": "DataComp-control",
+      "judge": "Qwen3.5-397B-A17B-FP8",
+      "surface": "Naive (greedy)",
+      "all_types": {
+        "responses": 4607,
+        "questions": 50353,
+        "yes": 48517,
+        "no": 1075,
+        "uncertain": 761,
+        "supported_cap": 10.531148252658998,
+        "risk": 0.02134927412467976,
+        "uncertain_rate": 0.015113300101284928,
+        "supported_cap_std": 0.04493974657572588,
+        "risk_std": 0.0008065743651895723
+      },
+      "excluding_count_relation": {
+        "responses": 4607,
+        "questions": 44105,
+        "yes": 42489,
+        "no": 896,
+        "uncertain": 720,
+        "supported_cap": 9.222704579986976,
+        "risk": 0.02031515701167668,
+        "uncertain_rate": 0.016324679741525905,
+        "supported_cap_std": 0.041191179856375756,
+        "risk_std": 0.0008382648598825089
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 21446,
+          "no": 422,
+          "uncertain": 480
+        },
+        "camera": {
+          "yes": 2803,
+          "no": 156,
+          "uncertain": 1
+        },
+        "count": {
+          "yes": 1602,
+          "no": 98,
+          "uncertain": 9
+        },
+        "lighting": {
+          "yes": 1206,
+          "no": 20,
+          "uncertain": 2
+        },
+        "object": {
+          "yes": 10676,
+          "no": 190,
+          "uncertain": 212
+        },
+        "relation": {
+          "yes": 4426,
+          "no": 81,
+          "uncertain": 32
+        },
+        "style": {
+          "yes": 5143,
+          "no": 54,
+          "uncertain": 20
+        },
+        "text_rendering": {
+          "yes": 1215,
+          "no": 54,
+          "uncertain": 5
+        }
+      }
+    },
+    {
+      "slice": "DataComp-control",
+      "judge": "Gemma-4-31B-IT",
+      "surface": "Ours",
+      "all_types": {
+        "responses": 4688,
+        "questions": 68473,
+        "yes": 61288,
+        "no": 5446,
+        "uncertain": 1739,
+        "supported_cap": 13.073378839590443,
+        "risk": 0.07953499919676368,
+        "uncertain_rate": 0.025396871759671695,
+        "supported_cap_std": 0.053640920474269896,
+        "risk_std": 0.001441206336224648
+      },
+      "excluding_count_relation": {
+        "responses": 4688,
+        "questions": 55126,
+        "yes": 49654,
+        "no": 3859,
+        "uncertain": 1613,
+        "supported_cap": 10.591723549488055,
+        "risk": 0.07000326524688895,
+        "uncertain_rate": 0.02926024017704894,
+        "supported_cap_std": 0.04630105638785049,
+        "risk_std": 0.0014468701361671612
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 27371,
+          "no": 2327,
+          "uncertain": 1241
+        },
+        "camera": {
+          "yes": 1163,
+          "no": 76,
+          "uncertain": 3
+        },
+        "count": {
+          "yes": 1941,
+          "no": 474,
+          "uncertain": 34
+        },
+        "lighting": {
+          "yes": 1560,
+          "no": 101,
+          "uncertain": 32
+        },
+        "object": {
+          "yes": 16823,
+          "no": 1015,
+          "uncertain": 307
+        },
+        "relation": {
+          "yes": 9693,
+          "no": 1113,
+          "uncertain": 92
+        },
+        "style": {
+          "yes": 1043,
+          "no": 34,
+          "uncertain": 12
+        },
+        "text_rendering": {
+          "yes": 1694,
+          "no": 306,
+          "uncertain": 18
+        }
+      }
+    },
+    {
+      "slice": "DataComp-control",
+      "judge": "Gemma-4-31B-IT",
+      "surface": "Naive",
+      "all_types": {
+        "responses": 4618,
+        "questions": 50853,
+        "yes": 46513,
+        "no": 2914,
+        "uncertain": 1426,
+        "supported_cap": 10.072109138155046,
+        "risk": 0.05730242070281006,
+        "uncertain_rate": 0.02804161013116237,
+        "supported_cap_std": 0.04204993428148939,
+        "risk_std": 0.0012407247634291859
+      },
+      "excluding_count_relation": {
+        "responses": 4618,
+        "questions": 44726,
+        "yes": 41057,
+        "no": 2302,
+        "uncertain": 1367,
+        "supported_cap": 8.890645300996102,
+        "risk": 0.05146894423825068,
+        "uncertain_rate": 0.030563877833922105,
+        "supported_cap_std": 0.039184652560941696,
+        "risk_std": 0.0012130966199650596
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 21001,
+          "no": 1249,
+          "uncertain": 922
+        },
+        "camera": {
+          "yes": 2680,
+          "no": 263,
+          "uncertain": 5
+        },
+        "count": {
+          "yes": 1458,
+          "no": 279,
+          "uncertain": 25
+        },
+        "lighting": {
+          "yes": 1180,
+          "no": 35,
+          "uncertain": 6
+        },
+        "object": {
+          "yes": 10109,
+          "no": 434,
+          "uncertain": 357
+        },
+        "relation": {
+          "yes": 3998,
+          "no": 333,
+          "uncertain": 34
+        },
+        "style": {
+          "yes": 4931,
+          "no": 141,
+          "uncertain": 72
+        },
+        "text_rendering": {
+          "yes": 1156,
+          "no": 180,
+          "uncertain": 5
+        }
+      }
+    },
+    {
+      "slice": "DataComp-control",
+      "judge": "Gemma-4-31B-IT",
+      "surface": "Naive (greedy)",
+      "all_types": {
+        "responses": 4607,
+        "questions": 50353,
+        "yes": 46586,
+        "no": 2460,
+        "uncertain": 1307,
+        "supported_cap": 10.112003472975907,
+        "risk": 0.04885508311322066,
+        "uncertain_rate": 0.025956745377633903,
+        "supported_cap_std": 0.04298240868480956,
+        "risk_std": 0.0011442785371386795
+      },
+      "excluding_count_relation": {
+        "responses": 4607,
+        "questions": 44105,
+        "yes": 40929,
+        "no": 1934,
+        "uncertain": 1242,
+        "supported_cap": 8.884089429129585,
+        "risk": 0.04384990363904319,
+        "uncertain_rate": 0.028160072554132186,
+        "supported_cap_std": 0.038963367544049964,
+        "risk_std": 0.0011285964618770582
+      },
+      "by_type": {
+        "attribute": {
+          "yes": 20457,
+          "no": 1045,
+          "uncertain": 846
+        },
+        "camera": {
+          "yes": 2707,
+          "no": 251,
+          "uncertain": 2
+        },
+        "count": {
+          "yes": 1454,
+          "no": 233,
+          "uncertain": 22
+        },
+        "lighting": {
+          "yes": 1197,
+          "no": 29,
+          "uncertain": 2
+        },
+        "object": {
+          "yes": 10386,
+          "no": 369,
+          "uncertain": 323
+        },
+        "relation": {
+          "yes": 4203,
+          "no": 293,
+          "uncertain": 43
+        },
+        "style": {
+          "yes": 5045,
+          "no": 108,
+          "uncertain": 64
+        },
+        "text_rendering": {
+          "yes": 1137,
+          "no": 132,
+          "uncertain": 5
         }
       }
     }
