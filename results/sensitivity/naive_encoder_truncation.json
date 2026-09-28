@@ -1,0 +1,80 @@
+{
+  "naive_qwen35_cc12m_greedy": {
+    "records": 4494,
+    "mean_lex": 324.62839341344016,
+    "mean_words": 322.57076101468624,
+    "lex_overflow_gt_248": 0.8914107699154428,
+    "encoders": {
+      "clip77": {
+        "model_id": "openai/clip-vit-large-patch14",
+        "max_len": 77,
+        "mean_tokens": 419.3700489541611,
+        "truncated_rate_gt_limit": 0.9995549621717846
+      },
+      "longclip248": {
+        "model_id": "zer0int/LongCLIP-GmP-ViT-L-14",
+        "max_len": 248,
+        "mean_tokens": 419.3700489541611,
+        "truncated_rate_gt_limit": 0.9853137516688919
+      },
+      "siglip2_64": {
+        "model_id": "google/siglip2-so400m-patch14-384",
+        "max_len": 64,
+        "mean_tokens": 407.11637739207833,
+        "truncated_rate_gt_limit": 0.9997774810858923
+      }
+    }
+  },
+  "naive_qwen35_sampled_cc12m": {
+    "records": 4494,
+    "mean_lex": 328.0478415665332,
+    "mean_words": 325.62260792167336,
+    "lex_overflow_gt_248": 0.9098798397863819,
+    "encoders": {
+      "clip77": {
+        "model_id": "openai/clip-vit-large-patch14",
+        "max_len": 77,
+        "mean_tokens": 424.5353805073431,
+        "truncated_rate_gt_limit": 1.0
+      },
+      "longclip248": {
+        "model_id": "zer0int/LongCLIP-GmP-ViT-L-14",
+        "max_len": 248,
+        "mean_tokens": 424.5353805073431,
+        "truncated_rate_gt_limit": 0.9924343569203382
+      },
+      "siglip2_64": {
+        "model_id": "google/siglip2-so400m-patch14-384",
+        "max_len": 64,
+        "mean_tokens": 411.45327102803736,
+        "truncated_rate_gt_limit": 1.0
+      }
+    }
+  },
+  "naive_qwen35_sampled_datacomp": {
+    "records": 4775,
+    "mean_lex": 303.72649214659685,
+    "mean_words": 301.933612565445,
+    "lex_overflow_gt_248": 0.7997905759162304,
+    "encoders": {
+      "clip77": {
+        "model_id": "openai/clip-vit-large-patch14",
+        "max_len": 77,
+        "mean_tokens": 405.06303664921467,
+        "truncated_rate_gt_limit": 1.0
+      },
+      "longclip248": {
+        "model_id": "zer0int/LongCLIP-GmP-ViT-L-14",
+        "max_len": 248,
+        "mean_tokens": 405.06303664921467,
+        "truncated_rate_gt_limit": 0.9683769633507854
+      },
+      "siglip2_64": {
+        "model_id": "google/siglip2-so400m-patch14-384",
+        "max_len": 64,
+        "mean_tokens": 392.47623036649213,
+        "truncated_rate_gt_limit": 1.0
+      }
+    }
+  }
+}

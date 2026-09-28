@@ -1,0 +1,486 @@
+{
+  "latest_by_request": true,
+  "responses": 4423,
+  "ok": 4423,
+  "bad": 0,
+  "surfaces": {
+    "naive_qwen35_cc12m": {
+      "responses": 4423,
+      "ok": 4423,
+      "questions": 51365,
+      "yes": 49079,
+      "uncertain": 1171,
+      "no": 1115,
+      "yes_rate": 0.955494986858756,
+      "no_rate": 0.02170738829942568,
+      "uncertain_rate": 0.02279762484181836,
+      "support_rate": 0.955494986858756,
+      "risk_rate": 0.02170738829942568,
+      "uncertainty_rate": 0.02279762484181836
+    }
+  },
+  "categories": {
+    "object": {
+      "questions": 12554,
+      "yes": 11819,
+      "uncertain": 570,
+      "no": 165,
+      "yes_rate": 0.9414529233710371,
+      "no_rate": 0.01314322128405289,
+      "uncertain_rate": 0.04540385534490999,
+      "support_rate": 0.9414529233710371,
+      "risk_rate": 0.01314322128405289,
+      "uncertainty_rate": 0.04540385534490999
+    },
+    "style": {
+      "questions": 7186,
+      "yes": 7020,
+      "no": 95,
+      "uncertain": 71,
+      "yes_rate": 0.976899526857779,
+      "no_rate": 0.013220150292234901,
+      "uncertain_rate": 0.009880322849986084,
+      "support_rate": 0.976899526857779,
+      "risk_rate": 0.013220150292234901,
+      "uncertainty_rate": 0.009880322849986084
+    },
+    "lighting": {
+      "questions": 1970,
+      "yes": 1914,
+      "no": 45,
+      "uncertain": 11,
+      "yes_rate": 0.9715736040609138,
+      "no_rate": 0.02284263959390863,
+      "uncertain_rate": 0.005583756345177665,
+      "support_rate": 0.9715736040609138,
+      "risk_rate": 0.02284263959390863,
+      "uncertainty_rate": 0.005583756345177665
+    },
+    "relation": {
+      "questions": 5037,
+      "yes": 4870,
+      "no": 116,
+      "uncertain": 51,
+      "yes_rate": 0.9668453444510622,
+      "no_rate": 0.02302958109986103,
+      "uncertain_rate": 0.01012507444907683,
+      "support_rate": 0.9668453444510622,
+      "risk_rate": 0.02302958109986103,
+      "uncertainty_rate": 0.01012507444907683
+    },
+    "camera": {
+      "questions": 2545,
+      "yes": 2411,
+      "no": 133,
+      "uncertain": 1,
+      "yes_rate": 0.9473477406679764,
+      "no_rate": 0.05225933202357564,
+      "uncertain_rate": 0.0003929273084479371,
+      "support_rate": 0.9473477406679764,
+      "risk_rate": 0.05225933202357564,
+      "uncertainty_rate": 0.0003929273084479371
+    },
+    "attribute": {
+      "questions": 20321,
+      "yes": 19464,
+      "uncertain": 439,
+      "no": 418,
+      "yes_rate": 0.9578268785984941,
+      "no_rate": 0.020569853845775306,
+      "uncertain_rate": 0.021603267555730526,
+      "support_rate": 0.9578268785984941,
+      "risk_rate": 0.020569853845775306,
+      "uncertainty_rate": 0.021603267555730526
+    },
+    "count": {
+      "questions": 1343,
+      "yes": 1219,
+      "no": 103,
+      "uncertain": 21,
+      "yes_rate": 0.9076693968726731,
+      "no_rate": 0.0766939687267312,
+      "uncertain_rate": 0.01563663440059568,
+      "support_rate": 0.9076693968726731,
+      "risk_rate": 0.0766939687267312,
+      "uncertainty_rate": 0.01563663440059568
+    },
+    "text_rendering": {
+      "questions": 409,
+      "yes": 362,
+      "uncertain": 7,
+      "no": 40,
+      "yes_rate": 0.8850855745721271,
+      "no_rate": 0.097799511002445,
+      "uncertain_rate": 0.017114914425427872,
+      "support_rate": 0.8850855745721271,
+      "risk_rate": 0.097799511002445,
+      "uncertainty_rate": 0.017114914425427872
+    }
+  },
+  "examples": {
+    "uncertain": [
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:331",
+        "category": "object",
+        "question": "Is the visual claim 'person on the left: Bill Murray as Dr. Peter Venkman' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": "While the person on the left resembles Bill Murray and has a 'VENKMAN' patch, identity cannot be confirmed visually without external knowledge."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:2971",
+        "category": "attribute",
+        "question": "Is the visual claim 'power armor: reminiscent of Warhammer 40,000 Space Marines' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": "While the armor style shares visual similarities with Space Marines (bulky plates, gothic details), specific identification requires external knowledge not verf"
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:2971",
+        "category": "attribute",
+        "question": "Is the visual claim 'power armor: Ultramarines Chapter' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": "The armor is primarily blue with gold trim, which are colors associated with the Ultramarines, but there are no visible chapter symbols or text to confirm this."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:1801",
+        "category": "object",
+        "question": "Is the visual claim 'scene: actress Ariel Winter' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": "While the image shows a person who appears to be an actress at an awards event, her specific identity cannot be confirmed from the visual information alone."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:936",
+        "category": "attribute",
+        "question": "Is the visual claim 'frame: brushed steel or aluminum material' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": "While the frame is metallic and has a non-reflective, matte finish consistent with brushed steel or aluminum, the exact material cannot be definitively"
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:2513",
+        "category": "text_rendering",
+        "question": "Is the rendered text claim 'stylized A symbol' visibly supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": "While there is a logo on the handle, the resolution is insufficient to definitively identify it as a 'stylized A symbol'."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:2882",
+        "category": "object",
+        "question": "Is the visual claim 'rotunda: rotunda' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": "While the space is large and open, the specific architectural term 'rotunda' (typically circular) cannot be confirmed from the visible rectangular layout."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:3140",
+        "category": "object",
+        "question": "Is the visual claim 'scene: actor Alden Ehrenreich' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": "While the person resembles the actor, visual identification of specific individuals without external knowledge is not possible based solely on the image pixels."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:3510",
+        "category": "object",
+        "question": "Is the visual claim 'Babar Azam: Pakistani cricketer Babar Azam' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": "While the player wears a Pakistan cricket jersey, facial features alone cannot definitively confirm identity as Babar Azam without external knowledge."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:3510",
+        "category": "attribute",
+        "question": "Is the visual claim 'scene: limited-overs match' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.6,
+        "evidence": "The green jersey with sponsor logos suggests limited-overs format, but no scoreboard, overs count, or match context is visible to confirm."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:3510",
+        "category": "attribute",
+        "question": "Is the visual claim 'green cricket jersey: Pakistan team colors' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": "Green jersey with star emblem matches Pakistan\u2019s known colors, but without explicit text or flag, it cannot be confirmed solely from image."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:938",
+        "category": "attribute",
+        "question": "Is the visual claim 'man: tall' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": "While the man appears to have a long torso and legs, there is no reference object or person in the frame to definitively judge his height as 'tall'."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:938",
+        "category": "attribute",
+        "question": "Is the visual claim 'man: bright eyes' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.6,
+        "evidence": "While the eyes are visible and reflect light, the resolution and distance make it difficult to definitively characterize them as 'bright' beyond normal catch-ls"
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:4362",
+        "category": "object",
+        "question": "Is the visual claim 'painting: grand art gallery' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": "While the painting is grand, the visible portion of the gallery is limited to one wall, making it difficult to characterize the entire space as 'grand'."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:4362",
+        "category": "attribute",
+        "question": "Is the visual claim 'art gallery: opulent' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": "The ornate frame is opulent, but the gallery space itself has plain walls and simple flooring, making the overall opulence of the gallery ambiguous."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:1078",
+        "category": "attribute",
+        "question": "Is the visual claim 'street: cobblestone-paved' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": "The street surface is mostly covered by cars and shadows. The visible parts of the road appear to be asphalt, not cobblestone. The sidewalk might be paved, but"
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:1323",
+        "category": "object",
+        "question": "Is the visual claim 'scene: Dr. Samuel D. Gross' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": "The image shows a central older man with white hair leading a surgery, but no visible text or identifier confirms his name as 'Dr. Samuel D. Gross'."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:2521",
+        "category": "count",
+        "question": "Is the visual claim 'station clock: four faces' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": "Only two faces are visible in the image; the other two are occluded."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:2521",
+        "category": "count",
+        "question": "Is the visual claim 'clock: four circular clock faces' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": "While the structure implies four faces, only two are visible in this specific view."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:402",
+        "category": "object",
+        "question": "Is the visual claim 'toy set: Meccano' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": "The toy set consists of perforated metal strips and gears, characteristic of construction sets like Meccano, but no brand name is visible to confirm it."
+      }
+    ],
+    "no": [
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:695",
+        "category": "count",
+        "question": "Is the visual claim 'young children: 15-20' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": "Counting the visible children, there are approximately 12-14, which is below the 15-20 range."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:4021",
+        "category": "count",
+        "question": "Is the visual claim 'slices: six generous triangular slices' supported by the image?",
+        "answer": "no",
+        "confidence": 0.95,
+        "evidence": "There are four distinct slices visible in the image, not six."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:4021",
+        "category": "count",
+        "question": "Is the visual claim 'slices: two slices' supported by the image?",
+        "answer": "no",
+        "confidence": 0.95,
+        "evidence": "There are four slices visible in total, not two."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:4021",
+        "category": "relation",
+        "question": "Is the visual claim 'slices: two slices positioned at top' supported by the image?",
+        "answer": "no",
+        "confidence": 0.95,
+        "evidence": "Only one slice is positioned at the top left; the other top portion is part of the larger main body on the right."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:936",
+        "category": "relation",
+        "question": "Is the visual claim 'chandelier: suspended from ceiling by central black cord' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": "The chandelier is suspended by multiple thin, silver-colored chains or cables, not a single central black cord."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:936",
+        "category": "object",
+        "question": "Is the visual claim 'cord: central black cord' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": "There is no central black cord visible. The suspension system consists of numerous metallic chains."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:3510",
+        "category": "style",
+        "question": "Is the visual claim 'scene: dynamic mid-action photograph' supported by the image?",
+        "answer": "no",
+        "confidence": 0.9,
+        "evidence": "The player is standing still with arms raised in a celebratory pose, not captured in dynamic mid-action like batting or bowling."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:3510",
+        "category": "attribute",
+        "question": "Is the visual claim 'Babar Azam: mouth slightly open' supported by the image?",
+        "answer": "no",
+        "confidence": 0.85,
+        "evidence": "Mouth is closed; lips are pressed together, not slightly open."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:4362",
+        "category": "object",
+        "question": "Is the visual claim 'scene: modern art gallery' supported by the image?",
+        "answer": "no",
+        "confidence": 0.9,
+        "evidence": "The main artwork is a large, classical-style painting in an ornate frame, which is not characteristic of modern art."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:1705",
+        "category": "count",
+        "question": "Is the visual claim 'oar: two oars' supported by the image?",
+        "answer": "no",
+        "confidence": 0.95,
+        "evidence": "Only one oar is clearly visible resting inside the boat. There is no visual evidence of a second oar."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:394",
+        "category": "attribute",
+        "question": "Is the visual claim 'claws: visible claws' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": "The jaguar's claws are retracted and not visibly extended or distinct against the fur."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:4187",
+        "category": "style",
+        "question": "Is the visual claim 'photograph: sepia-toned' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": "The image is grayscale, not sepia-toned."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:4187",
+        "category": "attribute",
+        "question": "Is the visual claim 'man on the left: thinning hair' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": "The man on the left has full, thick hair; no visible thinning is apparent."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:4461",
+        "category": "count",
+        "question": "Is the visual claim 'workers: three' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": "There are at least four visible figures on the slope, not three."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:278",
+        "category": "attribute",
+        "question": "Is the visual claim 'blooms: dark' supported by the image?",
+        "answer": "no",
+        "confidence": 0.9,
+        "evidence": "The blooms are predominantly bright and vibrant (orange, yellow, pink, purple), not dark."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:3591",
+        "category": "count",
+        "question": "Is the visual claim 'weathered wooden boats: two' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": "There are far more than two weathered wooden boats visible; at least a dozen can be counted along the waterway."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:1354",
+        "category": "object",
+        "question": "Is the visual claim 'scene: urban park' supported by the image?",
+        "answer": "no",
+        "confidence": 0.8,
+        "evidence": "The scene is an urban street with buildings and trees, not a park."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:4137",
+        "category": "object",
+        "question": "Is the visual claim 'walls: smooth gray plaster walls' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": "The walls are not smooth gray plaster; the main visible wall is white brick, and the wall behind the bar appears to be a textured gray material, not smooth"
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:3917",
+        "category": "relation",
+        "question": "Is the visual claim 'woman: gazing directly at viewer' supported by the image?",
+        "answer": "no",
+        "confidence": 0.9,
+        "evidence": "The woman is looking over her shoulder, not directly at the viewer."
+      },
+      {
+        "surface": "naive_qwen35_cc12m",
+        "caption_id": "naive_qwen35_cc12m:3917",
+        "category": "relation",
+        "question": "Is the visual claim 'hair: hair cascading down' supported by the image?",
+        "answer": "no",
+        "confidence": 0.9,
+        "evidence": "Her hair is styled in an updo and does not cascade down her back."
+      }
+    ]
+  }
+}

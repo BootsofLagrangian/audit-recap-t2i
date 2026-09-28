@@ -1,0 +1,486 @@
+{
+  "latest_by_request": true,
+  "responses": 4618,
+  "ok": 4618,
+  "bad": 0,
+  "surfaces": {
+    "naive_qwen35_sampled_datacomp": {
+      "responses": 4618,
+      "ok": 4618,
+      "questions": 50853,
+      "yes": 46513,
+      "uncertain": 1426,
+      "no": 2914,
+      "yes_rate": 0.9146559691660275,
+      "no_rate": 0.05730242070281006,
+      "uncertain_rate": 0.02804161013116237,
+      "support_rate": 0.9146559691660275,
+      "risk_rate": 0.05730242070281006,
+      "uncertainty_rate": 0.02804161013116237
+    }
+  },
+  "categories": {
+    "style": {
+      "questions": 5144,
+      "yes": 4931,
+      "uncertain": 72,
+      "no": 141,
+      "yes_rate": 0.958592534992224,
+      "no_rate": 0.027410575427682736,
+      "uncertain_rate": 0.013996889580093312,
+      "support_rate": 0.958592534992224,
+      "risk_rate": 0.027410575427682736,
+      "uncertainty_rate": 0.013996889580093312
+    },
+    "text_rendering": {
+      "questions": 1341,
+      "yes": 1156,
+      "no": 180,
+      "uncertain": 5,
+      "yes_rate": 0.8620432513049963,
+      "no_rate": 0.1342281879194631,
+      "uncertain_rate": 0.0037285607755406414,
+      "support_rate": 0.8620432513049963,
+      "risk_rate": 0.1342281879194631,
+      "uncertainty_rate": 0.0037285607755406414
+    },
+    "attribute": {
+      "questions": 23172,
+      "yes": 21001,
+      "no": 1249,
+      "uncertain": 922,
+      "yes_rate": 0.9063093388572415,
+      "no_rate": 0.053901260141550146,
+      "uncertain_rate": 0.039789401001208355,
+      "support_rate": 0.9063093388572415,
+      "risk_rate": 0.053901260141550146,
+      "uncertainty_rate": 0.039789401001208355
+    },
+    "object": {
+      "questions": 10900,
+      "yes": 10109,
+      "uncertain": 357,
+      "no": 434,
+      "yes_rate": 0.9274311926605504,
+      "no_rate": 0.03981651376146789,
+      "uncertain_rate": 0.03275229357798165,
+      "support_rate": 0.9274311926605504,
+      "risk_rate": 0.03981651376146789,
+      "uncertainty_rate": 0.03275229357798165
+    },
+    "relation": {
+      "questions": 4365,
+      "yes": 3998,
+      "no": 333,
+      "uncertain": 34,
+      "yes_rate": 0.915922107674685,
+      "no_rate": 0.07628865979381444,
+      "uncertain_rate": 0.007789232531500573,
+      "support_rate": 0.915922107674685,
+      "risk_rate": 0.07628865979381444,
+      "uncertainty_rate": 0.007789232531500573
+    },
+    "camera": {
+      "questions": 2948,
+      "yes": 2680,
+      "uncertain": 5,
+      "no": 263,
+      "yes_rate": 0.9090909090909091,
+      "no_rate": 0.08921302578018996,
+      "uncertain_rate": 0.0016960651289009499,
+      "support_rate": 0.9090909090909091,
+      "risk_rate": 0.08921302578018996,
+      "uncertainty_rate": 0.0016960651289009499
+    },
+    "count": {
+      "questions": 1762,
+      "yes": 1458,
+      "no": 279,
+      "uncertain": 25,
+      "yes_rate": 0.8274687854710556,
+      "no_rate": 0.1583427922814983,
+      "uncertain_rate": 0.014188422247446084,
+      "support_rate": 0.8274687854710556,
+      "risk_rate": 0.1583427922814983,
+      "uncertainty_rate": 0.014188422247446084
+    },
+    "lighting": {
+      "questions": 1221,
+      "yes": 1180,
+      "no": 35,
+      "uncertain": 6,
+      "yes_rate": 0.9664209664209664,
+      "no_rate": 0.028665028665028666,
+      "uncertain_rate": 0.004914004914004914,
+      "support_rate": 0.9664209664209664,
+      "risk_rate": 0.028665028665028666,
+      "uncertainty_rate": 0.004914004914004914
+    }
+  },
+  "examples": {
+    "uncertain": [
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:155437",
+        "category": "style",
+        "question": "Is the visual claim 'print: high-resolution reproduction' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:192084",
+        "category": "object",
+        "question": "Is the visual claim 'coastline: rugged Pacific coastline' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.8,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:141570",
+        "category": "object",
+        "question": "Is the visual claim 'scene: captured Chinese soldiers' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.8,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:44656",
+        "category": "attribute",
+        "question": "Is the visual claim 'card: glossy finish' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:9623",
+        "category": "camera",
+        "question": "Is the visual claim 'scene: view from southern bank looking northwest' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:95648",
+        "category": "attribute",
+        "question": "Is the visual claim 'fritter or patty: hearty' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:161506",
+        "category": "object",
+        "question": "Is the visual claim 'man on left: George H.W. Bush' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:92753",
+        "category": "attribute",
+        "question": "Is the visual claim 'filament spool: large' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:132564",
+        "category": "attribute",
+        "question": "Is the visual claim 'fedora: pinched crown' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:133082",
+        "category": "attribute",
+        "question": "Is the visual claim 'hooves: splayed hooves' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:141458",
+        "category": "object",
+        "question": "Is the visual claim 'stools: Chinese wooden stools' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:88288",
+        "category": "object",
+        "question": "Is the visual claim 'scene: Sony MDR-EX750AP in-ear headphones' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.8,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:75283",
+        "category": "attribute",
+        "question": "Is the visual claim 'hat: cotton canvas or twill fabric' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:91419",
+        "category": "object",
+        "question": "Is the visual claim 'industrial machine: wood chipper or shredder' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:80672",
+        "category": "attribute",
+        "question": "Is the visual claim 'chassis: matte-finished steel or aluminum' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:110157",
+        "category": "attribute",
+        "question": "Is the visual claim 'headlight unit: right-hand' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:110157",
+        "category": "attribute",
+        "question": "Is the visual claim 'headlight unit: passenger side' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:13258",
+        "category": "attribute",
+        "question": "Is the visual claim 'silicone hoses: smooth-bore' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:13258",
+        "category": "attribute",
+        "question": "Is the visual claim 'silicone hoses: medium-length' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:94312",
+        "category": "attribute",
+        "question": "Is the visual claim 'material: lightweight breathable material' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": null
+      }
+    ],
+    "no": [
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:173266",
+        "category": "attribute",
+        "question": "Is the visual claim 'Invest In Your Future: smaller italicized sans-serif font' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:154060",
+        "category": "attribute",
+        "question": "Is the visual claim 'background: plain white background' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:154181",
+        "category": "style",
+        "question": "Is the visual claim 'scene: solid black background' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:41107",
+        "category": "text_rendering",
+        "question": "Is the rendered text claim 'Holmead Returns: An International Exhibit of Oil Paintings by Clifford Holmead (' visibly supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:75328",
+        "category": "attribute",
+        "question": "Is the visual claim 'floral-patterned wedge sandal: dark surface' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:44656",
+        "category": "attribute",
+        "question": "Is the visual claim 'background: plain white background' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:45075",
+        "category": "object",
+        "question": "Is the visual claim 'image: four distinct sections' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:45075",
+        "category": "object",
+        "question": "Is the visual claim 'image: two photographs at the top' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:45075",
+        "category": "object",
+        "question": "Is the visual claim 'image: two photographs at the bottom' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:45075",
+        "category": "object",
+        "question": "Is the visual claim 'middle sections: one photo in the middle' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:45075",
+        "category": "attribute",
+        "question": "Is the visual claim 'image: orange-and-black color scheme' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:127605",
+        "category": "relation",
+        "question": "Is the visual claim 'rectangle: rectangle in top-left corner of document body' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:91947",
+        "category": "attribute",
+        "question": "Is the visual claim 'text: small gray text' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:9623",
+        "category": "text_rendering",
+        "question": "Is the rendered text claim 'The Most Uncommon Prospect of London Bridge South West April 12th 1755' visibly supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:218987",
+        "category": "text_rendering",
+        "question": "Is the rendered text claim 'Marrana Public School' visibly supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:148853",
+        "category": "attribute",
+        "question": "Is the visual claim 'cartridge: oriented diagonally from the upper left to the lower right' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:100665",
+        "category": "attribute",
+        "question": "Is the visual claim 'central playing area: stripped down to concrete subfloor' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:96698",
+        "category": "attribute",
+        "question": "Is the visual claim 'webpage section: light blue tones' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:6681",
+        "category": "attribute",
+        "question": "Is the visual claim 'headlight lens: rectangular' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_datacomp",
+        "caption_id": "naive_qwen35_sampled_datacomp:78009",
+        "category": "attribute",
+        "question": "Is the visual claim 'top surface: rectangular' supported by the image?",
+        "answer": "no",
+        "confidence": 0.9,
+        "evidence": null
+      }
+    ]
+  }
+}

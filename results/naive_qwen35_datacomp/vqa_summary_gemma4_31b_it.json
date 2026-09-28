@@ -1,0 +1,486 @@
+{
+  "latest_by_request": true,
+  "responses": 4607,
+  "ok": 4607,
+  "bad": 0,
+  "surfaces": {
+    "naive_qwen35_datacomp": {
+      "responses": 4607,
+      "ok": 4607,
+      "questions": 50353,
+      "yes": 46586,
+      "no": 2460,
+      "uncertain": 1307,
+      "yes_rate": 0.9251881715091455,
+      "no_rate": 0.04885508311322066,
+      "uncertain_rate": 0.025956745377633903,
+      "support_rate": 0.9251881715091455,
+      "risk_rate": 0.04885508311322066,
+      "uncertainty_rate": 0.025956745377633903
+    }
+  },
+  "categories": {
+    "style": {
+      "questions": 5217,
+      "yes": 5045,
+      "no": 108,
+      "uncertain": 64,
+      "yes_rate": 0.9670308606478819,
+      "no_rate": 0.020701552616446232,
+      "uncertain_rate": 0.012267586735671842,
+      "support_rate": 0.9670308606478819,
+      "risk_rate": 0.020701552616446232,
+      "uncertainty_rate": 0.012267586735671842
+    },
+    "attribute": {
+      "questions": 22348,
+      "yes": 20457,
+      "no": 1045,
+      "uncertain": 846,
+      "yes_rate": 0.9153839269733309,
+      "no_rate": 0.04676033649543583,
+      "uncertain_rate": 0.03785573653123322,
+      "support_rate": 0.9153839269733309,
+      "risk_rate": 0.04676033649543583,
+      "uncertainty_rate": 0.03785573653123322
+    },
+    "text_rendering": {
+      "questions": 1274,
+      "yes": 1137,
+      "no": 132,
+      "uncertain": 5,
+      "yes_rate": 0.8924646781789639,
+      "no_rate": 0.10361067503924647,
+      "uncertain_rate": 0.003924646781789639,
+      "support_rate": 0.8924646781789639,
+      "risk_rate": 0.10361067503924647,
+      "uncertainty_rate": 0.003924646781789639
+    },
+    "count": {
+      "questions": 1709,
+      "yes": 1454,
+      "no": 233,
+      "uncertain": 22,
+      "yes_rate": 0.8507899356348742,
+      "no_rate": 0.136337039204213,
+      "uncertain_rate": 0.012873025160912814,
+      "support_rate": 0.8507899356348742,
+      "risk_rate": 0.136337039204213,
+      "uncertainty_rate": 0.012873025160912814
+    },
+    "relation": {
+      "questions": 4539,
+      "yes": 4203,
+      "no": 293,
+      "uncertain": 43,
+      "yes_rate": 0.9259748843357568,
+      "no_rate": 0.064551663361974,
+      "uncertain_rate": 0.009473452302269222,
+      "support_rate": 0.9259748843357568,
+      "risk_rate": 0.064551663361974,
+      "uncertainty_rate": 0.009473452302269222
+    },
+    "object": {
+      "questions": 11078,
+      "yes": 10386,
+      "uncertain": 323,
+      "no": 369,
+      "yes_rate": 0.9375338508756094,
+      "no_rate": 0.03330926159956671,
+      "uncertain_rate": 0.029156887524823975,
+      "support_rate": 0.9375338508756094,
+      "risk_rate": 0.03330926159956671,
+      "uncertainty_rate": 0.029156887524823975
+    },
+    "camera": {
+      "questions": 2960,
+      "yes": 2707,
+      "no": 251,
+      "uncertain": 2,
+      "yes_rate": 0.914527027027027,
+      "no_rate": 0.08479729729729729,
+      "uncertain_rate": 0.0006756756756756757,
+      "support_rate": 0.914527027027027,
+      "risk_rate": 0.08479729729729729,
+      "uncertainty_rate": 0.0006756756756756757
+    },
+    "lighting": {
+      "questions": 1228,
+      "yes": 1197,
+      "no": 29,
+      "uncertain": 2,
+      "yes_rate": 0.9747557003257329,
+      "no_rate": 0.023615635179153095,
+      "uncertain_rate": 0.0016286644951140066,
+      "support_rate": 0.9747557003257329,
+      "risk_rate": 0.023615635179153095,
+      "uncertainty_rate": 0.0016286644951140066
+    }
+  },
+  "examples": {
+    "no": [
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:39156",
+        "category": "attribute",
+        "question": "Is the visual claim 'background: solid muted light blue-gray background' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:11509",
+        "category": "attribute",
+        "question": "Is the visual claim 'title: large bold black sans-serif font' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:11509",
+        "category": "text_rendering",
+        "question": "Is the rendered text claim 'Location' visibly supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:154060",
+        "category": "count",
+        "question": "Is the visual claim 'circular saw blades: six circular saw blades' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:154060",
+        "category": "relation",
+        "question": "Is the visual claim 'circular saw blades: arranged in two rows of three' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:154060",
+        "category": "attribute",
+        "question": "Is the visual claim 'background: plain white background' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:113823",
+        "category": "attribute",
+        "question": "Is the visual claim 'background: clean white background' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:12146",
+        "category": "object",
+        "question": "Is the visual claim 'motorboat: classic wooden-hulled motorboat' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:9623",
+        "category": "text_rendering",
+        "question": "Is the rendered text claim 'The Malonchley Prospect of London Bridge South West April 12 1755' visibly supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:41107",
+        "category": "text_rendering",
+        "question": "Is the rendered text claim 'Holmead Returns: An International Exhibit of Oil Paintings by Clifford Holmead (' visibly supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:12829",
+        "category": "camera",
+        "question": "Is the visual claim 'scene: vertically oriented' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:181221",
+        "category": "attribute",
+        "question": "Is the visual claim 'first two letters: stylized E and L' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:59369",
+        "category": "relation",
+        "question": "Is the visual claim 'KINGS QUEST: KINGS QUEST at top right' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:56920",
+        "category": "relation",
+        "question": "Is the visual claim 'elderly man: elderly man in right-facing profile' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:84414",
+        "category": "attribute",
+        "question": "Is the visual claim 'shapes: outlined shapes' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:91947",
+        "category": "count",
+        "question": "Is the visual claim 'wellness or spiritual items: two items' supported by the image?",
+        "answer": "no",
+        "confidence": 0.9,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:1149",
+        "category": "count",
+        "question": "Is the visual claim 'adjustable pliers: four adjustable pliers' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:1149",
+        "category": "attribute",
+        "question": "Is the visual claim 'small slip-joint pliers: black metal jaws' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:71484",
+        "category": "style",
+        "question": "Is the visual claim 'photograph: black-and-white' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:114987",
+        "category": "object",
+        "question": "Is the visual claim 'scene: smartphone or mobile device' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      }
+    ],
+    "uncertain": [
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:140198",
+        "category": "object",
+        "question": "Is the visual claim 'monster: Nergigante' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:140198",
+        "category": "attribute",
+        "question": "Is the visual claim 'Nergigante: elder dragon' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:9623",
+        "category": "relation",
+        "question": "Is the visual claim 'London Bridge: London Bridge south of River Thames' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:1149",
+        "category": "object",
+        "question": "Is the visual claim 'pliers: small slip-joint pliers' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:1149",
+        "category": "attribute",
+        "question": "Is the visual claim 'jaws: serrated gripping surface' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:91419",
+        "category": "object",
+        "question": "Is the visual claim 'industrial paper shredder: industrial paper shredder' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.8,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:91419",
+        "category": "attribute",
+        "question": "Is the visual claim 'blades: hardened steel' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.9,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:36403",
+        "category": "attribute",
+        "question": "Is the visual claim 'heel: 3-4 inches height' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:31468",
+        "category": "attribute",
+        "question": "Is the visual claim 'palms: palms facing down' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:22102",
+        "category": "attribute",
+        "question": "Is the visual claim 'man: Afghan fighter or mujahideen' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.8,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:13023",
+        "category": "object",
+        "question": "Is the visual claim 'dog: young dog' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.8,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:108183",
+        "category": "attribute",
+        "question": "Is the visual claim 'skirt: high-waisted design' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:110587",
+        "category": "style",
+        "question": "Is the visual claim 'scene: urban Russian setting' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.8,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:172071",
+        "category": "attribute",
+        "question": "Is the visual claim 'text: compelling' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:129694",
+        "category": "object",
+        "question": "Is the visual claim 'Eurasian lynx: Eurasian lynx' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:73213",
+        "category": "attribute",
+        "question": "Is the visual claim 'man: expressive eyes' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:75328",
+        "category": "attribute",
+        "question": "Is the visual claim 'women's wedge shoe: stylish' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:6681",
+        "category": "object",
+        "question": "Is the visual claim 'side panel: chrome-plated side panel' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:6681",
+        "category": "attribute",
+        "question": "Is the visual claim 'side panel: long side panel' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_datacomp",
+        "caption_id": "naive_qwen35_datacomp:94721",
+        "category": "attribute",
+        "question": "Is the visual claim 'base: sturdy' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": null
+      }
+    ]
+  }
+}

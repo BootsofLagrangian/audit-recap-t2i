@@ -1,0 +1,486 @@
+{
+  "latest_by_request": true,
+  "responses": 4688,
+  "ok": 4688,
+  "bad": 0,
+  "surfaces": {
+    "ours_datacomp_forward": {
+      "responses": 4688,
+      "ok": 4688,
+      "questions": 68473,
+      "yes": 61288,
+      "no": 5446,
+      "uncertain": 1739,
+      "yes_rate": 0.8950681290435646,
+      "no_rate": 0.07953499919676368,
+      "uncertain_rate": 0.025396871759671695,
+      "support_rate": 0.8950681290435646,
+      "risk_rate": 0.07953499919676368,
+      "uncertainty_rate": 0.025396871759671695
+    }
+  },
+  "categories": {
+    "attribute": {
+      "questions": 30939,
+      "yes": 27371,
+      "no": 2327,
+      "uncertain": 1241,
+      "yes_rate": 0.8846762985228999,
+      "no_rate": 0.07521251494877015,
+      "uncertain_rate": 0.04011118652832994,
+      "support_rate": 0.8846762985228999,
+      "risk_rate": 0.07521251494877015,
+      "uncertainty_rate": 0.04011118652832994
+    },
+    "text_rendering": {
+      "questions": 2018,
+      "yes": 1694,
+      "no": 306,
+      "uncertain": 18,
+      "yes_rate": 0.8394449950445986,
+      "no_rate": 0.15163528245787908,
+      "uncertain_rate": 0.008919722497522299,
+      "support_rate": 0.8394449950445986,
+      "risk_rate": 0.15163528245787908,
+      "uncertainty_rate": 0.008919722497522299
+    },
+    "style": {
+      "questions": 1089,
+      "yes": 1043,
+      "uncertain": 12,
+      "no": 34,
+      "yes_rate": 0.9577594123048668,
+      "no_rate": 0.031221303948576674,
+      "uncertain_rate": 0.011019283746556474,
+      "support_rate": 0.9577594123048668,
+      "risk_rate": 0.031221303948576674,
+      "uncertainty_rate": 0.011019283746556474
+    },
+    "relation": {
+      "questions": 10898,
+      "yes": 9693,
+      "no": 1113,
+      "uncertain": 92,
+      "yes_rate": 0.8894292530739585,
+      "no_rate": 0.10212883097816113,
+      "uncertain_rate": 0.008441915947880345,
+      "support_rate": 0.8894292530739585,
+      "risk_rate": 0.10212883097816113,
+      "uncertainty_rate": 0.008441915947880345
+    },
+    "object": {
+      "questions": 18145,
+      "yes": 16823,
+      "no": 1015,
+      "uncertain": 307,
+      "yes_rate": 0.9271424634885643,
+      "no_rate": 0.05593827500688895,
+      "uncertain_rate": 0.016919261504546708,
+      "support_rate": 0.9271424634885643,
+      "risk_rate": 0.05593827500688895,
+      "uncertainty_rate": 0.016919261504546708
+    },
+    "lighting": {
+      "questions": 1693,
+      "yes": 1560,
+      "no": 101,
+      "uncertain": 32,
+      "yes_rate": 0.9214412285883048,
+      "no_rate": 0.0596574128765505,
+      "uncertain_rate": 0.018901358535144713,
+      "support_rate": 0.9214412285883048,
+      "risk_rate": 0.0596574128765505,
+      "uncertainty_rate": 0.018901358535144713
+    },
+    "camera": {
+      "questions": 1242,
+      "yes": 1163,
+      "no": 76,
+      "uncertain": 3,
+      "yes_rate": 0.9363929146537843,
+      "no_rate": 0.061191626409017714,
+      "uncertain_rate": 0.0024154589371980675,
+      "support_rate": 0.9363929146537843,
+      "risk_rate": 0.061191626409017714,
+      "uncertainty_rate": 0.0024154589371980675
+    },
+    "count": {
+      "questions": 2449,
+      "no": 474,
+      "yes": 1941,
+      "uncertain": 34,
+      "yes_rate": 0.7925683952633729,
+      "no_rate": 0.1935483870967742,
+      "uncertain_rate": 0.013883217639853002,
+      "support_rate": 0.7925683952633729,
+      "risk_rate": 0.1935483870967742,
+      "uncertainty_rate": 0.013883217639853002
+    }
+  },
+  "examples": {
+    "no": [
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:31156",
+        "category": "attribute",
+        "question": "Is the visual claim 'lettering: pink outlines and shadows' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:26951",
+        "category": "attribute",
+        "question": "Is the visual claim 'territory: tapering towards the southwest' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:26951",
+        "category": "attribute",
+        "question": "Is the visual claim 'territory: expanding near the northeast' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:49002",
+        "category": "relation",
+        "question": "Is the visual claim 'petals: petals folding tightly inward toward the center' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:84585",
+        "category": "attribute",
+        "question": "Is the visual claim 'pillow: not fully filled' supported by the image?",
+        "answer": "no",
+        "confidence": 0.8,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:95483",
+        "category": "object",
+        "question": "Is the visual claim 'receiver tube: vertical receiver tube' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:26256",
+        "category": "count",
+        "question": "Is the visual claim 'stages: eight distinct stages' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:59391",
+        "category": "attribute",
+        "question": "Is the visual claim 'hummus: visibly coarse texture' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:59182",
+        "category": "object",
+        "question": "Is the visual claim 'JBL Bluetooth speaker: JBL Bluetooth speaker' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:59182",
+        "category": "text_rendering",
+        "question": "Is the rendered text claim 'embossed JBL logo in brushed metallic lettering' visibly supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:88338",
+        "category": "object",
+        "question": "Is the visual claim 'outer border: thinner outer border' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:87940",
+        "category": "object",
+        "question": "Is the visual claim 'emblem: circular emblem' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:87940",
+        "category": "relation",
+        "question": "Is the visual claim 'circular emblem: circular emblem near top of tail fin' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:34714",
+        "category": "count",
+        "question": "Is the visual claim 'felt flowers: ten hand-rolled felt flowers' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:16335",
+        "category": "attribute",
+        "question": "Is the visual claim 'grout line: subtle crackle or crackled glass effect' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:28384",
+        "category": "text_rendering",
+        "question": "Is the rendered text claim 'She has power to love and the most wonderful of all is the greatest power' visibly supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:33055",
+        "category": "attribute",
+        "question": "Is the visual claim 'paper sheet: texture subtly visible' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:86262",
+        "category": "attribute",
+        "question": "Is the visual claim '500 g option: 500 g option highlighted in red' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:9623",
+        "category": "text_rendering",
+        "question": "Is the rendered text claim 'The Malborough Prospect of London Bridge South West April 12 1756' visibly supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:9623",
+        "category": "object",
+        "question": "Is the visual claim 'roadway: busy roadway' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      }
+    ],
+    "uncertain": [
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:49002",
+        "category": "attribute",
+        "question": "Is the visual claim 'petals: delicate velvety texture' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:108183",
+        "category": "attribute",
+        "question": "Is the visual claim 'material: lightweight matte synthetic blend material' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:4134",
+        "category": "attribute",
+        "question": "Is the visual claim 'pitcher on the left: transparent polypropylene plastic' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:20198",
+        "category": "object",
+        "question": "Is the visual claim 'street: narrow street' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.8,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:21999",
+        "category": "attribute",
+        "question": "Is the visual claim 'building: light-colored stone walls' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:21999",
+        "category": "attribute",
+        "question": "Is the visual claim 'building: flat roof' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:6628",
+        "category": "object",
+        "question": "Is the visual claim 'bed: twin-sized bed' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:6628",
+        "category": "attribute",
+        "question": "Is the visual claim 'bed base: visible seams' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.6,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:27053",
+        "category": "attribute",
+        "question": "Is the visual claim 'topping: dusted with granulated sugar and cinnamon' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:19237",
+        "category": "lighting",
+        "question": "Is the visual claim 'scene: soft even overhead lighting' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:84112",
+        "category": "attribute",
+        "question": "Is the visual claim 'garment: soft, stretchy fabric' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:80802",
+        "category": "attribute",
+        "question": "Is the visual claim 'windows: slightly tinted' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:43924",
+        "category": "attribute",
+        "question": "Is the visual claim 'door handles: chrome door handles' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.8,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:48976",
+        "category": "attribute",
+        "question": "Is the visual claim 'feathers: matte texture' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:48976",
+        "category": "attribute",
+        "question": "Is the visual claim 'feathers: subtly shimmering texture' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:87576",
+        "category": "attribute",
+        "question": "Is the visual claim 'water: flows gently' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:13471",
+        "category": "object",
+        "question": "Is the visual claim 'book: hardcover book' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.6,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:13471",
+        "category": "lighting",
+        "question": "Is the visual claim 'title text: subtle highlights' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:14886",
+        "category": "attribute",
+        "question": "Is the visual claim 'cup section: showing subtle imperfections on the metal surface' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": null
+      },
+      {
+        "surface": "ours_datacomp_forward",
+        "caption_id": "ours_datacomp_forward:87127",
+        "category": "attribute",
+        "question": "Is the visual claim 'mountain bluebird: alert expression' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.7,
+        "evidence": null
+      }
+    ]
+  }
+}

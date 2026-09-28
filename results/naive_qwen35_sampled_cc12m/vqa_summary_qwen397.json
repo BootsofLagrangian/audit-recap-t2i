@@ -1,0 +1,486 @@
+{
+  "latest_by_request": true,
+  "responses": 4397,
+  "ok": 4397,
+  "bad": 0,
+  "surfaces": {
+    "naive_qwen35_sampled_cc12m": {
+      "responses": 4397,
+      "ok": 4397,
+      "questions": 50450,
+      "yes": 48482,
+      "no": 1112,
+      "uncertain": 856,
+      "yes_rate": 0.9609910802775025,
+      "no_rate": 0.022041625371655105,
+      "uncertain_rate": 0.01696729435084242,
+      "support_rate": 0.9609910802775025,
+      "risk_rate": 0.022041625371655105,
+      "uncertainty_rate": 0.01696729435084242
+    }
+  },
+  "categories": {
+    "object": {
+      "questions": 12366,
+      "yes": 11721,
+      "no": 192,
+      "uncertain": 453,
+      "yes_rate": 0.9478408539543911,
+      "no_rate": 0.015526443474041727,
+      "uncertain_rate": 0.0366327025715672,
+      "support_rate": 0.9478408539543911,
+      "risk_rate": 0.015526443474041727,
+      "uncertainty_rate": 0.0366327025715672
+    },
+    "attribute": {
+      "questions": 20521,
+      "yes": 19840,
+      "uncertain": 292,
+      "no": 389,
+      "yes_rate": 0.9668144827250134,
+      "no_rate": 0.018956191218751525,
+      "uncertain_rate": 0.014229326056235076,
+      "support_rate": 0.9668144827250134,
+      "risk_rate": 0.018956191218751525,
+      "uncertainty_rate": 0.014229326056235076
+    },
+    "style": {
+      "questions": 6589,
+      "yes": 6451,
+      "uncertain": 38,
+      "no": 100,
+      "yes_rate": 0.9790560024282896,
+      "no_rate": 0.015176809834572773,
+      "uncertain_rate": 0.005767187737137654,
+      "support_rate": 0.9790560024282896,
+      "risk_rate": 0.015176809834572773,
+      "uncertainty_rate": 0.005767187737137654
+    },
+    "relation": {
+      "questions": 4777,
+      "yes": 4617,
+      "no": 112,
+      "uncertain": 48,
+      "yes_rate": 0.9665061754239063,
+      "no_rate": 0.02344567720326565,
+      "uncertain_rate": 0.010048147372828135,
+      "support_rate": 0.9665061754239063,
+      "risk_rate": 0.02344567720326565,
+      "uncertainty_rate": 0.010048147372828135
+    },
+    "camera": {
+      "questions": 2624,
+      "yes": 2493,
+      "no": 128,
+      "uncertain": 3,
+      "yes_rate": 0.9500762195121951,
+      "no_rate": 0.04878048780487805,
+      "uncertain_rate": 0.0011432926829268292,
+      "support_rate": 0.9500762195121951,
+      "risk_rate": 0.04878048780487805,
+      "uncertainty_rate": 0.0011432926829268292
+    },
+    "text_rendering": {
+      "questions": 322,
+      "no": 42,
+      "yes": 277,
+      "uncertain": 3,
+      "yes_rate": 0.860248447204969,
+      "no_rate": 0.13043478260869565,
+      "uncertain_rate": 0.009316770186335404,
+      "support_rate": 0.860248447204969,
+      "risk_rate": 0.13043478260869565,
+      "uncertainty_rate": 0.009316770186335404
+    },
+    "lighting": {
+      "questions": 1932,
+      "yes": 1891,
+      "no": 34,
+      "uncertain": 7,
+      "yes_rate": 0.9787784679089027,
+      "no_rate": 0.017598343685300208,
+      "uncertain_rate": 0.0036231884057971015,
+      "support_rate": 0.9787784679089027,
+      "risk_rate": 0.017598343685300208,
+      "uncertainty_rate": 0.0036231884057971015
+    },
+    "count": {
+      "questions": 1319,
+      "yes": 1192,
+      "no": 115,
+      "uncertain": 12,
+      "yes_rate": 0.9037149355572404,
+      "no_rate": 0.08718726307808947,
+      "uncertain_rate": 0.009097801364670205,
+      "support_rate": 0.9037149355572404,
+      "risk_rate": 0.08718726307808947,
+      "uncertainty_rate": 0.009097801364670205
+    }
+  },
+  "examples": {
+    "no": [
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:753",
+        "category": "text_rendering",
+        "question": "Is the rendered text claim 'Metal Gear Rising: Revengeance' visibly supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:753",
+        "category": "camera",
+        "question": "Is the visual claim 'scene: third-person perspective' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:877",
+        "category": "object",
+        "question": "Is the visual claim 'white baby doll crib: plush black-and-white cow toy' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:877",
+        "category": "relation",
+        "question": "Is the visual claim 'white baby doll crib: cow toy in crib' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:551",
+        "category": "camera",
+        "question": "Is the visual claim 'scene: low-angle perspective' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:580",
+        "category": "count",
+        "question": "Is the visual claim 'leather shoe: single' supported by the image?",
+        "answer": "no",
+        "confidence": 0.9,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:422",
+        "category": "attribute",
+        "question": "Is the visual claim 'guitar: flame maple top' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:821",
+        "category": "attribute",
+        "question": "Is the visual claim 'light source: blinding' supported by the image?",
+        "answer": "no",
+        "confidence": 0.85,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:935",
+        "category": "attribute",
+        "question": "Is the visual claim 'house: symmetrical facade' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:987",
+        "category": "camera",
+        "question": "Is the visual claim 'wolf: chest up framing' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:987",
+        "category": "camera",
+        "question": "Is the visual claim 'wolf: angled slightly to the right' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:430",
+        "category": "attribute",
+        "question": "Is the visual claim 'armchair: low back' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:211",
+        "category": "style",
+        "question": "Is the visual claim 'scene: painterly aesthetic' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:211",
+        "category": "count",
+        "question": "Is the visual claim 'Padm\u00e9: at least eight distinct portraits' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:553",
+        "category": "style",
+        "question": "Is the visual claim 'artwork: photorealistic style' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:616",
+        "category": "text_rendering",
+        "question": "Is the rendered text claim 'The Great Wave off Kanagawa' visibly supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:179",
+        "category": "relation",
+        "question": "Is the visual claim 'head: head turned slightly toward the viewer' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:114",
+        "category": "count",
+        "question": "Is the visual claim 'fisherman: lone fisherman' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:496",
+        "category": "attribute",
+        "question": "Is the visual claim 'horizon line: horizon line placed slightly above the center' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:810",
+        "category": "lighting",
+        "question": "Is the visual claim 'alleyway: sun-dappled' supported by the image?",
+        "answer": "no",
+        "confidence": 1.0,
+        "evidence": null
+      }
+    ],
+    "uncertain": [
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:11",
+        "category": "attribute",
+        "question": "Is the visual claim 'massive public procession or rally: in China' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:637",
+        "category": "attribute",
+        "question": "Is the visual claim 'tent: waterproof' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:637",
+        "category": "relation",
+        "question": "Is the visual claim 'stakes: stakes anchoring tent to ground' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:551",
+        "category": "object",
+        "question": "Is the visual claim 'mansion: old Victorian-era mansion' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:928",
+        "category": "object",
+        "question": "Is the visual claim 'Spasskaya Tower: Spasskaya Tower' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:445",
+        "category": "object",
+        "question": "Is the visual claim 'scene: Church of the Good Shepherd' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:445",
+        "category": "attribute",
+        "question": "Is the visual claim 'Church of the Good Shepherd: at Lake Tekapo, New Zealand' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:422",
+        "category": "object",
+        "question": "Is the visual claim 'scene: guitarist Billy Gibbons' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:915",
+        "category": "object",
+        "question": "Is the visual claim 'actors: Rapunzel' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:915",
+        "category": "object",
+        "question": "Is the visual claim 'actors: Flynn Rider' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:197",
+        "category": "count",
+        "question": "Is the visual claim 'fantastical alien creature: four to five feet tall' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 1.0,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:331",
+        "category": "object",
+        "question": "Is the visual claim 'Bill Murray: Bill Murray as Peter Venkman' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:123",
+        "category": "style",
+        "question": "Is the visual claim 'scene: 17th-century Dutch Golden Age still life painting' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:592",
+        "category": "style",
+        "question": "Is the visual claim 'scene: Northern Renaissance style' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:862",
+        "category": "object",
+        "question": "Is the visual claim 'scene: Scottish Highlands' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:616",
+        "category": "object",
+        "question": "Is the visual claim 'print: Katsushika Hokusai's woodblock print' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.8,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:100",
+        "category": "attribute",
+        "question": "Is the visual claim 'pagoda: likely Buddhist in origin' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.8,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:315",
+        "category": "attribute",
+        "question": "Is the visual claim 'print: wood' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.5,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:292",
+        "category": "object",
+        "question": "Is the visual claim 'scene: Winter Palace' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.85,
+        "evidence": null
+      },
+      {
+        "surface": "naive_qwen35_sampled_cc12m",
+        "caption_id": "naive_qwen35_sampled_cc12m:292",
+        "category": "object",
+        "question": "Is the visual claim 'scene: Neva River' supported by the image?",
+        "answer": "uncertain",
+        "confidence": 0.85,
+        "evidence": null
+      }
+    ]
+  }
+}
