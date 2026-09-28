@@ -7,10 +7,15 @@ human-study screenshots, and the final verification bundle for the policy contro
 verification run, and the sensitivity checks). No number in this directory was edited by hand. To
 refresh a result, copy the updated file from the bundle to the same relative path here.
 
-The naive-control captions (`naive_qwen35_*/captions.jsonl.gz`) are the one exception: they are
-stored gzip-compressed, carry public image keys only, and have email addresses and phone numbers
-transcribed from image text masked as `[email]` and `[phone]`. Their text is CC-BY-4.0, like the
-released captions; each folder's README shows how to read them.
+Two kinds of file are not byte-for-byte copies:
+
+- The naive-control captions (`naive_qwen35_*/captions.jsonl.gz`) are stored gzip-compressed, carry
+  public image keys only, and have personal data transcribed from image text masked as `[email]`,
+  `[phone]`, `[name]`, `[id]`, and `[address]`; each folder's README gives the counts and shows how to
+  read the file. Their text is CC-BY-4.0, like the released captions.
+- The two LongCLIP TSVs in `sensitivity/` omit the `pos_ci95`, `i2t_margin_ci95`, and
+  `t2i_margin_ci95` interval columns that `scripts/compute_longclip_retrieval_margin.py` also writes,
+  so that they carry means and rates only; every other column is unchanged.
 
 Most files are written by a script in `scripts/`, as listed below. The top-level rollup tables
 (`all_cbu_b64_summary.csv`, `all_vqa_b64_summary.csv`, `cc12m_vqa_supported_risk_pareto.csv`,
@@ -52,9 +57,9 @@ example `pd12m_full_paired__ours_pd12m_img2dataset`.
 | Cross-corpus headline without count and relation claims | `tables/excl_count_relation.tex` | `scripts/paper/gen_cbu_category_tables.py` |
 | Image support and risk by claim type | `tables/vqa_by_type.tex` | `scripts/paper/gen_cbu_category_tables.py` |
 | VQA cells as mean ± bootstrap std (2,000 caption-level resamples, seed 0) | `tables/vqa_mean_std.tex` from `cbu_vqa_by_category_b64.json` (`supported_cap_std`, `risk_std`) | `scripts/paper/summarize_cbu_vqa_by_category.py`, `scripts/paper/gen_cbu_category_tables.py` |
-| Lexical-window sensitivity of claimed CBU (CC12M) | `sensitivity/cc12m_lexical_window_claimed_cbu_summary.json`: the four CC12M surfaces with the extractor window cut at the first 64 lexical units instead of the first 64 whitespace words | `scripts/summarize_cbu_responses.py --mode claimed`; the request builder in this repository cuts whitespace words (see "Open items" below) |
-| Encoder-token truncation of the naive captions | `sensitivity/naive_encoder_truncation.json` (CLIP-77, LongCLIP-248, SigLIP2-64 per naive surface) | encoder fields as written by `scripts/caption_tokenizer_truncation_survey.py` |
-| LongCLIP retrieval of the matched-decoding CC12M naive surface | `sensitivity/naive_sampled_cc12m_longclip_full.tsv`, `sensitivity/naive_sampled_cc12m_longclip_input64.tsv` | `scripts/compute_longclip_retrieval_margin.py` |
+| Lexical-window sensitivity of claimed CBU (CC12M) | `sensitivity/cc12m_lexical_window_claimed_cbu_summary.json`: the four CC12M surfaces with the extractor window cut at the first 64 lexical units instead of the first 64 whitespace words | `scripts/paper/build_lexical_window_cbu_requests.py` builds the requests from the B = 64 CC12M request file; then `scripts/run_text_json_requests.py` and `scripts/summarize_cbu_responses.py --mode claimed` |
+| Encoder-token truncation of the naive captions | `sensitivity/naive_encoder_truncation.json` (CLIP-77, LongCLIP-248, SigLIP2-64 per naive surface) | `scripts/paper/encoder_truncation_rates.py` (untruncated tokenization with special tokens, as in `scripts/caption_tokenizer_truncation_survey.py`) |
+| LongCLIP retrieval of the matched-decoding CC12M naive surface | `sensitivity/naive_sampled_cc12m_longclip_full.tsv`, `sensitivity/naive_sampled_cc12m_longclip_input64.tsv` (means and rates) | `scripts/compute_longclip_retrieval_margin.py`, which also writes `*_ci95` interval columns; those columns are omitted here |
 | Human-study interface figures | `human_cbu/ui_appendix/*.png` | screenshots of the response-discarding participant-test mode of `scripts/human_cbu_eval.py` with an invented caption and a synthetic scene |
 | DataComp text-space probes by encoder (Vendi, eRank, Coverage@10, Density@10) | `raw_summaries/embedding_vendi_support/caption_embedding_profile.tsv` (Vendi, eRank); `prompt_caption_support.tsv` (Coverage and Density, raw-text protocol rows `raw/raw` and, for BGE-M3, `raw/corpus`) | `scripts/caption_embedding_vendi.py` |
 | EmbeddingGemma-300M multi-slice grid | `embeddinggemma_pair_summary.tsv`; `raw_summaries/embedding_vendi_support/embeddinggemma_all_pairs.tsv`, `embeddinggemma_dtype_sanity.json` | `scripts/caption_embedding_vendi.py` |
@@ -114,16 +119,10 @@ them.
 | `naive_qwen35_sampled_datacomp/`, `naive_qwen35_datacomp/` | DataComp naive surfaces (matched decoding; greedy): 4,775 captions each, with the same summaries |
 | `policy_control_ours_datacomp/` | the released (`Ours`) captions on the same 4,775 DataComp images: claimed-CBU summary and one VQA summary per judge, all on the Qwen3.5-397B-A17B-FP8 claims |
 | `datacomp_pair/` | the DataComp verification run of the cross-corpus pair: one VQA summary per judge over Ours and Recap-DataComp |
-| `sensitivity/` | lexical-window claimed CBU (CC12M), encoder-token truncation of the naive captions, and LongCLIP retrieval of the matched-decoding CC12M naive surface; the LongCLIP TSVs keep the `*_ci95` columns written by the retrieval script |
+| `sensitivity/` | lexical-window claimed CBU (CC12M), encoder-token truncation of the naive captions, and LongCLIP retrieval of the matched-decoding CC12M naive surface; the LongCLIP TSVs carry means and rates only |
 
 `scripts/paper/gen_cbu_category_tables.py` reproduces the six files in `tables/` byte for byte from
 `cbu_vqa_by_category_b64.json`.
-
-## Open items
-
-- The lexical-window run in `sensitivity/cc12m_lexical_window_claimed_cbu_summary.json` used request
-  files cut at 64 lexical units; `scripts/build_caption_cbu_requests.py` in this repository cuts at 64
-  whitespace words, and the lexical-window variant of the request builder is not included.
 
 Not part of the release:
 

@@ -1,2 +1,2 @@
-surface	rows	trunc_gt_248	tok_mean	tok_p95	pos_mean	pos_ci95	i2t_margin_mean	i2t_margin_ci95	i2t_r1	i2t_r5	t2i_margin_mean	t2i_margin_ci95	t2i_r1	t2i_r5
-naive_qwen35_sampled_cc12m	4494	0.9924	424.54	522.0	0.326830	[0.325903,0.327737]	0.054060	[0.052898,0.055244]	0.9063	0.9835	0.049815	[0.048474,0.051123]	0.8821	0.9773
+surface	rows	trunc_gt_248	tok_mean	tok_p95	pos_mean	i2t_margin_mean	i2t_r1	i2t_r5	t2i_margin_mean	t2i_r1	t2i_r5
+naive_qwen35_sampled_cc12m	4494	0.9924	424.54	522.0	0.326830	0.054060	0.9063	0.9835	0.049815	0.8821	0.9773

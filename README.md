@@ -163,7 +163,7 @@ scripts/
   vllm/                      vLLM environment setup, servers, caption runner, opener catalog
   build_*, run_*, summarize_*, export_*, caption_*, ...   audit pipeline (see below)
   human_cbu_eval.py          human-study CLI
-  paper/                     table and figure generators that read results/
+  paper/                     table and figure generators, sensitivity helpers
 src/audit_recap_t2i/
   recap/                     booru tag grounding used by the anime caption policy
   human_cbu/                 human-study sampler, store, web UI, metrics, export
@@ -477,6 +477,18 @@ unchanged request builder, checks that the first 1,000 rows equal the pilot requ
 record, and writes the remaining rows as one run file per budget. `gen_cc12m_frontiers.py` redraws both panels of Figure 2
 from `results/` (set `EVAL_DIR` to read and write elsewhere).
 
+The lexical-window sensitivity check cuts the extractor window at B lexical units instead of B
+whitespace words, with the builder, prompts, and schema unchanged:
+
+```bash
+uv run python scripts/paper/build_lexical_window_cbu_requests.py --work artifacts/cbu/cc12m-lex64 --budget 64
+# run run_text_json_requests.py and summarize_cbu_responses.py --mode claimed on the merged request file
+```
+
+It reads the B = 64 CC12M request file of this step (override with `--requests`) and writes one
+request file per surface plus a merged file; the summary is
+`results/sensitivity/cc12m_lexical_window_claimed_cbu_summary.json`.
+
 ### 7. Captioning-policy control (naive policy)
 
 The control keeps the captioner and the images fixed and replaces the policy with the Recap-DataComp
@@ -501,9 +513,9 @@ judges answer the VQA requests built from those claims.
 Each results directory holds the surface's captions (`captions.jsonl.gz`, gzip-compressed JSONL; read
 it with `gzip.open(path, "rt")` or `zcat`), its claimed-CBU summary, and one VQA summary per judge; its
 README names the producing scripts. The captions carry public image keys only (`image_url`,
-`public_lookup_key`, `pair_key`), and email addresses and phone numbers transcribed from image text
-are masked as `[email]` and `[phone]`. `results/policy_control_ours_datacomp/` holds the matching
-summaries of the released captions on the same DataComp images.
+`public_lookup_key`, `pair_key`), and personal data transcribed from image text is masked as
+`[email]`, `[phone]`, `[name]`, `[id]`, and `[address]`. `results/policy_control_ours_datacomp/`
+holds the matching summaries of the released captions on the same DataComp images.
 
 ```bash
 # captions and claim-extraction requests (greedy by default)
@@ -541,8 +553,15 @@ uv run python scripts/caption_tokenizer_truncation_survey.py --help
 ```
 
 The input64 LongCLIP mode feeds captions already truncated to 64 lexical units.
-`results/sensitivity/` holds the encoder-token truncation of the naive captions and the LongCLIP
-retrieval of the matched-decoding CC12M naive surface in both modes.
+`results/sensitivity/` holds the encoder-token truncation of the naive captions, written by
+`scripts/paper/encoder_truncation_rates.py` (untruncated tokenization with special tokens), and the
+LongCLIP retrieval of the matched-decoding CC12M naive surface in both modes:
+
+```bash
+uv run python scripts/paper/encoder_truncation_rates.py \
+  --surface naive_qwen35_sampled_cc12m=results/naive_qwen35_sampled_cc12m/captions.jsonl.gz \
+  --output artifacts/encoder-truncation/naive.json
+```
 
 ### 9. Figures
 
@@ -598,10 +617,11 @@ uv run pytest
 ## Results directory
 
 `results/` holds the summary files behind the paper's tables and figures, copied byte for byte from
-the paper's result bundles; the naive-control captions are the one exception (compressed, with
-emails and phone numbers masked). [`results/README.md`](results/README.md) maps each file to the
-table or figure it feeds and to the script that produces it, marks the superseded files, and lists
-what the release does not include.
+the paper's result bundles. Two kinds of file are exceptions: the naive-control captions
+(compressed, with personal data masked) and the two LongCLIP TSVs in `results/sensitivity/` (interval
+columns omitted). [`results/README.md`](results/README.md) maps each file to the table or figure it
+feeds and to the script that produces it, marks the superseded files, and lists what the release
+does not include.
 
 | File | Paper element |
 |---|---|
@@ -634,9 +654,10 @@ what the release does not include.
 The code in this repository is released under the [Apache License 2.0](LICENSE). The released
 captions are licensed CC-BY-4.0, as stated on each dataset card. The naive-control caption text in
 `results/naive_qwen35_*/captions.jsonl.gz` is also CC-BY-4.0, the same license as the released
-captions; these files carry public image keys only, and email addresses and phone numbers transcribed
-from image text are masked as `[email]` and `[phone]`. The CC-BY-4.0 license covers the generated
-caption text only. Source images, reference captions, and third-party metadata keep their original
+captions; these files carry public image keys only, and personal data transcribed from image text
+(email addresses, phone numbers, names of private persons on ID cards, badges and certificates,
+identity and card numbers, and private street addresses) is masked as `[email]`, `[phone]`, `[name]`,
+`[id]`, and `[address]`. The CC-BY-4.0 license covers the generated caption text only. Source images, reference captions, and third-party metadata keep their original
 licenses and terms.
 
 ## Contact
