@@ -7,6 +7,7 @@ Outputs (tabular bodies only; the captions are in the paper appendix):
   tables/vqa_by_type.tex          per-type support/risk and CC12M judge agreement
   tables/policy_control.tex       supported yield and risk of the captioning-policy control
   tables/vqa_mean_std.tex         every VQA cell as mean and bootstrap standard deviation
+  tables/vqa_questions.tex        question denominators of the cross-corpus pairs (Qwen Judge)
 """
 
 from __future__ import annotations
@@ -107,16 +108,42 @@ def policy_control(data: dict) -> str:
             ("CC12M", "Naive (greedy)", "CC12M-control", "Naive (greedy)"),
             ("DataComp", "Ours", "DataComp-control", "Ours"), ("DataComp", "Naive", "DataComp-control", "Naive"),
             ("DataComp", "Naive (greedy)", "DataComp-control", "Naive (greedy)")]
-    lines = []
+    lines, last = [], None
     for dataset, surface, slice_name, key in rows:
         if not has_cell(data, slice_name, key):
             continue
         q = cell(data, slice_name, QWEN, key)["all_types"]
         g = cell(data, slice_name, GEMMA, key)["all_types"]
-        assert q["responses"] == g["responses"]
+        assert q["responses"] == g["responses"] and q["questions"] == g["questions"]
+        if last is not None and dataset != last:
+            lines.append(r"\addlinespace[0.2em]")
+        name, last = ("" if dataset == last else dataset), dataset
         lines.append(" & ".join([
-            dataset, surface, n(q["responses"]), n(q["questions"]),
+            name, surface, n(q["responses"]), n(q["questions"]),
             f"${q['supported_cap']:.2f}$", f"${q['risk']:.3f}$", f"${g['supported_cap']:.2f}$", f"${g['risk']:.3f}$",
+        ]) + r" \\")
+    return "\n".join(lines) + "\n"
+
+
+QUESTION_ROWS = [  # dataset, surface label, side, share of captions reaching B lexical units
+    ("DataComp", "Ours", "Ours", "1.00"),
+    ("DataComp", r"Recap-DataComp \citep{li2024recapdatacomp}", "Ref", "0.26"),
+    ("Danbooru", "Ours", "Ours", "1.00"),
+    ("Danbooru", r"Danbooru-Florence \citep{xiao2024florence2,danbooruFlorence2HF}", "Ref", "0.17"),
+    ("LAION-pop", "Ours", "Ours", "1.00"),
+    ("LAION-pop", r"LAION-pop-Llama \citep{laionPopLlama32HF}", "Ref", "1.00"),
+    ("PD12M", "Ours", "Ours", "1.00"),
+    ("PD12M", r"PD12M released \citep{pd12mFullHF,meyer2024pd12m}", "Ref", "0.07"),
+]
+
+
+def vqa_questions(data: dict) -> str:
+    lines = []
+    for dataset, label, side, elig in QUESTION_ROWS:
+        q = cell(data, dataset, QWEN, side)["all_types"]
+        lines.append(" & ".join([
+            dataset, label, f"${elig}$", n(q["responses"]), n(q["questions"]),
+            f"${q['questions'] / q['responses']:.2f}$", f"${q['risk']:.3f}$",
         ]) + r" \\")
     return "\n".join(lines) + "\n"
 
@@ -160,6 +187,7 @@ def main() -> int:
     (out / "vqa_by_type.tex").write_text(vqa_by_type(data))
     (out / "policy_control.tex").write_text(policy_control(data))
     (out / "vqa_mean_std.tex").write_text(vqa_mean_std(data))
+    (out / "vqa_questions.tex").write_text(vqa_questions(data))
     for path in sorted(out.glob("*.tex")):
         print(f"== {path.name}\n{path.read_text()}")
     return 0

@@ -10,10 +10,12 @@ questions). For every (slice, judge, surface) it reports
 * the same cell after dropping count and relation claims, and
 * per-claim-type yes / no / uncertain counts.
 
-Both judges are summarized on the request ids that appear in both of their
-response files, so every (slice, surface) cell compares the two judges on one
-question set. On CC12M it also reports per-type exact Qwen--Gemma answer
-agreement joined on question_id.
+Both judges are summarized on the request ids that both of them answered
+(``is_answered``: a parsed answer record came back), so every (slice, surface)
+cell compares the two judges on one question set. When response files are
+merged, an answered row is kept over an unanswered one for the same request.
+On CC12M it also reports per-type exact Qwen--Gemma answer agreement joined on
+question_id.
 
 Every cell also carries the standard deviation of supported CBU per caption
 and risk over a caption-level bootstrap (2,000 resamples, seed 0). The slices
@@ -37,15 +39,15 @@ and CC12M_EXTRACTION below.
                                                        Gemma Judge, CC12M four surfaces
     artifacts/vqa-cbu/cc12m-naive-qwen35-baseline-2026-05-01/
     artifacts/vqa-cbu/datacomp-naive-qwen35-baseline-2026-05-02/
-                                                       Qwen Judge, greedy naive surfaces
+                                                       earlier Qwen Judge runs on the greedy naive surfaces
     artifacts/cbu/cc12m-four-caption-llava-url-bridge-5k-local/
                                                        CC12M claim extraction (denominators)
 
 ``--verification-root`` (entries prefixed ``VR:`` in SOURCES)::
 
-    responses/   Gemma Judge on the DataComp 5k sample; both judges on the
-                 matched-decoding naive surfaces and on the DataComp Ours rows
-                 of the control; Gemma Judge on the greedy naive surfaces
+    responses/   the verification runs: both judges on the DataComp 5k sample,
+                 on the four naive surfaces, and on the DataComp Ours rows of
+                 the control
 
 Every input is a ``run_cbu_vqa_requests.py`` (or ``run_text_json_requests.py``)
 response JSONL. The script only reads inputs.
@@ -82,6 +84,7 @@ SOURCES: list[tuple[str, str, list[str], dict[str, str]]] = [
     ("DataComp", QWEN, [
         f"{VQA}/pair5k-local/cbu_vqa_datacomp_b64_5k.responses.qwen397_sanity200.jsonl",
         f"{VQA}/pair5k-local/cbu_vqa_datacomp_b64_5k.responses.qwen397_full.jsonl",
+        f"{VR}/cbu_vqa_datacomp_pair5k_b64.responses.qwen397_c512_file_mt2048.jsonl",
     ], {
         "datacomp_recap_llava15_paired_url__ours_datacomp_forward": "Ours",
         "datacomp_recap_llava15_paired_url__ref_datacomp_recap_llava15_llama3_8b": "Ref",
@@ -136,6 +139,7 @@ SOURCES: list[tuple[str, str, list[str], dict[str, str]]] = [
     # "Naive" decodes with the release sampling defaults of the released captions; "Naive (greedy)" at temperature 0.
     ("CC12M-control", QWEN, [
         f"{NAIVE_CC}/cbu_vqa_naive_qwen35_cc12m_b64_4494.responses.qwen397_image_local_c64_mt2048.jsonl",
+        f"{VR}/cbu_vqa_naive_qwen35_cc12m_b64_4494.responses.qwen397_claims.qwen397_c512_file_mt2048.jsonl",
         f"{VR}/cbu_vqa_naive_qwen35_sampled_cc12m_b64.responses.qwen397_claims.qwen397_c512_file_mt2048.jsonl",
     ], CONTROL_CC),
     ("CC12M-control", GEMMA, [
@@ -144,6 +148,7 @@ SOURCES: list[tuple[str, str, list[str], dict[str, str]]] = [
     ], CONTROL_CC),
     ("DataComp-control", QWEN, [
         f"{NAIVE_DC}/cbu_vqa_naive_qwen35_datacomp_b64.responses.qwen397_local_latest_compact.jsonl",
+        f"{VR}/cbu_vqa_naive_qwen35_datacomp_b64.responses.qwen397_claims.qwen397_c512_file_mt2048.jsonl",
         f"{VR}/cbu_vqa_naive_qwen35_sampled_datacomp_b64.responses.qwen397_claims.qwen397_c512_file_mt2048.jsonl",
         f"{VR}/cbu_vqa_ours_datacomp_forward_b64_naive_rows.responses.qwen397_claims.qwen397_c512_file_mt2048.jsonl",
     ], CONTROL_DC),
@@ -191,8 +196,15 @@ def latest_rows(paths: list[Path]) -> list[dict[str, Any]]:
                 if line.strip():
                     row = json.loads(line)
                     if isinstance(row.get("request_id"), str):
-                        latest[row["request_id"]] = row
+                        kept = latest.get(row["request_id"])
+                        if kept is None or is_answered(row) or not is_answered(kept):
+                            latest[row["request_id"]] = row
     return list(latest.values())
+
+
+def is_answered(row: dict[str, Any]) -> bool:
+    """A request counts once the judge returned a parsed answer record for it."""
+    return bool(row.get("ok")) and isinstance((row.get("parsed") or {}).get("question_results"), list)
 
 
 def answered(row: dict[str, Any]):
@@ -259,7 +271,7 @@ def summarize(root: Path, verification: Path | None) -> dict[str, Any]:
     }
     common: dict[str, set[str]] = {}
     for (slice_name, _), rows in loaded.items():
-        ids = {row["request_id"] for row in rows}
+        ids = {row["request_id"] for row in rows if is_answered(row)}
         common[slice_name] = common[slice_name] & ids if slice_name in common else ids
     for slice_name, judge, files, surfaces in SOURCES:
         rows = [row for row in loaded[(slice_name, judge)] if row["request_id"] in common[slice_name]]
@@ -278,7 +290,7 @@ def summarize(root: Path, verification: Path | None) -> dict[str, Any]:
             responses[side] += 1
             row_all: Counter = Counter()
             row_kept: Counter = Counter()
-            for qid, category, answer in answered(row) if row.get("ok") else ():
+            for qid, category, answer in answered(row):
                 all_types[side][answer] += 1
                 by_type[side][category][answer] += 1
                 row_all[answer] += 1
