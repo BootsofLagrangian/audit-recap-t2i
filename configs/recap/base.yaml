@@ -1,0 +1,61 @@
+schema_version: 1
+
+io:
+  input:
+    image_directory: null
+    supported_formats: [".png", ".jpg", ".jpeg", ".webp"]
+    recursive: true
+  output:
+    base_directory: "outputs/recap"
+    timestamp_subdirs: true
+    combined_results: "jsonl"
+
+metadata:
+  provider: "none"
+  path: null
+  id_fields: ["image_name", "filename", "file_name", "id", "post_id", "booru_id"]
+  field_map:
+    general: ["general", "tag_string_general"]
+    character: ["character", "tag_string_character"]
+    copyright: ["copyright", "tag_string_copyright"]
+    artist: ["artist", "tag_string_artist"]
+    meta: ["meta", "tag_string_meta"]
+    rating: ["rating"]
+
+api:
+  vllm:
+    url: "http://localhost:8000"
+    key: "sk-fake"
+    model: "Qwen/Qwen3.5-35B-A3B-FP8"
+    timeout: 600
+    max_connections: 4096
+    max_concurrent_requests: 4096
+
+processing:
+  max_concurrent_workers: 16
+  llm_retries: 3
+  llm_retry_delay: 2.0
+  image_prefetch:
+    enabled: true
+    loader_workers: 4
+    buffer_size: 64
+
+caption:
+  default_style: "default"
+  system_prompt: |
+    You write training captions for image generation models.
+    Describe the scene in direct present-tense prose, starting with the dominant subject or action and expanding outward through attire, props, environment, lighting, and composition.
+    Absorb any provided metadata into the description naturally rather than quoting tags or explaining how context was used.
+    Write as if narrating the scene itself, not commenting on a picture.
+    Do not reference pipeline internals such as metadata sources, stages, coordinates, or detection systems.
+    Do not use headers, bullet lists, numbered lists, or markdown formatting.
+  image:
+    target_resolution: 1024
+    quality: 95
+    rgba_background: [255, 255, 255]
+  context_policy:
+    confirmed_characters:
+      enabled: false
+      require_solo: true
+  stage_order: []
+  stages: {}

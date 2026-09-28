@@ -1,0 +1,33 @@
+# vLLM serve config for recap — Qwen3.5-35B-A3B-FP8, DP=8
+# Usage: vllm serve --config configs/recap/vllm_serve.yaml
+#
+# All keys are vllm serve CLI long-form args (dashes, not underscores).
+# CLI args override these. See: https://docs.vllm.ai/en/stable/cli/serve/
+
+model: "Qwen/Qwen3.5-35B-A3B-FP8"
+host: "0.0.0.0"
+port: 8000
+
+# ── Parallelism ──────────────────────────────────────────
+data-parallel-size: 8           # 1 replica/GPU, MoE ~3B active fits single H200
+tensor-parallel-size: 1
+
+# ── Memory & Concurrency ─────────────────────────────────
+dtype: "auto"
+gpu-memory-utilization: 0.95
+max-model-len: 2048             # captioning: ~256 in + 512 out
+max-num-seqs: 1024              # per-rank → 1024×8 = 8192 global
+
+# ── Thinking / CoT ───────────────────────────────────────
+# false for captioning throughput, true for complex scene reasoning
+reasoning-parser: "qwen3"
+default-chat-template-kwargs: '{"enable_thinking": false}'
+
+# ── Throughput ───────────────────────────────────────────
+enable-chunked-prefill: true
+enable-prefix-caching: true
+mm-processor-cache-type: "shm"
+limit-mm-per-prompt: '{"image": 1}'
+enable-log-requests: false
+disable-uvicorn-access-log: true
+uvicorn-log-level: "warning"

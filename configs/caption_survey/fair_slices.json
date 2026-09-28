@@ -1,0 +1,130 @@
+{
+  "comparisons": [
+    {
+      "name": "cc12m_llavanext_paired",
+      "family": "cc12m",
+      "tier": "paired_same_image_same_gate",
+      "local_surface": "ours_cc12m",
+      "reference_surface": "ref_cc12m_llavanext",
+      "local_inputs": [
+        "outputs/recap/cc12m/photorealistic/shard-*.jsonl"
+      ],
+      "local_key_field": "image_id",
+      "public_input": "data/caption-mirrors/cc12m/ref_cc12m_llavanext.jsonl",
+      "public_key_field": "key",
+      "manifest_parquet": "data/manifests/cc12m-202603.manifest.parquet",
+      "manifest_key_field": "dataset_key",
+      "key_normalization": "zfill9",
+      "public_lookup_source": "local_key",
+      "min_short_edge": 256
+    },
+    {
+      "name": "cc12m_qwen3vl8b_paired",
+      "family": "cc12m",
+      "tier": "paired_same_image_same_gate",
+      "local_surface": "ours_cc12m",
+      "reference_surface": "ref_cc12m_qwen3vl8b",
+      "local_inputs": [
+        "outputs/recap/cc12m/photorealistic/shard-*.jsonl"
+      ],
+      "local_key_field": "image_id",
+      "public_input": "data/caption-mirrors/cc12m/ref_cc12m_qwen3vl8b.jsonl",
+      "public_key_field": "key",
+      "manifest_parquet": "data/manifests/cc12m-202603.manifest.parquet",
+      "manifest_key_field": "dataset_key",
+      "key_normalization": "zfill9",
+      "public_lookup_source": "local_key",
+      "min_short_edge": 256
+    },
+    {
+      "name": "cc12m_pixelprose_paired",
+      "family": "cc12m",
+      "tier": "paired_same_image_same_gate",
+      "local_surface": "ours_cc12m",
+      "reference_surface": "ref_pixelprose_cc12m",
+      "local_inputs": [
+        "outputs/recap/cc12m/photorealistic/shard-*.jsonl"
+      ],
+      "local_key_field": "image_id",
+      "public_input": "data/caption-mirrors/cc12m/ref_pixelprose_cc12m.jsonl",
+      "public_key_field": "key",
+      "manifest_parquet": "data/manifests/cc12m-202603.manifest.parquet",
+      "manifest_key_field": "dataset_key",
+      "key_normalization": "zfill9",
+      "public_lookup_source": "local_key",
+      "min_short_edge": 256
+    },
+    {
+      "name": "laion_pop_llama32_paired",
+      "family": "laion_pop",
+      "tier": "paired_same_image_same_gate",
+      "local_surface": "ours_laion_pop",
+      "reference_surface": "ref_laion_pop_llama32_11b",
+      "local_inputs": [
+        "outputs/recap/laion-pop/photorealistic/shard-*.jsonl"
+      ],
+      "local_key_field": "image_id",
+      "public_input": "data/caption-mirrors/laion_pop/ref_laion_pop_llama32_11b.jsonl",
+      "manifest_parquet": "data/manifests/laion-pop.manifest.parquet",
+      "manifest_key_field": "dataset_key",
+      "key_normalization": "zfill9",
+      "public_lookup_source": "manifest_field",
+      "manifest_public_key_field": "canonical_url",
+      "public_key_field": "url",
+      "public_key_normalization": "url",
+      "min_short_edge": 256
+    },
+    {
+      "name": "pd12m_full_paired",
+      "family": "pd12m",
+      "tier": "paired_same_image_same_gate",
+      "local_surface": "ours_pd12m_img2dataset",
+      "reference_surface": "ref_pd12m_full",
+      "local_inputs": [
+        "outputs/recap/pd12m-full/photorealistic/shard-*.jsonl"
+      ],
+      "local_key_field": "image_id",
+      "public_input": "data/caption-mirrors/pd12m/ref_pd12m_full.jsonl",
+      "public_key_field": "url",
+      "manifest_parquet": "data/manifests/pd12m-img2dataset.manifest.parquet",
+      "manifest_key_field": "dataset_key",
+      "key_normalization": "zfill9",
+      "public_lookup_source": "manifest_field",
+      "manifest_public_key_field": "canonical_url",
+      "public_key_normalization": "url",
+      "min_short_edge": 256
+    },
+    {
+      "name": "danbooru2023_florence2_paired",
+      "family": "danbooru",
+      "tier": "paired_same_image_local_subset",
+      "local_surface": "ours_danbooru2023",
+      "reference_surface": "ref_danbooru_florence2",
+      "local_inputs": [
+        "outputs/recap/danbooru2023/anime_booru/shard-*.jsonl"
+      ],
+      "local_key_field": "image_id",
+      "public_input": "data/caption-mirrors/danbooru/ref_danbooru_florence2.jsonl",
+      "public_key_field": "key",
+      "key_normalization": "str",
+      "public_lookup_source": "local_key"
+    },
+    {
+      "name": "datacomp_recap_llava15_paired_url",
+      "family": "datacomp",
+      "tier": "paired_same_url_local_subset",
+      "local_surface": "ours_datacomp_forward",
+      "reference_surface": "ref_datacomp_recap_llava15_llama3_8b",
+      "local_inputs": [
+        "outputs/recap/datacomp-forward/photorealistic/shard-*.jsonl"
+      ],
+      "local_image_root": "data/datacomp-images",
+      "local_key_field": "url",
+      "local_candidate_multiplier": 8,
+      "public_input": "data/caption-mirrors/datacomp/ref_datacomp_recap_llava15_llama3_8b.jsonl",
+      "public_key_field": "url",
+      "key_normalization": "url",
+      "public_lookup_source": "local_key"
+    }
+  ]
+}

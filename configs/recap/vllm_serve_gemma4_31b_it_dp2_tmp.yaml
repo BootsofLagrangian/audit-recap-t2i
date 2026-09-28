@@ -1,0 +1,30 @@
+# vLLM serve config: google/gemma-4-31B-it, DP=2
+#
+# Temporary 2-GPU cross-family judge config for CC12M metric smoke/triage.
+
+model: "google/gemma-4-31B-it"
+# Pinned Hugging Face revision: the checkpoint snapshot this config served.
+revision: "145dc2508c480a64b47242f160d286cff94a2343"
+served-model-name: "google/gemma-4-31B-it"
+host: "0.0.0.0"
+port: 8000
+
+data-parallel-size: 2
+tensor-parallel-size: 1
+
+dtype: "auto"
+gpu-memory-utilization: 0.94
+max-model-len: 8192
+max-num-seqs: 512
+max-num-batched-tokens: 65536
+max-cudagraph-capture-size: 512
+kv-cache-dtype: "fp8"
+
+enable-chunked-prefill: true
+enable-prefix-caching: true
+limit-mm-per-prompt: '{"image": 1}'
+mm-processor-kwargs: '{"max_pixels": 1003520}'
+allowed-local-media-path: "/"
+
+disable-uvicorn-access-log: true
+uvicorn-log-level: "warning"

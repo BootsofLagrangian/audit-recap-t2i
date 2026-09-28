@@ -1,0 +1,27 @@
+# vLLM serve config — Qwen3.5-122B-A10B, DP=4 TP=2
+model: "Qwen/Qwen3.5-122B-A10B"
+host: "0.0.0.0"
+port: 8000
+
+# ── Parallelism ──────────────────────────────────────────
+data-parallel-size: 4           # 4 replicas
+tensor-parallel-size: 2         # 2 GPUs per replica → 4×2 = 8 GPUs
+
+# ── Memory & Concurrency ─────────────────────────────────
+dtype: "auto"
+gpu-memory-utilization: 0.95
+max-model-len: 2048
+max-num-seqs: 512               # per-rank → 512×4 = 2048 global
+
+# ── Thinking / CoT ───────────────────────────────────────
+reasoning-parser: "qwen3"
+default-chat-template-kwargs: '{"enable_thinking": false}'
+
+# ── Throughput ───────────────────────────────────────────
+enable-chunked-prefill: true
+enable-prefix-caching: true
+mm-processor-cache-type: "shm"
+limit-mm-per-prompt: '{"image": 1}'
+enable-log-requests: false
+disable-uvicorn-access-log: true
+uvicorn-log-level: "warning"

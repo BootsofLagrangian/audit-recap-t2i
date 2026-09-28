@@ -1,0 +1,855 @@
+{
+  "entries": [
+    {
+      "name": "ours_cc12m",
+      "group": "local",
+      "kind": "local_glob",
+      "input": "outputs/recap/cc12m/photorealistic/shard-*.jsonl",
+      "description": "Ours recap over CC12M",
+      "captioner": "Qwen/Qwen3.5-35B-A3B",
+      "captioner_family": "qwen3.5-vl",
+      "captioning_mode": "long_only",
+      "source_family": "cc12m",
+      "relation_to_our_surface": {
+        "type": "self_canonical_raw_archive",
+        "canonical_dataset_key": "cc12m-photorealistic",
+        "notes": null
+      },
+      "public_availability": {
+        "status": "local_raw_plus_published_v1",
+        "data_tier": "public_but_decaying",
+        "public_locator": "cc12m-photorealistic"
+      },
+      "citation": {
+        "tier": "repo_docs_only",
+        "dataset_url": null,
+        "dataset_title": null,
+        "recaption_paper_title": null,
+        "recaption_paper_url": null,
+        "source_paper_title": "Conceptual 12M: Pushing Web-Scale Image-Text Pre-Training To Recognize Long-Tail Visual Concepts",
+        "source_paper_url": "https://arxiv.org/abs/2102.08981"
+      }
+    },
+    {
+      "name": "ours_datacomp_forward",
+      "group": "local",
+      "kind": "local_glob",
+      "input": "outputs/recap/datacomp-forward/photorealistic/shard-*.jsonl",
+      "description": "Ours recap over DataComp forward surface",
+      "captioner": "Qwen/Qwen3.5-35B-A3B",
+      "captioner_family": "qwen3.5-vl",
+      "captioning_mode": "long_only",
+      "source_family": "datacomp",
+      "relation_to_our_surface": {
+        "type": "self_component_of_canonical",
+        "canonical_dataset_key": "recap-datacomp-wds-webp90",
+        "notes": "live forward stream"
+      },
+      "public_availability": {
+        "status": "local_raw_only",
+        "data_tier": "private_live_surface",
+        "public_locator": null
+      },
+      "citation": {
+        "tier": "repo_docs_only",
+        "dataset_url": null,
+        "dataset_title": null,
+        "recaption_paper_title": null,
+        "recaption_paper_url": null,
+        "source_paper_title": "DataComp: In Search of the Next Generation of Multimodal Datasets",
+        "source_paper_url": "https://proceedings.neurips.cc/paper_files/paper/2023/hash/56332d41d55ad7ad8024aac625881be7-Abstract-Datasets_and_Benchmarks.html"
+      }
+    },
+    {
+      "name": "ours_datacomp_bwd",
+      "group": "local",
+      "kind": "local_glob",
+      "input": "outputs/recap/datacomp-bwd/photorealistic/shard-*.jsonl",
+      "description": "Ours recap over DataComp backward surface",
+      "captioner": "Qwen/Qwen3.5-35B-A3B",
+      "captioner_family": "qwen3.5-vl",
+      "captioning_mode": "long_only",
+      "source_family": "datacomp",
+      "relation_to_our_surface": {
+        "type": "self_component_of_canonical",
+        "canonical_dataset_key": "recap-datacomp-wds-webp90",
+        "notes": "fixed backward fragment"
+      },
+      "public_availability": {
+        "status": "local_raw_only",
+        "data_tier": "historical_fragment",
+        "public_locator": null
+      },
+      "citation": {
+        "tier": "repo_docs_only",
+        "dataset_url": null,
+        "dataset_title": null,
+        "recaption_paper_title": null,
+        "recaption_paper_url": null,
+        "source_paper_title": "DataComp: In Search of the Next Generation of Multimodal Datasets",
+        "source_paper_url": "https://proceedings.neurips.cc/paper_files/paper/2023/hash/56332d41d55ad7ad8024aac625881be7-Abstract-Datasets_and_Benchmarks.html"
+      }
+    },
+    {
+      "name": "ours_commoncatalog",
+      "group": "local",
+      "kind": "local_glob",
+      "inputs": [
+        "outputs/recap/commoncatalog-cc-by/photorealistic/shard-*.jsonl",
+        "outputs/recap/commoncatalog-cc-by-backfill/photorealistic/shard-*.jsonl"
+      ],
+      "description": "Ours recap over CommonCatalog CC-BY unioned with backfill",
+      "captioner": "Qwen/Qwen3.5-35B-A3B",
+      "captioner_family": "qwen3.5-vl",
+      "captioning_mode": "long_only",
+      "source_family": "commoncatalog_cc_by",
+      "relation_to_our_surface": {
+        "type": "self_union_surface",
+        "canonical_dataset_key": "commoncatalog-cc-by-photorealistic",
+        "notes": "base plus HF-derived backfill"
+      },
+      "public_availability": {
+        "status": "local_raw_plus_published_v1",
+        "data_tier": "public_republished",
+        "public_locator": "commoncatalog-cc-by-photorealistic"
+      },
+      "citation": {
+        "tier": "repo_docs_only",
+        "dataset_url": null,
+        "dataset_title": null,
+        "recaption_paper_title": null,
+        "recaption_paper_url": null,
+        "source_paper_title": "CommonCatalog CC-BY",
+        "source_paper_url": null
+      }
+    },
+    {
+      "name": "ours_pd12m_img2dataset",
+      "group": "local",
+      "kind": "local_glob",
+      "input": "outputs/recap/pd12m-full/photorealistic/shard-*.jsonl",
+      "description": "Ours recap over PD12M img2dataset surface (legacy on-disk path name pd12m-full)",
+      "captioner": "Qwen/Qwen3.5-35B-A3B",
+      "captioner_family": "qwen3.5-vl",
+      "captioning_mode": "long_only",
+      "source_family": "pd12m",
+      "relation_to_our_surface": {
+        "type": "self_canonical_raw_archive",
+        "canonical_dataset_key": "pd12m-img2dataset-photorealistic",
+        "notes": "logical surface is pd12m-img2dataset, on-disk recap root still uses legacy pd12m-full"
+      },
+      "public_availability": {
+        "status": "local_raw_plus_published_v1",
+        "data_tier": "public_republished",
+        "public_locator": "pd12m-img2dataset-photorealistic"
+      },
+      "citation": {
+        "tier": "repo_docs_only",
+        "dataset_url": null,
+        "dataset_title": null,
+        "recaption_paper_title": null,
+        "recaption_paper_url": null,
+        "source_paper_title": "Public Domain 12M: A Highly Aesthetic Image-Text Dataset with Novel Governance Mechanisms",
+        "source_paper_url": "https://arxiv.org/abs/2410.23144"
+      }
+    },
+    {
+      "name": "ours_pd12m_hf_tail",
+      "group": "local",
+      "kind": "local_glob",
+      "input": "outputs/recap/pd12m-full-hf/photorealistic/shard-*.jsonl",
+      "description": "Ours recap over PD12M HF-only tail surface",
+      "captioner": "Qwen/Qwen3.5-35B-A3B",
+      "captioner_family": "qwen3.5-vl",
+      "captioning_mode": "long_only",
+      "source_family": "pd12m",
+      "relation_to_our_surface": {
+        "type": "self_complementary_tail",
+        "canonical_dataset_key": "pd12m-img2dataset-photorealistic",
+        "notes": "HF-only complementary tail, not the canonical local subset"
+      },
+      "public_availability": {
+        "status": "local_raw_only",
+        "data_tier": "local_tail_fragment",
+        "public_locator": null
+      },
+      "citation": {
+        "tier": "repo_docs_only",
+        "dataset_url": null,
+        "dataset_title": null,
+        "recaption_paper_title": null,
+        "recaption_paper_url": null,
+        "source_paper_title": "Public Domain 12M: A Highly Aesthetic Image-Text Dataset with Novel Governance Mechanisms",
+        "source_paper_url": "https://arxiv.org/abs/2410.23144"
+      }
+    },
+    {
+      "name": "ours_laion_aesthetics_full",
+      "group": "local",
+      "kind": "local_glob",
+      "input": "outputs/recap/laion-aesthetics-full/photorealistic/shard-*.jsonl",
+      "description": "Ours recap over LAION aesthetics full",
+      "captioner": "Qwen/Qwen3.5-35B-A3B",
+      "captioner_family": "qwen3.5-vl",
+      "captioning_mode": "long_only",
+      "source_family": "laion_aesthetics",
+      "relation_to_our_surface": {
+        "type": "self_canonical_raw_archive",
+        "canonical_dataset_key": "laion-aesthetics-full-photorealistic",
+        "notes": null
+      },
+      "public_availability": {
+        "status": "local_raw_plus_published_v1",
+        "data_tier": "public_republished",
+        "public_locator": "laion-aesthetics-full-photorealistic"
+      },
+      "citation": {
+        "tier": "repo_docs_only",
+        "dataset_url": null,
+        "dataset_title": null,
+        "recaption_paper_title": null,
+        "recaption_paper_url": null,
+        "source_paper_title": "LAION-Aesthetics",
+        "source_paper_url": null
+      }
+    },
+    {
+      "name": "ours_laion_pop",
+      "group": "local",
+      "kind": "local_glob",
+      "input": "outputs/recap/laion-pop/photorealistic/shard-*.jsonl",
+      "description": "Ours recap over LAION-pop",
+      "captioner": "Qwen/Qwen3.5-35B-A3B",
+      "captioner_family": "qwen3.5-vl",
+      "captioning_mode": "long_only",
+      "source_family": "laion_pop",
+      "relation_to_our_surface": {
+        "type": "self_canonical_raw_archive",
+        "canonical_dataset_key": "laion-pop-photorealistic",
+        "notes": null
+      },
+      "public_availability": {
+        "status": "local_raw_plus_published_v1",
+        "data_tier": "public_republished",
+        "public_locator": "laion-pop-photorealistic"
+      },
+      "citation": {
+        "tier": "repo_docs_only",
+        "dataset_url": null,
+        "dataset_title": null,
+        "recaption_paper_title": null,
+        "recaption_paper_url": null,
+        "source_paper_title": "LAION-pop",
+        "source_paper_url": null
+      }
+    },
+    {
+      "name": "ours_danbooru2023",
+      "group": "local",
+      "kind": "local_glob",
+      "input": "outputs/recap/danbooru2023/anime_booru/shard-*.jsonl",
+      "description": "Ours recap over Danbooru2023",
+      "captioner": "Qwen/Qwen3.5-35B-A3B",
+      "captioner_family": "qwen3.5-vl",
+      "captioning_mode": "long_only_tag_grounded",
+      "source_family": "danbooru",
+      "relation_to_our_surface": {
+        "type": "self_component_of_canonical",
+        "canonical_dataset_key": "danbooru-202603-anime_booru",
+        "notes": "component of merged booru publication"
+      },
+      "public_availability": {
+        "status": "local_component_of_published_merge",
+        "data_tier": "public_republished",
+        "public_locator": "danbooru-202603-anime_booru"
+      },
+      "citation": {
+        "tier": "repo_docs_only",
+        "dataset_url": null,
+        "dataset_title": null,
+        "recaption_paper_title": null,
+        "recaption_paper_url": null,
+        "source_paper_title": "Danbooru2023",
+        "source_paper_url": null
+      }
+    },
+    {
+      "name": "ours_danbooru_crawl",
+      "group": "local",
+      "kind": "local_glob",
+      "input": "outputs/recap/danbooru-crawl/anime_booru/shard-*.jsonl",
+      "description": "Ours recap over Danbooru crawl",
+      "captioner": "Qwen/Qwen3.5-35B-A3B",
+      "captioner_family": "qwen3.5-vl",
+      "captioning_mode": "long_only_tag_grounded",
+      "source_family": "danbooru",
+      "relation_to_our_surface": {
+        "type": "self_component_of_canonical",
+        "canonical_dataset_key": "danbooru-202603-anime_booru",
+        "notes": "component of merged booru publication"
+      },
+      "public_availability": {
+        "status": "local_component_of_published_merge",
+        "data_tier": "public_republished",
+        "public_locator": "danbooru-202603-anime_booru"
+      },
+      "citation": {
+        "tier": "repo_docs_only",
+        "dataset_url": null,
+        "dataset_title": null,
+        "recaption_paper_title": null,
+        "recaption_paper_url": null,
+        "source_paper_title": "Danbooru crawl",
+        "source_paper_url": null
+      }
+    },
+    {
+      "name": "ref_cc12m_qwen3vl8b",
+      "group": "hf",
+      "kind": "hf_dataset",
+      "hf_dataset": "undefined443/cc12m-wds-recaption",
+      "description": "CC12M recaptioned with Qwen3-VL-8B-Instruct",
+      "captioner": "Qwen/Qwen3-VL-8B-Instruct",
+      "captioner_family": "qwen3-vl",
+      "captioning_mode": "single_caption",
+      "source_family": "cc12m",
+      "relation_to_our_surface": {
+        "type": "same_source_family",
+        "canonical_dataset_key": "cc12m-photorealistic",
+        "notes": "public recaption over CC12M family"
+      },
+      "public_availability": {
+        "status": "hf_public",
+        "data_tier": "dataset_card_public",
+        "public_locator": "undefined443/cc12m-wds-recaption"
+      },
+      "citation": {
+        "tier": "hf_dataset_plus_source_paper",
+        "dataset_url": "https://huggingface.co/datasets/undefined443/cc12m-wds-recaption",
+        "dataset_title": "cc12m-wds-recaption",
+        "recaption_paper_title": null,
+        "recaption_paper_url": null,
+        "source_paper_title": "Conceptual 12M: Pushing Web-Scale Image-Text Pre-Training To Recognize Long-Tail Visual Concepts",
+        "source_paper_url": "https://arxiv.org/abs/2102.08981"
+      }
+    },
+    {
+      "name": "ref_cc12m_llavanext",
+      "group": "hf",
+      "kind": "hf_dataset",
+      "hf_dataset": "CaptionEmporium/conceptual-captions-cc12m-llavanext",
+      "caption_field": "caption_llava",
+      "description": "CC12M recaptioned with LLaVA-Next-8B",
+      "captioner": "LLaVA-Next-8B",
+      "captioner_family": "llava_next",
+      "captioning_mode": "multi_variant",
+      "source_family": "cc12m",
+      "relation_to_our_surface": {
+        "type": "same_source_family",
+        "canonical_dataset_key": "cc12m-photorealistic",
+        "notes": "public recaption over CC12M family"
+      },
+      "public_availability": {
+        "status": "hf_public",
+        "data_tier": "dataset_card_public",
+        "public_locator": "CaptionEmporium/conceptual-captions-cc12m-llavanext"
+      },
+      "citation": {
+        "tier": "hf_dataset_only",
+        "dataset_url": "https://huggingface.co/datasets/CaptionEmporium/conceptual-captions-cc12m-llavanext",
+        "dataset_title": "conceptual-captions-cc12m-llavanext",
+        "recaption_paper_title": null,
+        "recaption_paper_url": null,
+        "source_paper_title": "Conceptual 12M: Pushing Web-Scale Image-Text Pre-Training To Recognize Long-Tail Visual Concepts",
+        "source_paper_url": "https://arxiv.org/abs/2102.08981"
+      }
+    },
+    {
+      "name": "ref_pixelprose_cc12m",
+      "group": "hf",
+      "kind": "hf_dataset",
+      "hf_dataset": "lodestones/pixelprose",
+      "hf_split": "cc12m",
+      "caption_field": "vlm_caption",
+      "description": "PixelProse CC12M split recaptioned with Gemini 1.0 Pro Vision",
+      "captioner": "Gemini 1.0 Pro Vision",
+      "captioner_family": "gemini_pro_vision",
+      "captioning_mode": "dense_caption",
+      "source_family": "cc12m",
+      "relation_to_our_surface": {
+        "type": "same_source_family",
+        "canonical_dataset_key": "cc12m-photorealistic",
+        "notes": "mixed dataset release with an explicit CC12M split"
+      },
+      "public_availability": {
+        "status": "hf_public",
+        "data_tier": "dataset_card_plus_paper",
+        "public_locator": "lodestones/pixelprose:cc12m"
+      },
+      "citation": {
+        "tier": "hf_dataset_plus_recaption_paper",
+        "dataset_url": "https://huggingface.co/datasets/lodestones/pixelprose",
+        "dataset_title": "pixelprose",
+        "recaption_paper_title": "From Pixels to Prose: A Large Dataset of Dense Image Captions",
+        "recaption_paper_url": "https://arxiv.org/abs/2406.10328",
+        "source_paper_title": "Conceptual 12M: Pushing Web-Scale Image-Text Pre-Training To Recognize Long-Tail Visual Concepts",
+        "source_paper_url": "https://arxiv.org/abs/2102.08981"
+      }
+    },
+    {
+      "name": "ref_datacomp_recap_llava15_llama3_8b",
+      "group": "hf",
+      "kind": "hf_dataset",
+      "hf_dataset": "UCSC-VLAA/Recap-DataComp-1B",
+      "mirror_method": "parquet_remote_column",
+      "hf_prefix": "data/train_data",
+      "caption_field": "re_caption",
+      "description": "DataComp recaptioned with LLaVA-1.5-LLaMA3-8B",
+      "captioner": "LLaVA-1.5-LLaMA3-8B",
+      "captioner_family": "llava_1_5",
+      "captioning_mode": "single_caption",
+      "source_family": "datacomp",
+      "relation_to_our_surface": {
+        "type": "same_source_family",
+        "canonical_dataset_key": "recap-datacomp-wds-webp90",
+        "notes": "main public DataComp recaption reference"
+      },
+      "public_availability": {
+        "status": "hf_public_caption_column_projection",
+        "data_tier": "dataset_card_plus_paper",
+        "public_locator": "UCSC-VLAA/Recap-DataComp-1B"
+      },
+      "citation": {
+        "tier": "hf_dataset_plus_recaption_paper",
+        "dataset_url": "https://huggingface.co/datasets/UCSC-VLAA/Recap-DataComp-1B",
+        "dataset_title": "Recap-DataComp-1B",
+        "recaption_paper_title": "What If We Recaption Billions of Web Images with LLaMA-3?",
+        "recaption_paper_url": "https://arxiv.org/abs/2406.08478",
+        "source_paper_title": "DataComp: In Search of the Next Generation of Multimodal Datasets",
+        "source_paper_url": "https://proceedings.neurips.cc/paper_files/paper/2023/hash/56332d41d55ad7ad8024aac625881be7-Abstract-Datasets_and_Benchmarks.html"
+      }
+    },
+    {
+      "name": "ref_datacompdr_1b",
+      "group": "hf",
+      "kind": "hf_dataset",
+      "hf_dataset": "apple/DataCompDR-1B",
+      "caption_field": "synthetic_caption",
+      "disabled": true,
+      "disabled_reason": "HF streaming rows expose WDS-style payload fields (json/npz/paug.json/syn.json/url.txt) rather than a direct synthetic_caption column; add a custom extractor before survey runs.",
+      "description": "DataCompDR synthetic captions with CoCa ViT-L-14",
+      "captioner": "OpenCLIP CoCa ViT-L-14",
+      "captioner_family": "coca",
+      "captioning_mode": "multi_caption_augmented",
+      "source_family": "datacomp",
+      "relation_to_our_surface": {
+        "type": "derived_from_same_source_family",
+        "canonical_dataset_key": "recap-datacomp-wds-webp90",
+        "notes": "reinforced metadata/caption derivative of DataComp"
+      },
+      "public_availability": {
+        "status": "hf_public",
+        "data_tier": "dataset_card_plus_paper",
+        "public_locator": "apple/DataCompDR-1B"
+      },
+      "citation": {
+        "tier": "hf_dataset_only",
+        "dataset_url": "https://huggingface.co/datasets/apple/DataCompDR-1B",
+        "dataset_title": "DataCompDR-1B",
+        "recaption_paper_title": "MobileCLIP: Fast Image-Text Models through Multi-Modal Reinforced Training",
+        "recaption_paper_url": "https://arxiv.org/abs/2311.17049",
+        "source_paper_title": "DataComp: In Search of the Next Generation of Multimodal Datasets",
+        "source_paper_url": "https://proceedings.neurips.cc/paper_files/paper/2023/hash/56332d41d55ad7ad8024aac625881be7-Abstract-Datasets_and_Benchmarks.html"
+      }
+    },
+    {
+      "name": "ref_datacomp_large_blip2",
+      "group": "hf",
+      "kind": "hf_dataset",
+      "hf_dataset": "thaottn/DataComp_large_pool_BLIP2_captions",
+      "caption_field": "blip2-cap",
+      "description": "DataComp large pool with BLIP2 synthetic captions",
+      "captioner": "BLIP2",
+      "captioner_family": "blip2",
+      "captioning_mode": "single_caption",
+      "source_family": "datacomp",
+      "relation_to_our_surface": {
+        "type": "same_source_family",
+        "canonical_dataset_key": "recap-datacomp-wds-webp90",
+        "notes": "synthetic captions over a DataComp pool"
+      },
+      "public_availability": {
+        "status": "hf_public",
+        "data_tier": "dataset_card_plus_paper",
+        "public_locator": "thaottn/DataComp_large_pool_BLIP2_captions"
+      },
+      "citation": {
+        "tier": "hf_dataset_plus_recaption_paper",
+        "dataset_url": "https://huggingface.co/datasets/thaottn/DataComp_large_pool_BLIP2_captions",
+        "dataset_title": "DataComp_large_pool_BLIP2_captions",
+        "recaption_paper_title": "Improving Multimodal Datasets with Image Captioning",
+        "recaption_paper_url": "https://arxiv.org/abs/2307.10350",
+        "source_paper_title": "DataComp: In Search of the Next Generation of Multimodal Datasets",
+        "source_paper_url": "https://proceedings.neurips.cc/paper_files/paper/2023/hash/56332d41d55ad7ad8024aac625881be7-Abstract-Datasets_and_Benchmarks.html"
+      }
+    },
+    {
+      "name": "ref_datacomp_medium_blip2",
+      "group": "hf",
+      "kind": "hf_dataset",
+      "hf_dataset": "thaottn/DataComp_medium_pool_BLIP2_captions",
+      "caption_field": "blip2-cap",
+      "description": "DataComp medium pool with BLIP2 synthetic captions",
+      "captioner": "BLIP2",
+      "captioner_family": "blip2",
+      "captioning_mode": "single_caption",
+      "source_family": "datacomp",
+      "relation_to_our_surface": {
+        "type": "same_source_family",
+        "canonical_dataset_key": "recap-datacomp-wds-webp90",
+        "notes": "synthetic captions over a DataComp pool"
+      },
+      "public_availability": {
+        "status": "hf_public",
+        "data_tier": "dataset_card_plus_paper",
+        "public_locator": "thaottn/DataComp_medium_pool_BLIP2_captions"
+      },
+      "citation": {
+        "tier": "hf_dataset_plus_recaption_paper",
+        "dataset_url": "https://huggingface.co/datasets/thaottn/DataComp_medium_pool_BLIP2_captions",
+        "dataset_title": "DataComp_medium_pool_BLIP2_captions",
+        "recaption_paper_title": "Improving Multimodal Datasets with Image Captioning",
+        "recaption_paper_url": "https://arxiv.org/abs/2307.10350",
+        "source_paper_title": "DataComp: In Search of the Next Generation of Multimodal Datasets",
+        "source_paper_url": "https://proceedings.neurips.cc/paper_files/paper/2023/hash/56332d41d55ad7ad8024aac625881be7-Abstract-Datasets_and_Benchmarks.html"
+      }
+    },
+    {
+      "name": "ref_commoncatalog_phi3",
+      "group": "hf",
+      "kind": "hf_dataset",
+      "hf_dataset": "alfredplpl/commoncatalog-cc-by-recap",
+      "caption_field": "phi3_caption",
+      "description": "CommonCatalog CC-BY recaptioned with Phi-3-family captioning",
+      "captioner": "Phi-3 Vision",
+      "captioner_family": "phi3",
+      "captioning_mode": "single_caption",
+      "source_family": "commoncatalog_cc_by",
+      "relation_to_our_surface": {
+        "type": "same_source_family",
+        "canonical_dataset_key": "commoncatalog-cc-by-photorealistic",
+        "notes": "public CommonCatalog recap reference"
+      },
+      "public_availability": {
+        "status": "hf_public",
+        "data_tier": "dataset_card_public",
+        "public_locator": "alfredplpl/commoncatalog-cc-by-recap"
+      },
+      "citation": {
+        "tier": "hf_dataset_only",
+        "dataset_url": "https://huggingface.co/datasets/alfredplpl/commoncatalog-cc-by-recap",
+        "dataset_title": "commoncatalog-cc-by-recap",
+        "recaption_paper_title": null,
+        "recaption_paper_url": null,
+        "source_paper_title": null,
+        "source_paper_url": null
+      }
+    },
+    {
+      "name": "ref_pd12m_original",
+      "group": "hf",
+      "kind": "hf_dataset",
+      "hf_dataset": "Spawning/PD12M",
+      "caption_field": "caption",
+      "description": "Original PD12M release with synthetic captions",
+      "captioner": "Florence-2-large",
+      "captioner_family": "florence2",
+      "captioning_mode": "single_caption",
+      "source_family": "pd12m",
+      "relation_to_our_surface": {
+        "type": "same_source_family",
+        "canonical_dataset_key": "pd12m-img2dataset-photorealistic",
+        "notes": "original upstream PD12M release"
+      },
+      "public_availability": {
+        "status": "hf_public",
+        "data_tier": "dataset_card_plus_source_paper",
+        "public_locator": "Spawning/PD12M"
+      },
+      "citation": {
+        "tier": "hf_dataset_plus_source_paper",
+        "dataset_url": "https://huggingface.co/datasets/Spawning/PD12M",
+        "dataset_title": "PD12M",
+        "recaption_paper_title": null,
+        "recaption_paper_url": null,
+        "source_paper_title": "Public Domain 12M: A Highly Aesthetic Image-Text Dataset with Novel Governance Mechanisms",
+        "source_paper_url": "https://arxiv.org/abs/2410.23144"
+      }
+    },
+    {
+      "name": "ref_pd12m_full",
+      "group": "hf",
+      "kind": "hf_dataset",
+      "hf_dataset": "Spawning/pd12m-full",
+      "mirror_method": "parquet_remote_column",
+      "caption_field": "caption",
+      "description": "HF full PD12M alternative surface with synthetic captions",
+      "captioner": "Florence-2-large",
+      "captioner_family": "florence2",
+      "captioning_mode": "single_caption",
+      "source_family": "pd12m",
+      "relation_to_our_surface": {
+        "type": "same_source_family",
+        "canonical_dataset_key": "pd12m-img2dataset-photorealistic",
+        "notes": "HF full/original alternative surface; not identical to our current local subset"
+      },
+      "public_availability": {
+        "status": "hf_public_caption_column_projection",
+        "data_tier": "dataset_card_public",
+        "public_locator": "Spawning/pd12m-full"
+      },
+      "citation": {
+        "tier": "hf_dataset_plus_source_paper",
+        "dataset_url": "https://huggingface.co/datasets/Spawning/pd12m-full",
+        "dataset_title": "pd12m-full",
+        "recaption_paper_title": null,
+        "recaption_paper_url": null,
+        "source_paper_title": "Public Domain 12M: A Highly Aesthetic Image-Text Dataset with Novel Governance Mechanisms",
+        "source_paper_url": "https://arxiv.org/abs/2410.23144"
+      }
+    },
+    {
+      "name": "ref_pd_extended_florence2",
+      "group": "hf",
+      "kind": "hf_dataset",
+      "hf_dataset": "Spawning/pd-extended",
+      "mirror_method": "parquet_remote_column",
+      "description": "PD-Extended derived from PD12M with Florence-2 synthetic captions",
+      "captioner": "Florence-2-large",
+      "captioner_family": "florence2",
+      "captioning_mode": "single_caption",
+      "source_family": "pd12m",
+      "relation_to_our_surface": {
+        "type": "derived_from_same_source_family",
+        "canonical_dataset_key": "pd12m-img2dataset-photorealistic",
+        "notes": "derived from PD12M plus Megalith-CC0"
+      },
+      "public_availability": {
+        "status": "hf_public_caption_column_projection",
+        "data_tier": "dataset_card_plus_source_paper",
+        "public_locator": "Spawning/pd-extended"
+      },
+      "citation": {
+        "tier": "hf_dataset_plus_source_paper",
+        "dataset_url": "https://huggingface.co/datasets/Spawning/pd-extended",
+        "dataset_title": "pd-extended",
+        "recaption_paper_title": null,
+        "recaption_paper_url": null,
+        "source_paper_title": "Public Domain 12M: A Highly Aesthetic Image-Text Dataset with Novel Governance Mechanisms",
+        "source_paper_url": "https://arxiv.org/abs/2410.23144"
+      },
+      "caption_field": "caption"
+    },
+    {
+      "name": "ref_relaion_19m_structured",
+      "group": "hf",
+      "kind": "hf_dataset",
+      "hf_dataset": "supermodelresearch/Re-LAION-Caption19M",
+      "caption_field": "llava_next_caption",
+      "description": "Structured LAION recaptioning with LLaVA-Next + Mistral-7B",
+      "captioner": "LLaVA-Next + Mistral-7B",
+      "captioner_family": "llava_next",
+      "captioning_mode": "structured_caption",
+      "source_family": "laion",
+      "relation_to_our_surface": {
+        "type": "same_broad_family_different_filter",
+        "canonical_dataset_key": "laion-pop-photorealistic",
+        "notes": "LAION-family recaption reference, but not the same LAION-pop source"
+      },
+      "public_availability": {
+        "status": "hf_public",
+        "data_tier": "dataset_card_plus_paper",
+        "public_locator": "supermodelresearch/Re-LAION-Caption19M"
+      },
+      "citation": {
+        "tier": "hf_dataset_plus_recaption_paper",
+        "dataset_url": "https://huggingface.co/datasets/supermodelresearch/Re-LAION-Caption19M",
+        "dataset_title": "Re-LAION-Caption19M",
+        "recaption_paper_title": "Structured Captions Improve Prompt Adherence in Text-to-Image Models",
+        "recaption_paper_url": "https://arxiv.org/abs/2507.05300",
+        "source_paper_title": "LAION-5B: An open large-scale dataset for training next generation image-text models",
+        "source_paper_url": "https://arxiv.org/abs/2210.08402"
+      }
+    },
+    {
+      "name": "ref_laion_pop_llama32_11b",
+      "group": "hf",
+      "kind": "hf_dataset",
+      "hf_dataset": "CaptionEmporium/laion-pop-llama3.2-11b",
+      "caption_field": "caption_long_llama32",
+      "description": "LAION-pop recaptioned with Llama-3.2-11B-Vision-Instruct",
+      "captioner": "Llama-3.2-11B-Vision-Instruct",
+      "captioner_family": "llama3_2_vision",
+      "captioning_mode": "multi_variant",
+      "source_family": "laion_pop",
+      "relation_to_our_surface": {
+        "type": "same_source_family",
+        "canonical_dataset_key": "laion-pop-photorealistic",
+        "notes": "public recap over the same source family"
+      },
+      "public_availability": {
+        "status": "hf_public",
+        "data_tier": "dataset_card_public",
+        "public_locator": "CaptionEmporium/laion-pop-llama3.2-11b"
+      },
+      "citation": {
+        "tier": "hf_dataset_only",
+        "dataset_url": "https://huggingface.co/datasets/CaptionEmporium/laion-pop-llama3.2-11b",
+        "dataset_title": "laion-pop-llama3.2-11b",
+        "recaption_paper_title": null,
+        "recaption_paper_url": null,
+        "source_paper_title": null,
+        "source_paper_url": null
+      }
+    },
+    {
+      "name": "ref_danbooru_florence2",
+      "group": "hf",
+      "kind": "hf_dataset",
+      "hf_dataset": "KBlueLeaf/danbooru2023-florence2-caption",
+      "caption_field": "parsed",
+      "description": "Danbooru2023 captions generated by Florence-2-large",
+      "captioner": "Florence-2-large",
+      "captioner_family": "florence2",
+      "captioning_mode": "single_caption",
+      "source_family": "danbooru",
+      "relation_to_our_surface": {
+        "type": "same_source_exact",
+        "canonical_dataset_key": "danbooru-202603-anime_booru",
+        "notes": "same Danbooru2023 source family"
+      },
+      "public_availability": {
+        "status": "hf_public",
+        "data_tier": "dataset_card_public",
+        "public_locator": "KBlueLeaf/danbooru2023-florence2-caption"
+      },
+      "citation": {
+        "tier": "hf_dataset_only",
+        "dataset_url": "https://huggingface.co/datasets/KBlueLeaf/danbooru2023-florence2-caption",
+        "dataset_title": "danbooru2023-florence2-caption",
+        "recaption_paper_title": null,
+        "recaption_paper_url": null,
+        "source_paper_title": null,
+        "source_paper_url": null
+      }
+    },
+    {
+      "name": "ref_danbooru_llava34b",
+      "group": "hf",
+      "kind": "hf_dataset",
+      "hf_dataset": "CaptionEmporium/anime-caption-danbooru-2021-sfw-5m-hq",
+      "caption_field": "caption_llava_34b_no_tags",
+      "description": "Danbooru captions generated by LLaVA-v1.6-34B without tags",
+      "captioner": "LLaVA-v1.6-34B",
+      "captioner_family": "llava_1_6",
+      "captioning_mode": "multi_variant",
+      "source_family": "danbooru",
+      "relation_to_our_surface": {
+        "type": "same_source_family",
+        "canonical_dataset_key": "danbooru-202603-anime_booru",
+        "notes": "anime booru family reference"
+      },
+      "public_availability": {
+        "status": "hf_public",
+        "data_tier": "dataset_card_public",
+        "public_locator": "CaptionEmporium/anime-caption-danbooru-2021-sfw-5m-hq"
+      },
+      "citation": {
+        "tier": "hf_dataset_only",
+        "dataset_url": "https://huggingface.co/datasets/CaptionEmporium/anime-caption-danbooru-2021-sfw-5m-hq",
+        "dataset_title": "anime-caption-danbooru-2021-sfw-5m-hq",
+        "recaption_paper_title": null,
+        "recaption_paper_url": null,
+        "source_paper_title": null,
+        "source_paper_url": null
+      }
+    }
+  ],
+  "research_only_candidates": [
+    {
+      "name": "candidate_pixelprose_mixed",
+      "hf_dataset": "lodestones/pixelprose",
+      "captioner": "Gemini 1.0 Pro Vision",
+      "source_family": "mixed",
+      "relation_to_our_surface": "contains CommonPool, CC12M, and RedCaps splits; useful as a larger mixed superset reference",
+      "citation": {
+        "dataset_url": "https://huggingface.co/datasets/lodestones/pixelprose",
+        "recaption_paper_url": "https://arxiv.org/abs/2406.10328"
+      }
+    },
+    {
+      "name": "candidate_spright_cc12m_spatial",
+      "hf_dataset": "SPRIGHT-T2I/spright",
+      "captioner": "LLaVA-1.5-13B",
+      "source_family": "mixed",
+      "relation_to_our_surface": "contains re-captioned CC12M and Segment Anything; spatial-caption specialization rather than generic recap",
+      "citation": {
+        "dataset_url": "https://huggingface.co/datasets/SPRIGHT-T2I/spright"
+      }
+    },
+    {
+      "name": "candidate_mono_internvl_2b_synthetic",
+      "hf_dataset": "OpenGVLab/Mono-InternVL-2B-Synthetic-Data",
+      "captioner": "InternVL-8B",
+      "source_family": "mixed",
+      "relation_to_our_surface": "258M-image synthetic caption mixture from LAION-2B, COYO-700M, and SAM(en); broader family, not direct source match",
+      "citation": {
+        "dataset_url": "https://huggingface.co/datasets/OpenGVLab/Mono-InternVL-2B-Synthetic-Data",
+        "recaption_paper_url": "https://arxiv.org/abs/2507.12566"
+      }
+    },
+    {
+      "name": "candidate_laion_coco_molmo",
+      "hf_dataset": "CaptionEmporium/laion-coco-13m-molmo-d-7b",
+      "captioner": "Molmo-7B-D-0924 + Llama-3.1-Tulu-3-8B-DPO",
+      "source_family": "laion",
+      "relation_to_our_surface": "LAION-family synthetic caption release over laion-coco subset; useful broad-family reference for LAION comparisons",
+      "citation": {
+        "dataset_url": "https://huggingface.co/datasets/CaptionEmporium/laion-coco-13m-molmo-d-7b"
+      }
+    },
+    {
+      "name": "paper_only_recap_dalle3",
+      "captioner": "proprietary highly descriptive image captioner",
+      "source_family": "private_web_corpus",
+      "relation_to_our_surface": "important closed-source recap precedent for T2I training",
+      "public_release": false,
+      "citation": {
+        "recaption_paper_title": "Improving Image Generation with Better Captions",
+        "recaption_paper_url": "https://cdn.openai.com/papers/dall-e-3.pdf"
+      }
+    },
+    {
+      "name": "paper_only_recap_principled",
+      "captioner": "specialized automatic captioning model",
+      "source_family": "laion_like_web_corpus",
+      "relation_to_our_surface": "open paper precedent for recap improving T2I, but no public recap corpus located",
+      "public_release": false,
+      "citation": {
+        "recaption_paper_title": "A Picture is Worth a Thousand Words: Principled Recaptioning Improves Image Generation",
+        "recaption_paper_url": "https://arxiv.org/abs/2310.16656"
+      }
+    },
+    {
+      "name": "paper_only_hunyuan_recap100m",
+      "captioner": "low-hallucination synthetic caption pipeline",
+      "source_family": "web_scale_mixed",
+      "relation_to_our_surface": "paper claims release of Hunyuan-Recap100M, but no public dataset locator verified yet",
+      "public_release": "unverified",
+      "citation": {
+        "recaption_paper_title": "Low-hallucination Synthetic Captions for Large-Scale Vision-Language Model Pre-training",
+        "recaption_paper_url": "https://arxiv.org/abs/2504.13123"
+      }
+    }
+  ]
+}

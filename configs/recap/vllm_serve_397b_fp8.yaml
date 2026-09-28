@@ -1,0 +1,49 @@
+# vLLM serve config — Qwen3.5-397B-A17B-FP8, TP=8
+#
+# Intended use:
+#   VLLM_CONFIG=configs/recap/vllm_serve_397b_fp8.yaml bash scripts/vllm/serve_397b.sh
+#
+# This is a single 8-GPU replica for judge/audit workloads. It prioritizes
+# enough context for full-caption GroundedCBU/VQA-style audits over maximum
+# independent-replica throughput.
+
+model: "Qwen/Qwen3.5-397B-A17B-FP8"
+# Pinned Hugging Face revision: the checkpoint snapshot this config served.
+revision: "ea5b4f81096f3901c91dea97f81324302495781d"
+served-model-name: "Qwen/Qwen3.5-397B-A17B-FP8"
+host: "0.0.0.0"
+port: 8000
+
+# ── Parallelism ──────────────────────────────────────────
+tensor-parallel-size: 8
+data-parallel-size: 1
+
+# ── Memory & Concurrency ─────────────────────────────────
+dtype: "auto"
+gpu-memory-utilization: 0.94
+max-model-len: 8192
+# Stress-test target: raise scheduler concurrency by observed KV usage.
+# @64 grounded-CBU requests used ~29.9% KV at 512 concurrent sequences; 1536 is
+# the next measured step toward the ~0.93 KV target.
+max-num-seqs: 1536
+max-num-batched-tokens: 65536
+max-cudagraph-capture-size: 512
+
+# KV cache: use fp8 for audit throughput/capacity on H200. If model load fails,
+# fall back to auto before changing TP or max-model-len.
+kv-cache-dtype: "fp8"
+
+# ── Thinking / CoT ───────────────────────────────────────
+reasoning-parser: "qwen3"
+default-chat-template-kwargs: '{"enable_thinking": false}'
+
+# ── Throughput / multimodal ──────────────────────────────
+enable-chunked-prefill: true
+enable-prefix-caching: true
+limit-mm-per-prompt: '{"image": 1}'
+mm-processor-kwargs: '{"max_pixels": 1003520}'
+allowed-local-media-path: "/"
+
+# ── Logging ──────────────────────────────────────────────
+disable-uvicorn-access-log: true
+uvicorn-log-level: "warning"

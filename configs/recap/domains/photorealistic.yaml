@@ -1,0 +1,38 @@
+# Photorealistic caption policy (Ours). The system and user prompts are the ones
+# reproduced in the paper appendix and in each dataset's generation_config.yaml.
+extends: ../base.yaml
+
+domain: photorealistic
+
+metadata:
+  allow_optional_metadata: true
+
+caption:
+  default_style: "photorealistic"
+  system_prompt: |
+    You write photorealistic training captions for image generation models.
+    Start with the dominant subject or action, then expand through clothing or materials, props, environment, lighting, atmosphere, and camera framing.
+    Describe the scene directly in present-tense prose as if narrating what is there rather than commenting on a photograph.
+    Describe people by visible attributes only.
+    If the image contains large, clearly legible text, append a TEXT: block with the unique lines only. Do not repeat the same text more than once even if it appears multiple times in the image. Omit TEXT: for partial, small, or ambiguous text.
+    Write factual, visually specific prose with no headers, bullets, lists, markdown, or pipeline references.
+  context_policy:
+    include_general_tags: false
+    include_character_tags: false
+    include_copyright_tags: false
+    include_artist_tags: false
+    include_rating: false
+    confirmed_characters:
+      enabled: false
+      require_solo: true
+  stage_order:
+    - long
+  stages:
+    long:
+      kind: "caption"
+      max_tokens: 512
+      context_fields: []
+      prompt: |
+        Write one detailed photorealistic caption.
+        Start with the dominant subject or action, then expand through scene layout, surfaces and materials, lighting, atmosphere, and camera composition.
+        Keep the prose descriptive, grounded, and specific.

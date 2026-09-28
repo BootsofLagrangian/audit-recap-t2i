@@ -1,0 +1,44 @@
+# vLLM serve config — Qwen3.5-397B-A17B-FP8, TP=4
+#
+# Intended use on a 4x H200 allocation:
+#   CUDA_VISIBLE_DEVICES=0,1,2,3 \
+#   /tmp/vllm-env-qwen35/bin/vllm serve \
+#     --config configs/recap/vllm_serve_397b_fp8_tp4.yaml
+#
+# This mirrors the TP=8 audit config with lower scheduler concurrency for a
+# four-GPU node. It is for bounded judge/audit runs, not production recaptioning.
+
+model: "Qwen/Qwen3.5-397B-A17B-FP8"
+# Pinned Hugging Face revision: the checkpoint snapshot this config served.
+revision: "ea5b4f81096f3901c91dea97f81324302495781d"
+served-model-name: "Qwen/Qwen3.5-397B-A17B-FP8"
+host: "0.0.0.0"
+port: 8000
+
+# Parallelism
+tensor-parallel-size: 4
+data-parallel-size: 1
+
+# Memory & concurrency
+dtype: "auto"
+gpu-memory-utilization: 0.94
+max-model-len: 8192
+max-num-seqs: 512
+max-num-batched-tokens: 32768
+max-cudagraph-capture-size: 256
+kv-cache-dtype: "fp8"
+
+# Thinking / CoT
+reasoning-parser: "qwen3"
+default-chat-template-kwargs: '{"enable_thinking": false}'
+
+# Throughput / multimodal
+enable-chunked-prefill: true
+enable-prefix-caching: true
+limit-mm-per-prompt: '{"image": 1}'
+mm-processor-kwargs: '{"max_pixels": 1003520}'
+allowed-local-media-path: "/"
+
+# Logging
+disable-uvicorn-access-log: true
+uvicorn-log-level: "warning"

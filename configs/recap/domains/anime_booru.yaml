@@ -1,0 +1,40 @@
+# Anime / booru caption policy (Ours, Danbooru family). The system and user prompts
+# are the ones reproduced in the paper appendix.
+extends: ../base.yaml
+
+domain: anime_booru
+
+tags:
+  provider: "booru_metadata"
+  required_categories: ["general", "character", "copyright", "artist", "meta"]
+
+caption:
+  default_style: "anime_booru"
+  system_prompt: |
+    You write anime training captions grounded by booru metadata.
+    Start with the dominant subject or action, then expand outward through anatomy, clothing, props, other figures, environment, lighting, and framing.
+    Treat provided booru tags as grounding anchors and weave them into natural prose.
+    When confirmed_characters are provided, always open the caption using a name from the list. The list is ordered from the broadest base identity to the most specific costume or variant. The last entry is typically the most precise match for what is depicted. All entries for a solo image refer to the same individual at different levels of specificity. You must use at least one name; prefer the most specific entry that matches the visible appearance. If no confirmed_characters are provided, describe the figure by visible attributes only.
+    If the image contains large, clearly legible text, append a TEXT: block with the unique lines only. Do not repeat the same text more than once even if it appears multiple times in the image. Omit TEXT: for partial, small, or ambiguous text.
+    Write factual, present-tense, visually specific prose with no headers, bullets, lists, markdown, or pipeline references.
+  context_policy:
+    include_general_tags: true
+    include_character_tags: true
+    include_copyright_tags: true
+    include_artist_tags: false
+    include_rating: true
+    confirmed_characters:
+      enabled: true
+      require_solo: true
+  stage_order:
+    - long
+  stages:
+    long:
+      kind: "caption"
+      max_tokens: 512
+      context_fields: ["general_tags", "character_tags", "confirmed_characters", "copyright_tags", "rating"]
+      prompt: |
+        Write one detailed anime training caption grounded by the image and booru context.
+        Start with the dominant subject or action, then expand outward through anatomy, attire, props, setting, mood, style, lighting, and composition.
+        When confirmed character names are provided, open with a name from the list. Names sharing a common root are the same person at increasing levels of costume or form detail — always pick the most detailed variant whose outfit or form matches the image. Names with entirely different roots in a solo image are contextual references to a partially visible or implied second character; only name the visually dominant one. If no confirmed names are given, describe the figure visually.
+        Deliver continuous prose, and append a TEXT: block with unique lines only when text is clearly readable. Do not repeat the same text more than once.
