@@ -10,10 +10,45 @@ questions). For every (slice, judge, surface) it reports
 * the same cell after dropping count and relation claims, and
 * per-claim-type yes / no / uncertain counts.
 
-On CC12M, where both judges answered the same request file, it also reports
-per-type exact Qwen--Gemma answer agreement joined on question_id.
+Both judges are summarized on the request ids that appear in both of their
+response files, so every (slice, surface) cell compares the two judges on one
+question set. On CC12M it also reports per-type exact Qwen--Gemma answer
+agreement joined on question_id.
 
-The script only reads inputs; run it where the response JSONL files live.
+Every cell also carries the standard deviation of supported CBU per caption
+and risk over a caption-level bootstrap (2,000 resamples, seed 0). The slices
+``CC12M-control`` and ``DataComp-control`` hold the captioning-policy control:
+the same captioner on the same images with the naive prompt, decoded either
+with the release sampling defaults (``Naive``: temperature 1.0, top_k 20,
+top_p 0.95) or greedily (``Naive (greedy)``: temperature 0). Both judges re-ask
+the claims extracted by Qwen3.5-397B-A17B-FP8.
+
+Inputs come from two directories; the exact file names are listed in SOURCES
+and CC12M_EXTRACTION below.
+
+``--root`` (the pipeline's working tree)::
+
+    artifacts/vqa-cbu/pair5k-local/                    Qwen Judge, cross-corpus 5k samples
+    artifacts/vqa-cbu/gemma-cross-corpus-2026-05-02/responses/
+                                                       Gemma Judge, LAION-pop / PD12M / Danbooru
+    artifacts/vqa-cbu/cc12m-four-caption-llava-url-bridge-5k-local/
+                                                       Qwen Judge, CC12M four surfaces
+    artifacts/vqa-cbu/cc12m-four-caption-llava-url-bridge-5k-local-crossjudge-gemma4/
+                                                       Gemma Judge, CC12M four surfaces
+    artifacts/vqa-cbu/cc12m-naive-qwen35-baseline-2026-05-01/
+    artifacts/vqa-cbu/datacomp-naive-qwen35-baseline-2026-05-02/
+                                                       Qwen Judge, greedy naive surfaces
+    artifacts/cbu/cc12m-four-caption-llava-url-bridge-5k-local/
+                                                       CC12M claim extraction (denominators)
+
+``--verification-root`` (entries prefixed ``VR:`` in SOURCES)::
+
+    responses/   Gemma Judge on the DataComp 5k sample; both judges on the
+                 matched-decoding naive surfaces and on the DataComp Ours rows
+                 of the control; Gemma Judge on the greedy naive surfaces
+
+Every input is a ``run_cbu_vqa_requests.py`` (or ``run_text_json_requests.py``)
+response JSONL. The script only reads inputs.
 """
 
 from __future__ import annotations
@@ -24,6 +59,10 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
+import numpy as np
+
+BOOTSTRAP_REPS = 2000
+BOOTSTRAP_SEED = 0
 ANSWERS = ("yes", "no", "uncertain")
 EXCLUDED = frozenset({"count", "relation"})
 
@@ -31,10 +70,19 @@ QWEN = "Qwen3.5-397B-A17B-FP8"
 GEMMA = "Gemma-4-31B-IT"
 VQA = "artifacts/vqa-cbu"
 GEMMA_XC = f"{VQA}/gemma-cross-corpus-2026-05-02/responses"
+VR = "VR:responses"
+NAIVE_CC = f"{VQA}/cc12m-naive-qwen35-baseline-2026-05-01"
+NAIVE_DC = f"{VQA}/datacomp-naive-qwen35-baseline-2026-05-02"
+
+CONTROL_CC = {"naive_qwen35_sampled_cc12m": "Naive", "naive_qwen35_cc12m": "Naive (greedy)"}
+CONTROL_DC = {"ours_datacomp_forward": "Ours", "naive_qwen35_sampled_datacomp": "Naive", "naive_qwen35_datacomp": "Naive (greedy)"}
 
 # (slice, judge, [response files merged latest-by-request], surface -> side)
 SOURCES: list[tuple[str, str, list[str], dict[str, str]]] = [
-    ("DataComp", QWEN, [f"{VQA}/pair5k-local/cbu_vqa_datacomp_b64_5k.responses.qwen397_full.jsonl"], {
+    ("DataComp", QWEN, [
+        f"{VQA}/pair5k-local/cbu_vqa_datacomp_b64_5k.responses.qwen397_sanity200.jsonl",
+        f"{VQA}/pair5k-local/cbu_vqa_datacomp_b64_5k.responses.qwen397_full.jsonl",
+    ], {
         "datacomp_recap_llava15_paired_url__ours_datacomp_forward": "Ours",
         "datacomp_recap_llava15_paired_url__ref_datacomp_recap_llava15_llama3_8b": "Ref",
     }),
@@ -51,9 +99,11 @@ SOURCES: list[tuple[str, str, list[str], dict[str, str]]] = [
         "danbooru2023_florence2_paired__ref_danbooru_florence2": "Ref",
     }),
     ("DataComp", GEMMA, [
-        f"{GEMMA_XC}/cbu_vqa_ours_datacomp_forward_b64_5000.responses.gemma4_31b_file_mt2048.merged.jsonl",
-        f"{GEMMA_XC}/cbu_vqa_ref_datacomp_recap_llava15_b64_5000.responses.gemma4_31b_file_mt2048.merged.jsonl",
-    ], {"ours_datacomp_forward": "Ours", "ref_datacomp_recap_llava15_llama3_8b": "Ref"}),
+        f"{VR}/cbu_vqa_datacomp_pair5k_b64.responses.gemma4_31b_it_c512_file_mt2048.jsonl",
+    ], {
+        "datacomp_recap_llava15_paired_url__ours_datacomp_forward": "Ours",
+        "datacomp_recap_llava15_paired_url__ref_datacomp_recap_llava15_llama3_8b": "Ref",
+    }),
     ("LAION-pop", GEMMA, [
         f"{GEMMA_XC}/cbu_vqa_laion_pop_llama32_paired__ours_laion_pop_b64_5k.responses.gemma4_31b_file_mt2048.merged.jsonl",
         f"{GEMMA_XC}/cbu_vqa_laion_pop_llama32_paired__ref_laion_pop_llama32_11b_b64_5k.responses.gemma4_31b_file_mt2048.merged.jsonl",
@@ -82,6 +132,26 @@ SOURCES: list[tuple[str, str, list[str], dict[str, str]]] = [
         "ours_cc12m": "Ours", "ref_cc12m_llavanext": "LLaVA-NeXT",
         "ref_pixelprose_cc12m": "PixelProse", "ref_cc12m_qwen3vl8b": "Qwen3-VL-8B",
     }),
+    # Captioning-policy control: same captioner and images, Qwen397-extracted claims.
+    # "Naive" decodes with the release sampling defaults of the released captions; "Naive (greedy)" at temperature 0.
+    ("CC12M-control", QWEN, [
+        f"{NAIVE_CC}/cbu_vqa_naive_qwen35_cc12m_b64_4494.responses.qwen397_image_local_c64_mt2048.jsonl",
+        f"{VR}/cbu_vqa_naive_qwen35_sampled_cc12m_b64.responses.qwen397_claims.qwen397_c512_file_mt2048.jsonl",
+    ], CONTROL_CC),
+    ("CC12M-control", GEMMA, [
+        f"{VR}/cbu_vqa_naive_qwen35_cc12m_b64_4494.responses.qwen397_claims.gemma4_31b_it_c512_file_mt2048.jsonl",
+        f"{VR}/cbu_vqa_naive_qwen35_sampled_cc12m_b64.responses.qwen397_claims.gemma4_31b_it_c512_file_mt2048.jsonl",
+    ], CONTROL_CC),
+    ("DataComp-control", QWEN, [
+        f"{NAIVE_DC}/cbu_vqa_naive_qwen35_datacomp_b64.responses.qwen397_local_latest_compact.jsonl",
+        f"{VR}/cbu_vqa_naive_qwen35_sampled_datacomp_b64.responses.qwen397_claims.qwen397_c512_file_mt2048.jsonl",
+        f"{VR}/cbu_vqa_ours_datacomp_forward_b64_naive_rows.responses.qwen397_claims.qwen397_c512_file_mt2048.jsonl",
+    ], CONTROL_DC),
+    ("DataComp-control", GEMMA, [
+        f"{VR}/cbu_vqa_naive_qwen35_datacomp_b64.responses.qwen397_claims.gemma4_31b_it_c512_file_mt2048.jsonl",
+        f"{VR}/cbu_vqa_naive_qwen35_sampled_datacomp_b64.responses.qwen397_claims.gemma4_31b_it_c512_file_mt2048.jsonl",
+        f"{VR}/cbu_vqa_ours_datacomp_forward_b64_naive_rows.responses.qwen397_claims.gemma4_31b_it_c512_file_mt2048.jsonl",
+    ], CONTROL_DC),
 ]
 
 
@@ -138,9 +208,24 @@ def answered(row: dict[str, Any]):
             yield qid, lookup.get(qid, {}).get("category", "__unknown__"), result["answer"]
 
 
-def cell(counter: Counter, responses: int) -> dict[str, Any]:
+def bootstrap_std(per_caption: list[tuple[int, int, int]]) -> dict[str, float]:
+    """Standard deviation of supported CBU/cap and risk when captions are resampled."""
+    counts = np.asarray(per_caption, dtype=np.int64).reshape(-1, 3)
+    n = len(counts)
+    if n < 2:
+        return {"supported_cap_std": 0.0, "risk_std": 0.0}
+    rng = np.random.default_rng(BOOTSTRAP_SEED)
+    supported, risk = np.empty(BOOTSTRAP_REPS), np.empty(BOOTSTRAP_REPS)
+    for rep in range(BOOTSTRAP_REPS):
+        yes, no, questions = counts[rng.integers(0, n, size=n)].sum(axis=0)
+        supported[rep] = yes / n
+        risk[rep] = no / questions if questions else 0.0
+    return {"supported_cap_std": float(supported.std(ddof=1)), "risk_std": float(risk.std(ddof=1))}
+
+
+def cell(counter: Counter, responses: int, per_caption: list[tuple[int, int, int]] | None = None) -> dict[str, Any]:
     questions = sum(counter[a] for a in ANSWERS)
-    return {
+    out = {
         "responses": responses,
         "questions": questions,
         **{a: counter[a] for a in ANSWERS},
@@ -148,38 +233,67 @@ def cell(counter: Counter, responses: int) -> dict[str, Any]:
         "risk": counter["no"] / questions if questions else 0.0,
         "uncertain_rate": counter["uncertain"] / questions if questions else 0.0,
     }
+    if per_caption is not None:
+        assert len(per_caption) == responses
+        out.update(bootstrap_std(per_caption))
+    return out
 
 
-def summarize(root: Path) -> dict[str, Any]:
+def resolve(root: Path, verification: Path | None, name: str) -> Path:
+    if name.startswith("VR:"):
+        if verification is None:
+            raise SystemExit("--verification-root is required for the verification-run response files")
+        return verification / name[3:]
+    return root / name
+
+
+def summarize(root: Path, verification: Path | None) -> dict[str, Any]:
     out: dict[str, Any] = {"cells": [], "cc12m_judge_agreement": {}}
     cc12m_answers: dict[str, dict[str, tuple[str, str]]] = {}
+    loaded = {
+        (slice_name, judge): [
+            row for row in latest_rows([resolve(root, verification, f) for f in files])
+            if row.get("request", {}).get("surface") in surfaces
+        ]
+        for slice_name, judge, files, surfaces in SOURCES
+    }
+    common: dict[str, set[str]] = {}
+    for (slice_name, _), rows in loaded.items():
+        ids = {row["request_id"] for row in rows}
+        common[slice_name] = common[slice_name] & ids if slice_name in common else ids
     for slice_name, judge, files, surfaces in SOURCES:
-        rows = latest_rows([root / f for f in files])
+        rows = [row for row in loaded[(slice_name, judge)] if row["request_id"] in common[slice_name]]
         responses: Counter = Counter()
         all_types: dict[str, Counter] = defaultdict(Counter)
         kept: dict[str, Counter] = defaultdict(Counter)
         by_type: dict[str, dict[str, Counter]] = defaultdict(lambda: defaultdict(Counter))
         answers: dict[str, tuple[str, str]] = {}
+        per_all: dict[str, list[tuple[int, int, int]]] = defaultdict(list)
+        per_kept: dict[str, list[tuple[int, int, int]]] = defaultdict(list)
         for row in rows:
             surface = row.get("request", {}).get("surface")
             if surface not in surfaces:
                 continue
             side = surfaces[surface]
             responses[side] += 1
-            if not row.get("ok"):
-                continue
-            for qid, category, answer in answered(row):
+            row_all: Counter = Counter()
+            row_kept: Counter = Counter()
+            for qid, category, answer in answered(row) if row.get("ok") else ():
                 all_types[side][answer] += 1
                 by_type[side][category][answer] += 1
+                row_all[answer] += 1
                 if category not in EXCLUDED:
                     kept[side][answer] += 1
+                    row_kept[answer] += 1
                 if slice_name == "CC12M":
                     answers[qid] = (category, answer)
+            per_all[side].append((row_all["yes"], row_all["no"], sum(row_all.values())))
+            per_kept[side].append((row_kept["yes"], row_kept["no"], sum(row_kept.values())))
         for side in surfaces.values():
             out["cells"].append({
                 "slice": slice_name, "judge": judge, "surface": side,
-                "all_types": cell(all_types[side], responses[side]),
-                "excluding_count_relation": cell(kept[side], responses[side]),
+                "all_types": cell(all_types[side], responses[side], per_all[side]),
+                "excluding_count_relation": cell(kept[side], responses[side], per_kept[side]),
                 "by_type": {c: {a: n[a] for a in ANSWERS} for c, n in sorted(by_type[side].items())},
             })
         if slice_name == "CC12M":
@@ -201,17 +315,18 @@ def summarize(root: Path) -> dict[str, Any]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("--root", required=True, help="Repository root holding artifacts/vqa-cbu")
+    parser.add_argument("--root", required=True, help="Input directory holding the artifacts/ tree (see module docstring)")
+    parser.add_argument("--verification-root", default=None, help="Input directory holding responses/ of the verification runs")
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
-    result = summarize(Path(args.root))
+    result = summarize(Path(args.root), Path(args.verification_root) if args.verification_root else None)
     result["cc12m_extraction"] = cc12m_extraction(Path(args.root))
     for surface, n in result["cc12m_extraction"].items():
         print("extraction", surface, n)
     Path(args.output).write_text(json.dumps(result, indent=2), encoding="utf-8")
     for c in result["cells"]:
         a, k = c["all_types"], c["excluding_count_relation"]
-        print(f'{c["slice"]:9s} {c["judge"][:5]} {c["surface"]:12s} n={a["responses"]:5d} '
+        print(f'{c["slice"]:16s} {c["judge"][:5]} {c["surface"]:12s} n={a["responses"]:5d} q={a["questions"]:6d} '
               f'sup/cap {a["supported_cap"]:.2f} risk {a["risk"]:.3f} | '
               f'excl sup/cap {k["supported_cap"]:.2f} risk {k["risk"]:.3f}')
     for c, n in result["cc12m_judge_agreement"].items():

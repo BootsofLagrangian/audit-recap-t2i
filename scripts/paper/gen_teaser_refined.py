@@ -1,5 +1,12 @@
 """Refined twinx + bar_mass — Apple-pastel palette, 2-decimal JSD ticks,
-cleaner legend, less visual conflict between bars and JSD layer."""
+cleaner legend, less visual conflict between bars and JSD layer.
+
+Values are the means over the seven prompt pools of the per-pool block means in
+prompt_support_bootstrap_b64_n2_250k_2026-04-24.tsv (B = 64, n-gram n = 2).
+"""
+import csv
+import glob
+import os
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -7,9 +14,13 @@ import matplotlib as mpl
 from matplotlib.ticker import FuncFormatter
 import numpy as np
 
+# Optional directory of Helvetica-like fonts (e.g. TeX Gyre Heros) for hosts without Helvetica.
+for _font in glob.glob(os.path.join(os.environ.get("EXTRA_FONT_DIR", "/nonexistent"), "*.otf")):
+    mpl.font_manager.fontManager.addfont(_font)
+
 mpl.rcParams.update({
     "font.family": "sans-serif",
-    "font.sans-serif": ["Helvetica Neue", "Helvetica", "Arial", "DejaVu Sans"],
+    "font.sans-serif": ["Helvetica Neue", "Helvetica", "TeX Gyre Heros", "Arial", "DejaVu Sans"],
     "font.size": 9,
     "axes.labelsize": 10,
     "axes.linewidth": 0.8,
@@ -26,13 +37,35 @@ mpl.rcParams.update({
     "ps.fonttype": 42,
 })
 
-OUT = str(Path(__file__).resolve().parents[2] / "results")
+OUT = os.environ.get("EVAL_DIR", str(Path(__file__).resolve().parents[2] / "results"))
+SRC = Path(OUT) / "prompt_support_bootstrap_b64_n2_250k_2026-04-24.tsv"
 
-datasets = ["DataComp", "LAION-pop", "PD12M", "Danbooru"]
-mass_o = [0.582, 0.578, 0.549, 0.477]
-mass_r = [0.452, 0.562, 0.305, 0.260]
-jsd_o  = [0.458, 0.450, 0.464, 0.492]
-jsd_r  = [0.477, 0.443, 0.517, 0.549]
+POOLS = (
+    "civitai_flux_prompts_aconexx", "flux_improved_k_mktr", "flux_prompts_chrisgoringe",
+    "flux_prompts_regpeter", "pickapic_rankings", "sd_prompts_2m_andyyang", "sdxl_refiner_prompts_falah",
+)
+PAIRS = (
+    ("datacomp_recap_llava15_paired_url", "DataComp"), ("laion_pop_llama32_paired", "LAION-pop"),
+    ("pd12m_full_paired", "PD12M"), ("danbooru2023_florence2_paired", "Danbooru"),
+)
+
+
+def pool_means(metric, column):
+    with SRC.open() as handle:
+        rows = [r for r in csv.DictReader(handle, delimiter="\t") if r["metric"] == metric and r["prompt_pool"] in POOLS]
+    out = []
+    for key, _ in PAIRS:
+        values = [float(r[column]) for r in rows if r["comparison"] == key]
+        assert len(values) == len(POOLS), (key, metric, len(values))
+        out.append(sum(values) / len(values))
+    return out
+
+
+datasets = [label for _, label in PAIRS]
+mass_o = pool_means("prompt_mass_on_caption_support", "local_block_mean")
+mass_r = pool_means("prompt_mass_on_caption_support", "reference_block_mean")
+jsd_o = pool_means("jsd", "local_block_mean")
+jsd_r = pool_means("jsd", "reference_block_mean")
 
 # Apple-pastel-leaning colour-blind-safe pair
 C_OURS_BAR = "#7FB3F6"   # soft cobalt

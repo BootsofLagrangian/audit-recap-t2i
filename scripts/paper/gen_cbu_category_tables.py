@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Write the appendix tabulars derived from cbu_vqa_by_category_b64.json.
 
-Outputs (tabular bodies only; captions live in appendix/supplementary.tex):
+Outputs (tabular bodies only; the captions are in the paper appendix):
   tables/cc12m_denominators.tex   per-surface CC12M extraction and VQA counts
   tables/excl_count_relation.tex  cross-corpus headline without count/relation
   tables/vqa_by_type.tex          per-type support/risk and CC12M judge agreement
+  tables/policy_control.tex       supported yield and risk of the captioning-policy control
+  tables/vqa_mean_std.tex         every VQA cell as mean and bootstrap standard deviation
 """
 
 from __future__ import annotations
@@ -23,6 +25,7 @@ CC12M_ROWS = [
 ]
 LABEL = {"ours_cc12m": "Ours", "ref_cc12m_llavanext": "LLaVA-NeXT",
          "ref_pixelprose_cc12m": "PixelProse", "ref_cc12m_qwen3vl8b": "Qwen3-VL-8B"}
+CONTROL_ROWS = {"CC12M-control": [], "DataComp-control": []}  # filled from the cells present in the summary
 TYPES = ["object", "attribute", "relation", "count", "style", "camera", "lighting", "text_rendering"]
 
 
@@ -32,6 +35,10 @@ def n(x: int) -> str:
 
 def cell(data: dict, slice_name: str, judge: str, surface: str) -> dict:
     return next(c for c in data["cells"] if (c["slice"], c["judge"], c["surface"]) == (slice_name, judge, surface))
+
+
+def has_cell(data: dict, slice_name: str, surface: str) -> bool:
+    return any((c["slice"], c["surface"]) == (slice_name, surface) and c["all_types"]["responses"] for c in data["cells"])
 
 
 def denominators(data: dict) -> str:
@@ -70,6 +77,8 @@ def excl_count_relation(data: dict) -> str:
 def vqa_by_type(data: dict) -> str:
     pooled: dict[tuple[str, str, str], Counter] = defaultdict(Counter)
     for c in data["cells"]:
+        if c["slice"].endswith("-control"):
+            continue
         group = "Ours" if c["surface"] == "Ours" else "Refs"
         for claim_type, counts in c["by_type"].items():
             pooled[(c["judge"], group, claim_type)].update(counts)
@@ -93,13 +102,64 @@ def vqa_by_type(data: dict) -> str:
     return "\n".join(lines) + "\n"
 
 
+def policy_control(data: dict) -> str:
+    rows = [("CC12M", "Ours", "CC12M", "Ours"), ("CC12M", "Naive", "CC12M-control", "Naive"),
+            ("CC12M", "Naive (greedy)", "CC12M-control", "Naive (greedy)"),
+            ("DataComp", "Ours", "DataComp-control", "Ours"), ("DataComp", "Naive", "DataComp-control", "Naive"),
+            ("DataComp", "Naive (greedy)", "DataComp-control", "Naive (greedy)")]
+    lines = []
+    for dataset, surface, slice_name, key in rows:
+        if not has_cell(data, slice_name, key):
+            continue
+        q = cell(data, slice_name, QWEN, key)["all_types"]
+        g = cell(data, slice_name, GEMMA, key)["all_types"]
+        assert q["responses"] == g["responses"]
+        lines.append(" & ".join([
+            dataset, surface, n(q["responses"]), n(q["questions"]),
+            f"${q['supported_cap']:.2f}$", f"${q['risk']:.3f}$", f"${g['supported_cap']:.2f}$", f"${g['risk']:.3f}$",
+        ]) + r" \\")
+    return "\n".join(lines) + "\n"
+
+
+def pm(value: float, std: float, digits: int) -> str:
+    return f"${value:.{digits}f} \\pm {std:.{digits}f}$"
+
+
+def mean_std_cells(data: dict, slice_name: str, surface: str) -> str:
+    parts = []
+    for judge in (QWEN, GEMMA):
+        c = cell(data, slice_name, judge, surface)["all_types"]
+        parts += [pm(c["supported_cap"], c["supported_cap_std"], 2), pm(c["risk"], c["risk_std"], 3)]
+    return " & ".join(parts)
+
+
+def vqa_mean_std(data: dict) -> str:
+    rows = [("CC12M", label, "CC12M", LABEL[key]) for label, key in CC12M_ROWS]
+    rows += [(s, {"Ref": "Reference", "Ours": "Ours"}[side], s, side)
+             for s in ["DataComp", "LAION-pop", "PD12M", "Danbooru"] for side in ("Ref", "Ours")]
+    for slice_name, dataset in (("CC12M-control", "CC12M control"), ("DataComp-control", "DataComp control")):
+        rows += [(dataset, key, slice_name, key) for key in CONTROL_ROWS[slice_name]]
+    lines, last = [], None
+    for dataset, surface, slice_name, key in rows:
+        if last is not None and dataset != last:
+            lines.append(r"\addlinespace[0.2em]")
+        lines.append(f"{dataset if dataset != last else ''} & {surface} & {mean_std_cells(data, slice_name, key)} \\\\")
+        last = dataset
+    return "\n".join(lines) + "\n"
+
+
 def main() -> int:
     data = json.loads((HERE / "cbu_vqa_by_category_b64.json").read_text())
+    for c in data["cells"]:
+        if c["slice"] in CONTROL_ROWS and c["surface"] not in CONTROL_ROWS[c["slice"]] and c["all_types"]["responses"]:
+            CONTROL_ROWS[c["slice"]].append(c["surface"])
     out = HERE / "tables"
     out.mkdir(exist_ok=True)
     (out / "cc12m_denominators.tex").write_text(denominators(data))
     (out / "excl_count_relation.tex").write_text(excl_count_relation(data))
     (out / "vqa_by_type.tex").write_text(vqa_by_type(data))
+    (out / "policy_control.tex").write_text(policy_control(data))
+    (out / "vqa_mean_std.tex").write_text(vqa_mean_std(data))
     for path in sorted(out.glob("*.tex")):
         print(f"== {path.name}\n{path.read_text()}")
     return 0
