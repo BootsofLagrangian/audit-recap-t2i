@@ -91,6 +91,10 @@ answers `yes` for, and u(c, x) the number it answers `no` for:
 | Surface concentration (health) | D_c | window spent on repeated form | top-100 prefix mass ↓, Distinct-3 ↑, rep-4 ↓ | surface artifact, not faithfulness |
 | Support and risk (faithfulness) | D_cx | claims absent from the image | E[s] ↑, E[u] ↓, ρ ↓ under two judges | judge-conditional proxy |
 
+Uncertainty is reported as mean ± standard deviation over bootstrap resamples: 2,000 caption-level
+resamples (seed 0) for the VQA cells and 10,000 image-cluster resamples (seed 1477) for the
+judge–human agreement.
+
 Caption-only axes use 50k paired rows per slice (the phenomenon descriptors use about 1M captions per
 surface); the image-conditioned axis uses about 5,000 captions per surface (4,494 aligned images on
 CC12M). Prompt-pool support uses seven public prompt pools, each sampled at 250,000 records.
@@ -191,7 +195,7 @@ and the three LAION subsets can share images.
 | Source family | Hugging Face dataset | Scale | Paired reference surface(s) in the paper |
 |---|---|---:|---|
 | DataComp | [`BootsofLagrangian/datacomp-recap-qwen3p5-35b-a3b`](https://huggingface.co/datasets/BootsofLagrangian/datacomp-recap-qwen3p5-35b-a3b) | ≈325.5M | Recap-DataComp |
-| CC12M | [`BootsofLagrangian/cc12m-recap-qwen3p5-35b-a3b`](https://huggingface.co/datasets/BootsofLagrangian/cc12m-recap-qwen3p5-35b-a3b) | ≈11.5M | CC12M-LLaVA-NeXT, PixelProse, CC12M-Qwen3-VL |
+| CC12M | [`BootsofLagrangian/cc12m-recap-qwen3p5-35b-a3b`](https://huggingface.co/datasets/BootsofLagrangian/cc12m-recap-qwen3p5-35b-a3b) | ≈11.5M | three CC12M recaption releases (below) |
 | LAION-pop | [`BootsofLagrangian/laion-pop-recap-qwen3p5-35b-a3b`](https://huggingface.co/datasets/BootsofLagrangian/laion-pop-recap-qwen3p5-35b-a3b) | ≈0.4M | LAION-pop-Llama |
 | PD12M | [`BootsofLagrangian/pd12m-recap-qwen3p5-35b-a3b`](https://huggingface.co/datasets/BootsofLagrangian/pd12m-recap-qwen3p5-35b-a3b) | ≈12.4M | PD12M released |
 | CommonCatalog | [`BootsofLagrangian/commoncatalog-cc-by-recap-qwen3p5-35b-a3b`](https://huggingface.co/datasets/BootsofLagrangian/commoncatalog-cc-by-recap-qwen3p5-35b-a3b) | ≈14.6M | release only |
@@ -223,7 +227,7 @@ records the dataset, split, and caption column for every surface.
 | Recap-DataComp | [`UCSC-VLAA/Recap-DataComp-1B`](https://huggingface.co/datasets/UCSC-VLAA/Recap-DataComp-1B) | `re_caption` |
 | CC12M-LLaVA-NeXT | [`CaptionEmporium/conceptual-captions-cc12m-llavanext`](https://huggingface.co/datasets/CaptionEmporium/conceptual-captions-cc12m-llavanext) | `caption_llava` |
 | PixelProse (CC12M split) | [`lodestones/pixelprose`](https://huggingface.co/datasets/lodestones/pixelprose), split `cc12m` (mirror of [`tomg-group-umd/pixelprose`](https://huggingface.co/datasets/tomg-group-umd/pixelprose)) | `vlm_caption` |
-| CC12M-Qwen3-VL | [`undefined443/cc12m-wds-recaption`](https://huggingface.co/datasets/undefined443/cc12m-wds-recaption) | not set (auto-detected) |
+| CC12M-Qwen3-VL (short tag-style captions, about 12 lex, read as a short-caption special case) | [`undefined443/cc12m-wds-recaption`](https://huggingface.co/datasets/undefined443/cc12m-wds-recaption) | not set (auto-detected) |
 | LAION-pop-Llama | [`CaptionEmporium/laion-pop-llama3.2-11b`](https://huggingface.co/datasets/CaptionEmporium/laion-pop-llama3.2-11b) | `caption_long_llama32` |
 | PD12M released | [`Spawning/pd12m-full`](https://huggingface.co/datasets/Spawning/pd12m-full) | `caption` |
 | Danbooru-Florence | [`KBlueLeaf/danbooru2023-florence2-caption`](https://huggingface.co/datasets/KBlueLeaf/danbooru2023-florence2-caption) | `parsed` |
@@ -361,24 +365,34 @@ once. It reads a manifest (`--manifest`) that lists, per comparison, the `summar
 `artifacts/cbu/pair5k/claimed_cbu_v2_<comparison>__<surface>_<budget>_5k.requests.jsonl`, and calls
 the stage scripts with the interpreter in `$AUDIT_PYTHON` (default: the current one).
 
-Per-type breakdowns, the count/relation-excluded headline, and the CC12M judge agreement come from
-the response files through the paper-side scripts:
+Every VQA cell of the paper, the per-type breakdowns, the count/relation-excluded headline, the
+captioning-policy control, and the CC12M judge agreement come from the response files through the
+paper-side scripts:
 
 ```bash
-uv run python scripts/paper/summarize_cbu_vqa_by_category.py --root . --output results/cbu_vqa_by_category_b64.json
+uv run python scripts/paper/summarize_cbu_vqa_by_category.py --root . \
+  --verification-root <verification dir> --output results/cbu_vqa_by_category_b64.json
 uv run python scripts/paper/gen_cbu_category_tables.py      # writes results/tables/*.tex
 ```
 
-`summarize_cbu_vqa_by_category.py` lists the response files it reads in its `SOURCES` constant.
+`summarize_cbu_vqa_by_category.py` summarizes both judges on the request ids present in both of their
+response files, so each (slice, surface) cell compares the two judges on one question set, and it
+attaches the standard deviation of supported CBU/cap and risk over 2,000 caption-level bootstrap
+resamples (seed 0). It reads two input directories: `--root`, the working tree with `artifacts/vqa-cbu/`
+and `artifacts/cbu/`, and `--verification-root`, a directory whose `responses/` folder holds the
+verification runs (the Gemma Judge on the DataComp sample and both judges on the control surfaces).
+Its docstring lists the directory layout and its `SOURCES` constant every file name.
+`gen_cbu_category_tables.py` writes the CC12M denominators, the count/relation-excluded headline, the
+per-type table, the policy-control table, and `vqa_mean_std.tex` with every VQA cell as mean ± std.
 
 ### 6. CC12M four-surface slice and the budget sweep
 
-The CC12M case study compares ours, CC12M-LLaVA-NeXT, PixelProse, and CC12M-Qwen3-VL on the 4,494
-images that all four surfaces share.
+The CC12M case study compares ours with the three CC12M reference surfaces on the 4,494 images that
+all four surfaces share.
 
 ```bash
 uv run python scripts/build_cc12m_four_caption_llava_url_bridge_slice.py \
-  --ours-jsonl <ours>.jsonl --qwen-jsonl <qwen3vl>.jsonl --llavanext-jsonl <llavanext>.jsonl \
+  --ours-jsonl <ours>.jsonl --qwen-jsonl <short-caption reference>.jsonl --llavanext-jsonl <llavanext>.jsonl \
   --pixelprose-jsonl <pixelprose>.jsonl --manifest data/manifests/cc12m-202603.manifest.parquet \
   --output-dir data/local-images/cc12m-four-caption-url-key-5k --max-rows 5000 --seed 0
 uv run python scripts/materialize_cc12m_four_caption_from_manifest.py \
@@ -386,8 +400,8 @@ uv run python scripts/materialize_cc12m_four_caption_from_manifest.py \
   --output-dir data/local-images/cc12m-four-caption-url-key-5k-local
 ```
 
-The bridge joins ours, CC12M-Qwen3-VL, and CC12M-LLaVA-NeXT on the original numeric key, joins
-PixelProse on the normalized LLaVA-NeXT URL, and resolves each image through the canonical manifest;
+The bridge joins ours and the `--qwen-jsonl` and `--llavanext-jsonl` references on the original
+numeric key, joins PixelProse on the normalized LLaVA-NeXT URL, and resolves each image through the canonical manifest;
 the materializer extracts the images from the CC12M tar shards and rewrites all four surfaces with the
 same local image path. Stages 4 and 5 then run on the four materialized surfaces at B = 64 under both
 judges.
@@ -411,30 +425,52 @@ unchanged request builder, checks that the first 1,000 rows equal the pilot requ
 record, and writes the remaining rows as one run file per budget. `gen_cc12m_frontiers.py` redraws both panels of Figure 2
 from `results/` (set `EVAL_DIR` to read and write elsewhere).
 
-### 7. Captioner-control ablation (naive policy)
+### 7. Captioning-policy control (naive policy)
 
-The control keeps the captioner fixed and replaces the policy with the Recap-DataComp instruction as
-a single user message with no system prompt:
+The control keeps the captioner and the images fixed and replaces the policy with the Recap-DataComp
+instruction as a single user message with no system prompt:
 
 ```
 Please generate a detailed caption of this image. Please be as descriptive as possible.
 ```
 
+Each family has two naive surfaces. `Naive` uses matched decoding, the captioner's release sampling
+defaults (temperature 1.0, top_k 20, top_p 0.95) that also produced the released captions;
+`Naive (greedy)` decodes at temperature 0. Claims are extracted once, by Qwen3.5-397B-A17B-FP8, and both
+judges answer the VQA requests built from those claims.
+
+| Surface | Family | Decoding | Results |
+|---|---|---|---|
+| `naive_qwen35_sampled_cc12m` | CC12M | matched (temperature 1.0, top_k 20, top_p 0.95) | `results/naive_qwen35_sampled_cc12m/` |
+| `naive_qwen35_cc12m` | CC12M | greedy (temperature 0) | `results/naive_qwen35_cc12m/` |
+| `naive_qwen35_sampled_datacomp` | DataComp | matched (temperature 1.0, top_k 20, top_p 0.95) | `results/naive_qwen35_sampled_datacomp/` |
+| `naive_qwen35_datacomp` | DataComp | greedy (temperature 0) | `results/naive_qwen35_datacomp/` |
+
+Each results directory holds the surface's captions (`<surface>.jsonl`), its claimed-CBU summary, and
+one VQA summary per judge; its README names the producing scripts.
+
 ```bash
-bash scripts/run_cc12m_naive_qwen35_baseline.sh          # captions with the 35B captioner, then CBU requests
-bash scripts/run_cc12m_naive_qwen35_gemma_metrics.sh     # extraction and VQA on the served MODEL, LongCLIP, tables
+# captions and claim-extraction requests (greedy by default)
+bash scripts/run_cc12m_naive_qwen35_baseline.sh
+SURFACE=naive_qwen35_sampled_cc12m CAPTION_TEMPERATURE=1.0 CAPTION_TOP_K=20 CAPTION_TOP_P=0.95 \
+  RUN_ROOT=artifacts/recap-ed/cc12m-naive-qwen35-sampled bash scripts/run_cc12m_naive_qwen35_baseline.sh
+# claim extraction and the Qwen Judge with the 397B server: steps 4 and 5
+# Gemma Judge on the VQA requests built from the Qwen397 claims
+bash scripts/run_cc12m_naive_qwen35_gemma_metrics.sh
 bash scripts/run_datacomp_naive_qwen35_qwen397_metrics.sh
 ```
 
-Each driver documents the server it expects and takes its paths and concurrency from environment
-variables (`RUN_ROOT`, `IMAGE_DIR`, `MODEL`, `URLS`, ...). The CC12M driver starts from the CC12M VQA
-request file of step 6 and extracts the images it references from `data/cc12m-wds`
-(`materialize_cc12m_images_from_requests.py`). The DataComp driver starts from naive DataComp captions
-and claimed-CBU requests already placed under its `RUN_ROOT` and `CBU_ROOT`; produce them with
-`build_naive_vlm_caption_requests.py`, `run_naive_vlm_caption_requests.py`,
-`summarize_naive_vlm_captions.py`, and `build_caption_cbu_requests.py` as in the CC12M driver.
-`run_naive_vlm_caption_requests.py` sends `temperature` 0 unless `--temperature` is given.
-`export_cc12m_naive_qwen35_comparison_tables.py` writes the surface-concentration comparison.
+Each driver documents the server it expects and takes its paths, surface name, decoding, and
+concurrency from environment variables (`RUN_ROOT`, `SURFACE`, `CAPTION_TEMPERATURE`, `IMAGE_DIR`,
+`MODEL`, `URLS`, ...). The CC12M baseline driver starts from the CC12M VQA request file of step 6 and
+extracts the images it references from `data/cc12m-wds` (`materialize_cc12m_images_from_requests.py`).
+The Gemma driver requires the Qwen397 claimed-CBU responses, builds the VQA requests from them if they
+do not exist yet, and never extracts claims with Gemma. The DataComp driver starts from naive DataComp
+captions and claimed-CBU requests already placed under its `RUN_ROOT` and `CBU_ROOT`; produce them with
+`build_naive_vlm_caption_requests.py`, `run_naive_vlm_caption_requests.py` (`--temperature`, `--top-k`,
+`--top-p`), `summarize_naive_vlm_captions.py`, and `build_caption_cbu_requests.py` as in the CC12M
+driver. `export_cc12m_naive_qwen35_comparison_tables.py` writes the surface-concentration comparison
+for the greedy CC12M surface.
 
 ### 8. Encoder-side probes (appendix)
 
@@ -453,7 +489,7 @@ The input64 LongCLIP mode feeds captions already truncated to 64 lexical units.
 ### 9. Figures
 
 ```bash
-uv run python scripts/paper/gen_teaser_refined.py      # Figure 1 (right)
+uv run python scripts/paper/gen_teaser_refined.py      # Figure 1 (right), means over the seven pools
 uv run python scripts/paper/gen_cc12m_frontiers.py     # Figure 2
 uv run python scripts/paper/gen_per_pool_heatmap.py    # appendix per-pool heatmap
 uv run python scripts/plot_caption_survey_curves.py --help
@@ -482,6 +518,14 @@ uv run python scripts/human_cbu_eval.py close --db ... --study-id ...
 uv run python scripts/human_cbu_eval.py export --db ... --study-id ... --output-dir artifacts/human-cbu/export
 ```
 
+Judge–human agreement, with its standard deviation over 10,000 image-cluster bootstrap resamples
+(seed 1477), comes from the export directory; the output holds aggregate statistics only:
+
+```bash
+uv run python scripts/paper/human_judge_agreement_bootstrap.py artifacts/human-cbu/export \
+  > results/human_cbu/judge_human_agreement_bootstrap.json
+```
+
 `participant-test` serves the full participant flow in response-discarding memory for rehearsal;
 `validate`, `status`, `backup`, and the `adjudication-*` commands cover pre-launch checks, operations,
 and disagreement review. The study configuration disables storage of names, email addresses, IP
@@ -503,9 +547,11 @@ or figure it feeds and to the script that produces it, and lists what this snaps
 |---|---|
 | `all_cbu_b64_summary.csv` | cross-corpus CBU/cap and CBU/100 lex |
 | `all_vqa_b64_summary.csv` | Qwen Judge supported CBU/cap and risk; VQA denominators |
-| `cbu_vqa_by_category_b64.json`, `tables/*.tex` | Gemma Judge cross-corpus cells; per-type tables; CC12M denominators |
+| `cbu_vqa_by_category_b64.json`, `tables/*.tex` | VQA cells under both judges as mean ± std; per-type tables; policy control; CC12M denominators |
 | `cc12m_budget_frontier_plot.csv`, `cc12m_vqa_supported_risk_pareto.csv` | CC12M frontier table and Figure 2 |
 | `prompt_support_bootstrap_b64_n2_250k_2026-04-24.tsv` | Pool-wins, Figure 1 (right), per-pool heatmap |
+| `human_cbu/judge_human_agreement_bootstrap.json` | judge–human agreement, mean ± std |
+| `naive_qwen35_*/` | captioning-policy control surfaces |
 | `raw_summaries/` | per-stage summaries (text diagnostics, prompt support, CBU, VQA, embeddings, LongCLIP) |
 
 ## Citation
