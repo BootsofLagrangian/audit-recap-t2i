@@ -1,10 +1,16 @@
 # Results
 
-This directory holds the summary artifacts behind the tables and figures of the paper. Every file
-is a byte-for-byte copy of the file with the same relative path in the manuscript's result bundle
-(`artifacts/eval_results/` for the audit results, `artifacts/human_cbu/` for the human-study
-screenshots). No number in this directory was edited by hand. To refresh a result, copy the updated
-file from the bundle to the same relative path here.
+This directory holds the summary artifacts behind the tables and figures of the paper. Every
+result file is a byte-for-byte copy of the file the producing run wrote, taken from the paper's
+result bundle (`artifacts/eval_results/` for the audit results, `artifacts/human_cbu/` for the
+human-study screenshots, and the final verification bundle for the policy control, the DataComp
+verification run, and the sensitivity checks). No number in this directory was edited by hand. To
+refresh a result, copy the updated file from the bundle to the same relative path here.
+
+The naive-control captions (`naive_qwen35_*/captions.jsonl.gz`) are the one exception: they are
+stored gzip-compressed, carry public image keys only, and have email addresses and phone numbers
+transcribed from image text masked as `[email]` and `[phone]`. Their text is CC-BY-4.0, like the
+released captions; each folder's README shows how to read them.
 
 Most files are written by a script in `scripts/`, as listed below. The top-level rollup tables
 (`all_cbu_b64_summary.csv`, `all_vqa_b64_summary.csv`, `cc12m_vqa_supported_risk_pareto.csv`,
@@ -28,11 +34,10 @@ example `pd12m_full_paired__ours_pd12m_img2dataset`.
 | Cross-corpus headline at B = 64: Avg lex | `raw_summaries/cpu_text_metrics/fair_slices_1m_normalized_2026-04-24.tsv` (`avg_tokens`) | as above |
 | Cross-corpus headline: CBU/cap | `all_cbu_b64_summary.csv` (`cbu_cap`, `cbu_100tok`) | rollup of `raw_summaries/cbu_claimed/claimed_cbu_v2_all7_b64_5k.*.summary.json` (`scripts/summarize_cbu_responses.py --mode claimed`) |
 | Cross-corpus headline: Pool-wins | `prompt_support_bootstrap_b64_n2_250k_2026-04-24.tsv` | `scripts/caption_prompt_support_bootstrap.py`; Pool-wins counts the seven pools other than `sd_prompts_dedup_xzuyn` with `delta_mean_local_minus_reference > 0` on `prompt_mass_on_caption_support` |
-| Cross-corpus headline: Qwen Judge Sup. CBU/cap and Risk | `all_vqa_b64_summary.csv` (`supported_cap`, `risk`) | rollup of `raw_summaries/vqa_image_conditioned/*.summary.json` (`scripts/summarize_cbu_vqa_responses.py`) |
-| Cross-corpus headline: Gemma Judge Sup. CBU/cap and Risk | `cbu_vqa_by_category_b64.json` (cells with `judge = Gemma-4-31B-IT`, `all_types`; both judges on the request ids they share) | `scripts/paper/summarize_cbu_vqa_by_category.py` |
-| Captioning-policy control (naive policy, CC12M and DataComp; `Naive` = matched decoding, `Naive (greedy)` = temperature 0) | `naive_qwen35_sampled_cc12m/`, `naive_qwen35_cc12m/`, `naive_qwen35_sampled_datacomp/`, `naive_qwen35_datacomp/` (captions, claimed-CBU summary, one VQA summary per judge); `tables/policy_control.tex`; `CC12M-control` and `DataComp-control` cells of `cbu_vqa_by_category_b64.json` | `scripts/run_cc12m_naive_qwen35_baseline.sh`, `scripts/run_cc12m_naive_qwen35_gemma_metrics.sh`, `scripts/run_datacomp_naive_qwen35_qwen397_metrics.sh`, `scripts/paper/summarize_cbu_vqa_by_category.py`, `scripts/paper/gen_cbu_category_tables.py` |
+| Cross-corpus headline: Sup. CBU/cap and Risk under the Qwen Judge and the Gemma Judge | `cbu_vqa_by_category_b64.json` (`all_types` of the `DataComp`, `LAION-pop`, `PD12M`, and `Danbooru` cells; both judges on the requests both answered); the same cells as mean ± std in `tables/vqa_mean_std.tex`; the per-judge summaries of the DataComp verification run in `datacomp_pair/` | `scripts/paper/summarize_cbu_vqa_by_category.py`, `scripts/paper/gen_cbu_category_tables.py`; per-judge summaries by `scripts/summarize_cbu_vqa_responses.py` |
+| Captioning-policy control (naive policy, CC12M and DataComp; `Naive` = matched decoding, `Naive (greedy)` = temperature 0) | `tables/policy_control.tex`; `CC12M-control` and `DataComp-control` cells of `cbu_vqa_by_category_b64.json`; `naive_qwen35_sampled_cc12m/`, `naive_qwen35_cc12m/`, `naive_qwen35_sampled_datacomp/`, `naive_qwen35_datacomp/` (captions, claimed-CBU summary, one VQA summary per judge); the DataComp `Ours` rows in `policy_control_ours_datacomp/`; the CC12M `Ours` row is the CC12M case study (`budget = 64` row of `cc12m_budget_frontier_plot.csv` and the `CC12M` cells) | `scripts/run_cc12m_naive_qwen35_baseline.sh`, `scripts/run_cc12m_naive_qwen35_gemma_metrics.sh`, `scripts/run_datacomp_naive_qwen35_qwen397_metrics.sh`, `scripts/summarize_cbu_responses.py --mode claimed`, `scripts/summarize_cbu_vqa_responses.py`, `scripts/paper/summarize_cbu_vqa_by_category.py`, `scripts/paper/gen_cbu_category_tables.py` |
 | CC12M frontier at B = 64: CBU/cap and CBU/100lex | `cc12m_budget_frontier_plot.csv` (rows with `budget = 64`) | `scripts/paper/build_cc12m_budget_frontier_csv.py` |
-| CC12M frontier at B = 64: Sup. CBU/cap and Risk under both judges | `cc12m_vqa_supported_risk_pareto.csv`; `all_vqa_b64_summary.csv` (`source = cc12m_qwen`, `cc12m_gemma`) | rollups of the two CC12M summaries in `raw_summaries/vqa_image_conditioned/` |
+| CC12M frontier at B = 64: Sup. CBU/cap and Risk under both judges | `cc12m_vqa_supported_risk_pareto.csv`; `all_vqa_b64_summary.csv` (`source = cc12m_qwen`, `cc12m_gemma`); the `CC12M` cells of `cbu_vqa_by_category_b64.json` (same values, with bootstrap std) | rollups of the two CC12M summaries in `raw_summaries/vqa_image_conditioned/`; `scripts/paper/summarize_cbu_vqa_by_category.py` |
 | Figure 2 (left), CC12M supported yield vs. risk | `cc12m_vqa_supported_risk_pareto_revised.{pdf,png}` | `scripts/paper/gen_cc12m_frontiers.py` from `cc12m_vqa_supported_risk_pareto.csv` |
 | Figure 2 (right), CC12M budget sweep B in {16, 32, 48, 64} | `cc12m_cbu_efficiency_yield_frontier_revised.{pdf,png}` | `scripts/paper/gen_cc12m_frontiers.py` from `cc12m_budget_frontier_plot.csv` |
 | Human evaluation of image support, judge–human agreement as mean ± std over 10,000 image-cluster bootstrap resamples | `human_cbu/judge_human_agreement_bootstrap.json` (aggregate only) | `scripts/paper/human_judge_agreement_bootstrap.py` on the output of `scripts/human_cbu_eval.py export` |
@@ -42,11 +47,14 @@ example `pd12m_full_paired__ours_pd12m_img2dataset`.
 | Paper element | File(s) | Produced by |
 |---|---|---|
 | Per-pool prompt-support heatmap | `per_pool_prompt_support_heatmap.{pdf,png}`; per-comparison direction counts over all eight pools in `prompt_support_direction_summary.csv` | `scripts/paper/gen_per_pool_heatmap.py` from `prompt_support_bootstrap_b64_n2_250k_2026-04-24.tsv` (seven pools) |
-| VQA question denominators and B-eligibility | `all_vqa_b64_summary.csv` (`responses`, `questions`, `risk`); `raw_summaries/cpu_text_metrics/fair_slices_1m_normalized_2026-04-24.tsv` (`cov64`); paired deltas in `raw_summaries/cpu_text_metrics/paired_delta_ci.tsv` (`elig64`) | see above; `scripts/summarize_recap_fair_slice_cpu_remaining.py` for the paired deltas |
+| VQA question denominators and B-eligibility of the cross-corpus pairs | `tables/vqa_questions.tex` (responses, questions, questions per response, and risk from the Qwen Judge cells of `cbu_vqa_by_category_b64.json`); B-eligibility from `raw_summaries/cpu_text_metrics/fair_slices_1m_normalized_2026-04-24.tsv` (`cov64`); paired deltas in `raw_summaries/cpu_text_metrics/paired_delta_ci.tsv` (`elig64`) | `scripts/paper/gen_cbu_category_tables.py`; see above for the survey; `scripts/summarize_recap_fair_slice_cpu_remaining.py` for the paired deltas |
 | CC12M denominators | `tables/cc12m_denominators.tex` | `scripts/paper/gen_cbu_category_tables.py` from `cbu_vqa_by_category_b64.json` |
 | Cross-corpus headline without count and relation claims | `tables/excl_count_relation.tex` | `scripts/paper/gen_cbu_category_tables.py` |
 | Image support and risk by claim type | `tables/vqa_by_type.tex` | `scripts/paper/gen_cbu_category_tables.py` |
-| VQA cells as mean ± bootstrap std (2,000 caption-level resamples, seed 0) | `tables/vqa_mean_std.tex` from `cbu_vqa_by_category_b64.json` (`supported_cap_std`, `risk_std`) | `scripts/paper/summarize_cbu_vqa_by_category.py`, `scripts/paper/gen_cbu_category_tables.py`; the earlier CC12M bootstrap exports `cc12m_cbu_vqa_bootstrap_ci.tsv` and `cc12m_gemma4_vqa_bootstrap_ci.tsv` are superseded by this table |
+| VQA cells as mean ± bootstrap std (2,000 caption-level resamples, seed 0) | `tables/vqa_mean_std.tex` from `cbu_vqa_by_category_b64.json` (`supported_cap_std`, `risk_std`) | `scripts/paper/summarize_cbu_vqa_by_category.py`, `scripts/paper/gen_cbu_category_tables.py` |
+| Lexical-window sensitivity of claimed CBU (CC12M) | `sensitivity/cc12m_lexical_window_claimed_cbu_summary.json`: the four CC12M surfaces with the extractor window cut at the first 64 lexical units instead of the first 64 whitespace words | `scripts/summarize_cbu_responses.py --mode claimed`; the request builder in this repository cuts whitespace words (see "Open items" below) |
+| Encoder-token truncation of the naive captions | `sensitivity/naive_encoder_truncation.json` (CLIP-77, LongCLIP-248, SigLIP2-64 per naive surface) | encoder fields as written by `scripts/caption_tokenizer_truncation_survey.py` |
+| LongCLIP retrieval of the matched-decoding CC12M naive surface | `sensitivity/naive_sampled_cc12m_longclip_full.tsv`, `sensitivity/naive_sampled_cc12m_longclip_input64.tsv` | `scripts/compute_longclip_retrieval_margin.py` |
 | Human-study interface figures | `human_cbu/ui_appendix/*.png` | screenshots of the response-discarding participant-test mode of `scripts/human_cbu_eval.py` with an invented caption and a synthetic scene |
 | DataComp text-space probes by encoder (Vendi, eRank, Coverage@10, Density@10) | `raw_summaries/embedding_vendi_support/caption_embedding_profile.tsv` (Vendi, eRank); `prompt_caption_support.tsv` (Coverage and Density, raw-text protocol rows `raw/raw` and, for BGE-M3, `raw/corpus`) | `scripts/caption_embedding_vendi.py` |
 | EmbeddingGemma-300M multi-slice grid | `embeddinggemma_pair_summary.tsv`; `raw_summaries/embedding_vendi_support/embeddinggemma_all_pairs.tsv`, `embeddinggemma_dtype_sanity.json` | `scripts/caption_embedding_vendi.py` |
@@ -62,7 +70,7 @@ example `pd12m_full_paired__ours_pd12m_img2dataset`.
 | `prompt_support/` | hashed n-gram prompt-support and JSD runs at 250k caption records per surface against pools of up to 1M prompts |
 | `cbu_claimed/` | claimed-CBU summaries at B = 64 for the cross-corpus 5k samples (`all7`, `completed4`, `cc12m3`), caption-level bootstrap summaries, and the CC12M budget sweep at B in {16, 32, 48} on all 4,494 aligned images (`*_4494.merged.summary.json`, `cc12m_budget_frontier_plot_4494.csv`), with the request rebuild check (`prepare_report.json`) and the 800-request rerun agreement check (`overlap_b32_rows0-199.comparison.json`) |
 | `cbu_grounded_legacy/` | summaries of the earlier exact-unit grounded verification stage; kept for traceability and not used in the reported tables |
-| `vqa_image_conditioned/` | Qwen Judge summaries for the cross-corpus pairs and CC12M, the Gemma Judge summary for CC12M, and the earlier CC12M bootstrap exports |
+| `vqa_image_conditioned/` | Qwen Judge summaries for the cross-corpus pairs and CC12M, the Gemma Judge summary for CC12M, and the earlier CC12M bootstrap interval exports (superseded, see below) |
 | `embedding_vendi_support/` | encoder-side diversity and prompt-to-caption support profiles |
 | `longclip_retrieval/` | LongCLIP retrieval summary (input64 mode) |
 
@@ -78,20 +86,44 @@ Two readings need care:
 - The appendix artifact map names `cc12m_vqa_supported_risk_pareto.png` and
   `cc12m_cbu_efficiency_yield_frontier_by_budget.png`; the final renderings of these two
   panels are the `*_revised.{pdf,png}` files listed above.
+- The `datacomp_qwen` rows of `all_vqa_b64_summary.csv` and the DataComp Qwen Judge summary in
+  `raw_summaries/vqa_image_conditioned/` come from an earlier Qwen Judge run on the DataComp sample
+  (Ours: 4,648 responses, 13.84 supported CBU/cap). The paper's DataComp cells use the verification
+  run in `datacomp_pair/` (both judges), restricted to the 4,771 Ours and 4,914 reference requests
+  that both judges answered: 13.73 and 8.49 under the Qwen Judge.
+- The per-judge summaries in `datacomp_pair/` count every request that judge answered (Ours: 4,848
+  under the Qwen Judge, 4,773 under the Gemma Judge); the cells of `cbu_vqa_by_category_b64.json`
+  use the requests both judges answered, so the two differ in the second decimal (Qwen Judge Ours
+  13.71 in the summary, 13.73 in the cell). In the policy control both judges answered every
+  request, so the summaries in `policy_control_ours_datacomp/` and `naive_qwen35_*/` match their
+  cells.
 
-## Not in this snapshot
+## Superseded files
 
-The following arrive with the final verification runs and replace or fill the paths named above:
+`cc12m_cbu_vqa_bootstrap_ci.tsv` and `cc12m_gemma4_vqa_bootstrap_ci.tsv` (at the top level and, as
+identical copies, in `raw_summaries/vqa_image_conditioned/`) are the earlier CC12M bootstrap exports,
+which report 95% intervals. They are **superseded** by the mean ± std convention of
+`tables/vqa_mean_std.tex` and are kept unchanged for traceability only; the paper does not report
+them.
 
-- `cbu_vqa_by_category_b64.json` with both judges on their shared request ids, bootstrap standard
-  deviations, and the `CC12M-control` and `DataComp-control` slices, together with the tables written
-  from it (`tables/policy_control.tex`, `tables/vqa_mean_std.tex`, and refreshed copies of the other
-  three). The copy here is the earlier version, which `gen_cbu_category_tables.py` in its current form
-  does not accept.
-- The seven-pool rendering of `teaser_right_v_twinx_v2.{pdf,png}`; the files here are the earlier
-  rendering from eight-pool means. `scripts/paper/gen_teaser_refined.py` writes the seven-pool version.
-- The four `naive_qwen35_*` surfaces (captions and summaries); each directory's README lists its
-  contents.
+## Policy control, verification, and sensitivity folders
+
+| Directory | Contents |
+|---|---|
+| `naive_qwen35_sampled_cc12m/`, `naive_qwen35_cc12m/` | CC12M naive surfaces (matched decoding; greedy): 4,494 captions each as `captions.jsonl.gz`, claimed-CBU summary, and one VQA summary per judge |
+| `naive_qwen35_sampled_datacomp/`, `naive_qwen35_datacomp/` | DataComp naive surfaces (matched decoding; greedy): 4,775 captions each, with the same summaries |
+| `policy_control_ours_datacomp/` | the released (`Ours`) captions on the same 4,775 DataComp images: claimed-CBU summary and one VQA summary per judge, all on the Qwen3.5-397B-A17B-FP8 claims |
+| `datacomp_pair/` | the DataComp verification run of the cross-corpus pair: one VQA summary per judge over Ours and Recap-DataComp |
+| `sensitivity/` | lexical-window claimed CBU (CC12M), encoder-token truncation of the naive captions, and LongCLIP retrieval of the matched-decoding CC12M naive surface; the LongCLIP TSVs keep the `*_ci95` columns written by the retrieval script |
+
+`scripts/paper/gen_cbu_category_tables.py` reproduces the six files in `tables/` byte for byte from
+`cbu_vqa_by_category_b64.json`.
+
+## Open items
+
+- The lexical-window run in `sensitivity/cc12m_lexical_window_claimed_cbu_summary.json` used request
+  files cut at 64 lexical units; `scripts/build_caption_cbu_requests.py` in this repository cuts at 64
+  whitespace words, and the lexical-window variant of the request builder is not included.
 
 Not part of the release:
 

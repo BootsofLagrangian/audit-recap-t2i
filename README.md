@@ -24,6 +24,7 @@ human calibration study, and the result summaries behind every table and figure 
 ## Contents
 
 - [What the audit measures](#what-the-audit-measures)
+- [Key results](#key-results)
 - [Repository layout](#repository-layout)
 - [Installation](#installation)
 - [Hardware and model serving](#hardware-and-model-serving)
@@ -98,6 +99,53 @@ judge–human agreement.
 Caption-only axes use 50k paired rows per slice (the phenomenon descriptors use about 1M captions per
 surface); the image-conditioned axis uses about 5,000 captions per surface (4,494 aligned images on
 CC12M). Prompt-pool support uses seven public prompt pools, each sampled at 250,000 records.
+
+## Key results
+
+All values are at B = 64 and are read from the files in [`results/`](results/README.md). Supported
+CBU/cap and risk are mean ± std over 2,000 caption-level bootstrap resamples (seed 0), computed on the
+requests that both judges answered (`results/cbu_vqa_by_category_b64.json`,
+`results/tables/vqa_mean_std.tex`). Claimed CBU/cap and CBU/100 lex count the claims of the
+Qwen3.5-397B-A17B-FP8 extractor over every caption with a valid extractor response.
+
+**Cross-corpus pairs (reference → ours).**
+
+| Pair | Claimed CBU/cap | Qwen Judge Sup. CBU/cap | Qwen Judge risk | Gemma Judge Sup. CBU/cap | Gemma Judge risk |
+|---|---|---|---|---|---|
+| DataComp | 10.44 → 14.45 | 8.49 ± 0.05 → 13.73 ± 0.05 | 0.177 ± 0.003 → 0.035 ± 0.001 | 8.00 ± 0.05 → 12.94 ± 0.05 | 0.219 ± 0.003 → 0.081 ± 0.001 |
+| LAION-pop | 11.91 → 14.82 | 10.80 ± 0.04 → 14.22 ± 0.05 | 0.077 ± 0.001 → 0.031 ± 0.001 | 10.22 ± 0.04 → 13.61 ± 0.05 | 0.113 ± 0.002 → 0.060 ± 0.001 |
+| PD12M | 9.78 → 15.02 | 8.61 ± 0.05 → 14.29 ± 0.05 | 0.103 ± 0.002 → 0.034 ± 0.001 | 8.23 ± 0.05 → 13.53 ± 0.05 | 0.131 ± 0.002 → 0.066 ± 0.001 |
+| Danbooru | 8.18 → 14.33 | 6.38 ± 0.04 → 12.74 ± 0.05 | 0.217 ± 0.003 → 0.058 ± 0.001 | 6.15 ± 0.04 → 11.85 ± 0.04 | 0.235 ± 0.003 → 0.094 ± 0.001 |
+
+Across the four pairs, ours raises claimed CBU/cap by +2.91 to +6.14; under both judges it raises
+supported CBU/cap by +3.39 to +6.36 and lowers risk by 0.046 to 0.159. Without count and relation
+claims, supported CBU/cap still rises by +2.66 to +5.22 and risk is lower in all eight (pair, judge)
+cells (`results/tables/excl_count_relation.tex`).
+
+**Captioning-policy control.** The same captioner (`Qwen/Qwen3.5-35B-A3B-FP8`) with the same decoding
+captions the same images under the naive single-message prompt; claims are extracted by
+Qwen3.5-397B-A17B-FP8 and both judges answer the same questions (`results/tables/policy_control.tex`).
+
+| Family | Surface | Claimed CBU/cap | CBU/100 lex | Qwen Judge Sup. CBU/cap / risk | Gemma Judge Sup. CBU/cap / risk |
+|---|---|---:|---:|---|---|
+| CC12M (4,494 images) | Ours | 15.21 | 23.16 | 14.60 ± 0.06 / 0.030 ± 0.001 | 13.82 ± 0.06 / 0.066 ± 0.001 |
+| | Naive | 11.32 | 17.26 | 11.03 ± 0.05 / 0.022 ± 0.001 | 10.61 ± 0.05 / 0.045 ± 0.001 |
+| | Naive (greedy) | 11.43 | 17.45 | 11.10 ± 0.05 / 0.022 ± 0.001 | 10.79 ± 0.05 / 0.043 ± 0.001 |
+| DataComp (4,775 images) | Ours | 14.60 | 22.23 | 13.90 ± 0.06 / 0.036 ± 0.001 | 13.07 ± 0.05 / 0.080 ± 0.001 |
+| | Naive | 10.95 | 16.66 | 10.56 ± 0.04 / 0.026 ± 0.001 | 10.07 ± 0.04 / 0.057 ± 0.001 |
+| | Naive (greedy) | 10.84 | 16.53 | 10.53 ± 0.04 / 0.021 ± 0.001 | 10.11 ± 0.04 / 0.049 ± 0.001 |
+
+`Naive` uses the decoding of the released captions (temperature 1.0, top_k 20, top_p 0.95);
+`Naive (greedy)` decodes at temperature 0. Against `Naive`, the released policy raises claimed CBU/cap
+by +3.7 to +3.9 and supported CBU/cap by +3.0 to +3.6 under both judges, with risk within 0.03 of the
+naive surface. Greedy decoding gives the same reading: against `Naive (greedy)` (claimed 11.43 on
+CC12M, 10.84 on DataComp), claimed CBU/cap rises by +3.8, supported CBU/cap by +3.0 to +3.5, and risk
+stays within 0.031.
+
+**Lexical-window sensitivity (CC12M).** Cutting the extractor window at 64 lexical units instead of 64
+whitespace words moves claimed CBU/cap by at most 3.0% (Ours 15.21 → 14.75) and CBU/100 lex by at most
+0.14, and keeps the order of the four CC12M surfaces
+(`results/sensitivity/cc12m_lexical_window_claimed_cbu_summary.json`).
 
 ## Repository layout
 
@@ -375,15 +423,19 @@ uv run python scripts/paper/summarize_cbu_vqa_by_category.py --root . \
 uv run python scripts/paper/gen_cbu_category_tables.py      # writes results/tables/*.tex
 ```
 
-`summarize_cbu_vqa_by_category.py` summarizes both judges on the request ids present in both of their
-response files, so each (slice, surface) cell compares the two judges on one question set, and it
+`summarize_cbu_vqa_by_category.py` summarizes both judges on the requests that both of them answered
+(a parsed answer record came back; when response files are merged, an answered row is kept over an
+unanswered one), so each (slice, surface) cell compares the two judges on one question set, and it
 attaches the standard deviation of supported CBU/cap and risk over 2,000 caption-level bootstrap
 resamples (seed 0). It reads two input directories: `--root`, the working tree with `artifacts/vqa-cbu/`
 and `artifacts/cbu/`, and `--verification-root`, a directory whose `responses/` folder holds the
-verification runs (the Gemma Judge on the DataComp sample and both judges on the control surfaces).
-Its docstring lists the directory layout and its `SOURCES` constant every file name.
-`gen_cbu_category_tables.py` writes the CC12M denominators, the count/relation-excluded headline, the
-per-type table, the policy-control table, and `vqa_mean_std.tex` with every VQA cell as mean ± std.
+verification runs (both judges on the DataComp 5k sample, on the four naive surfaces, and on the
+DataComp `Ours` rows of the control). Its docstring lists the directory layout and its `SOURCES`
+constant every file name. `gen_cbu_category_tables.py` writes the CC12M denominators, the
+count/relation-excluded headline, the per-type table, the policy-control table, the cross-corpus
+question denominators (`vqa_questions.tex`), and `vqa_mean_std.tex` with every VQA cell as mean ± std;
+run on `results/cbu_vqa_by_category_b64.json`, it reproduces the six files in `results/tables/` byte
+for byte.
 
 ### 6. CC12M four-surface slice and the budget sweep
 
@@ -446,8 +498,12 @@ judges answer the VQA requests built from those claims.
 | `naive_qwen35_sampled_datacomp` | DataComp | matched (temperature 1.0, top_k 20, top_p 0.95) | `results/naive_qwen35_sampled_datacomp/` |
 | `naive_qwen35_datacomp` | DataComp | greedy (temperature 0) | `results/naive_qwen35_datacomp/` |
 
-Each results directory holds the surface's captions (`<surface>.jsonl`), its claimed-CBU summary, and
-one VQA summary per judge; its README names the producing scripts.
+Each results directory holds the surface's captions (`captions.jsonl.gz`, gzip-compressed JSONL; read
+it with `gzip.open(path, "rt")` or `zcat`), its claimed-CBU summary, and one VQA summary per judge; its
+README names the producing scripts. The captions carry public image keys only (`image_url`,
+`public_lookup_key`, `pair_key`), and email addresses and phone numbers transcribed from image text
+are masked as `[email]` and `[phone]`. `results/policy_control_ours_datacomp/` holds the matching
+summaries of the released captions on the same DataComp images.
 
 ```bash
 # captions and claim-extraction requests (greedy by default)
@@ -485,6 +541,8 @@ uv run python scripts/caption_tokenizer_truncation_survey.py --help
 ```
 
 The input64 LongCLIP mode feeds captions already truncated to 64 lexical units.
+`results/sensitivity/` holds the encoder-token truncation of the naive captions and the LongCLIP
+retrieval of the matched-decoding CC12M naive surface in both modes.
 
 ### 9. Figures
 
@@ -540,19 +598,24 @@ uv run pytest
 ## Results directory
 
 `results/` holds the summary files behind the paper's tables and figures, copied byte for byte from
-the manuscript's result bundle. [`results/README.md`](results/README.md) maps each file to the table
-or figure it feeds and to the script that produces it, and lists what this snapshot does not include.
+the paper's result bundles; the naive-control captions are the one exception (compressed, with
+emails and phone numbers masked). [`results/README.md`](results/README.md) maps each file to the
+table or figure it feeds and to the script that produces it, marks the superseded files, and lists
+what the release does not include.
 
 | File | Paper element |
 |---|---|
 | `all_cbu_b64_summary.csv` | cross-corpus CBU/cap and CBU/100 lex |
-| `all_vqa_b64_summary.csv` | Qwen Judge supported CBU/cap and risk; VQA denominators |
-| `cbu_vqa_by_category_b64.json`, `tables/*.tex` | VQA cells under both judges as mean ± std; per-type tables; policy control; CC12M denominators |
+| `cbu_vqa_by_category_b64.json`, `tables/*.tex` | every VQA cell under both judges as mean ± std; per-type tables; count/relation-excluded headline; policy control; question denominators; CC12M denominators |
+| `all_vqa_b64_summary.csv` | per-judge rollup of the Qwen Judge and CC12M summaries (see `results/README.md` for its DataComp rows) |
 | `cc12m_budget_frontier_plot.csv`, `cc12m_vqa_supported_risk_pareto.csv` | CC12M frontier table and Figure 2 |
-| `prompt_support_bootstrap_b64_n2_250k_2026-04-24.tsv` | Pool-wins, Figure 1 (right), per-pool heatmap |
+| `prompt_support_bootstrap_b64_n2_250k_2026-04-24.tsv`, `teaser_right_v_twinx_v2.{pdf,png}` | Pool-wins, Figure 1 (right, seven-pool means), per-pool heatmap |
 | `human_cbu/judge_human_agreement_bootstrap.json` | judge–human agreement, mean ± std |
-| `naive_qwen35_*/` | captioning-policy control surfaces |
+| `naive_qwen35_*/`, `policy_control_ours_datacomp/` | captioning-policy control: naive captions and summaries, and the released captions on the same DataComp images |
+| `datacomp_pair/` | per-judge summaries of the DataComp verification run |
+| `sensitivity/` | lexical-window claimed CBU, encoder truncation and LongCLIP retrieval of the naive captions |
 | `raw_summaries/` | per-stage summaries (text diagnostics, prompt support, CBU, VQA, embeddings, LongCLIP) |
+| `cc12m_cbu_vqa_bootstrap_ci.tsv`, `cc12m_gemma4_vqa_bootstrap_ci.tsv` | superseded CC12M bootstrap interval exports, kept for traceability |
 
 ## Citation
 
@@ -569,7 +632,10 @@ or figure it feeds and to the script that produces it, and lists what this snaps
 ## License
 
 The code in this repository is released under the [Apache License 2.0](LICENSE). The released
-captions are licensed CC-BY-4.0, as stated on each dataset card; that license covers the generated
+captions are licensed CC-BY-4.0, as stated on each dataset card. The naive-control caption text in
+`results/naive_qwen35_*/captions.jsonl.gz` is also CC-BY-4.0, the same license as the released
+captions; these files carry public image keys only, and email addresses and phone numbers transcribed
+from image text are masked as `[email]` and `[phone]`. The CC-BY-4.0 license covers the generated
 caption text only. Source images, reference captions, and third-party metadata keep their original
 licenses and terms.
 
