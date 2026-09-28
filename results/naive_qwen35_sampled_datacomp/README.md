@@ -50,8 +50,11 @@ Each record has the fields `surface`, `caption_id`, `source_row`, `family`, `pai
 `public_lookup_key`, `image_url`, `prompt`, `system_prompt` (null), `messages_policy`, `caption`,
 and `decoding`. The records carry public keys only: `image_url`, `public_lookup_key`, and `pair_key`
 are all the public image URL. Source images are not included; obtain them from the original release
-under its own terms. Email addresses and phone numbers that the captioner transcribed from text in
-the images are masked as `[email]` and `[phone]`.
+under its own terms. Personal data that the captioner transcribed from text in the images is masked
+with placeholders: `[email]` for email addresses (10 in this file), `[phone]` for phone numbers
+(52), `[name]` for names of private persons printed on ID cards, badges, name tags, race bibs, and
+certificates (9), `[id]` for identity and card numbers (1), and `[address]` for street
+addresses of private persons (1). Names of public figures and of fictional characters are kept.
 
 ## License
 
