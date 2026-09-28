@@ -1,0 +1,80 @@
+{
+ "qwen": {
+  "overall": {
+   "estimate": 0.8482529701165318,
+   "lower": 0.6379929453125054,
+   "upper": 0.9946450179249593,
+   "bootstrap_mean": 0.8486226652106598,
+   "bootstrap_std": 0.09687862476291569,
+   "n_records": 57,
+   "n_clusters": 57,
+   "n_resamples": 10000,
+   "seed": 1477
+  },
+  "by_surface": [
+   {
+    "surface_group": "ours",
+    "estimate": 0.8788970816172889,
+    "lower": 0.6189954088954723,
+    "upper": 1.0,
+    "bootstrap_mean": 0.8767669683972553,
+    "bootstrap_std": 0.1087489157402613,
+    "n_records": 26,
+    "n_clusters": 26,
+    "n_resamples": 10000,
+    "seed": 1477
+   },
+   {
+    "surface_group": "reference",
+    "estimate": 0.8253518446505547,
+    "lower": 0.5088996973377844,
+    "upper": 1.0,
+    "bootstrap_mean": 0.8328325653493724,
+    "bootstrap_std": 0.14639940800726053,
+    "n_records": 31,
+    "n_clusters": 31,
+    "n_resamples": 10000,
+    "seed": 1477
+   }
+  ]
+ },
+ "gemma": {
+  "overall": {
+   "estimate": 0.8423340451827055,
+   "lower": 0.6306058266213153,
+   "upper": 0.9970844661071275,
+   "bootstrap_mean": 0.842572872380252,
+   "bootstrap_std": 0.09729973914683589,
+   "n_records": 57,
+   "n_clusters": 57,
+   "n_resamples": 10000,
+   "seed": 1477
+  },
+  "by_surface": [
+   {
+    "surface_group": "ours",
+    "estimate": 0.8900624418759133,
+    "lower": 0.6334229317559646,
+    "upper": 1.0,
+    "bootstrap_mean": 0.8896443217717631,
+    "bootstrap_std": 0.10801389262552749,
+    "n_records": 26,
+    "n_clusters": 26,
+    "n_resamples": 10000,
+    "seed": 1477
+   },
+   {
+    "surface_group": "reference",
+    "estimate": 0.8066653980126259,
+    "lower": 0.4878072262694386,
+    "upper": 1.0,
+    "bootstrap_mean": 0.811792472379191,
+    "bootstrap_std": 0.1470783634384102,
+    "n_records": 31,
+    "n_clusters": 31,
+    "n_resamples": 10000,
+    "seed": 1477
+   }
+  ]
+ }
+}
