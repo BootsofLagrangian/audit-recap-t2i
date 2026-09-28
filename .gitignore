@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Environments and secrets
+.venv/
+venv/
+.env
+.env.*
+
+# Local inputs and pipeline outputs (see README: Data access)
+/data/
+/outputs/
+/artifacts/
+
+# Editors and OS
+.idea/
+.vscode/
+.DS_Store
