@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 # Reproduce Qwen397 judge metrics for the 2026-05-02 DataComp naive-Qwen35
 # policy ablation. Assumes a Qwen397 vLLM server is already running.
+#
+# The Gemma Judge answers the same VQA request file built here from the Qwen397
+# claims (no Gemma claim extraction), with the Gemma server running:
+#   uv run python scripts/run_cbu_vqa_requests.py --input "${VQA_REQ}" \
+#     --output <gemma responses>.jsonl --model google/gemma-4-31B-it --concurrency 512 \
+#     --max-tokens 2048 --image-mode file --structured-json --no-evidence --resume --resume-ok-only
 set -euo pipefail
 
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"

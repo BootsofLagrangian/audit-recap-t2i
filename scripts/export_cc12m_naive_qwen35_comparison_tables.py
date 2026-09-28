@@ -22,7 +22,7 @@ DEFAULT_REF_VQA = Path(
 )
 DEFAULT_NAIVE_VQA = Path(
     "artifacts/vqa-cbu/cc12m-naive-qwen35-baseline-2026-05-01/"
-    "cbu_vqa_naive_qwen35_cc12m_b64_4494.responses.gemma4_31b_it_c64_file_mt2048.summary.json"
+    "cbu_vqa_naive_qwen35_cc12m_b64_4494.responses.qwen397_claims.gemma4_31b_it_c512_file_mt2048.summary.json"
 )
 DEFAULT_REF_LONGCLIP = Path(
     "artifacts/longclip/cc12m-four-caption-llava-url-bridge-5k-local/"

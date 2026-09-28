@@ -28,6 +28,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--concurrency", type=int, default=128)
     parser.add_argument("--max-tokens", type=int, default=512)
     parser.add_argument("--temperature", type=float, default=0.0)
+    parser.add_argument("--top-k", type=int, default=None, help="Sent only when set")
+    parser.add_argument("--top-p", type=float, default=None, help="Sent only when set")
     parser.add_argument("--timeout-sec", type=int, default=600)
     parser.add_argument("--thinking", action="store_true")
     parser.add_argument("--image-mode", choices=["auto", "file", "data", "url"], default="file")
@@ -91,7 +93,7 @@ def image_url_for(row: dict[str, Any], args: argparse.Namespace) -> str:
 
 
 def payload_for(row: dict[str, Any], args: argparse.Namespace) -> dict[str, Any]:
-    return {
+    payload = {
         "model": args.model,
         "max_tokens": args.max_tokens,
         "temperature": args.temperature,
@@ -106,6 +108,11 @@ def payload_for(row: dict[str, Any], args: argparse.Namespace) -> dict[str, Any]
         ],
         "chat_template_kwargs": {"enable_thinking": args.thinking},
     }
+    if args.top_k is not None:
+        payload["top_k"] = args.top_k
+    if args.top_p is not None:
+        payload["top_p"] = args.top_p
+    return payload
 
 
 async def post_one(
