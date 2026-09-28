@@ -1,0 +1,93 @@
+# Human CBU study configuration for the CC12M human calibration study.
+# Input paths are relative to the repository root: claim-extraction and judge
+# response JSONL files under artifacts/ are produced by the CC12M audit pipeline,
+# and the CC12M WebDataset shards and canonical manifest live under data/.
+study:
+  id: neurips2026-human-cbu-cc12m-v1
+  title: Visual-Claim Annotation Study
+  protocol_version: human_cbu_v1
+  seed: 1477
+  token_budget: 64
+  claims_per_stratum: 30
+  repeat_fraction: 0.05
+  required_labels_per_item: 2
+  primary_participant_count: 20
+  reserve_participant_count: 0
+  target_items_per_participant: 50
+  optional_extension_batch_size: 5
+  optional_extension_max_items: 70
+  overlap_target_items_per_stratum: 5
+  self_enrollment_limit: 20
+  adjudicator_pseudonym: human_adjudicator_01
+  require_adjudication_on_disagreement: true
+  control_usefulness_adjudication: false
+  semantic_visual_claim_types:
+    - object
+    - attribute
+    - relation
+    - count
+    - style
+    - camera
+    - lighting
+    - text_rendering
+  readiness:
+    minimum_substantive_overall: 120
+    minimum_substantive_per_type: 5
+    minimum_substantive_per_stratum: 2
+    require_complete_judge_coverage: true
+    required_bootstrap_resamples: 10000
+    required_bootstrap_seed: 1477
+  consent_version: "2026-07-27-v1"
+  collect:
+    caption_licensed: true
+    atomic_visual_claim: true
+    category_check: true
+    image_support: true
+    salient_coverage_5point: exploratory
+    control_usefulness_5point: exploratory
+    confidence: true
+    reason_tags: true
+    optional_note: true
+  surface_groups:
+    ours:
+      - ours_cc12m
+    reference:
+      - ref_cc12m_qwen3vl8b
+      - ref_cc12m_llavanext
+      - ref_pixelprose_cc12m
+
+inputs:
+  claimed_cbu_responses:
+    - artifacts/cbu/cc12m-four-caption-llava-url-bridge-5k-local/claimed_cbu_v2_cc12m_four_caption_llava_url_bridge_b64_4494.responses.qwen397_c1024_mt4096.jsonl
+    - artifacts/cbu/cc12m-four-caption-llava-url-bridge-5k-local/claimed_cbu_v2_cc12m_four_caption_llava_url_bridge_b64_4494.responses.qwen397_retry_c128_mt8192.jsonl
+  judges:
+    qwen:
+      - artifacts/vqa-cbu/cc12m-four-caption-llava-url-bridge-5k-local/cbu_vqa_cc12m_four_caption_llava_url_bridge_b64_4494.responses.qwen397_image_local_c512_mt2048_compact.jsonl
+    gemma:
+      - artifacts/vqa-cbu/cc12m-four-caption-llava-url-bridge-5k-local-crossjudge-gemma4/cbu_vqa_cc12m_four_caption_b64_4494.responses.gemma4_31b_it_c512_mt2048.jsonl
+      - artifacts/vqa-cbu/cc12m-four-caption-llava-url-bridge-5k-local-crossjudge-gemma4/cbu_vqa_cc12m_four_caption_b64_500img_2000req.responses.gemma4_31b_it_c512_mt2048.jsonl
+
+images:
+  canonical_wds_root: data/cc12m-wds
+  canonical_manifest: data/manifests/cc12m-202603.manifest.parquet
+  canonical_dataset_prefix: cc12m_202603
+  materialize_workers: 32
+  redistribution: private_annotation_only
+
+privacy:
+  store_names: false
+  store_email: false
+  store_ip: false
+  store_user_agent: false
+  public_export_timestamps: none
+  participant_identity: pseudonymous_invite
+
+interface:
+  default_language: en
+  hide_surface: true
+  hide_judges: true
+  caption_phase_hides_image: true
+  image_phase_hides_caption: true
+  require_caption_phase_before_image_phase: true
+  allow_zoom: true
+  theme: paper
