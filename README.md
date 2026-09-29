@@ -18,8 +18,8 @@ Qwen3.5 recaptions for nine public image collections, the tool used for the huma
 machine-extracted claims, and the result summaries behind every table and figure of the paper.
 
 The released captions follow one simple rule: write the caption as a user writes a prompt, from the
-dominant subject through scene structure to camera framing. With the captioner fixed, the rule alone
-raises supported CBU per caption by +3.0 to +3.6 over a plain detailed-caption instruction.
+dominant subject through scene structure to camera framing. With the captioner fixed, this policy
+alone raises supported CBU per caption by +3.0 to +3.6 over a plain detailed-caption instruction.
 
 - Paper: <https://openreview.net/forum?id=JobgYHJvPo>
 - Project page: <https://bootsoflagrangian.github.io/audit-recap-t2i.github.io/>
@@ -86,14 +86,14 @@ answers `yes` for, and u(c, x) the number it answers `no` for:
 | CBU/cap | CBU/cap(D_c, B) = E_c[ \|φ(c_{≤B})\| ], deduplicated claimed CBUs per caption |
 | CBU/100 lex | 100 · E_c[ \|φ(c_{≤B})\| ] / E_c[ min(\|c\|, B) ]; computed as 100 × Σ deduplicated claimed CBUs / Σ retained lexical units, so a caption shorter than B contributes its own length |
 | Supported CBU/cap | E[ s(c, x) ] = `yes` answers / audited captions |
-| Risk ρ | E[ u(c, x) ] / E[ \|φ(c)\| ] = `no` answers / CBU questions |
+| Risk ρ | share of claimed CBUs the judge answers `no` for: E[ u(c, x) ] / E[ \|φ(c)\| ] = `no` answers / CBU questions |
 | Uncertainty | `uncertain` answers / CBU questions |
 | B-eligibility | share of captions that reach B lexical units |
 | Prompt-mass support | share of a prompt pool's n-gram mass whose n-grams appear in the captions (bigrams at B = 64 in the paper) |
 | n-gram JSD | Jensen-Shannon divergence between the caption and prompt-pool n-gram distributions |
 | Pool-wins | number of the seven prompt pools on which ours has higher prompt-mass support than the reference |
 | Opener rate | share of captions that open with a third-person caption frame (`The image shows…`, `In this photo…`, `We can see…`), matched by the regex catalog `J_meta_statement` in `scripts/vllm/polishing_check.py` |
-| Top-100 raw / content prefix mass | share of total prefix mass held by the 100 most frequent prefixes, raw or after stripping a leading sentence matched by the opener catalog |
+| Top-100 raw / content prefix mass | share of captions whose first five lexical units are among the 100 most frequent five-unit prefixes of the surface (`--prefix-tokens 5`, `--top-k 100`), counted raw or on the content prefix left after leading articles, demonstratives, and frame words (`LEADING_STOPWORDS` in `scripts/caption_corpus_survey.py`) are dropped |
 | Distinct-3 | unique 3-grams / all 3-grams over the corpus, after lowercasing and Unicode normalization |
 
 **Five axes.** The audit reports the metrics jointly; no axis is collapsed into another.
@@ -110,9 +110,12 @@ Uncertainty is reported as mean ± standard deviation over bootstrap resamples: 
 resamples (seed 0) for the VQA cells and 10,000 image-cluster resamples (seed 1477) for the
 judge–human agreement.
 
-Caption-only axes use 50k paired rows per slice (the phenomenon descriptors use about 1M captions per
-surface); the image-conditioned axis uses about 5,000 captions per surface (4,494 aligned images on
-CC12M). Prompt-pool support uses seven public prompt pools, each sampled at 250,000 records.
+Text statistics and surface descriptors use the paired slice of each surface, capped at 1M captions
+(42,231 on LAION-pop, 114,621 on CC12M–Qwen3-VL, 729,237 on PixelProse, 960,394 on CC12M-LLaVA-NeXT,
+999,993 on Danbooru, and 1M on DataComp and PD12M). Prompt-pool support uses 250,000 caption pairs per
+comparison (114,621 on CC12M–Qwen3-VL) against seven public prompt pools of up to 1M prompts each.
+Claim extraction and both judges use about 5,000 captions per surface (4,494 aligned images on
+CC12M), and the embedding probes use 50k paired rows.
 
 ## Key results
 
@@ -137,7 +140,7 @@ claims, supported CBU/cap still rises by +2.66 to +5.22 and risk is lower in all
 cells (`results/tables/excl_count_relation.tex`).
 
 **Captioning-policy control.** The same captioner (`Qwen/Qwen3.5-35B-A3B-FP8`) with the same decoding
-captions the same images under the released rule and under a plain detailed-caption instruction (the
+captions the same images under the released policy and under a plain detailed-caption instruction (the
 naive single-message prompt); claims are extracted by Qwen3.5-397B-A17B-FP8 and both judges answer the
 same questions (`results/tables/policy_control.tex`).
 
@@ -155,7 +158,8 @@ same questions (`results/tables/policy_control.tex`).
 to +3.9 and supported CBU per caption by +3.0 to +3.6 under both judges, at a risk 0.01 to 0.02 above
 the naive surface. Greedy decoding of the naive prompt yields 11.43 and 10.84 claimed CBU per caption
 on CC12M and DataComp; against `Naive (greedy)`, claimed CBU per caption rises by +3.8, supported CBU
-per caption by +3.0 to +3.5, and risk stays within 0.031.
+per caption by +3.0 to +3.5, and risk stays within 0.031. With the captioner and its decoding fixed,
+the prompt-ordered policy produces the yield gain on both source families.
 
 **Lexical-window sensitivity (CC12M).** Cutting the extractor window at 64 lexical units instead of 64
 whitespace words moves claimed CBU/cap by at most 3.0% (Ours 15.21 → 14.75) and CBU/100 lex by at most
@@ -493,8 +497,11 @@ uv run python scripts/paper/gen_cc12m_frontiers.py
 `prepare_cc12m_bgrid_full.py` reads the B = 64 request file and the 1,000-image pilot requests at the
 paths in its `FULL_B64` and `PILOT` constants, rebuilds the requests for all 4,494 images with the
 unchanged request builder, checks that the first 1,000 rows equal the pilot requests record for
-record, and writes the remaining rows as one run file per budget. `gen_cc12m_frontiers.py` redraws both panels of Figure 2
-from `results/` (set `EVAL_DIR` to read and write elsewhere).
+record, and writes the remaining rows as one run file per budget. `gen_cc12m_frontiers.py` redraws
+Figure 2 from `results/`: the left panel from the `CC12M` cells of `cbu_vqa_by_category_b64.json`
+(`cc12m_vqa_supported_risk_pareto_v3`), the right panel from `cc12m_budget_frontier_plot.csv`
+(`cc12m_cbu_efficiency_yield_frontier_revised`). `PANELS=left` or `PANELS=right` renders one panel,
+and `EVAL_DIR` reads and writes elsewhere.
 
 The lexical-window sensitivity check cuts the extractor window at B lexical units instead of B
 whitespace words, with the builder, prompts, and schema unchanged:
@@ -510,7 +517,7 @@ request file per surface plus a merged file; the summary is
 
 ### 7. Captioning-policy control (naive policy)
 
-The control keeps the captioner and the images fixed and replaces the prompt-ordered rule with a plain
+The control keeps the captioner and the images fixed and replaces the prompt-ordered policy with a plain
 detailed-caption instruction, the Recap-DataComp instruction as a single user message with no system
 prompt:
 
@@ -587,15 +594,18 @@ uv run python scripts/paper/encoder_truncation_rates.py \
 
 ```bash
 uv run python scripts/paper/gen_teaser_refined.py      # Figure 1 (right), means over the seven pools (teaser_right_v_twinx_v3)
-uv run python scripts/paper/gen_cc12m_frontiers.py     # Figure 2
+uv run python scripts/paper/gen_cc12m_frontiers.py     # Figure 2 (PANELS=left or PANELS=right renders one panel)
 uv run python scripts/paper/gen_per_pool_heatmap.py    # appendix per-pool heatmap
 uv run python scripts/plot_caption_survey_curves.py --help
 ```
 
 The generators overwrite their outputs in `results/`. Figure 1 (left) is a composed figure and is
-provided as `results/teaser_left_v3.pdf`. `gen_teaser_refined.py` asks for Helvetica; on a host
-without it, set `EXTRA_FONT_DIR` to a directory of Helvetica-like `.otf` fonts (for example TeX Gyre
-Heros), otherwise the panel renders in a fallback font with the same values.
+provided as `results/teaser_left_v4.pdf`. Figure 2 (left) reads the `CC12M` cells of
+`results/cbu_vqa_by_category_b64.json` (the requests answered by both judges) and Figure 2 (right)
+reads `results/cc12m_budget_frontier_plot.csv`. `gen_teaser_refined.py` and `gen_cc12m_frontiers.py`
+ask for Helvetica; on a host without it, set `EXTRA_FONT_DIR` to a directory of Helvetica-like `.otf`
+fonts (for example TeX Gyre Heros), otherwise the panels render in a fallback font with the same
+values.
 
 ### 10. Human verification
 
@@ -655,15 +665,16 @@ does not include.
 | `all_cbu_b64_summary.csv` | cross-corpus CBU/cap and CBU/100 lex |
 | `cbu_vqa_by_category_b64.json`, `tables/*.tex` | every VQA cell under both judges as mean ± std; per-type tables; count/relation-excluded headline; policy control; question denominators; CC12M denominators |
 | `all_vqa_b64_summary.csv` | per-judge rollup of the Qwen Judge and CC12M summaries (see `results/README.md` for its DataComp rows) |
-| `cc12m_budget_frontier_plot.csv`, `cc12m_vqa_supported_risk_pareto.csv` | CC12M frontier table and Figure 2 |
-| `teaser_left_v3.pdf`, `teaser_right_v_twinx_v3.{pdf,png}` | Figure 1 (left; right, seven-pool means of prompt-mass support and n-gram JSD) |
+| `cc12m_budget_frontier_plot.csv` | CC12M claimed CBU at B = 64 and the budget sweep, Figure 2 (right) |
+| `cc12m_vqa_supported_risk_pareto_v3.{pdf,png}`, `cc12m_cbu_efficiency_yield_frontier_revised.{pdf,png}` | Figure 2 (left, from the `CC12M` cells of `cbu_vqa_by_category_b64.json`; right) |
+| `teaser_left_v4.pdf`, `teaser_right_v_twinx_v3.{pdf,png}` | Figure 1 (left; right, seven-pool means of prompt-mass support and n-gram JSD) |
 | `prompt_support_bootstrap_b64_n2_250k_2026-04-24.tsv` | Pool-wins, Figure 1 (right), per-pool heatmap |
 | `human_cbu/judge_human_agreement_bootstrap.json` | judge–human agreement of the human verification, mean ± std |
 | `naive_qwen35_*/`, `policy_control_ours_datacomp/` | captioning-policy control: naive captions and summaries, and the released captions on the same DataComp images |
 | `datacomp_pair/` | per-judge summaries of the DataComp verification run |
 | `sensitivity/` | lexical-window claimed CBU, encoder truncation and LongCLIP retrieval of the naive captions |
 | `raw_summaries/` | per-stage summaries (text diagnostics, prompt support, CBU, VQA, embeddings, LongCLIP) |
-| `cc12m_cbu_vqa_bootstrap_ci.tsv`, `cc12m_gemma4_vqa_bootstrap_ci.tsv`, `teaser_left_v2.pdf`, `teaser_right_v_twinx_v2.{pdf,png}` | superseded files (earlier CC12M bootstrap interval exports; the earlier Figure 1 panels), kept for traceability |
+| `cc12m_cbu_vqa_bootstrap_ci.tsv`, `cc12m_gemma4_vqa_bootstrap_ci.tsv`, `cc12m_vqa_supported_risk_pareto.csv`, `cc12m_vqa_supported_risk_pareto_revised.{pdf,png}`, `teaser_left_v2.pdf`, `teaser_left_v3.pdf`, `teaser_right_v_twinx_v2.{pdf,png}` | superseded files (earlier CC12M bootstrap interval exports; the earlier CC12M support/risk export and its Figure 2 left panel; the earlier Figure 1 panels), kept for traceability |
 
 ## Citation
 

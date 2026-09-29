@@ -12,15 +12,19 @@ Design:
   * Qwen3-VL-8B is excluded from both panels.
 
 Inputs:
-  cc12m_vqa_supported_risk_pareto.csv  -> left panel (Supported CBU vs Risk)
+  cbu_vqa_by_category_b64.json         -> left panel (Supported CBU vs Risk), CC12M cells on the
+                                          requests answered by both Judges
   cc12m_budget_frontier_plot.csv       -> right panel (Claimed CBU vs CBU/100 lex)
 
-Outputs (overwrite):
-  cc12m_vqa_supported_risk_pareto_revised.{pdf,png}
+Outputs:
+  cc12m_vqa_supported_risk_pareto_v3.{pdf,png}
   cc12m_cbu_efficiency_yield_frontier_revised.{pdf,png}
+
+PANELS=left or PANELS=right renders one panel; the default renders both.
 """
 import csv
 import glob
+import json
 import os
 from collections import defaultdict
 from pathlib import Path
@@ -56,8 +60,9 @@ DATASET_COLOR  = {
     "CC12M-LLaVA-NeXT": "#D55E00",  # vermillion (shared L/R)
     "PixelProse":       "#009E73",  # bluish green (shared L/R)
 }
-JUDGE_LABEL = {"Qwen3.5-397B-A17B-FP8": "Qwen", "Gemma-4-31B-it": "Gemma"}
-LABEL_MAP   = {"LLaVA-NeXT": "CC12M-LLaVA-NeXT"}  # CSV uses bare LLaVA-NeXT
+JUDGE_LABEL = {"Qwen3.5-397B-A17B-FP8": "Qwen", "Gemma-4-31B-it": "Gemma", "Gemma-4-31B-IT": "Gemma"}
+LABEL_MAP   = {"LLaVA-NeXT": "CC12M-LLaVA-NeXT"}  # summaries use bare LLaVA-NeXT
+PANELS = set(os.environ.get("PANELS", "left,right").split(","))
 
 
 # =====================================================================
@@ -65,17 +70,17 @@ LABEL_MAP   = {"LLaVA-NeXT": "CC12M-LLaVA-NeXT"}  # CSV uses bare LLaVA-NeXT
 #   * dataset = colour + shape
 #   * judge   = marker fill (Qwen=filled, Gemma=hollow)
 # =====================================================================
-rows = list(csv.DictReader(open(EVAL / "cc12m_vqa_supported_risk_pareto.csv")))
+cells = json.load(open(EVAL / "cbu_vqa_by_category_b64.json"))["cells"]
 fig, ax = plt.subplots(figsize=(5.0, 3.0))
 
 by_label = defaultdict(list)  # label -> [(judge, sup, risk)]
-for r in rows:
-    raw = r["label"]
-    if raw == "Qwen3-VL-8B":
+for cell in cells:
+    if cell["slice"] != "CC12M" or cell["surface"] == "Qwen3-VL-8B":
         continue
-    label = LABEL_MAP.get(raw, raw)
-    judge = JUDGE_LABEL.get(r["judge"], r["judge"])
-    by_label[label].append((judge, float(r["supported_cap"]), float(r["risk"])))
+    label = LABEL_MAP.get(cell["surface"], cell["surface"])
+    judge = JUDGE_LABEL.get(cell["judge"], cell["judge"])
+    by_label[label].append((judge, cell["all_types"]["supported_cap"], cell["all_types"]["risk"]))
+assert sorted(by_label) == sorted(DATASETS) and all(len(v) == 2 for v in by_label.values()), by_label
 
 # Gray connector across the two judges for each dataset.
 for label, pts in by_label.items():
@@ -130,11 +135,12 @@ ax.legend(handles=judge_handles, title="Judge",
           handletextpad=0.35, fontsize=8.0, title_fontsize=8.5)
 
 plt.tight_layout(pad=0.4)
-out_left = EVAL / "cc12m_vqa_supported_risk_pareto_revised.pdf"
-plt.savefig(out_left, bbox_inches="tight")
-plt.savefig(str(out_left).replace(".pdf", ".png"), dpi=300, bbox_inches="tight")
+out_left = EVAL / "cc12m_vqa_supported_risk_pareto_v3.pdf"
+if "left" in PANELS:
+    plt.savefig(out_left, bbox_inches="tight")
+    plt.savefig(str(out_left).replace(".pdf", ".png"), dpi=300, bbox_inches="tight")
+    print(f"saved {out_left}")
 plt.close(fig)
-print(f"saved {out_left}")
 
 
 # =====================================================================
@@ -203,7 +209,8 @@ ax.legend(handles=budget_handles, title="Budget",
 
 plt.tight_layout(pad=0.4)
 out_right = EVAL / "cc12m_cbu_efficiency_yield_frontier_revised.pdf"
-plt.savefig(out_right, bbox_inches="tight")
-plt.savefig(str(out_right).replace(".pdf", ".png"), dpi=300, bbox_inches="tight")
+if "right" in PANELS:
+    plt.savefig(out_right, bbox_inches="tight")
+    plt.savefig(str(out_right).replace(".pdf", ".png"), dpi=300, bbox_inches="tight")
+    print(f"saved {out_right}")
 plt.close(fig)
-print(f"saved {out_right}")
