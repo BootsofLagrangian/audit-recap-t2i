@@ -10,16 +10,22 @@ NeurIPS 2026, Evaluations and Datasets Track (poster).
 
 A recaptioned image-text corpus is a supervision distribution induced by a captioning policy, a
 captioner, and a source corpus. This repository contains the audit framework that compares such
-distributions at a matched caption budget: every caption is cut to the same window of B words, the
-window is scored with deterministic text diagnostics, the claims it states are extracted as
-controllable basic units (CBUs), and each CBU is re-asked against the paired image by two
-independent VLM judges. It also contains the caption-generation runner and prompts behind the
-released corpus of Qwen3.5 recaptions for nine public image collections, the tool used for the
-human calibration study, and the result summaries behind every table and figure of the paper.
+distributions at a common text budget B = 64: text statistics count lexical units, claim extraction
+reads the first B whitespace-delimited words of each caption and returns the claims stated there as
+controllable basic units (CBUs), and each CBU is re-asked against the paired image by two independent
+VLM judges. It also contains the caption-generation runner and prompts behind the released corpus of
+Qwen3.5 recaptions for nine public image collections, the tool used for the human verification of
+machine-extracted claims, and the result summaries behind every table and figure of the paper.
 
 - Paper: <https://openreview.net/forum?id=JobgYHJvPo>
 - Project page: <https://bootsoflagrangian.github.io/audit-recap-t2i.github.io/>
 - Released captions: [Recaptioned Image Text collection on Hugging Face](https://huggingface.co/collections/BootsofLagrangian/recaptioned-image-text-6ab5bf978e69805c3e33d5ce)
+
+The corpus is the Hugging Face collection: nine caption-only datasets, one per source family, with the
+captions released as generated. Each dataset card carries a "Personal and sensitive information"
+section and a removal channel through the Community tab of its repository. This repository carries
+the audit pipeline, the naive-control captions (contact details, names on identity documents,
+identifiers, and private addresses masked with placeholders), and the result summaries.
 
 ## Contents
 
@@ -42,10 +48,11 @@ distribution D = D_{π,V_c,C} = {(c, x) : x ∈ C, c ~ V_c(x; π)} with caption 
 released caption set over the same source rows is a *surface*: ours, a public reference release, or
 the naive-policy control. The audit compares surfaces that share source rows.
 
-**Matched budget B.** Every surface is read through the same window. The claim extractor receives the
-first B whitespace-delimited words of each caption (B = 64 unless stated otherwise; the CC12M sweep
-uses B ∈ {16, 32, 48, 64}). Lengths and densities are counted in *lexical units* (lex): regex word
-units `[^\W_]+(?:'[^\W_]+)*` after Unicode normalization, not tokenizer tokens.
+**Text budget B.** Every surface is read under the same text budget, B = 64 unless stated otherwise
+(the CC12M sweep uses B ∈ {16, 32, 48, 64}). Text statistics count *lexical units* (lex): regex word
+units `[^\W_]+(?:'[^\W_]+)*` after Unicode normalization, not tokenizer tokens. Claim extraction
+reads the first B whitespace-delimited words of each caption, and CBU/100 lex counts the lexical
+units inside that window.
 
 **Controllable basic units.** A CBU is one atomic visual claim of one of eight semantic visual-claim
 types: object, attribute, relation, count, style, camera, lighting, text rendering. The extractor φ
@@ -102,7 +109,7 @@ CC12M). Prompt-pool support uses seven public prompt pools, each sampled at 250,
 
 ## Key results
 
-All values are at B = 64 and are read from the files in [`results/`](results/README.md). Supported
+All values are at text budget B = 64 and are read from the files in [`results/`](results/README.md). Supported
 CBU/cap and risk are mean ± std over 2,000 caption-level bootstrap resamples (seed 0), computed on the
 requests that both judges answered (`results/cbu_vqa_by_category_b64.json`,
 `results/tables/vqa_mean_std.tex`). Claimed CBU/cap and CBU/100 lex count the claims of the
@@ -136,11 +143,11 @@ Qwen3.5-397B-A17B-FP8 and both judges answer the same questions (`results/tables
 | | Naive (greedy) | 10.84 | 16.53 | 10.53 ± 0.04 / 0.021 ± 0.001 | 10.11 ± 0.04 / 0.049 ± 0.001 |
 
 `Naive` uses the decoding of the released captions (temperature 1.0, top_k 20, top_p 0.95);
-`Naive (greedy)` decodes at temperature 0. Against `Naive`, the released policy raises claimed CBU/cap
-by +3.7 to +3.9 and supported CBU/cap by +3.0 to +3.6 under both judges, with risk within 0.03 of the
-naive surface. Greedy decoding gives the same reading: against `Naive (greedy)` (claimed 11.43 on
-CC12M, 10.84 on DataComp), claimed CBU/cap rises by +3.8, supported CBU/cap by +3.0 to +3.5, and risk
-stays within 0.031.
+`Naive (greedy)` decodes at temperature 0. The released policy raises claimed CBU per caption by +3.7
+to +3.9 and supported CBU per caption by +3.0 to +3.6 under both judges, at a risk 0.01 to 0.02 above
+the naive surface. Greedy decoding of the naive prompt yields 11.43 and 10.84 claimed CBU per caption
+on CC12M and DataComp; against `Naive (greedy)`, claimed CBU per caption rises by +3.8, supported CBU
+per caption by +3.0 to +3.5, and risk stays within 0.031.
 
 **Lexical-window sensitivity (CC12M).** Cutting the extractor window at 64 lexical units instead of 64
 whitespace words moves claimed CBU/cap by at most 3.0% (Ours 15.21 → 14.75) and CBU/100 lex by at most
@@ -158,16 +165,16 @@ configs/
   caption_survey/
     fair_slices.json         the seven paired comparisons: inputs, join keys, manifests
     surfaces.json            registry of every surface: Hugging Face id, caption column, captioner
-  eval/human_cbu_cc12m.yaml  human-study configuration
+  eval/human_cbu_cc12m.yaml  human-verification configuration
 scripts/
   vllm/                      vLLM environment setup, servers, caption runner, opener catalog
   build_*, run_*, summarize_*, export_*, caption_*, ...   audit pipeline (see below)
-  human_cbu_eval.py          human-study CLI
+  human_cbu_eval.py          human-verification CLI
   paper/                     table and figure generators, sensitivity helpers
 src/audit_recap_t2i/
   recap/                     booru tag grounding used by the anime caption policy
-  human_cbu/                 human-study sampler, store, web UI, metrics, export
-tests/                       tests for the human-study tool
+  human_cbu/                 human-verification sampler, store, web UI, metrics, export
+tests/                       tests for the human-verification tool
 results/                     result summaries behind the paper's tables and figures
 ```
 
@@ -186,7 +193,7 @@ git clone https://github.com/BootsofLagrangian/audit-recap-t2i.git
 cd audit-recap-t2i
 uv sync                       # text diagnostics, request/response pipeline, figures
 uv sync --extra eval          # + encoder probes (PyTorch, Transformers, sentence-transformers, FlagEmbedding)
-uv sync --extra dev           # + pytest for the human-study tests
+uv sync --extra dev           # + pytest for the human-verification tests
 ```
 
 Run scripts with `uv run python scripts/<name>.py`. Optional environment variables (for example a
@@ -261,9 +268,12 @@ print(next(iter(captions))["caption_text"])
 
 Each dataset card documents its schema, the join keys to source images (URL, URL hash, content hash,
 or shard and member), and a `generation_config.yaml` with the prompts, image preprocessing, and
-decoding settings used for that family. The cards mark the captions as research data that need
-safety and policy filtering before any training use. Source images are not redistributed here; obtain
-them from the original releases under their own terms.
+decoding settings used for that family. Captions are released as generated: the captioner transcribes
+legible text, so a caption can carry a name, a contact detail, or an identifier that the source image
+shows. The "Personal and sensitive information" section of each card documents this, states the
+filtering required before any training use, and routes removal requests through the Community tab of
+the dataset repository with the row keys. Source images are not redistributed here; obtain them from
+the original releases under their own terms.
 
 ### Reference captions
 
@@ -292,7 +302,7 @@ overridden on the command line.
 |---|---|---|
 | `outputs/recap/<dataset>/<domain>/shard-*.jsonl` | our captions, one JSON record per image with the join key named in `fair_slices.json` (`image_id` or `url`) and the text in `caption`; this is the format written by `scripts/vllm/run_recap.py` | `build_caption_fair_slices.py` |
 | `data/caption-mirrors/<family>/<surface>.jsonl` | reference captions as JSONL with the join key named by `public_key_field` and the text in `caption` | `build_caption_fair_slices.py` |
-| `data/manifests/<name>.manifest.parquet` | canonical image manifests with `dataset_key`, `storage_uri`, `canonical_url`, `source_url_sha1`, `stable_image_id`, `sample_id`, `width`, `height`, `bytes`, `sha256_raw` | fair slices, CC12M materialization, human study |
+| `data/manifests/<name>.manifest.parquet` | canonical image manifests with `dataset_key`, `storage_uri`, `canonical_url`, `source_url_sha1`, `stable_image_id`, `sample_id`, `width`, `height`, `bytes`, `sha256_raw` | fair slices, CC12M materialization, human verification |
 | `data/cc12m-wds/` | CC12M WebDataset tar shards | CC12M image materialization |
 | `data/datacomp-images/` | DataComp images for the DataComp slice (`local_image_root` in `fair_slices.json`) | `build_caption_fair_slices.py` |
 | `data/prompt-pools/` | raw prompt-pool downloads (`hf-raw/`, `hf-raw-by-repo/`) and prepared pools (`2026-04-24-expanded/`) | prompt-support scripts |
@@ -566,30 +576,36 @@ uv run python scripts/paper/encoder_truncation_rates.py \
 ### 9. Figures
 
 ```bash
-uv run python scripts/paper/gen_teaser_refined.py      # Figure 1 (right), means over the seven pools
+uv run python scripts/paper/gen_teaser_refined.py      # Figure 1 (right), means over the seven pools (teaser_right_v_twinx_v3)
 uv run python scripts/paper/gen_cc12m_frontiers.py     # Figure 2
 uv run python scripts/paper/gen_per_pool_heatmap.py    # appendix per-pool heatmap
 uv run python scripts/plot_caption_survey_curves.py --help
 ```
 
-The generators overwrite their outputs in `results/`.
+The generators overwrite their outputs in `results/`. Figure 1 (left) is a composed figure and is
+provided as `results/teaser_left_v2.pdf`. `gen_teaser_refined.py` asks for Helvetica; on a host
+without it, set `EXTRA_FONT_DIR` to a directory of Helvetica-like `.otf` fonts (for example TeX Gyre
+Heros), otherwise the panel renders in a fallback font with the same values.
 
-### 10. Human calibration study
+### 10. Human verification
 
-`scripts/human_cbu_eval.py` runs the blinded study reported in the paper: annotators judge a sampled
-claim first against the caption window with the image hidden, then against the image with the
-caption hidden, and finally rate the whole pair. Surface identity and judge outputs stay hidden. The
-study configuration is `configs/eval/human_cbu_cc12m.yaml` (seed 1477, B = 64, two surface groups,
-eight claim types); its inputs are the CC12M claimed-CBU and judge response files of step 6.
+`scripts/human_cbu_eval.py` runs the blinded human verification of machine-extracted claims reported
+in the paper, in which seven volunteer annotators gave 217 primary judgments on 137 sampled CC12M
+claims. Annotators judge a sampled claim first against the caption window with the image hidden,
+then against the image with the caption hidden, and finally judge the whole pair. Surface identity
+and judge outputs stay hidden. The configuration is `configs/eval/human_cbu_cc12m.yaml` (seed 1477,
+B = 64, two surface groups, eight claim types); its inputs are the CC12M claimed-CBU and judge
+response files of step 6. Command and flag names such as `participant-test`, `--study-id`, and
+`--participant-information-json` are the tool's fixed identifiers.
 
 ```bash
 uv run python scripts/human_cbu_eval.py sample --config configs/eval/human_cbu_cc12m.yaml --output-dir artifacts/human-cbu/sample
 uv run python scripts/human_cbu_eval.py materialize --config configs/eval/human_cbu_cc12m.yaml --sample-dir artifacts/human-cbu/sample
 uv run python scripts/human_cbu_eval.py init-db --config configs/eval/human_cbu_cc12m.yaml --sample-dir artifacts/human-cbu/sample --db artifacts/human-cbu/study.sqlite
-uv run python scripts/human_cbu_eval.py invites --db artifacts/human-cbu/study.sqlite --study-id <study id> --count 20 --output artifacts/human-cbu/invites.json
-uv run python scripts/human_cbu_eval.py assign --db artifacts/human-cbu/study.sqlite --study-id <study id> --config configs/eval/human_cbu_cc12m.yaml
+uv run python scripts/human_cbu_eval.py invites --db artifacts/human-cbu/study.sqlite --study-id <id> --count 20 --output artifacts/human-cbu/invites.json
+uv run python scripts/human_cbu_eval.py assign --db artifacts/human-cbu/study.sqlite --study-id <id> --config configs/eval/human_cbu_cc12m.yaml
 uv run python scripts/human_cbu_eval.py seal --db ... --study-id ... --ethics-determination-id ... --participant-information-json ...
-uv run python scripts/human_cbu_eval.py open --db ... --study-id ... --confirm-open <study id>
+uv run python scripts/human_cbu_eval.py open --db ... --study-id ... --confirm-open <id>
 uv run python scripts/human_cbu_eval.py serve --db ... --study-id ... --host 127.0.0.1 --port 8765
 uv run python scripts/human_cbu_eval.py close --db ... --study-id ...
 uv run python scripts/human_cbu_eval.py export --db ... --study-id ... --output-dir artifacts/human-cbu/export
@@ -603,10 +619,11 @@ uv run python scripts/paper/human_judge_agreement_bootstrap.py artifacts/human-c
   > results/human_cbu/judge_human_agreement_bootstrap.json
 ```
 
-`participant-test` serves the full participant flow in response-discarding memory for rehearsal;
-`validate`, `status`, `backup`, and the `adjudication-*` commands cover pre-launch checks, operations,
-and disagreement review. The study configuration disables storage of names, email addresses, IP
-addresses, and user agents, and the export is aggregate-only unless `--include-public-rows` is given.
+The `participant-test` command serves the full annotation flow in response-discarding memory for
+rehearsal; `validate`, `status`, `backup`, and the `adjudication-*` commands cover pre-launch checks,
+operations, and disagreement review. The configuration disables storage of names, email addresses,
+IP addresses, and user agents, and the export is aggregate-only unless `--include-public-rows` is
+given.
 Run the tests with:
 
 ```bash
@@ -629,13 +646,14 @@ does not include.
 | `cbu_vqa_by_category_b64.json`, `tables/*.tex` | every VQA cell under both judges as mean ± std; per-type tables; count/relation-excluded headline; policy control; question denominators; CC12M denominators |
 | `all_vqa_b64_summary.csv` | per-judge rollup of the Qwen Judge and CC12M summaries (see `results/README.md` for its DataComp rows) |
 | `cc12m_budget_frontier_plot.csv`, `cc12m_vqa_supported_risk_pareto.csv` | CC12M frontier table and Figure 2 |
-| `prompt_support_bootstrap_b64_n2_250k_2026-04-24.tsv`, `teaser_right_v_twinx_v2.{pdf,png}` | Pool-wins, Figure 1 (right, seven-pool means), per-pool heatmap |
-| `human_cbu/judge_human_agreement_bootstrap.json` | judge–human agreement, mean ± std |
+| `teaser_left_v2.pdf`, `teaser_right_v_twinx_v3.{pdf,png}` | Figure 1 (left; right, seven-pool means of prompt-mass support and n-gram JSD) |
+| `prompt_support_bootstrap_b64_n2_250k_2026-04-24.tsv` | Pool-wins, Figure 1 (right), per-pool heatmap |
+| `human_cbu/judge_human_agreement_bootstrap.json` | judge–human agreement of the human verification, mean ± std |
 | `naive_qwen35_*/`, `policy_control_ours_datacomp/` | captioning-policy control: naive captions and summaries, and the released captions on the same DataComp images |
 | `datacomp_pair/` | per-judge summaries of the DataComp verification run |
 | `sensitivity/` | lexical-window claimed CBU, encoder truncation and LongCLIP retrieval of the naive captions |
 | `raw_summaries/` | per-stage summaries (text diagnostics, prompt support, CBU, VQA, embeddings, LongCLIP) |
-| `cc12m_cbu_vqa_bootstrap_ci.tsv`, `cc12m_gemma4_vqa_bootstrap_ci.tsv` | superseded CC12M bootstrap interval exports, kept for traceability |
+| `cc12m_cbu_vqa_bootstrap_ci.tsv`, `cc12m_gemma4_vqa_bootstrap_ci.tsv`, `teaser_right_v_twinx_v2.{pdf,png}` | superseded files (earlier CC12M bootstrap interval exports; the earlier Figure 1 right panel), kept for traceability |
 
 ## Citation
 

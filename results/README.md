@@ -3,7 +3,8 @@
 This directory holds the summary artifacts behind the tables and figures of the paper. Every
 result file is a byte-for-byte copy of the file the producing run wrote, taken from the paper's
 result bundle (`artifacts/eval_results/` for the audit results, `artifacts/human_cbu/` for the
-human-study screenshots, and the final verification bundle for the policy control, the DataComp
+annotation-interface screenshots, `artifacts/figures/` for the composed Figure 1 (left) panel, and
+the final verification bundle for the policy control, the DataComp
 verification run, and the sensitivity checks). No number in this directory was edited by hand. To
 refresh a result, copy the updated file from the bundle to the same relative path here.
 
@@ -22,9 +23,11 @@ Most files are written by a script in `scripts/`, as listed below. The top-level
 `cc12m_longclip_plot.csv`, `prompt_support_direction_summary.csv`) collect fields from the summary
 files under `raw_summaries/` into one table each; the collection step has no separate script.
 
-Several columns keep the names they had before the paper switched its wording from "token" to
-"lexical unit": `avg_tokens`, `avg_lexical_tokens`, `cov64`, `elig64`, and `cbu_100tok` / `cbu_per_100tok`
-all count regex lexical units (`[^\W_]+(?:'[^\W_]+)*`), not tokenizer tokens.
+B = 64 is the text budget: text statistics count lexical units and claim extraction reads the first
+B whitespace-delimited words. Several columns keep the names they had before the paper switched its
+wording from "token" to "lexical unit": `avg_tokens`, `avg_lexical_tokens`, `cov64`, `elig64`, and
+`cbu_100tok` / `cbu_per_100tok` all count regex lexical units (`[^\W_]+(?:'[^\W_]+)*`), not tokenizer
+tokens.
 
 Surface names follow `configs/caption_survey/surfaces.json`: `ours_*` is the released recap surface,
 `ref_*` a public reference surface. Cross-corpus rows are prefixed by their paired comparison, for
@@ -34,7 +37,8 @@ example `pd12m_full_paired__ours_pd12m_img2dataset`.
 
 | Paper element | File(s) | Produced by |
 |---|---|---|
-| Figure 1 (right), prompt-pool diagnostics | `teaser_right_v_twinx_v2.{pdf,png}` | `scripts/paper/gen_teaser_refined.py`, which averages the per-pool block means of `prompt_support_bootstrap_b64_n2_250k_2026-04-24.tsv` over the seven pools |
+| Figure 1 (left), caption register (describe-style frame prefix concentration) | `teaser_left_v2.pdf` | composed figure, copied from the manuscript's `artifacts/figures/` |
+| Figure 1 (right), prompt-pool diagnostics (prompt-mass support and n-gram JSD) | `teaser_right_v_twinx_v3.{pdf,png}` | `scripts/paper/gen_teaser_refined.py`, which averages the per-pool block means of `prompt_support_bootstrap_b64_n2_250k_2026-04-24.tsv` over the seven pools; `teaser_right_v_twinx_v2.{pdf,png}` is the superseded earlier rendering |
 | Phenomenon descriptors (opener rate, top-100 raw / content prefix mass, Distinct-3, average length) and the per-family appendix companion | `raw_summaries/cpu_text_metrics/fair_slices_1m_normalized_2026-04-24.{json,tsv}`; LAION-pop re-run with URL-fixed pairing in `laion_pop_url_fixed_normalized_2026-04-24.{json,tsv}` | `scripts/run_caption_fair_slice_surveys.py` over the 1M-pair fair slices |
 | Cross-corpus headline at B = 64: Avg lex | `raw_summaries/cpu_text_metrics/fair_slices_1m_normalized_2026-04-24.tsv` (`avg_tokens`) | as above |
 | Cross-corpus headline: CBU/cap | `all_cbu_b64_summary.csv` (`cbu_cap`, `cbu_100tok`) | rollup of `raw_summaries/cbu_claimed/claimed_cbu_v2_all7_b64_5k.*.summary.json` (`scripts/summarize_cbu_responses.py --mode claimed`) |
@@ -45,7 +49,7 @@ example `pd12m_full_paired__ours_pd12m_img2dataset`.
 | CC12M frontier at B = 64: Sup. CBU/cap and Risk under both judges | `cc12m_vqa_supported_risk_pareto.csv`; `all_vqa_b64_summary.csv` (`source = cc12m_qwen`, `cc12m_gemma`); the `CC12M` cells of `cbu_vqa_by_category_b64.json` (same values, with bootstrap std) | rollups of the two CC12M summaries in `raw_summaries/vqa_image_conditioned/`; `scripts/paper/summarize_cbu_vqa_by_category.py` |
 | Figure 2 (left), CC12M supported yield vs. risk | `cc12m_vqa_supported_risk_pareto_revised.{pdf,png}` | `scripts/paper/gen_cc12m_frontiers.py` from `cc12m_vqa_supported_risk_pareto.csv` |
 | Figure 2 (right), CC12M budget sweep B in {16, 32, 48, 64} | `cc12m_cbu_efficiency_yield_frontier_revised.{pdf,png}` | `scripts/paper/gen_cc12m_frontiers.py` from `cc12m_budget_frontier_plot.csv` |
-| Human evaluation of image support, judge–human agreement as mean ± std over 10,000 image-cluster bootstrap resamples | `human_cbu/judge_human_agreement_bootstrap.json` (aggregate only) | `scripts/paper/human_judge_agreement_bootstrap.py` on the output of `scripts/human_cbu_eval.py export` |
+| Human verification of image support (seven volunteer annotators, 217 primary judgments on 137 claims), judge–human agreement as mean ± std over 10,000 image-cluster bootstrap resamples | `human_cbu/judge_human_agreement_bootstrap.json` (aggregate only) | `scripts/paper/human_judge_agreement_bootstrap.py` on the output of `scripts/human_cbu_eval.py export` |
 
 ## Appendix
 
@@ -60,7 +64,7 @@ example `pd12m_full_paired__ours_pd12m_img2dataset`.
 | Lexical-window sensitivity of claimed CBU (CC12M) | `sensitivity/cc12m_lexical_window_claimed_cbu_summary.json`: the four CC12M surfaces with the extractor window cut at the first 64 lexical units instead of the first 64 whitespace words | `scripts/paper/build_lexical_window_cbu_requests.py` builds the requests from the B = 64 CC12M request file; then `scripts/run_text_json_requests.py` and `scripts/summarize_cbu_responses.py --mode claimed` |
 | Encoder-token truncation of the naive captions | `sensitivity/naive_encoder_truncation.json` (CLIP-77, LongCLIP-248, SigLIP2-64 per naive surface) | `scripts/paper/encoder_truncation_rates.py` (untruncated tokenization with special tokens, as in `scripts/caption_tokenizer_truncation_survey.py`) |
 | LongCLIP retrieval of the matched-decoding CC12M naive surface | `sensitivity/naive_sampled_cc12m_longclip_full.tsv`, `sensitivity/naive_sampled_cc12m_longclip_input64.tsv` (means and rates) | `scripts/compute_longclip_retrieval_margin.py`, which also writes `*_ci95` interval columns; those columns are omitted here |
-| Human-study interface figures | `human_cbu/ui_appendix/*.png` | screenshots of the response-discarding participant-test mode of `scripts/human_cbu_eval.py` with an invented caption and a synthetic scene |
+| Annotation-interface figures of the human verification | `human_cbu/ui_appendix/*.png` | screenshots of the response-discarding `participant-test` mode of `scripts/human_cbu_eval.py` with an invented caption and a synthetic scene |
 | DataComp text-space probes by encoder (Vendi, eRank, Coverage@10, Density@10) | `raw_summaries/embedding_vendi_support/caption_embedding_profile.tsv` (Vendi, eRank); `prompt_caption_support.tsv` (Coverage and Density, raw-text protocol rows `raw/raw` and, for BGE-M3, `raw/corpus`) | `scripts/caption_embedding_vendi.py` |
 | EmbeddingGemma-300M multi-slice grid | `embeddinggemma_pair_summary.tsv`; `raw_summaries/embedding_vendi_support/embeddinggemma_all_pairs.tsv`, `embeddinggemma_dtype_sanity.json` | `scripts/caption_embedding_vendi.py` |
 | LongCLIP retrieval on CC12M, full-caption and input64 modes | `cc12m_longclip_plot.csv` (both modes); `longclip_retrieval_summary.tsv` and `raw_summaries/longclip_retrieval/` (input64 mode) | `scripts/compute_longclip_retrieval_margin.py` |
@@ -111,6 +115,26 @@ which report 95% intervals. They are **superseded** by the mean ± std conventio
 `tables/vqa_mean_std.tex` and are kept unchanged for traceability only; the paper does not report
 them.
 
+`teaser_right_v_twinx_v2.{pdf,png}` is the earlier rendering of Figure 1 (right), with the axis
+labelled "prompt coverage". It is **superseded** by `teaser_right_v_twinx_v3.{pdf,png}` (labelled
+"prompt-mass support", same values) and kept for traceability only.
+
+## Manuscript result-provenance paths
+
+The result-provenance table of the paper appendix names the artifacts below. Paths are relative to
+`results/`.
+
+| Artifact named in the paper | Location in this repository |
+|---|---|
+| `all_cbu_b64_summary.csv` | `all_cbu_b64_summary.csv` |
+| `cbu_vqa_by_category_b64.json` | `cbu_vqa_by_category_b64.json` |
+| `cpu_text_metrics/` | `raw_summaries/cpu_text_metrics/` |
+| `prompt_support_direction_summary.csv` | `prompt_support_direction_summary.csv` |
+| `cc12m_budget_frontier_plot.csv` | `cc12m_budget_frontier_plot.csv` |
+| `cc12m_vqa_supported_risk_pareto.csv` | `cc12m_vqa_supported_risk_pareto.csv` |
+| `naive_qwen35_*/` | `naive_qwen35_cc12m/`, `naive_qwen35_sampled_cc12m/`, `naive_qwen35_datacomp/`, `naive_qwen35_sampled_datacomp/` |
+| `croissant.json` | not in this repository: each dataset of the Hugging Face collection serves its Croissant record (core and Responsible-AI fields) at the dataset's Croissant endpoint on the Hub |
+
 ## Policy control, verification, and sensitivity folders
 
 | Directory | Contents |
@@ -126,6 +150,6 @@ them.
 
 Not part of the release:
 
-- Row-level human-study labels and the census tables derived from them, which
-  `scripts/human_cbu_eval.py export` writes from the private study database.
+- Row-level human-verification judgments and the census tables derived from them, which
+  `scripts/human_cbu_eval.py export` writes from the private annotation database.
 - The DataComp crawl-and-survival snapshot and the kNN-cosine column of the DataComp encoder table.
