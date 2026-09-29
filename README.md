@@ -2,7 +2,7 @@
 
 [![Paper](https://img.shields.io/badge/OpenReview-JobgYHJvPo-8c1b13)](https://openreview.net/forum?id=JobgYHJvPo)
 [![Project page](https://img.shields.io/badge/Project-page-1f6feb)](https://bootsoflagrangian.github.io/audit-recap-t2i.github.io/)
-[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-Recaptioned%20Image%20Text-ffcc4d)](https://huggingface.co/collections/BootsofLagrangian/recaptioned-image-text-6ab5bf978e69805c3e33d5ce)
+[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-Recaptioned%20Image%20Text-ffcc4d)](https://huggingface.co/collections/BootsofLagrangian/recaptioned-image-text)
 [![Code license](https://img.shields.io/badge/code-Apache--2.0-blue)](LICENSE)
 
 Giyeong Oh, Junghun Park, Yuhan Bae, Youngjae Yu (Seoul National University).
@@ -23,7 +23,7 @@ alone raises supported CBU per caption by +3.0 to +3.6 over a plain detailed-cap
 
 - Paper: <https://openreview.net/forum?id=JobgYHJvPo>
 - Project page: <https://bootsoflagrangian.github.io/audit-recap-t2i.github.io/>
-- Released captions: [Recaptioned Image Text collection on Hugging Face](https://huggingface.co/collections/BootsofLagrangian/recaptioned-image-text-6ab5bf978e69805c3e33d5ce)
+- Released captions: [Recaptioned Image Text collection on Hugging Face](https://huggingface.co/collections/BootsofLagrangian/recaptioned-image-text)
 
 The corpus is the Hugging Face collection: nine caption-only datasets, one per source family, with the
 captions released as generated. Each dataset card carries a "Personal and sensitive information"
@@ -600,7 +600,11 @@ uv run python scripts/plot_caption_survey_curves.py --help
 ```
 
 The generators overwrite their outputs in `results/`. Figure 1 (left) is a composed figure and is
-provided as `results/teaser_left_v4.pdf`. Figure 2 (left) reads the `CC12M` cells of
+provided as `results/teaser_left_v5.pdf`. It shows CC12M row 009642799 with excerpts of the released
+Ours caption and of the two reference captions (CC12M-LLaVA-NeXT and PixelProse, first 64 lexical
+units), with the describe-style frames highlighted. Photo: “Toronto: Riverdale farm” by The City of
+Toronto (Flickr), CC BY 2.0, cropped; source <https://www.flickr.com/photos/cityoftoronto/12326701954/>.
+Figure 2 (left) reads the `CC12M` cells of
 `results/cbu_vqa_by_category_b64.json` (the requests answered by both judges) and Figure 2 (right)
 reads `results/cc12m_budget_frontier_plot.csv`. `gen_teaser_refined.py` and `gen_cc12m_frontiers.py`
 ask for Helvetica; on a host without it, set `EXTRA_FONT_DIR` to a directory of Helvetica-like `.otf`
@@ -667,14 +671,14 @@ does not include.
 | `all_vqa_b64_summary.csv` | per-judge rollup of the Qwen Judge and CC12M summaries (see `results/README.md` for its DataComp rows) |
 | `cc12m_budget_frontier_plot.csv` | CC12M claimed CBU at B = 64 and the budget sweep, Figure 2 (right) |
 | `cc12m_vqa_supported_risk_pareto_v3.{pdf,png}`, `cc12m_cbu_efficiency_yield_frontier_revised.{pdf,png}` | Figure 2 (left, from the `CC12M` cells of `cbu_vqa_by_category_b64.json`; right) |
-| `teaser_left_v4.pdf`, `teaser_right_v_twinx_v3.{pdf,png}` | Figure 1 (left; right, seven-pool means of prompt-mass support and n-gram JSD) |
+| `teaser_left_v5.pdf`, `teaser_right_v_twinx_v3.{pdf,png}` | Figure 1 (left, CC12M row 009642799 with caption excerpts; photo “Toronto: Riverdale farm” by The City of Toronto, CC BY 2.0, cropped; right, seven-pool means of prompt-mass support and n-gram JSD) |
 | `prompt_support_bootstrap_b64_n2_250k_2026-04-24.tsv` | Pool-wins, Figure 1 (right), per-pool heatmap |
 | `human_cbu/judge_human_agreement_bootstrap.json` | judge–human agreement of the human verification, mean ± std |
 | `naive_qwen35_*/`, `policy_control_ours_datacomp/` | captioning-policy control: naive captions and summaries, and the released captions on the same DataComp images |
 | `datacomp_pair/` | per-judge summaries of the DataComp verification run |
 | `sensitivity/` | lexical-window claimed CBU, encoder truncation and LongCLIP retrieval of the naive captions |
 | `raw_summaries/` | per-stage summaries (text diagnostics, prompt support, CBU, VQA, embeddings, LongCLIP) |
-| `cc12m_cbu_vqa_bootstrap_ci.tsv`, `cc12m_gemma4_vqa_bootstrap_ci.tsv`, `cc12m_vqa_supported_risk_pareto.csv`, `cc12m_vqa_supported_risk_pareto_revised.{pdf,png}`, `teaser_left_v2.pdf`, `teaser_left_v3.pdf`, `teaser_right_v_twinx_v2.{pdf,png}` | superseded files (earlier CC12M bootstrap interval exports; the earlier CC12M support/risk export and its Figure 2 left panel; the earlier Figure 1 panels), kept for traceability |
+| `cc12m_cbu_vqa_bootstrap_ci.tsv`, `cc12m_gemma4_vqa_bootstrap_ci.tsv`, `cc12m_vqa_supported_risk_pareto.csv`, `cc12m_vqa_supported_risk_pareto_revised.{pdf,png}`, `teaser_left_v2.pdf`, `teaser_left_v3.pdf`, `teaser_left_v4.pdf`, `teaser_right_v_twinx_v2.{pdf,png}` | superseded files (earlier CC12M bootstrap interval exports; the earlier CC12M support/risk export and its Figure 2 left panel; the earlier Figure 1 panels), kept for traceability |
 
 ## Citation
 
@@ -697,7 +701,9 @@ captions; these files carry public image keys only, and personal data transcribe
 (email addresses, phone numbers, names of private persons on ID cards, badges and certificates,
 identity and card numbers, and private street addresses) is masked as `[email]`, `[phone]`, `[name]`,
 `[id]`, and `[address]`. The CC-BY-4.0 license covers the generated caption text only. Source images, reference captions, and third-party metadata keep their original
-licenses and terms.
+licenses and terms. The photograph in `results/teaser_left_v5.pdf` is “Toronto: Riverdale farm” by The
+City of Toronto (Flickr), CC BY 2.0, cropped; source
+<https://www.flickr.com/photos/cityoftoronto/12326701954/>.
 
 ## Contact
 

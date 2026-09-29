@@ -43,7 +43,7 @@ dev = [
 [project.urls]
 Paper = "https://openreview.net/forum?id=JobgYHJvPo"
 Homepage = "https://bootsoflagrangian.github.io/audit-recap-t2i.github.io/"
-Dataset = "https://huggingface.co/collections/BootsofLagrangian/recaptioned-image-text-6ab5bf978e69805c3e33d5ce"
+Dataset = "https://huggingface.co/collections/BootsofLagrangian/recaptioned-image-text"
 
 [build-system]
 requires = ["hatchling"]

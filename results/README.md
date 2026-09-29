@@ -37,7 +37,7 @@ example `pd12m_full_paired__ours_pd12m_img2dataset`.
 
 | Paper element | File(s) | Produced by |
 |---|---|---|
-| Figure 1 (left), caption register (describe-style frame prefix concentration) | `teaser_left_v4.pdf` | composed figure, copied from the manuscript's `artifacts/figures/`; `teaser_left_v2.pdf` and `teaser_left_v3.pdf` are the superseded earlier versions |
+| Figure 1 (left), caption register (describe-style frame prefix concentration) | `teaser_left_v5.pdf` | composed figure, copied from the manuscript's `artifacts/figures/`. It shows CC12M row 009642799 with excerpts of the released Ours caption and of the two reference captions (CC12M-LLaVA-NeXT and PixelProse, first 64 lexical units), with the describe-style frames highlighted. Photo: “Toronto: Riverdale farm” by The City of Toronto (Flickr), CC BY 2.0, cropped; source <https://www.flickr.com/photos/cityoftoronto/12326701954/>. `teaser_left_v2.pdf`, `teaser_left_v3.pdf`, and `teaser_left_v4.pdf` are the superseded earlier versions |
 | Figure 1 (right), prompt-pool diagnostics (prompt-mass support and n-gram JSD) | `teaser_right_v_twinx_v3.{pdf,png}` | `scripts/paper/gen_teaser_refined.py`, which averages the per-pool block means of `prompt_support_bootstrap_b64_n2_250k_2026-04-24.tsv` over the seven pools; `teaser_right_v_twinx_v2.{pdf,png}` is the superseded earlier rendering |
 | Phenomenon descriptors (opener rate, top-100 raw / content prefix mass, Distinct-3, average length) and the per-family appendix companion | `raw_summaries/cpu_text_metrics/fair_slices_1m_normalized_2026-04-24.{json,tsv}`; LAION-pop re-run with URL-fixed pairing in `laion_pop_url_fixed_normalized_2026-04-24.{json,tsv}` | `scripts/run_caption_fair_slice_surveys.py` over the paired slice of each surface, capped at 1M captions (42,231 on LAION-pop, 114,621 on CC12M–Qwen3-VL, 729,237 on PixelProse, 960,394 on CC12M-LLaVA-NeXT, 999,993 on Danbooru, and 1M on DataComp and PD12M; `records` column) |
 | Cross-corpus headline at B = 64: Avg lex | `raw_summaries/cpu_text_metrics/fair_slices_1m_normalized_2026-04-24.tsv` (`avg_tokens`) | as above |
@@ -113,8 +113,8 @@ which report 95% intervals. They are **superseded** by the mean ± std conventio
 `tables/vqa_mean_std.tex` and are kept unchanged for traceability only; the paper does not report
 them.
 
-`teaser_left_v2.pdf` and `teaser_left_v3.pdf` are the earlier versions of Figure 1 (left). They are
-**superseded** by `teaser_left_v4.pdf` and kept for traceability only.
+`teaser_left_v2.pdf`, `teaser_left_v3.pdf`, and `teaser_left_v4.pdf` are the earlier versions of
+Figure 1 (left). They are **superseded** by `teaser_left_v5.pdf` and kept for traceability only.
 
 `cc12m_vqa_supported_risk_pareto.csv` and `cc12m_vqa_supported_risk_pareto_revised.{pdf,png}` are the
 earlier export of the CC12M support/risk cells and the Figure 2 (left) panel drawn from it. The export
