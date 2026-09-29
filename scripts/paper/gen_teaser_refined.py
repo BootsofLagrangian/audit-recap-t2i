@@ -100,7 +100,7 @@ def gen_twinx_refined():
                     f"{b.get_height():.2f}", ha="center", va="bottom",
                     fontsize=7.5, color="0.25", zorder=3)
 
-    ax.set_ylabel(r"Prompt coverage  ($\uparrow$)", color="0.2")
+    ax.set_ylabel(r"Prompt-mass support  ($\uparrow$)", color="0.2")
     ax.set_ylim(0, 0.78)
     ax.set_yticks([0, 0.2, 0.4, 0.6])
     ax.set_xticks(x)
@@ -128,9 +128,9 @@ def gen_twinx_refined():
     from matplotlib.lines import Line2D
     handles = [
         Patch(facecolor=C_OURS_BAR, edgecolor="0.25", linewidth=0.7,
-              label="Ours · coverage"),
+              label="Ours · support"),
         Patch(facecolor=C_REF_BAR, edgecolor="0.25", linewidth=0.7,
-              label="Ref · coverage"),
+              label="Ref · support"),
         Line2D([0], [0], marker="o", color=C_OURS_DOT,
                markeredgecolor="white", markeredgewidth=1.0,
                markersize=7, linewidth=1.4, label="Ours · JSD"),
@@ -145,7 +145,7 @@ def gen_twinx_refined():
 
     plt.tight_layout()
     plt.subplots_adjust(top=0.85)
-    save(fig, "v_twinx_v2")
+    save(fig, "v_twinx_v3")
 
 
 def gen_bar_mass_refined():
@@ -165,7 +165,7 @@ def gen_bar_mass_refined():
                     f"{b.get_height():.2f}", ha="center", va="bottom",
                     fontsize=7.5, color="0.25")
 
-    ax.set_ylabel(r"Prompt coverage  ($\uparrow$)", color="0.2")
+    ax.set_ylabel(r"Prompt-mass support  ($\uparrow$)", color="0.2")
     ax.set_ylim(0, 0.74)
     ax.set_yticks([0, 0.2, 0.4, 0.6])
     ax.set_xticks(x)
@@ -184,4 +184,3 @@ def gen_bar_mass_refined():
 
 if __name__ == "__main__":
     gen_twinx_refined()
-    gen_bar_mass_refined()
