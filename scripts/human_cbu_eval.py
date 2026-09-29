@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build, materialize, operate, validate, and export the blinded human CBU study."""
+"""Build, materialize, operate, validate, and export the blinded human verification of CBUs."""
 
 from __future__ import annotations
 

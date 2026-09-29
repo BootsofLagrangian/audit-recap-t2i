@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Judge-human agreement as estimate and bootstrap standard deviation.
 
-Runs the human-study exporter's metric computation on the exported annotation
-rows with its image-cluster bootstrap (10,000 resamples, seed 1477) and keeps
-the standard deviation of each bootstrap distribution next to the estimate.
+Runs the human-verification exporter's metric computation on the exported
+annotation rows with its image-cluster bootstrap (10,000 resamples, seed 1477)
+and keeps the standard deviation of each bootstrap distribution next to the
+estimate.
 Usage: human_judge_agreement_bootstrap.py <export-dir> > judge_human_agreement_bootstrap.json
 """
 

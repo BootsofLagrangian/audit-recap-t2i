@@ -1,4 +1,4 @@
-# Human CBU study configuration for the CC12M human calibration study.
+# Configuration of the CC12M human verification of machine-extracted claims (CBUs).
 # Input paths are relative to the repository root: claim-extraction and judge
 # response JSONL files under artifacts/ are produced by the CC12M audit pipeline,
 # and the CC12M WebDataset shards and canonical manifest live under data/.

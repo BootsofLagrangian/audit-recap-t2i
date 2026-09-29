@@ -1,4 +1,4 @@
-"""Materialize only the selected images needed by a human CBU study."""
+"""Materialize only the selected images needed by a human CBU verification."""
 
 from __future__ import annotations
 
