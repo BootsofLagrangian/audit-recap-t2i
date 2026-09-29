@@ -37,7 +37,7 @@ example `pd12m_full_paired__ours_pd12m_img2dataset`.
 
 | Paper element | File(s) | Produced by |
 |---|---|---|
-| Figure 1 (left), caption register (describe-style frame prefix concentration) | `teaser_left_v2.pdf` | composed figure, copied from the manuscript's `artifacts/figures/` |
+| Figure 1 (left), caption register (describe-style frame prefix concentration) | `teaser_left_v3.pdf` | composed figure, copied from the manuscript's `artifacts/figures/`; `teaser_left_v2.pdf` is the superseded earlier version |
 | Figure 1 (right), prompt-pool diagnostics (prompt-mass support and n-gram JSD) | `teaser_right_v_twinx_v3.{pdf,png}` | `scripts/paper/gen_teaser_refined.py`, which averages the per-pool block means of `prompt_support_bootstrap_b64_n2_250k_2026-04-24.tsv` over the seven pools; `teaser_right_v_twinx_v2.{pdf,png}` is the superseded earlier rendering |
 | Phenomenon descriptors (opener rate, top-100 raw / content prefix mass, Distinct-3, average length) and the per-family appendix companion | `raw_summaries/cpu_text_metrics/fair_slices_1m_normalized_2026-04-24.{json,tsv}`; LAION-pop re-run with URL-fixed pairing in `laion_pop_url_fixed_normalized_2026-04-24.{json,tsv}` | `scripts/run_caption_fair_slice_surveys.py` over the 1M-pair fair slices |
 | Cross-corpus headline at B = 64: Avg lex | `raw_summaries/cpu_text_metrics/fair_slices_1m_normalized_2026-04-24.tsv` (`avg_tokens`) | as above |
@@ -114,6 +114,9 @@ identical copies, in `raw_summaries/vqa_image_conditioned/`) are the earlier CC1
 which report 95% intervals. They are **superseded** by the mean ± std convention of
 `tables/vqa_mean_std.tex` and are kept unchanged for traceability only; the paper does not report
 them.
+
+`teaser_left_v2.pdf` is the earlier version of Figure 1 (left). It is **superseded** by
+`teaser_left_v3.pdf` and kept for traceability only.
 
 `teaser_right_v_twinx_v2.{pdf,png}` is the earlier rendering of Figure 1 (right), with the axis
 labelled "prompt coverage". It is **superseded** by `teaser_right_v_twinx_v3.{pdf,png}` (labelled

@@ -17,6 +17,10 @@ VLM judges. It also contains the caption-generation runner and prompts behind th
 Qwen3.5 recaptions for nine public image collections, the tool used for the human verification of
 machine-extracted claims, and the result summaries behind every table and figure of the paper.
 
+The released captions follow one simple rule: write the caption as a user writes a prompt, from the
+dominant subject through scene structure to camera framing. With the captioner fixed, the rule alone
+raises supported CBU per caption by +3.0 to +3.6 over a plain detailed-caption instruction.
+
 - Paper: <https://openreview.net/forum?id=JobgYHJvPo>
 - Project page: <https://bootsoflagrangian.github.io/audit-recap-t2i.github.io/>
 - Released captions: [Recaptioned Image Text collection on Hugging Face](https://huggingface.co/collections/BootsofLagrangian/recaptioned-image-text-6ab5bf978e69805c3e33d5ce)
@@ -66,10 +70,13 @@ Is the visual claim '<UNIT>' supported by the image?
 Is the rendered text claim '<UNIT>' visibly supported by the image?
 ```
 
-Two judges answer the identical question set: the **Qwen Judge** (`Qwen/Qwen3.5-397B-A17B-FP8`, the
-extractor's checkpoint) and the **Gemma Judge** (`google/gemma-4-31B-it`, an independently trained
-family). Each answer is `yes`, `no`, or `uncertain`. Extraction and judging use temperature 0 and
-schema-constrained JSON through vLLM structured outputs.
+Two Judges answer the identical question set: the **Qwen Judge** (`Qwen/Qwen3.5-397B-A17B-FP8`) and
+the **Gemma Judge** (`google/gemma-4-31B-it`). Both Judges are open-weight VLMs served locally with
+deterministic, schema-constrained answers across all eight claim types. The Qwen Judge is the
+397B-parameter checkpoint of the captioner's family and also serves as the extractor; the Gemma Judge
+comes from an independently trained family and re-asks the same extracted claims. Each answer is
+`yes`, `no`, or `uncertain`. Extraction and judging use temperature 0 and schema-constrained JSON
+through vLLM structured outputs.
 
 **Metrics.** With c_{≤B} the budget window of caption c, s(c, x) the number of CBUs of c the judge
 answers `yes` for, and u(c, x) the number it answers `no` for:
@@ -91,7 +98,7 @@ answers `yes` for, and u(c, x) the number it answers `no` for:
 
 **Five axes.** The audit reports the metrics jointly; no axis is collapsed into another.
 
-| Axis (desideratum) | Reads | Failure mode | Metric | Boundary |
+| Axis (property) | Reads | Failure mode | Metric | Boundary |
 |---|---|---|---|---|
 | Text budget (coverage) | D_c | too little text inside B | Avg lex; B-eligibility | length is a prerequisite, not quality |
 | Prompt-pool support (coverage) | D_c vs. prompt pools | caption register absent from prompts | prompt-mass support ↑; n-gram JSD ↓ | pool-conditioned, not universal intent |
@@ -130,8 +137,9 @@ claims, supported CBU/cap still rises by +2.66 to +5.22 and risk is lower in all
 cells (`results/tables/excl_count_relation.tex`).
 
 **Captioning-policy control.** The same captioner (`Qwen/Qwen3.5-35B-A3B-FP8`) with the same decoding
-captions the same images under the naive single-message prompt; claims are extracted by
-Qwen3.5-397B-A17B-FP8 and both judges answer the same questions (`results/tables/policy_control.tex`).
+captions the same images under the released rule and under a plain detailed-caption instruction (the
+naive single-message prompt); claims are extracted by Qwen3.5-397B-A17B-FP8 and both judges answer the
+same questions (`results/tables/policy_control.tex`).
 
 | Family | Surface | Claimed CBU/cap | CBU/100 lex | Qwen Judge Sup. CBU/cap / risk | Gemma Judge Sup. CBU/cap / risk |
 |---|---|---:|---:|---|---|
@@ -329,9 +337,10 @@ uv run python scripts/vllm/run_recap.py --dataset cc12m --domain photorealistic 
 ```
 
 `--domain photorealistic` and `--domain anime_booru` select the two caption policies in
-`configs/recap/domains/`; the anime policy grounds the caption on booru tags given with
-`--metadata <parquet dir>`. The system and user prompts are the ones reproduced in the paper
-appendix. The released captions do not need to be regenerated to run the audit.
+`configs/recap/domains/`. Both apply the same rule: write the caption as a user writes a prompt, from
+the dominant subject through scene structure to camera framing. The anime policy grounds the caption
+on booru tags given with `--metadata <parquet dir>`. The system and user prompts are the ones
+reproduced in the paper appendix. The released captions do not need to be regenerated to run the audit.
 
 ### 2. Paired slices and text diagnostics
 
@@ -501,8 +510,9 @@ request file per surface plus a merged file; the summary is
 
 ### 7. Captioning-policy control (naive policy)
 
-The control keeps the captioner and the images fixed and replaces the policy with the Recap-DataComp
-instruction as a single user message with no system prompt:
+The control keeps the captioner and the images fixed and replaces the prompt-ordered rule with a plain
+detailed-caption instruction, the Recap-DataComp instruction as a single user message with no system
+prompt:
 
 ```
 Please generate a detailed caption of this image. Please be as descriptive as possible.
@@ -583,7 +593,7 @@ uv run python scripts/plot_caption_survey_curves.py --help
 ```
 
 The generators overwrite their outputs in `results/`. Figure 1 (left) is a composed figure and is
-provided as `results/teaser_left_v2.pdf`. `gen_teaser_refined.py` asks for Helvetica; on a host
+provided as `results/teaser_left_v3.pdf`. `gen_teaser_refined.py` asks for Helvetica; on a host
 without it, set `EXTRA_FONT_DIR` to a directory of Helvetica-like `.otf` fonts (for example TeX Gyre
 Heros), otherwise the panel renders in a fallback font with the same values.
 
@@ -646,14 +656,14 @@ does not include.
 | `cbu_vqa_by_category_b64.json`, `tables/*.tex` | every VQA cell under both judges as mean ± std; per-type tables; count/relation-excluded headline; policy control; question denominators; CC12M denominators |
 | `all_vqa_b64_summary.csv` | per-judge rollup of the Qwen Judge and CC12M summaries (see `results/README.md` for its DataComp rows) |
 | `cc12m_budget_frontier_plot.csv`, `cc12m_vqa_supported_risk_pareto.csv` | CC12M frontier table and Figure 2 |
-| `teaser_left_v2.pdf`, `teaser_right_v_twinx_v3.{pdf,png}` | Figure 1 (left; right, seven-pool means of prompt-mass support and n-gram JSD) |
+| `teaser_left_v3.pdf`, `teaser_right_v_twinx_v3.{pdf,png}` | Figure 1 (left; right, seven-pool means of prompt-mass support and n-gram JSD) |
 | `prompt_support_bootstrap_b64_n2_250k_2026-04-24.tsv` | Pool-wins, Figure 1 (right), per-pool heatmap |
 | `human_cbu/judge_human_agreement_bootstrap.json` | judge–human agreement of the human verification, mean ± std |
 | `naive_qwen35_*/`, `policy_control_ours_datacomp/` | captioning-policy control: naive captions and summaries, and the released captions on the same DataComp images |
 | `datacomp_pair/` | per-judge summaries of the DataComp verification run |
 | `sensitivity/` | lexical-window claimed CBU, encoder truncation and LongCLIP retrieval of the naive captions |
 | `raw_summaries/` | per-stage summaries (text diagnostics, prompt support, CBU, VQA, embeddings, LongCLIP) |
-| `cc12m_cbu_vqa_bootstrap_ci.tsv`, `cc12m_gemma4_vqa_bootstrap_ci.tsv`, `teaser_right_v_twinx_v2.{pdf,png}` | superseded files (earlier CC12M bootstrap interval exports; the earlier Figure 1 right panel), kept for traceability |
+| `cc12m_cbu_vqa_bootstrap_ci.tsv`, `cc12m_gemma4_vqa_bootstrap_ci.tsv`, `teaser_left_v2.pdf`, `teaser_right_v_twinx_v2.{pdf,png}` | superseded files (earlier CC12M bootstrap interval exports; the earlier Figure 1 panels), kept for traceability |
 
 ## Citation
 

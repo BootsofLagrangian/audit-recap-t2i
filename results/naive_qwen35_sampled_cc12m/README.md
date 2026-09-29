@@ -20,8 +20,8 @@ Please generate a detailed caption of this image. Please be as descriptive as po
 | `vqa_summary_qwen397.json` | VQA summary under the Qwen Judge | `scripts/summarize_cbu_vqa_responses.py` |
 | `vqa_summary_gemma4_31b_it.json` | VQA summary under the Gemma Judge | `scripts/summarize_cbu_vqa_responses.py` |
 
-Both judges answer the questions built from the same Qwen3.5-397B-A17B-FP8 claims; neither judge
-extracts claims itself.
+Both judges answer the questions built from the same Qwen3.5-397B-A17B-FP8 claims: the Qwen Judge
+shares the extractor's checkpoint, and the Gemma Judge re-asks the same extracted claims.
 
 | Claimed CBU/cap | CBU/100 lex | Qwen Judge Sup. CBU/cap | Qwen Judge risk | Gemma Judge Sup. CBU/cap | Gemma Judge risk |
 |---:|---:|---:|---:|---:|---:|
