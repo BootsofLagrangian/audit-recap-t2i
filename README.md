@@ -686,7 +686,7 @@ does not include.
 @inproceedings{oh2026matchedbudget,
   title     = {A Matched-Budget Audit Framework for Recaptioned Image-Text Supervision Distributions},
   author    = {Oh, Giyeong and Park, Junghun and Bae, Yuhan and Yu, Youngjae},
-  booktitle = {Advances in Neural Information Processing Systems, Evaluations and Datasets Track},
+  booktitle = {Conference on Neural Information Processing Systems, Evaluations and Datasets Track},
   year      = {2026},
   url       = {https://openreview.net/forum?id=JobgYHJvPo}
 }
